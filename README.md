@@ -28,26 +28,20 @@ diverge from the defaults
 (e.g. embedded servers, security, metrics, health checks, externalized configuration)
 * Absolutely no code generation and no requirement for XML configuration
 
-- [站点](https://spring.io/projects/spring-boot)
-- [GIT](https://github.com/spring-projects/spring-boot)
+* [站点](https://spring.io/projects/spring-boot) | [GIT](https://github.com/spring-projects/spring-boot)
 -------
 #### 版本文档
-- [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3)
-  - [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3/参考手册.md)
-  - [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3/API文档.md)
+* [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3/API文档.md)
   
-- [2.0.0](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0)
-  - [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/参考手册.md)
-  - [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/API文档.md)
+* [2.0.0](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/API文档.md)
 
-- [1.5.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7)
-  - [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7/参考手册.md)
-  - [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7/API文档.md)
+* [1.5.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7/API文档.md)
   
-- [1.5.6](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6)
-  - [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6/参考手册.md)
-  - [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6/API文档.md)
+* [1.5.6](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6/API文档.md)
   
-- [1.4.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7)
-  - [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7/参考手册.md)
-  - [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7/API文档.md)
+* [1.4.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7/API文档.md)
