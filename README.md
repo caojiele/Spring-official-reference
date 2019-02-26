@@ -1,6 +1,6 @@
 <img src="img/Sping_Logo.jpg" width="50%" height="50%" />
 
-# Spring-official-reference
+# Spring official reference
 
 > Spring官方文档（中文版）
 #### 编译的Spring官方文档中文译本，为Spring生态体系下的学习者降低学习门槛，您在使用文档的过程中如发现不准确的译文，可即时提供翻译建议。
@@ -31,17 +31,17 @@ diverge from the defaults
 * [站点](https://spring.io/projects/spring-boot) | [GIT](https://github.com/spring-projects/spring-boot)
 -------
 #### 版本文档
-* [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0-M3)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0-M3/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0-M3/API.md)
+* [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0-M3)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0-M3/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0-M3/API.md)
   
-* [2.0.0](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/API.md)
+* [2.0.0](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/API.md)
 
-* [1.5.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.7/API.md)
+* [1.5.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/API.md)
   
-* [1.5.6](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.5.6/API.md)
+* [1.5.6](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6/API.md)
   
-* [1.4.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/1.4.7/API.md)
+* [1.4.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7/API.md)
