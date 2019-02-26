@@ -1,4 +1,6 @@
 # Spring Boot Reference Guide
+
+### [中文文档](README_CN.md)
 ## Authors
 > Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, Andy Wilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze, Michael Simons, Vedran Pavić, Jay Bryant, Madhura Bhave
 ### 2.0.0.BUILD-SNAPSHOT
@@ -18,31 +20,31 @@
    * [6. Moving to Production](#6-Moving-to-Production)
    * [7. Advanced Topics](#7-Advanced-Topics)
 * [II. Getting Started](#Part-II-Getting-started)
-  - * [8. Introducing Spring Boot](#8. Introducing Spring Boot)
-  - * [9. System Requirements](#9. System Requirements)
-    - * [9.1. Servlet Containers](#9.1. Servlet Containers)
-  - * [10. Installing Spring Boot](#10. Installing Spring Boot)
-    - * [10.1. Installation Instructions for the Java Developer](#10.1. Installation Instructions for the Java Developer)
-      - * [10.1.1. Maven Installation](#10.1.1. Maven Installation)
-      - * [10.1.2. Gradle Installation](#10.1.2. Gradle Installation)
-    - * [10.2. Installing the Spring Boot CLI](#10.2. Installing the Spring Boot CLI）
-      - * [10.2.1. Manual Installation](#10.2.1. Manual Installation）
-      - * [10.2.2. Installation with SDKMAN!](#10.2.2. Installation with SDKMAN!）
-      - * [10.2.3. OSX Homebrew Installation](#10.2.3. OSX Homebrew Installation）
-      - * [10.2.4. MacPorts Installation](#10.2.4. MacPorts Installation）
-      - * [10.2.5. Command-line Completion](#10.2.5. Command-line Completion）
-      - * [10.2.6. Quick-start Spring CLI Example](#10.2.6. Quick-start Spring CLI Example)
-    - * [10.3. Upgrading from an Earlier Version of Spring Boot](#10.3. Upgrading from an Earlier Version of Spring Boot)
-  - * [11. Developing Your First Spring Boot Application](#11. Developing Your First Spring Boot Application)
-    - * [11.1. Creating the POM](#11.1. Creating the POM)
-    - * [11.2. Adding Classpath Dependencies](#11.2. Adding Classpath Dependencies)
-    - * [11.3. Writing the Code](#11.3. Writing the Code)
-      - * [11.3.1. The @RestController and @RequestMapping Annotations](#11.3.1. The @RestController and @RequestMapping Annotations)
-      - * [11.3.2. The @EnableAutoConfiguration Annotation](#11.3.2. The @EnableAutoConfiguration Annotation)
-      - * [11.3.3. The “main” Method](#11.3.3. The “main” Method)
-    - * [11.4. Running the Example](#11.4. Running the Example)
-    - * [11.5. Creating an Executable Jar](#11.5. Creating an Executable Jar)
-    - * [12. What to Read Next](#12. What to Read Next)
+  - * [8. Introducing Spring Boot](#8-Introducing-Spring-Boot)
+  - * [9. System Requirements](#9-System-Requirements)
+    - * [9.1. Servlet Containers](#9.1-Servlet-Containers)
+  - * [10. Installing Spring Boot](#10-Installing-Spring-Boot)
+    - * [10.1. Installation Instructions for the Java Developer](#10.1-Installation-Instructions-for-the-Java-Developer)
+      - * [10.1.1. Maven Installation](#10.1.1-Maven-Installation)
+      - * [10.1.2. Gradle Installation](#10.1.2-Gradle-Installation)
+    - * [10.2. Installing the Spring Boot CLI](#10.2-Installing-the-Spring-Boot-CLI）
+      - * [10.2.1. Manual Installation](#10.2.1-Manua-Installation）
+      - * [10.2.2. Installation with SDKMAN!](#10.2.2-Installation-with-SDKMAN!）
+      - * [10.2.3. OSX Homebrew Installation](#10.2.3-OSX-Homebrew-Installation）
+      - * [10.2.4. MacPorts Installation](#10.2.4-MacPorts-Installation）
+      - * [10.2.5. Command-line Completion](#10.2.5-Command--line-Completion）
+      - * [10.2.6. Quick-start Spring CLI Example](#10.2.6-Quick--start-Spring-CLI-Example)
+    - * [10.3. Upgrading from an Earlier Version of Spring Boot](#10.3-Upgrading-from-an-Earlier-Version-of-Spring-Boot)
+  - * [11. Developing Your First Spring Boot Application](#11-Developing-Your-First-Spring-Boot-Application)
+    - * [11.1. Creating the POM](#11.1-Creating-the-POM)
+    - * [11.2. Adding Classpath Dependencies](#11.2-Adding-Classpath-Dependencies)
+    - * [11.3. Writing the Code](#11.3-Writing-the-Code)
+      - * [11.3.1. The @RestController and @RequestMapping Annotations](#11.3.1-The-@RestController-and-@RequestMapping-Annotations)
+      - * [11.3.2. The @EnableAutoConfiguration Annotation](#11.3.2-The-@EnableAutoConfiguration-Annotation)
+      - * [11.3.3. The “main” Method](#11.3.3-The-“main”-Method)
+    - * [11.4. Running the Example](#11.4-Running-the-Example)
+    - * [11.5. Creating an Executable Jar](#11.5-Creating-an-Executable-Jar)
+    - * [12. What to Read Next](#12-What-to-Read-Next)
 * [III. Using Spring Boot](#Part III. Using Spring Boot)
   - * [13. Build Systems](#13. Build Systems)
     - * [13.1. Dependency Management](#13.1. Dependency Management)
@@ -696,59 +698,56 @@ Finally, we have a few topics for more advanced users:
 ## Part II Getting Started
 If you are getting started with Spring Boot, or “Spring” in general, start by reading this section. It answers the basic “what?”, “how?” and “why?” questions. It includes an introduction to Spring Boot, along with installation instructions. We then walk you through building your first Spring Boot application, discussing some core principles as we go.
 
-8. Introducing Spring Boot
+### 8 Introducing Spring Boot
 Spring Boot makes it easy to create stand-alone, production-grade Spring-based Applications that you can run. We take an opinionated view of the Spring platform and third-party libraries, so that you can get started with minimum fuss. Most Spring Boot applications need very little Spring configuration.
 
-You can use Spring Boot to create Java applications that can be started by using java -jar or more traditional war deployments. We also provide a command line tool that runs “spring scripts”.
+You can use Spring Boot to create Java applications that can be started by using `java -jar` or more traditional war deployments. We also provide a command line tool that runs “spring scripts”.
 
 Our primary goals are:
 
-Provide a radically faster and widely accessible getting-started experience for all Spring development.
-Be opinionated out of the box but get out of the way quickly as requirements start to diverge from the defaults.
-Provide a range of non-functional features that are common to large classes of projects (such as embedded servers, security, metrics, health checks, and externalized configuration).
-Absolutely no code generation and no requirement for XML configuration.
-9. System Requirements
-Spring Boot 2.0.0.BUILD-SNAPSHOT requires Java 8 or 9 and Spring Framework 5.0.4.RELEASE or above. Explicit build support is provided for Maven 3.2+ and Gradle 4.
+* Provide a radically faster and widely accessible getting-started experience for all Spring development.
+* Be opinionated out of the box but get out of the way quickly as requirements start to diverge from the defaults.
+* Provide a range of non-functional features that are common to large classes of projects (such as embedded servers, security, metrics, health checks, and externalized configuration).
+* Absolutely no code generation and no requirement for XML configuration.
 
-9.1 Servlet Containers
+### 9 System Requirements
+Spring Boot 2.0.0.BUILD-SNAPSHOT requires [Java 8 or 9](https://www.java.com/zh_CN/) and [Spring Framework 5.0.4.RELEASE](https://docs.spring.io/spring/docs/5.0.4.RELEASE/spring-framework-reference/) or above. Explicit build support is provided for Maven 3.2+ and Gradle 4.
+
+#### 9.1 Servlet Containers
 Spring Boot supports the following embedded servlet containers:
 
-Name	Servlet Version
-Tomcat 8.5
-
-3.1
-
-Jetty 9.4
-
-3.1
-
-Undertow 1.4
-
-3.1
+|      Name     | Servlet Version |
+| ------------- | --------------- |
+|   Tomcat 8.5  |       3.1       |
+|   Jetty  9.4  |       3.1       |
+|  Undertow 1.4 |       3.1       |
 
 You can also deploy Spring Boot applications to any Servlet 3.0+ compatible container.
 
-10. Installing Spring Boot
-Spring Boot can be used with “classic” Java development tools or installed as a command line tool. Either way, you need Java SDK v1.8 or higher. Before you begin, you should check your current Java installation by using the following command:
+### 10 Installing Spring Boot
+Spring Boot can be used with “classic” Java development tools or installed as a command line tool. Either way, you need [Java SDK v1.8](https://www.java.com/) or higher. Before you begin, you should check your current Java installation by using the following command:
 
+```
 $ java -version
-If you are new to Java development or if you want to experiment with Spring Boot, you might want to try the Spring Boot CLI (Command Line Interface) first. Otherwise, read on for “classic” installation instructions.
+```
 
-10.1 Installation Instructions for the Java Developer
-You can use Spring Boot in the same way as any standard Java library. To do so, include the appropriate spring-boot-*.jar files on your classpath. Spring Boot does not require any special tools integration, so you can use any IDE or text editor. Also, there is nothing special about a Spring Boot application, so you can run and debug a Spring Boot application as you would any other Java program.
+If you are new to Java development or if you want to experiment with Spring Boot, you might want to try the [Spring Boot CLI](#10.2-Installing-the-Spring-Boot-CLI) (Command Line Interface) first. Otherwise, read on for “classic” installation instructions.
+
+#### 10.1-Installation-Instructions-for-the-Java-Developer
+You can use Spring Boot in the same way as any standard Java library. To do so, include the appropriate `spring-boot-*.jar `files on your classpath. Spring Boot does not require any special tools integration, so you can use any IDE or text editor. Also, there is nothing special about a Spring Boot application, so you can run and debug a Spring Boot application as you would any other Java program.
 
 Although you could copy Spring Boot jars, we generally recommend that you use a build tool that supports dependency management (such as Maven or Gradle).
 
-10.1.1 Maven Installation
-Spring Boot is compatible with Apache Maven 3.2 or above. If you do not already have Maven installed, you can follow the instructions at maven.apache.org.
+##### 10.1.1-Maven-Installation
+Spring Boot is compatible with Apache Maven 3.2 or above. If you do not already have Maven installed, you can follow the instructions at [maven.apache.org](https://maven.apache.org/).
 
-[Tip]
-On many operating systems, Maven can be installed with a package manager. If you use OSX Homebrew, try brew install maven. Ubuntu users can run sudo apt-get install maven. Windows users with Chocolatey can run choco install maven from an elevated (administrator) prompt.
+> On many operating systems, Maven can be installed with a package manager. If you use OSX Homebrew, try `brew install` maven.Ubuntu users can run `sudo apt-get install maven`. Windows users with [Chocolatey](https://chocolatey.org/) can run `choco install maven` from an elevated (administrator) prompt.
 
-Spring Boot dependencies use the org.springframework.boot groupId. Typically, your Maven POM file inherits from the spring-boot-starter-parent project and declares dependencies to one or more “Starters”. Spring Boot also provides an optional Maven plugin to create executable jars.
+Spring Boot dependencies use the `org.springframework.boot` `groupId`. Typically, your Maven POM file inherits from the `spring-boot-starter-parent` project and declares dependencies to one or more “[Starters](13.5-Starters)”. Spring Boot also provides an optional [Maven plugin](68-Spring Boot Maven Plugin) to create executable jars.
 
-The following listing shows a typical pom.xml file:
+The following listing shows a typical `pom.xml` file:
 
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -807,20 +806,22 @@ The following listing shows a typical pom.xml file:
 		</pluginRepository>
 	</pluginRepositories>
 </project>
-[Tip]
-The spring-boot-starter-parent is a great way to use Spring Boot, but it might not be suitable all of the time. Sometimes you may need to inherit from a different parent POM, or you might not like our default settings. In those cases, see Section 13.2.2, “Using Spring Boot without the Parent POM” for an alternative solution that uses an import scope.
+```
 
-10.1.2 Gradle Installation
-Spring Boot is compatible with Gradle 4. If you do not already have Gradle installed, you can follow the instructions at gradle.org/.
+> The `spring-boot-starter-parent` is a great way to use Spring Boot, but it might not be suitable all of the time. Sometimes you may need to inherit from a different parent POM, or you might not like our default settings. In those cases, see Section 13.2.2, “Using Spring Boot without the Parent POM” for an alternative solution that uses an `import` scope.
 
-Spring Boot dependencies can be declared by using the org.springframework.boot group. Typically, your project declares dependencies to one or more “Starters”. Spring Boot provides a useful Gradle plugin that can be used to simplify dependency declarations and to create executable jars.
+##### 10.1.2-Gradle-Installation
+Spring Boot is compatible with Gradle 4. If you do not already have Gradle installed, you can follow the instructions at [gradle.org](https://gradle.org).
 
-Gradle Wrapper
+Spring Boot dependencies can be declared by using the `org.springframework.boot` `group`. Typically, your project declares dependencies to one or more [“Starters”](#13.5-Starters). Spring Boot provides a useful [Gradle plugin](69-Spring-Boot-Gradle-Plugin) that can be used to simplify dependency declarations and to create executable jars.
 
-The Gradle Wrapper provides a nice way of “obtaining” Gradle when you need to build a project. It is a small script and library that you commit alongside your code to bootstrap the build process. See docs.gradle.org/4.2.1/userguide/gradle_wrapper.html for details.
+> #### Gradle Wrapper
 
-The following example shows a typical build.gradle file:
+> The Gradle Wrapper provides a nice way of “obtaining” Gradle when you need to build a project. It is a small script and library that you commit alongside your code to bootstrap the build process. See [docs.gradle.org/4.2.1/userguide/gradle_wrapper.html](https://docs.gradle.org/4.2.1/userguide/gradle_wrapper.html) for details.
 
+The following example shows a typical `build.gradle` file:
+
+```
 buildscript {
 	repositories {
 		jcenter()
@@ -851,6 +852,7 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-web")
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
+```
 10.2 Installing the Spring Boot CLI
 The Spring Boot CLI (Command Line Interface) is a command line tool that you can use to quickly prototype with Spring. It lets you run Groovy scripts, which means that you have a familiar Java-like syntax without so much boilerplate code.
 
