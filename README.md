@@ -31,8 +31,8 @@ diverge from the defaults
 * [站点](https://spring.io/projects/spring-boot) | [GIT](https://github.com/spring-projects/spring-boot)
 -------
 #### 版本文档
-* [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0%20M3/API.md)
+* [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0-M3)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0-M3/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0-M3/API.md)
   
 * [2.0.0](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0)
   * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring%20Boot/version/documents/2.0.0/API.md)
