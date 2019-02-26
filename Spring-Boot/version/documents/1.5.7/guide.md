@@ -1,13 +1,15 @@
-Spring Boot Reference Guide
-Authors
-Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, Andy Wilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze, Michael Simons
-1.5.7.BUILD-SNAPSHOT
+# Spring Boot Reference Guide
 
-Copyright © 2012-2017
+### [中文文档](README_CN.md)
+## Authors
+> Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, Andy Wilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze, Michael Simons
+### 1.5.7.BUILD-SNAPSHOT
 
-Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.
+> Copyright © 2012-2017
 
-Table of Contents
+> Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this Copyright Notice, whether distributed in print or electronically.
+---------------------------------------------------------------------------------------------------------------------------
+### Table of Contents
 
 I. Spring Boot Documentation
 1. About the documentation
