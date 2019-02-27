@@ -733,12 +733,12 @@ $ java -version
 
 If you are new to Java development or if you want to experiment with Spring Boot, you might want to try the [Spring Boot CLI](#10.2-Installing-the-Spring-Boot-CLI) (Command Line Interface) first. Otherwise, read on for “classic” installation instructions.
 
-#### 10.1-Installation-Instructions-for-the-Java-Developer
+#### 10.1 Installation Instructions for the Java Developer
 You can use Spring Boot in the same way as any standard Java library. To do so, include the appropriate `spring-boot-*.jar `files on your classpath. Spring Boot does not require any special tools integration, so you can use any IDE or text editor. Also, there is nothing special about a Spring Boot application, so you can run and debug a Spring Boot application as you would any other Java program.
 
 Although you could copy Spring Boot jars, we generally recommend that you use a build tool that supports dependency management (such as Maven or Gradle).
 
-##### 10.1.1-Maven-Installation
+##### 10.1.1 Maven Installation
 Spring Boot is compatible with Apache Maven 3.2 or above. If you do not already have Maven installed, you can follow the instructions at [maven.apache.org](https://maven.apache.org/).
 
 > On many operating systems, Maven can be installed with a package manager. If you use OSX Homebrew, try `brew install` maven.Ubuntu users can run `sudo apt-get install maven`. Windows users with [Chocolatey](https://chocolatey.org/) can run `choco install maven` from an elevated (administrator) prompt.
@@ -810,7 +810,7 @@ The following listing shows a typical `pom.xml` file:
 
 > The `spring-boot-starter-parent` is a great way to use Spring Boot, but it might not be suitable all of the time. Sometimes you may need to inherit from a different parent POM, or you might not like our default settings. In those cases, see Section 13.2.2, “Using Spring Boot without the Parent POM” for an alternative solution that uses an `import` scope.
 
-##### 10.1.2-Gradle-Installation
+##### 10.1.2 Gradle Installation
 Spring Boot is compatible with Gradle 4. If you do not already have Gradle installed, you can follow the instructions at [gradle.org](https://gradle.org).
 
 Spring Boot dependencies can be declared by using the `org.springframework.boot` `group`. Typically, your project declares dependencies to one or more [“Starters”](#13.5-Starters). Spring Boot provides a useful [Gradle plugin](69-Spring-Boot-Gradle-Plugin) that can be used to simplify dependency declarations and to create executable jars.
@@ -853,12 +853,12 @@ dependencies {
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }
 ```
-10.2 Installing the Spring Boot CLI
+#### 10.2 Installing the Spring Boot CLI
 The Spring Boot CLI (Command Line Interface) is a command line tool that you can use to quickly prototype with Spring. It lets you run Groovy scripts, which means that you have a familiar Java-like syntax without so much boilerplate code.
 
 You do not need to use the CLI to work with Spring Boot, but it is definitely the quickest way to get a Spring application off the ground.
 
-10.2.1 Manual Installation
+##### 10.2.1 Manual Installation
 You can download the Spring CLI distribution from the Spring software repository:
 
 spring-boot-cli-2.0.0.BUILD-SNAPSHOT-bin.zip
@@ -867,7 +867,7 @@ Cutting edge snapshot distributions are also available.
 
 Once downloaded, follow the INSTALL.txt instructions from the unpacked archive. In summary, there is a spring script (spring.bat for Windows) in a bin/ directory in the .zip file. Alternatively, you can use java -jar with the .jar file (the script helps you to be sure that the classpath is set correctly).
 
-10.2.2 Installation with SDKMAN!
+##### 10.2.2 Installation with SDKMAN!
 SDKMAN! (The Software Development Kit Manager) can be used for managing multiple versions of various binary SDKs, including Groovy and the Spring Boot CLI. Get SDKMAN! from sdkman.io and install Spring Boot by using the following commands:
 
 $ sdk install springboot
@@ -896,7 +896,7 @@ Available Springboot Versions
 * - installed
 > - currently in use
 ================================================================================
-10.2.3 OSX Homebrew Installation
+##### 10.2.3 OSX Homebrew Installation
 If you are on a Mac and use Homebrew, you can install the Spring Boot CLI by using the following commands:
 
 $ brew tap pivotal/tap
@@ -906,11 +906,11 @@ Homebrew installs spring to /usr/local/bin.
 [Note]
 If you do not see the formula, your installation of brew might be out-of-date. In that case, run brew update and try again.
 
-10.2.4 MacPorts Installation
+##### 10.2.4 MacPorts Installation
 If you are on a Mac and use MacPorts, you can install the Spring Boot CLI by using the following command:
 
 $ sudo port install spring-boot-cli
-10.2.5 Command-line Completion
+##### 10.2.5 Command-line Completion
 The Spring Boot CLI includes scripts that provide command completion for the BASH and zsh shells. You can source the script (also named spring) in any shell or put it in your personal or system-wide bash completion initialization. On a Debian system, the system-wide scripts are in /shell-completion/bash and all scripts in that directory are executed when a new shell starts. For example, to run the script manually if you have installed by using SDKMAN!, use the following commands:
 
 $ . ~/.sdkman/candidates/springboot/current/shell-completion/bash/spring
@@ -919,7 +919,7 @@ $ spring <HIT TAB HERE>
 [Note]
 If you install the Spring Boot CLI by using Homebrew or MacPorts, the command-line completion scripts are automatically registered with your shell.
 
-10.2.6 Quick-start Spring CLI Example
+##### 10.2.6 Quick-start Spring CLI Example
 You can use the following web application to test your installation. To start, create a file called app.groovy, as follows:
 
 @RestController
@@ -940,12 +940,12 @@ The first run of your application is slow, as dependencies are downloaded. Subse
 Open localhost:8080 in your favorite web browser. You should see the following output:
 
 Hello World!
-10.3 Upgrading from an Earlier Version of Spring Boot
+#### 10.3 Upgrading from an Earlier Version of Spring Boot
 If you are upgrading from an earlier release of Spring Boot, check the “migration guide” on the project wiki that provides detailed upgrade instructions. Check also the “release notes” for a list of “new and noteworthy” features for each release.
 
 To upgrade an existing CLI installation, use the appropriate package manager command (for example, brew upgrade) or, if you manually installed the CLI, follow the standard instructions, remembering to update your PATH environment variable to remove any older references.
 
-11. Developing Your First Spring Boot Application
+### 11. Developing Your First Spring Boot Application
 This section describes how to develop a simple “Hello World!” web application that highlights some of Spring Boot’s key features. We use Maven to build this project, since most IDEs support it.
 
 [Tip]
