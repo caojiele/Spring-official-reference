@@ -27,12 +27,12 @@
      * [10.1. Installation Instructions for the Java Developer](#101-Installation-Instructions-for-the-Java-Developer)
        * [10.1.1. Maven Installation](#1011-Maven-Installation)
        * [10.1.2. Gradle Installation](#1012-Gradle-Installation)
-     * [10.2. Installing the Spring Boot CLI](#102-Installing-the-Spring-Boot-CLI）
-       * [10.2.1. Manual Installation](#1021-Manua-Installation）
-       * [10.2.2. Installation with SDKMAN!](#1022-Installation-with-SDKMAN!）
-       * [10.2.3. OSX Homebrew Installation](#1023-OSX-Homebrew-Installation）
-       * [10.2.4. MacPorts Installation](#1024-MacPorts-Installation）
-       * [10.2.5. Command-line Completion](#1025-Command--line-Completion）
+     * [10.2. Installing the Spring Boot CLI](#102-Installing-the-Spring-Boot-CLI)
+       * [10.2.1. Manual Installation](#1021-Manua-Installation)
+       * [10.2.2. Installation with SDKMAN!](#1022-Installation-with-SDKMAN!)
+       * [10.2.3. OSX Homebrew Installation](#1023-OSX-Homebrew-Installation)
+       * [10.2.4. MacPorts Installation](#1024-MacPorts-Installation)
+       * [10.2.5. Command-line Completion](#1025-Command--line-Completion)
        * [10.2.6. Quick-start Spring CLI Example](#1026-Quick--start-Spring-CLI-Example)
      * [10.3. Upgrading from an Earlier Version of Spring Boot](#103-Upgrading-from-an-Earlier-Version-of-Spring-Boot)
     * [11. Developing Your First Spring Boot Application](#11-Developing-Your-First-Spring-Boot-Application)
@@ -59,11 +59,11 @@
       * [14.1. Using the “default” Package](#141-Using-the-“default”-Package)
       * [14.2. Locating the Main Application Class](#142-Locating-the-Main-Application-Class)
    * [15. Configuration Classes](#15-Configuration-Classes)
-      * [15.1. Importing Additional Configuration Classes](#15.1. Importing Additional Configuration Classes)
-      * [15.2. Importing XML Configuration](#15.2. Importing XML Configuration)
-   * [16. Auto-configuration](#16. Auto-configuration)
-      * [16.1. Gradually Replacing Auto-configuration](#16.1. Gradually Replacing Auto-configuration)
-      * [16.2. Disabling Specific Auto-configuration Classes](#16.2. Disabling Specific Auto-configuration Classes)
+      * [15.1. Importing Additional Configuration Classes](#151-Importing-Additional-Configuration-Classes)
+      * [15.2. Importing XML Configuration](#152-Importing-XML-Configuration)
+   * [16. Auto-configuration](#16-Auto-configuration)
+      * [16.1. Gradually Replacing Auto-configuration](#161-Gradually-Replacing-Auto--configuration)
+      * [16.2. Disabling Specific Auto-configuration Classes](#162-Disabling-Specific-Auto--configuration-Classes)
    * [17. Spring Beans and Dependency Injection](#17. Spring Beans and Dependency Injection)
    * [18. Using the @SpringBootApplication Annotation](#18. Using the @SpringBootApplication Annotation)
    * [19. Running Your Application](#19. Running Your Application)
