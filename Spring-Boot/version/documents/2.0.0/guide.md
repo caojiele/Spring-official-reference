@@ -965,7 +965,7 @@ Java version: 1.8.0_102, vendor: Oracle Corporation
 [Note]
 This sample needs to be created in its own folder. Subsequent instructions assume that you have created a suitable folder and that it is your current directory.
 
-11.1 Creating the POM
+#### 11.1 Creating the POM
 We need to start by creating a Maven pom.xml file. The pom.xml is the recipe that is used to build your project. Open your favorite text editor and add the following:
 
 <?xml version="1.0" encoding="UTF-8"?>
@@ -1013,7 +1013,7 @@ The preceding listing should give you a working build. You can test it by runnin
 [Note]
 At this point, you could import the project into an IDE (most modern Java IDEs include built-in support for Maven). For simplicity, we continue to use a plain text editor for this example.
 
-11.2 Adding Classpath Dependencies
+#### 11.2 Adding Classpath Dependencies
 Spring Boot provides a number of “Starters” that let you add jars to your classpath. Our sample application has already used spring-boot-starter-parent in the parent section of the POM. The spring-boot-starter-parent is a special starter that provides useful Maven defaults. It also provides a dependency-management section so that you can omit version tags for “blessed” dependencies.
 
 Other “Starters” provide dependencies that you are likely to need when developing a specific type of application. Since we are developing a web application, we add a spring-boot-starter-web dependency. Before that, we can look at what we currently have by running the following command:
@@ -1031,7 +1031,7 @@ The mvn dependency:tree command prints a tree representation of your project dep
 </dependencies>
 If you run mvn dependency:tree again, you see that there are now a number of additional dependencies, including the Tomcat web server and Spring Boot itself.
 
-11.3 Writing the Code
+#### 11.3 Writing the Code
 To finish our application, we need to create a single Java file. By default, Maven compiles sources from src/main/java, so you need to create that folder structure and then add a file named src/main/java/Example.java to contain the following code:
 
 import org.springframework.boot.*;
@@ -1054,7 +1054,7 @@ public class Example {
 }
 Although there is not much code here, quite a lot is going on. We step through the important parts in the next few sections.
 
-11.3.1 The @RestController and @RequestMapping Annotations
+##### 11.3.1 The @RestController and @RequestMapping Annotations
 The first annotation on our Example class is @RestController. This is known as a stereotype annotation. It provides hints for people reading the code and for Spring that the class plays a specific role. In this case, our class is a web @Controller, so Spring considers it when handling incoming web requests.
 
 The @RequestMapping annotation provides “routing” information. It tells Spring that any HTTP request with the / path should be mapped to the home method. The @RestController annotation tells Spring to render the resulting string directly back to the caller.
@@ -1062,17 +1062,17 @@ The @RequestMapping annotation provides “routing” information. It tells Spri
 [Tip]
 The @RestController and @RequestMapping annotations are Spring MVC annotations. (They are not specific to Spring Boot.) See the MVC section in the Spring Reference Documentation for more details.
 
-11.3.2 The @EnableAutoConfiguration Annotation
+##### 11.3.2 The @EnableAutoConfiguration Annotation
 The second class-level annotation is @EnableAutoConfiguration. This annotation tells Spring Boot to “guess” how you want to configure Spring, based on the jar dependencies that you have added. Since spring-boot-starter-web added Tomcat and Spring MVC, the auto-configuration assumes that you are developing a web application and sets up Spring accordingly.
 
 Starters and Auto-Configuration
 
 Auto-configuration is designed to work well with “Starters”, but the two concepts are not directly tied. You are free to pick and choose jar dependencies outside of the starters. Spring Boot still does its best to auto-configure your application.
 
-11.3.3 The “main” Method
+##### 11.3.3 The “main” Method
 The final part of our application is the main method. This is just a standard method that follows the Java convention for an application entry point. Our main method delegates to Spring Boot’s SpringApplication class by calling run. SpringApplication bootstraps our application, starting Spring, which, in turn, starts the auto-configured Tomcat web server. We need to pass Example.class as an argument to the run method to tell SpringApplication which is the primary Spring component. The args array is also passed through to expose any command-line arguments.
 
-11.4 Running the Example
+#### 11.4 Running the Example
 At this point, your application should work. Since you used the spring-boot-starter-parent POM, you have a useful run goal that you can use to start the application. Type mvn spring-boot:run from the root project directory to start the application. You should see output similar to the following:
 
 $ mvn spring-boot:run
@@ -1093,7 +1093,7 @@ If you open a web browser to localhost:8080, you should see the following output
 Hello World!
 To gracefully exit the application, press ctrl-c.
 
-11.5 Creating an Executable Jar
+#### 11.5 Creating an Executable Jar
 We finish our example by creating a completely self-contained executable jar file that we could run in production. Executable jars (sometimes called “fat jars”) are archives containing your compiled classes along with all of the jar dependencies that your code needs to run.
 
 Executable jars and Java
@@ -1156,19 +1156,19 @@ $ java -jar target/myproject-0.0.1-SNAPSHOT.jar
 ........ Started Example in 2.536 seconds (JVM running for 2.864)
 As before, to exit the application, press ctrl-c.
 
-12. What to Read Next
+### 12. What to Read Next
 Hopefully, this section provided some of the Spring Boot basics and got you on your way to writing your own applications. If you are a task-oriented type of developer, you might want to jump over to spring.io and check out some of the getting started guides that solve specific “How do I do that with Spring?” problems. We also have Spring Boot-specific “How-to” reference documentation.
 
 The Spring Boot repository also has a bunch of samples you can run. The samples are independent of the rest of the code (that is, you do not need to build the rest to run or use the samples).
 
 Otherwise, the next logical step is to read Part III, “Using Spring Boot”. If you are really impatient, you could also jump ahead and read about Spring Boot features.
 
-Part III. Using Spring Boot
+## Part III. Using Spring Boot
 This section goes into more detail about how you should use Spring Boot. It covers topics such as build systems, auto-configuration, and how to run your applications. We also cover some Spring Boot best practices. Although there is nothing particularly special about Spring Boot (it is just another library that you can consume), there are a few recommendations that, when followed, make your development process a little easier.
 
 If you are starting out with Spring Boot, you should probably read the Getting Started guide before diving into this section.
 
-13. Build Systems
+### 13. Build Systems
 It is strongly recommended that you choose a build system that supports dependency management and that can consume artifacts published to the “Maven Central” repository. We would recommend that you choose Maven or Gradle. It is possible to get Spring Boot to work with other build systems (Ant, for example), but they are not particularly well supported.
 
 13.1 Dependency Management
