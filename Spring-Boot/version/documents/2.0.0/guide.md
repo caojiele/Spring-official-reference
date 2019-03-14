@@ -1171,7 +1171,7 @@ If you are starting out with Spring Boot, you should probably read the Getting S
 ### 13. Build Systems
 It is strongly recommended that you choose a build system that supports dependency management and that can consume artifacts published to the “Maven Central” repository. We would recommend that you choose Maven or Gradle. It is possible to get Spring Boot to work with other build systems (Ant, for example), but they are not particularly well supported.
 
-13.1 Dependency Management
+#### 13.1 Dependency Management
 Each release of Spring Boot provides a curated list of dependencies that it supports. In practice, you do not need to provide a version for any of these dependencies in your build configuration, as Spring Boot manages that for you. When you upgrade Spring Boot itself, these dependencies are upgraded as well in a consistent way.
 
 [Note]
@@ -1182,7 +1182,7 @@ The curated list contains all the spring modules that you can use with Spring Bo
 [Warning]
 Each release of Spring Boot is associated with a base version of the Spring Framework. We highly recommend that you not specify its version.
 
-13.2 Maven
+#### 13.2 Maven
 Maven users can inherit from the spring-boot-starter-parent project to obtain sensible defaults. The parent project provides the following features:
 
 Java 1.8 as the default compiler level.
@@ -1193,7 +1193,7 @@ Sensible plugin configuration (exec plugin, Git commit ID, and shade).
 Sensible resource filtering for application.properties and application.yml including profile-specific files (for example, application-dev.properties and application-dev.yml)
 Note that, since the application.properties and application.yml files accept Spring style placeholders (${…​}), the Maven filtering is changed to use @..@ placeholders. (You can override that by setting a Maven property called resource.delimiter.)
 
-13.2.1 Inheriting the Starter Parent
+##### 13.2.1 Inheriting the Starter Parent
 To configure your project to inherit from the spring-boot-starter-parent, set the parent as follows:
 
 <!-- Inherit defaults from Spring Boot -->
@@ -1213,7 +1213,7 @@ With that setup, you can also override individual dependencies by overriding a p
 [Tip]
 Check the spring-boot-dependencies pom for a list of supported properties.
 
-13.2.2 Using Spring Boot without the Parent POM
+##### 13.2.2 Using Spring Boot without the Parent POM
 Not everyone likes inheriting from the spring-boot-starter-parent POM. You may have your own corporate standard parent that you need to use or you may prefer to explicitly declare all your Maven configuration.
 
 If you do not want to use the spring-boot-starter-parent, you can still keep the benefit of the dependency management (but not the plugin management) by using a scope=import dependency, as follows:
@@ -1254,7 +1254,7 @@ The preceding sample setup does not let you override individual dependencies by 
 [Note]
 In the preceding example, we specify a BOM, but any dependency type can be overridden in the same way.
 
-13.2.3 Using the Spring Boot Maven Plugin
+##### 13.2.3 Using the Spring Boot Maven Plugin
 Spring Boot includes a Maven plugin that can package the project as an executable jar. Add the plugin to your <plugins> section if you want to use it, as shown in the following example:
 
 <build>
@@ -1268,12 +1268,12 @@ Spring Boot includes a Maven plugin that can package the project as an executabl
 [Note]
 If you use the Spring Boot starter parent pom, you need to add only the plugin. There is no need to configure it unless you want to change the settings defined in the parent.
 
-13.3 Gradle
+#### 13.3 Gradle
 To learn about using Spring Boot with Gradle, please refer to the documentation for Spring Boot’s Gradle plugin:
 
 Reference (HTML and PDF)
 API
-13.4 Ant
+#### 13.4 Ant
 It is possible to build a Spring Boot project using Apache Ant+Ivy. The spring-boot-antlib “AntLib” module is also available to help Ant create executable jars.
 
 To declare dependencies, a typical ivy.xml file looks something like the following example:
