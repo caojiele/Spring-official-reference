@@ -1327,7 +1327,7 @@ A typical build.xml looks like the following example:
 [Tip]
 If you do not want to use the spring-boot-antlib module, see the Section 86.9, “Build an Executable Archive from Ant without Using spring-boot-antlib” “How-to” .
 
-13.5 Starters
+#### 13.5 Starters
 Starters are a set of convenient dependency descriptors that you can include in your application. You get a one-stop shop for all the Spring and related technologies that you need without having to hunt through sample code and copy-paste loads of dependency descriptors. For example, if you want to get started using Spring and JPA for database access, include the spring-boot-starter-data-jpa dependency in your project.
 
 The starters contain a lot of the dependencies that you need to get a project up and running quickly and with a consistent, supported set of managed transitive dependencies.
