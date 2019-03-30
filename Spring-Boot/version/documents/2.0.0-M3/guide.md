@@ -11,14 +11,14 @@
 ---------------------------------------------------------------------------------------------------------------------------
 ### Table of Contents
 
-I. Spring Boot Documentation
-1. About the documentation
-2. Getting help
-3. First steps
-4. Working with Spring Boot
-5. Learning about Spring Boot features
-6. Moving to production
-7. Advanced topics
+* [I. Spring Boot Documentation](#Part-I-Spring-Boot-Documentation)
+   * [1. About the Documentation](#1-About-the-Documentation)
+   * [2. Getting Help](#2-Getting-Help)
+   * [3. First Steps](#3-First-Steps)
+   * [4. Working with Spring Boot](#4-Working-with-Spring-Boot)
+   * [5. Learning about Spring Boot Features](#5-Learning-about-Spring-Boot-Features)
+   * [6. Moving to Production](#6-Moving-to-Production)
+   * [7. Advanced Topics](#7-Advanced-Topics)
 II. Getting started
 8. Introducing Spring Boot
 9. System Requirements
