@@ -629,8 +629,7 @@ Having trouble with Spring Boot, We’d like to help!
 - Ask a question - we monitor [stackoverflow.com](https://stackoverflow.com/) for questions tagged with [`spring-boot`](https://stackoverflow.com/tags/spring-boot).
 - Report bugs with Spring Boot at [github.com/spring-projects/spring-boot/issues](https://github.com/spring-projects/spring-boot/issues).
 
-![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png)
-| 
+![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) 
 > All of Spring Boot is open source, including the documentation! If you find problems with the docs; or if you just want to improve them, please [get involved](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE).
 
 ## 3. First steps
