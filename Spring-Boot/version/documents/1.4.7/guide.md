@@ -629,7 +629,6 @@ Having trouble with Spring Boot, We’d like to help!
 - Ask a question - we monitor [stackoverflow.com](https://stackoverflow.com/) for questions tagged with [`spring-boot`](https://stackoverflow.com/tags/spring-boot).
 - Report bugs with Spring Boot at [github.com/spring-projects/spring-boot/issues](https://github.com/spring-projects/spring-boot/issues).
 
-![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) 
 > All of Spring Boot is open source, including the documentation! If you find problems with the docs; or if you just want to improve them, please [get involved](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE).
 
 ## 3. First steps
@@ -700,9 +699,7 @@ Our primary goals are:
 
 By default, Spring Boot 1.4.7.RELEASE requires [Java 7](https://www.java.com/) and Spring Framework 4.3.9.RELEASE or above. You can use Spring Boot with Java 6 with some additional configuration. See [Section 81.11, “How to use Java 6”](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#howto-use-java-6) for more details. Explicit build support is provided for Maven (3.2+) and Gradle (1.12 or 2.x). Support for Gradle 2.8 and earlier is deprecated. Gradle 3 is not supported.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Although you can use Spring Boot with Java 6 or 7, we generally recommend Java 8 if at all possible. |
+> Although you can use Spring Boot with Java 6 or 7, we generally recommend Java 8 if at all possible. 
 
 ## 9.1 Servlet containers
 
@@ -729,9 +726,7 @@ $ java -version
 
 If you are new to Java development, or if you just want to experiment with Spring Boot you might want to try the [Spring Boot CLI](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#getting-started-installing-the-cli) first, otherwise, read on for “classic” installation instructions.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Although Spring Boot is compatible with Java 1.6, if possible, you should consider using the latest version of Java. |
+> Although Spring Boot is compatible with Java 1.6, if possible, you should consider using the latest version of Java. 
 
 ## 10.1 Installation instructions for the Java developer
 
@@ -743,9 +738,7 @@ Although you *could* just copy Spring Boot jars, we generally recommend that you
 
 Spring Boot is compatible with Apache Maven 3.2 or above. If you don’t already have Maven installed you can follow the instructions at [maven.apache.org](https://maven.apache.org/).
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| On many operating systems Maven can be installed via a package manager. If you’re an OSX Homebrew user try `brew install maven`. Ubuntu users can run `sudo apt-get install maven`. |
+> On many operating systems Maven can be installed via a package manager. If you’re an OSX Homebrew user try `brew install maven`. Ubuntu users can run `sudo apt-get install maven`. 
 
 Spring Boot dependencies use the `org.springframework.boot` `groupId`. Typically your Maven POM file will inherit from the `spring-boot-starter-parent`project and declare dependencies to one or more [“Starters”](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-starter). Spring Boot also provides an optional [Maven plugin](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#build-tool-plugins-maven-plugin) to create executable jars.
 
@@ -789,9 +782,7 @@ Here is a typical `pom.xml` file:
 </project>
 ```
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| The `spring-boot-starter-parent` is a great way to use Spring Boot, but it might not be suitable all of the time. Sometimes you may need to inherit from a different parent POM, or you might just not like our default settings. See [Section 13.2.2, “Using Spring Boot without the parent POM”](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-maven-without-a-parent) for an alternative solution that uses an `import` scope. |
+> The `spring-boot-starter-parent` is a great way to use Spring Boot, but it might not be suitable all of the time. Sometimes you may need to inherit from a different parent POM, or you might just not like our default settings. See [Section 13.2.2, “Using Spring Boot without the parent POM”](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-maven-without-a-parent) for an alternative solution that uses an `import` scope. 
 
 ### 10.1.2 Gradle installation
 
@@ -894,9 +885,7 @@ $ brew install springboot
 
 Homebrew will install `spring` to `/usr/local/bin`.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| If you don’t see the formula, your installation of brew might be out-of-date. Just execute `brew update` and try again. |
+> If you don’t see the formula, your installation of brew might be out-of-date. Just execute `brew update` and try again. 
 
 ### 10.2.4 MacPorts installation
 
@@ -916,9 +905,7 @@ $ spring <HIT TAB HERE>
   grab  help  jar  run  test  version
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| If you install Spring Boot CLI using Homebrew or MacPorts, the command-line completion scripts are automatically registered with your shell. |
+> If you install Spring Boot CLI using Homebrew or MacPorts, the command-line completion scripts are automatically registered with your shell. 
 
 ### 10.2.6 Quick start Spring CLI example
 
@@ -942,9 +929,7 @@ Then simply run it from a shell:
 $ spring run app.groovy
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| It will take some time when you first run the application as dependencies are downloaded. Subsequent runs will be much quicker. |
+> It will take some time when you first run the application as dependencies are downloaded. Subsequent runs will be much quicker.
 
 Open [localhost:8080](http://localhost:8080/) in your favorite web browser and you should see the following output:
 
@@ -962,9 +947,7 @@ To upgrade an existing CLI installation use the appropriate package manager comm
 
 Let’s develop a simple “Hello World!” web application in Java that highlights some of Spring Boot’s key features. We’ll use Maven to build this project since most IDEs support it.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| The [spring.io](https://spring.io/) web site contains many “Getting Started” guides that use Spring Boot. If you’re looking to solve a specific problem; check there first.You can shortcut the steps below by going to [start.spring.io](https://start.spring.io/) and choosing the `web` starter from the dependencies searcher. This will automatically generate a new project structure so that you can [start coding right away](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#getting-started-first-application-code). Check the [documentation for more details](https://github.com/spring-io/initializr). |
+> The [spring.io](https://spring.io/) web site contains many “Getting Started” guides that use Spring Boot. If you’re looking to solve a specific problem; check there first.You can shortcut the steps below by going to [start.spring.io](https://start.spring.io/) and choosing the `web` starter from the dependencies searcher. This will automatically generate a new project structure so that you can [start coding right away](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#getting-started-first-application-code). Check the [documentation for more details](https://github.com/spring-io/initializr). 
 
 Before we begin, open a terminal to check that you have valid versions of Java and Maven installed.
 
@@ -979,9 +962,7 @@ Maven home: /Users/user/tools/apache-maven-3.1.1
 Java version: 1.7.0_51, vendor: Oracle Corporation
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| This sample needs to be created in its own folder. Subsequent instructions assume that you have created a suitable folder and that it is your “current directory”. |
+> This sample needs to be created in its own folder. Subsequent instructions assume that you have created a suitable folder and that it is your “current directory”.
 
 ## 11.1 Creating the POM
 
@@ -1010,9 +991,7 @@ We need to start by creating a Maven `pom.xml` file. The `pom.xml` is the recipe
 
 This should give you a working build, you can test it out by running `mvn package` (you can ignore the “jar will be empty - no content was marked for inclusion!” warning for now).
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| At this point you could import the project into an IDE (most modern Java IDE’s include built-in support for Maven). For simplicity, we will continue to use a plain text editor for this example. |
+> At this point you could import the project into an IDE (most modern Java IDE’s include built-in support for Maven). For simplicity, we will continue to use a plain text editor for this example.
 
 ## 11.2 Adding classpath dependencies
 
@@ -1073,9 +1052,7 @@ The first annotation on our `Example` class is `@RestController`. This is known 
 
 The `@RequestMapping` annotation provides “routing” information. It is telling Spring that any HTTP request with the path “/” should be mapped to the `home` method. The `@RestController` annotation tells Spring to render the resulting string directly back to the caller.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| The `@RestController` and `@RequestMapping` annotations are Spring MVC annotations (they are not specific to Spring Boot). See the [MVC section](https://docs.spring.io/spring/docs/4.3.9.RELEASE/spring-framework-reference/htmlsingle#mvc)in the Spring Reference Documentation for more details. |
+> The `@RestController` and `@RequestMapping` annotations are Spring MVC annotations (they are not specific to Spring Boot). See the [MVC section](https://docs.spring.io/spring/docs/4.3.9.RELEASE/spring-framework-reference/htmlsingle#mvc)in the Spring Reference Documentation for more details. 
 
 ### 11.3.2 The @EnableAutoConfiguration annotation
 
@@ -1142,9 +1119,7 @@ To create an executable jar we need to add the `spring-boot-maven-plugin` to our
 </build>
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| The `spring-boot-starter-parent` POM includes `<executions>` configuration to bind the `repackage` goal. If you are not using the parent POM you will need to declare this configuration yourself. See the [plugin documentation](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/maven-plugin/usage.html) for details. |
+> The `spring-boot-starter-parent` POM includes `<executions>` configuration to bind the `repackage` goal. If you are not using the parent POM you will need to declare this configuration yourself. See the [plugin documentation](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/maven-plugin/usage.html) for details.
 
 Save your `pom.xml` and run `mvn package` from the command line:
 
@@ -1218,15 +1193,11 @@ It is strongly recommended that you choose a build system that supports [*depend
 
 Each release of Spring Boot provides a curated list of dependencies it supports. In practice, you do not need to provide a version for any of these dependencies in your build configuration as Spring Boot is managing that for you. When you upgrade Spring Boot itself, these dependencies will be upgraded as well in a consistent way.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| You can still specify a version and override Spring Boot’s recommendations if you feel that’s necessary. |
+> You can still specify a version and override Spring Boot’s recommendations if you feel that’s necessary. 
 
 The curated list contains all the spring modules that you can use with Spring Boot as well as a refined list of third party libraries. The list is available as a standard [Bills of Materials (`spring-boot-dependencies`)](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-maven-without-a-parent) and additional dedicated support for [Maven](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-maven-parent-pom) and [Gradle](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#build-tool-plugins-gradle-dependency-management) are available as well.
 
-| ![[Warning]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/warning.png) |
-| ------------------------------------------------------------ |
-| Each release of Spring Boot is associated with a base version of the Spring Framework so we **highly** recommend you to not specify its version on your own. |
+> Each release of Spring Boot is associated with a base version of the Spring Framework so we **highly** recommend you to not specify its version on your own. 
 
 ## 13.2 Maven
 
@@ -1253,10 +1224,7 @@ To configure your project to inherit from the `spring-boot-starter-parent` simpl
     <version>1.4.7.RELEASE</version>
 </parent>
 ```
-
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| You should only need to specify the Spring Boot version number on this dependency. If you import additional starters, you can safely omit the version number. |
+> You should only need to specify the Spring Boot version number on this dependency. If you import additional starters, you can safely omit the version number. 
 
 With that setup, you can also override individual dependencies by overriding a property in your own project. For instance, to upgrade to another Spring Data release train you’d add the following to your `pom.xml`.
 
@@ -1265,10 +1233,7 @@ With that setup, you can also override individual dependencies by overriding a p
     <spring-data-releasetrain.version>Fowler-SR2</spring-data-releasetrain.version>
 </properties>
 ```
-
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Check the [`spring-boot-dependencies` pom](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot-dependencies/pom.xml) for a list of supported properties. |
+> Check the [`spring-boot-dependencies` pom](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot-dependencies/pom.xml) for a list of supported properties. 
 
 ### 13.2.2 Using Spring Boot without the parent POM
 
@@ -1315,9 +1280,7 @@ That setup does not allow you to override individual dependencies using a proper
 </dependencyManagement>
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| In the example above, we specify a *BOM* but any dependency type can be overridden that way. |
+> In the example above, we specify a *BOM* but any dependency type can be overridden that way. 
 
 ### 13.2.3 Changing the Java version
 
@@ -1344,9 +1307,7 @@ Spring Boot includes a [Maven plugin](https://docs.spring.io/spring-boot/docs/1.
 </build>
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| If you use the Spring Boot starter parent pom, you only need to add the plugin, there is no need for to configure it unless you want to change the settings defined in the parent. |
+> If you use the Spring Boot starter parent pom, you only need to add the plugin, there is no need for to configure it unless you want to change the settings defined in the parent.
 
 ## 13.3 Gradle
 
@@ -1439,9 +1400,7 @@ A typical `build.xml` will look like this:
 </project>
 ```
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| See the *Section 81.10, “Build an executable archive from Ant without using spring-boot-antlib”* “How-to” if you don’t want to use the `spring-boot-antlib` module. |
+> See the *Section 81.10, “Build an executable archive from Ant without using spring-boot-antlib”* “How-to” if you don’t want to use the `spring-boot-antlib` module.
 
 ## 13.5 Starters
 
@@ -1534,9 +1493,7 @@ Finally, Spring Boot also includes some starters that can be used if you want to
 | `spring-boot-starter-tomcat`   | Starter for using Tomcat as the embedded servlet container. Default servlet container starter used by [`spring-boot-starter-web`](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#spring-boot-starter-web) | [Pom](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot-starters/spring-boot-starter-tomcat/pom.xml) |
 | `spring-boot-starter-log4j2`   | Starter for using Log4j2 for logging. An alternative to [`spring-boot-starter-logging`](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#spring-boot-starter-logging) | [Pom](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot-starters/spring-boot-starter-log4j2/pom.xml) |
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| For a list of additional community contributed starters, see the [README file](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-starters/README.adoc) in the `spring-boot-starters` module on GitHub. |
+> For a list of additional community contributed starters, see the [README file](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-starters/README.adoc) in the `spring-boot-starters` module on GitHub. 
 
 ## 14. Structuring your code
 
@@ -1546,9 +1503,7 @@ Spring Boot does not require any specific code layout to work, however, there ar
 
 When a class doesn’t include a `package` declaration it is considered to be in the “default package”. The use of the “default package” is generally discouraged, and should be avoided. It can cause particular problems for Spring Boot applications that use `@ComponentScan`, `@EntityScan` or `@SpringBootApplication`annotations, since every class from every jar, will be read.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| We recommend that you follow Java’s recommended package naming conventions and use a reversed domain name (for example, `com.example.project`). |
+> We recommend that you follow Java’s recommended package naming conventions and use a reversed domain name (for example, `com.example.project`). 
 
 ## 14.2 Locating the main application class
 
@@ -1601,9 +1556,7 @@ public class Application {
 
 Spring Boot favors Java-based configuration. Although it is possible to call `SpringApplication.run()` with an XML source, we generally recommend that your primary source is a `@Configuration` class. Usually the class that defines the `main` method is also a good candidate as the primary `@Configuration`.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Many Spring configuration examples have been published on the Internet that use XML configuration. Always try to use the equivalent Java-based configuration if possible. Searching for `Enable*` annotations can be a good starting point. |
+> Many Spring configuration examples have been published on the Internet that use XML configuration. Always try to use the equivalent Java-based configuration if possible. Searching for `Enable*` annotations can be a good starting point. 
 
 ## 15.1 Importing additional configuration classes
 
@@ -1619,9 +1572,7 @@ Spring Boot auto-configuration attempts to automatically configure your Spring a
 
 You need to opt-in to auto-configuration by adding the `@EnableAutoConfiguration` or `@SpringBootApplication` annotations to one of your `@Configuration` classes.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| You should only ever add one `@EnableAutoConfiguration` annotation. We generally recommend that you add it to your primary `@Configuration`class. |
+> You should only ever add one `@EnableAutoConfiguration` annotation. We generally recommend that you add it to your primary `@Configuration`class. 
 
 ## 16.1 Gradually replacing auto-configuration
 
@@ -1646,9 +1597,7 @@ public class MyConfiguration {
 
 If the class is not on the classpath, you can use the `excludeName` attribute of the annotation and specify the fully qualified name instead. Finally, you can also control the list of auto-configuration classes to exclude via the `spring.autoconfigure.exclude` property.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| You can define exclusions both at the annotation level and using the property. |
+> You can define exclusions both at the annotation level and using the property. 
 
 ## 17. Spring Beans and dependency injection
 
@@ -1679,9 +1628,7 @@ public class DatabaseAccountService implements AccountService {
 }
 ```
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Notice how using constructor injection allows the `riskAssessor` field to be marked as `final`, indicating that it cannot be subsequently changed. |
+> Notice how using constructor injection allows the `riskAssessor` field to be marked as `final`, indicating that it cannot be subsequently changed. 
 
 ## 18. Using the @SpringBootApplication annotation
 
@@ -1705,17 +1652,13 @@ public class Application {
 }
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| `@SpringBootApplication` also provides aliases to customize the attributes of `@EnableAutoConfiguration` and `@ComponentScan`. |
+> `@SpringBootApplication` also provides aliases to customize the attributes of `@EnableAutoConfiguration` and `@ComponentScan`. 
 
 ## 19. Running your application
 
 One of the biggest advantages of packaging your application as jar and using an embedded HTTP server is that you can run your application as you would any other. Debugging Spring Boot applications is also easy; you don’t need any special IDE plugins or extensions.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| This section only covers jar based packaging, If you choose to package your application as a war file you should refer to your server and IDE documentation. |
+> This section only covers jar based packaging, If you choose to package your application as a war file you should refer to your server and IDE documentation. 
 
 ## 19.1 Running from an IDE
 
@@ -1723,9 +1666,7 @@ You can run a Spring Boot application from your IDE as a simple Java application
 
 If you can’t directly import your project into your IDE, you may be able to generate IDE metadata using a build plugin. Maven includes plugins for [Eclipse](https://maven.apache.org/plugins/maven-eclipse-plugin/) and [IDEA](https://maven.apache.org/plugins/maven-idea-plugin/); Gradle offers plugins for [various IDEs](https://docs.gradle.org/2.14.1/userguide/userguide.html).
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| If you accidentally run a web application twice you will see a “Port already in use” error. STS users can use the `Relaunch` button rather than `Run` to ensure that any existing instance is closed. |
+> If you accidentally run a web application twice you will see a “Port already in use” error. STS users can use the `Relaunch` button rather than `Run` to ensure that any existing instance is closed. 
 
 ## 19.2 Running as a packaged application
 
@@ -1808,9 +1749,7 @@ dependencies {
 | ------------------------------------------------------------ |
 | Developer tools are automatically disabled when running a fully packaged application. If your application is launched using `java -jar` or if it’s started using a special classloader, then it is considered a “production application”. Flagging the dependency as optional is a best practice that prevents devtools from being transitively applied to other modules using your project. Gradle does not support `optional` dependencies out-of-the-box so you may want to have a look to the [`propdeps-plugin`](https://github.com/spring-projects/gradle-plugins/tree/master/propdeps-plugin) in the meantime. |
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| If you want to ensure that devtools is never included in a production build, you can use the `excludeDevtools` build property to completely remove the JAR. The property is supported with both the Maven and Gradle plugins. |
+> If you want to ensure that devtools is never included in a production build, you can use the `excludeDevtools` build property to completely remove the JAR. The property is supported with both the Maven and Gradle plugins. 
 
 ## 20.1 Property defaults
 
@@ -1820,9 +1759,7 @@ Whilst caching is very beneficial in production, it can be counter productive du
 
 Cache options are usually configured by settings in your `application.properties` file. For example, Thymeleaf offers the `spring.thymeleaf.cache` property. Rather than needing to set these properties manually, the `spring-boot-devtools` module will automatically apply sensible development-time configuration.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| For a complete list of the properties that are applied see [DevToolsPropertyDefaultsPostProcessor](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot-devtools/src/main/java/org/springframework/boot/devtools/env/DevToolsPropertyDefaultsPostProcessor.java). |
+> For a complete list of the properties that are applied see [DevToolsPropertyDefaultsPostProcessor](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot-devtools/src/main/java/org/springframework/boot/devtools/env/DevToolsPropertyDefaultsPostProcessor.java). 
 
 ## 20.2 Automatic restart
 
@@ -1832,21 +1769,13 @@ Applications that use `spring-boot-devtools` will automatically restart whenever
 
 As DevTools monitors classpath resources, the only way to trigger a restart is to update the classpath. The way in which you cause the classpath to be updated depends on the IDE that you are using. In Eclipse, saving a modified file will cause the classpath to be updated and trigger a restart. In IntelliJ IDEA, building the project (`Build -> Make Project`) will have the same effect.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| You can also start your application via the supported build plugins (i.e. Maven and Gradle) as long as forking is enabled since DevTools need an isolated application classloader to operate properly. Gradle and Maven do that by default when they detect DevTools on the classpath. |
+> You can also start your application via the supported build plugins (i.e. Maven and Gradle) as long as forking is enabled since DevTools need an isolated application classloader to operate properly. Gradle and Maven do that by default when they detect DevTools on the classpath.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Automatic restart works very well when used with LiveReload. [See below](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-devtools-livereload) for details. If you use JRebel automatic restarts will be disabled in favor of dynamic class reloading. Other devtools features (such as LiveReload and property overrides) can still be used. |
+> Automatic restart works very well when used with LiveReload. [See below](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-devtools-livereload) for details. If you use JRebel automatic restarts will be disabled in favor of dynamic class reloading. Other devtools features (such as LiveReload and property overrides) can still be used.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| DevTools relies on the application context’s shutdown hook to close it during a restart. It will not work correctly if you have disabled the shutdown hook (`SpringApplication.setRegisterShutdownHook(false)`). |
+> DevTools relies on the application context’s shutdown hook to close it during a restart. It will not work correctly if you have disabled the shutdown hook (`SpringApplication.setRegisterShutdownHook(false)`). |
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| When deciding if an entry on the classpath should trigger a restart when it changes, DevTools automatically ignores projects named `spring-boot`, `spring-boot-devtools`, `spring-boot-autoconfigure`, `spring-boot-actuator`, and `spring-boot-starter`. |
+> When deciding if an entry on the classpath should trigger a restart when it changes, DevTools automatically ignores projects named `spring-boot`, `spring-boot-devtools`, `spring-boot-autoconfigure`, `spring-boot-actuator`, and `spring-boot-starter`.
 
 
 
@@ -1864,9 +1793,7 @@ Certain resources don’t necessarily need to trigger a restart when they are ch
 spring.devtools.restart.exclude=static/**,public/**
 ```
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| if you want to keep those defaults and *add* additional exclusions, use the `spring.devtools.restart.additional-exclude` property instead. |
+> if you want to keep those defaults and *add* additional exclusions, use the `spring.devtools.restart.additional-exclude` property instead. 
 
 ### 20.2.2 Watching additional paths
 
@@ -1891,9 +1818,7 @@ If you work with an IDE that continuously compiles changed files, you might pref
 
 To use a trigger file use the `spring.devtools.restart.trigger-file` property.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| You might want to set `spring.devtools.restart.trigger-file` as a [global setting](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-devtools-globalsettings) so that all your projects behave in the same way. |
+> You might want to set `spring.devtools.restart.trigger-file` as a [global setting](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-devtools-globalsettings) so that all your projects behave in the same way. 
 
 ### 20.2.5 Customizing the restart classloader
 
@@ -1910,13 +1835,9 @@ restart.exclude.companycommonlibs=/mycorp-common-[\\w-]+\.jar
 restart.include.projectcommon=/mycorp-myproj-[\\w-]+\.jar
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| All property keys must be unique. As long as a property starts with `restart.include.` or `restart.exclude.` it will be considered. |
+> All property keys must be unique. As long as a property starts with `restart.include.` or `restart.exclude.` it will be considered.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| All `META-INF/spring-devtools.properties` from the classpath will be loaded. You can package files inside your project, or in the libraries that the project consumes. |
+> All `META-INF/spring-devtools.properties` from the classpath will be loaded. You can package files inside your project, or in the libraries that the project consumes. 
 
 ### 20.2.6 Known limitations
 
@@ -1930,9 +1851,7 @@ The `spring-boot-devtools` module includes an embedded LiveReload server that ca
 
 If you don’t want to start the LiveReload server when your application runs you can set the `spring.devtools.livereload.enabled` property to `false`.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| You can only run one LiveReload server at a time. Before starting your application, ensure that no other LiveReload servers are running. If you start multiple applications from your IDE, only the first will have LiveReload support. |
+> You can only run one LiveReload server at a time. Before starting your application, ensure that no other LiveReload servers are running. If you start multiple applications from your IDE, only the first will have LiveReload support. 
 
 ## 20.4 Global settings
 
@@ -1954,9 +1873,7 @@ The Spring Boot developer tools are not just limited to local development. You c
 spring.devtools.remote.secret=mysecret
 ```
 
-| ![[Warning]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/warning.png) |
-| ------------------------------------------------------------ |
-| Enabling `spring-boot-devtools` on a remote application is a security risk. You should never enable support on a production deployment. |
+> Enabling `spring-boot-devtools` on a remote application is a security risk. You should never enable support on a production deployment. 
 
 Remote devtools support is provided in two parts; there is a server side endpoint that accepts connections, and a client application that you run in your IDE. The server component is automatically enabled when the `spring.devtools.remote.secret` property is set. The client component must be launched manually.
 
@@ -1990,25 +1907,17 @@ A running remote client will look like this:
 2015-06-10 18:25:07.130  INFO 14938 --- [           main] o.s.b.devtools.RemoteSpringApplication   : Started RemoteSpringApplication in 0.74 seconds (JVM running for 1.105)
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| Because the remote client is using the same classpath as the real application it can directly read application properties. This is how the `spring.devtools.remote.secret` property is read and passed to the server for authentication. |
+> Because the remote client is using the same classpath as the real application it can directly read application properties. This is how the `spring.devtools.remote.secret` property is read and passed to the server for authentication. 
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| It’s always advisable to use `https://` as the connection protocol so that traffic is encrypted and passwords cannot be intercepted. |
+> It’s always advisable to use `https://` as the connection protocol so that traffic is encrypted and passwords cannot be intercepted. 
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| If you need to use a proxy to access the remote application, configure the `spring.devtools.remote.proxy.host` and `spring.devtools.remote.proxy.port` properties. |
+> If you need to use a proxy to access the remote application, configure the `spring.devtools.remote.proxy.host` and `spring.devtools.remote.proxy.port` properties. 
 
 ### 20.5.2 Remote update
 
 The remote client will monitor your application classpath for changes in the same way as the [local restart](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#using-boot-devtools-restart). Any updated resource will be pushed to the remote application and *(if required)* trigger a restart. This can be quite helpful if you are iterating on a feature that uses a cloud service that you don’t have locally. Generally remote updates and restarts are much quicker than a full rebuild and deploy cycle.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| Files are only monitored when the remote client is running. If you change a file before starting the remote client, it won’t be pushed to the remote server. |
+> Files are only monitored when the remote client is running. If you change a file before starting the remote client, it won’t be pushed to the remote server. 
 
 ### 20.5.3 Remote debug tunnel
 
@@ -2024,17 +1933,11 @@ You’ll need to ensure that your remote application is started with remote debu
     JAVA_OPTS: "-Xdebug -Xrunjdwp:server=y,transport=dt_socket,suspend=n"
 ```
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Notice that you don’t need to pass an `address=NNNN` option to `-Xrunjdwp`. If omitted Java will simply pick a random free port. |
+> Notice that you don’t need to pass an `address=NNNN` option to `-Xrunjdwp`. If omitted Java will simply pick a random free port.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| Debugging a remote service over the Internet can be slow and you might need to increase timeouts in your IDE. For example, in Eclipse you can select `Java` → `Debug` from `Preferences…` and change the `Debugger timeout (ms)` to a more suitable value (`60000` works well in most situations). |
+> Debugging a remote service over the Internet can be slow and you might need to increase timeouts in your IDE. For example, in Eclipse you can select `Java` → `Debug` from `Preferences…` and change the `Debugger timeout (ms)` to a more suitable value (`60000` works well in most situations). 
 
-| ![[Warning]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/warning.png) |
-| ------------------------------------------------------------ |
-| When using the remote debug tunnel with IntelliJ IDEA, all breakpoints must be configured to suspend the thread rather than the VM. By default, breakpoints in IntelliJ IDEA suspend the entire VM rather than only suspending the thread that hit the breakpoint. This has the unwanted side-effect of suspending the thread that manages the remote debug tunnel, causing your debugging session to freeze. When using the remote debug tunnel with IntelliJ IDEA, all breakpoints should be configured to suspend the thread rather than the VM. Please set [IDEA-165769](https://youtrack.jetbrains.com/issue/IDEA-165769) for further details. |
+> When using the remote debug tunnel with IntelliJ IDEA, all breakpoints must be configured to suspend the thread rather than the VM. By default, breakpoints in IntelliJ IDEA suspend the entire VM rather than only suspending the thread that hit the breakpoint. This has the unwanted side-effect of suspending the thread that manages the remote debug tunnel, causing your debugging session to freeze. When using the remote debug tunnel with IntelliJ IDEA, all breakpoints should be configured to suspend the thread rather than the VM. Please set [IDEA-165769](https://youtrack.jetbrains.com/issue/IDEA-165769) for further details.
 
 ## 21. Packaging your application for production
 
@@ -2099,9 +2002,7 @@ Action:
 Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| Spring Boot provides numerous `FailureAnalyzer` implementations and you can [add your own](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#howto-failure-analyzer) very easily. |
+> Spring Boot provides numerous `FailureAnalyzer` implementations and you can [add your own](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#howto-failure-analyzer) very easily.
 
 If no failure analyzers are able to handle the exception, you can still display the full auto-configuration report to better understand what went wrong. To do so you need to[enable the `debug` property](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#boot-features-external-config) or [enable `DEBUG` logging](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#boot-features-custom-log-levels) for`org.springframework.boot.autoconfigure.logging.AutoConfigurationReportLoggingInitializer`.
 
@@ -2130,17 +2031,13 @@ Inside your `banner.txt` file you can use any of the following placeholders:
 | `${Ansi.NAME}` (or `${AnsiColor.NAME}`, `${AnsiBackground.NAME}`, `${AnsiStyle.NAME}`) | Where `NAME` is the name of an ANSI escape code. See [`AnsiPropertySource`](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot/src/main/java/org/springframework/boot/ansi/AnsiPropertySource.java) for details. |
 | `${application.title}`                                       | The title of your application as declared in `MANIFEST.MF`. For example`Implementation-Title: MyApp` is printed as `MyApp`. |
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| The `SpringApplication.setBanner(…)` method can be used if you want to generate a banner programmatically. Use the `org.springframework.boot.Banner` interface and implement your own `printBanner()` method. |
+> The `SpringApplication.setBanner(…)` method can be used if you want to generate a banner programmatically. Use the `org.springframework.boot.Banner` interface and implement your own `printBanner()` method. 
 
 You can also use the `spring.main.banner-mode` property to determine if the banner has to be printed on `System.out` (`console`), using the configured logger (`log`) or not at all (`off`).
 
 The printed banner will be registered as a singleton bean under the name `springBootBanner`.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| YAML maps `off` to `false` so make sure to add quotes if you want to disable the banner in your application.`spring:     main:         banner-mode: "off"` |
+> YAML maps `off` to `false` so make sure to add quotes if you want to disable the banner in your application.`spring:     main:         banner-mode: "off"` 
 
 ## 23.3 Customizing SpringApplication
 
@@ -2154,9 +2051,7 @@ public static void main(String[] args) {
 }
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| The constructor arguments passed to `SpringApplication` are configuration sources for spring beans. In most cases these will be references to `@Configuration` classes, but they could also be references to XML configuration or to packages that should be scanned. |
+> The constructor arguments passed to `SpringApplication` are configuration sources for spring beans. In most cases these will be references to `@Configuration` classes, but they could also be references to XML configuration or to packages that should be scanned. 
 
 It is also possible to configure the `SpringApplication` using an `application.properties` file. See *Chapter 24, Externalized Configuration* for details.
 
@@ -2178,17 +2073,13 @@ new SpringApplicationBuilder()
         .run(args);
 ```
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| There are some restrictions when creating an `ApplicationContext` hierarchy, e.g. Web components **must** be contained within the child context, and the same `Environment` will be used for both parent and child contexts. See the [`SpringApplicationBuilder` Javadoc](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/api/org/springframework/boot/builder/SpringApplicationBuilder.html) for full details. |
+> There are some restrictions when creating an `ApplicationContext` hierarchy, e.g. Web components **must** be contained within the child context, and the same `Environment` will be used for both parent and child contexts. See the [`SpringApplicationBuilder` Javadoc](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/api/org/springframework/boot/builder/SpringApplicationBuilder.html) for full details. 
 
 ## 23.5 Application events and listeners
 
 In addition to the usual Spring Framework events, such as [`ContextRefreshedEvent`](https://docs.spring.io/spring/docs/4.3.9.RELEASE/javadoc-api/org/springframework/context/event/ContextRefreshedEvent.html), a `SpringApplication` sends some additional application events.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| Some events are actually triggered before the `ApplicationContext` is created so you cannot register a listener on those as a `@Bean`. You can register them via the `SpringApplication.addListeners(…)` or `SpringApplicationBuilder.listeners(…)` methods.If you want those listeners to be registered automatically regardless of the way the application is created you can add a `META-INF/spring.factories`file to your project and reference your listener(s) using the `org.springframework.context.ApplicationListener` key.`org.springframework.context.ApplicationListener=com.example.project.MyListener` |
+> Some events are actually triggered before the `ApplicationContext` is created so you cannot register a listener on those as a `@Bean`. You can register them via the `SpringApplication.addListeners(…)` or `SpringApplicationBuilder.listeners(…)` methods.If you want those listeners to be registered automatically regardless of the way the application is created you can add a `META-INF/spring.factories`file to your project and reference your listener(s) using the `org.springframework.context.ApplicationListener` key.`org.springframework.context.ApplicationListener=com.example.project.MyListener` 
 
 Application events are sent in the following order, as your application runs:
 
@@ -2198,9 +2089,7 @@ Application events are sent in the following order, as your application runs:
 4. An `ApplicationReadyEvent` is sent after the refresh and any related callbacks have been processed to indicate the application is ready to service requests.
 5. An `ApplicationFailedEvent` is sent if there is an exception on startup.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| You often won’t need to use application events, but it can be handy to know that they exist. Internally, Spring Boot uses events to handle a variety of tasks. |
+> You often won’t need to use application events, but it can be handy to know that they exist. Internally, Spring Boot uses events to handle a variety of tasks. 
 
 ## 23.6 Web environment
 
@@ -2210,9 +2099,7 @@ The algorithm used to determine a ‘web environment’ is fairly simplistic (ba
 
 It is also possible to take complete control of the `ApplicationContext` type that will be used by calling `setApplicationContextClass(…)`.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| It is often desirable to call `setWebEnvironment(false)` when using `SpringApplication` within a JUnit test. |
+> It is often desirable to call `setWebEnvironment(false)` when using `SpringApplication` within a JUnit test. 
 
 ## 23.7 Accessing application arguments
 
@@ -2236,9 +2123,7 @@ public class MyBean {
 }
 ```
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| Spring Boot will also register a `CommandLinePropertySource` with the Spring `Environment`. This allows you to also inject single application arguments using the `@Value` annotation. |
+> Spring Boot will also register a `CommandLinePropertySource` with the Spring `Environment`. This allows you to also inject single application arguments using the `@Value` annotation. 
 
 ## 23.8 Using the ApplicationRunner or CommandLineRunner
 
@@ -2272,13 +2157,9 @@ In addition, beans may implement the `org.springframework.boot.ExitCodeGenerator
 
 It is possible to enable admin-related features for the application by specifying the `spring.application.admin.enabled` property. This exposes the[`SpringApplicationAdminMXBean`](https://github.com/spring-projects/spring-boot/tree/v1.4.7.RELEASE/spring-boot/src/main/java/org/springframework/boot/admin/SpringApplicationAdminMXBean.java) on the platform `MBeanServer`. You could use this feature to administer your Spring Boot application remotely. This could also be useful for any service wrapper implementation.
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| If you want to know on which HTTP port the application is running, get the property with key `local.server.port`. |
+> If you want to know on which HTTP port the application is running, get the property with key `local.server.port`. 
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| Take care when enabling this feature as the MBean exposes a method to shutdown the application. |
+> Take care when enabling this feature as the MBean exposes a method to shutdown the application. 
 
 ## 24. Externalized Configuration
 
@@ -2323,9 +2204,7 @@ public class MyBean {
 
 On your application classpath (e.g. inside your jar) you can have an `application.properties` that provides a sensible default property value for `name`. When running in a new environment, an `application.properties` can be provided outside of your jar that overrides the `name`; and for one-off testing, you can launch with a specific command line switch (e.g. `java -jar app.jar --name="Spring"`).
 
-| ![[Tip]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/tip.png) |
-| ------------------------------------------------------------ |
-| The `SPRING_APPLICATION_JSON` properties can be supplied on the command line with an environment variable. For example in a UN*X shell:`$ SPRING_APPLICATION_JSON='{"foo":{"bar":"spam"}}' java -jar myapp.jar`In this example you will end up with `foo.bar=spam` in the Spring `Environment`. You can also supply the JSON as `spring.application.json` in a System variable:`$ java -Dspring.application.json='{"foo":"bar"}' -jar myapp.jar`or command line argument:`$ java -jar myapp.jar --spring.application.json='{"foo":"bar"}'`or as a JNDI variable `java:comp/env/spring.application.json`. |
+> The `SPRING_APPLICATION_JSON` properties can be supplied on the command line with an environment variable. For example in a UN*X shell:`$ SPRING_APPLICATION_JSON='{"foo":{"bar":"spam"}}' java -jar myapp.jar`In this example you will end up with `foo.bar=spam` in the Spring `Environment`. You can also supply the JSON as `spring.application.json` in a System variable:`$ java -Dspring.application.json='{"foo":"bar"}' -jar myapp.jar`or command line argument:`$ java -jar myapp.jar --spring.application.json='{"foo":"bar"}'`or as a JNDI variable `java:comp/env/spring.application.json`. 
 
 ## 24.1 Configuring random values
 
@@ -2359,9 +2238,7 @@ If you don’t want command line properties to be added to the `Environment` you
 
 The list is ordered by precedence (properties defined in locations higher in the list override those defined in lower locations).
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| You can also [use YAML ('.yml') files](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#boot-features-external-config-yaml) as an alternative to '.properties'. |
+> You can also [use YAML ('.yml') files](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/#boot-features-external-config-yaml) as an alternative to '.properties'. 
 
 If you don’t like `application.properties` as the configuration file name you can switch to another by specifying a `spring.config.name` environment property. You can also refer to an explicit location using the `spring.config.location` environment property (comma-separated list of directory locations, or file paths).
 
@@ -2375,21 +2252,15 @@ or
 $ java -jar myproject.jar --spring.config.location=classpath:/default.properties,classpath:/override.properties
 ```
 
-| ![[Warning]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/warning.png) |
-| ------------------------------------------------------------ |
-| `spring.config.name` and `spring.config.location` are used very early to determine which files have to be loaded so they have to be defined as an environment property (typically OS env, system property or command line argument). |
+> `spring.config.name` and `spring.config.location` are used very early to determine which files have to be loaded so they have to be defined as an environment property (typically OS env, system property or command line argument). 
 
 If `spring.config.location` contains directories (as opposed to files) they should end in `/` (and will be appended with the names generated from `spring.config.name` before being loaded, including profile-specific file names). Files specified in `spring.config.location` are used as-is, with no support for profile-specific variants, and will be overridden by any profile-specific properties.
 
 The default search path `classpath:,classpath:/config,file:,file:config/` is always used, irrespective of the value of `spring.config.location`. This search path is ordered from lowest to highest precedence (`file:config/` wins). If you do specify your own locations, they take precedence over all of the default locations and use the same lowest to highest precedence ordering. In that way you can set up default values for your application in `application.properties` (or whatever other basename you choose with `spring.config.name`) and override it at runtime with a different file, keeping the defaults.
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| If you use environment variables rather than system properties, most operating systems disallow period-separated key names, but you can use underscores instead (e.g. `SPRING_CONFIG_NAME` instead of `spring.config.name`). |
+> If you use environment variables rather than system properties, most operating systems disallow period-separated key names, but you can use underscores instead (e.g. `SPRING_CONFIG_NAME` instead of `spring.config.name`). 
 
-| ![[Note]](https://docs.spring.io/spring-boot/docs/1.4.7.RELEASE/reference/htmlsingle/images/note.png) |
-| ------------------------------------------------------------ |
-| If you are running in a container then JNDI properties (in `java:comp/env`) or servlet context initialization parameters can be used instead of, or as well as, environment variables or system properties. |
+> If you are running in a container then JNDI properties (in `java:comp/env`) or servlet context initialization parameters can be used instead of, or as well as, environment variables or system properties. 
 
 ## 24.4 Profile-specific properties
 
