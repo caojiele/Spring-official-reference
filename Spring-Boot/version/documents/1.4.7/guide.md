@@ -1,20 +1,14 @@
 # Spring Boot Reference Guide
 
-### [中文文档](README_CN.md)
+### [中文文档](参考手册.md)
 
 ## Authors
 
 Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, Andy Wilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze
 
-
-
 **1.4.7.RELEASE**
 
-
-
 Copyright © 2012-2017
-
-
 
 *Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this* *Copyright Notice, whether distributed in print or electronically.*
 
