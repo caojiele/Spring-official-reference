@@ -1,0 +1,6744 @@
+# Spring Boot Reference Guide
+
+### [中文文档](参考手册.md)
+
+## Authors
+
+Phillip Webb, Dave Syer, Josh Long, Stéphane Nicoll, Rob Winch, Andy Wilkinson, Marcel Overdijk, Christian Dupuis, Sébastien Deleuze, Michael Simons, VedranPavić, Jay Bryant, Madhura Bhave
+
+**2.0.0.BUILD-SNAPSHOT**
+
+Copyright © 2012-2018 
+
+*Copies of this document may be made for your own use and for distribution to others, provided that you do not charge any fee for such copies and further provided that each copy contains this* *Copyright Notice, whether distributed in print or electronically.*
+
+------
+
+**Table of Contents**
+
+- [VI. Deploying Spring Boot Applications](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment)
+
+  [60. Deploying to the Cloud](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment)[60.1. Cloud Foundry](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment-cloud-foundry)[60.1.1. Binding to Services](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment-cloud-foundry-services)[60.2. Heroku](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment-heroku)[60.3. OpenShift](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment-openshift)[60.4. Amazon Web Services (AWS)](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment-aws)[60.4.1. AWS Elastic Beanstalk](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_aws_elastic_beanstalk)[Using the Tomcat Platform](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_using_the_tomcat_platform)[Using the Java SE Platform](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_using_the_java_se_platform)[60.4.2. Summary](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_summary)[60.5. Boxfuse and Amazon Web Services](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment-boxfuse)[60.6. Google Cloud](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cloud-deployment-gae)[61. Installing Spring Boot Applications](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-install)[61.1. Supported Operating Systems](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-install-supported-operating-systems)[61.2. Unix/Linux Services](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-service)[61.2.1. Installation as an `init.d` Service (System V)](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-initd-service)[Securing an `init.d` Service](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-initd-service-securing)[61.2.2. Installation as a `systemd` Service](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-systemd-service)[61.2.3. Customizing the Startup Script](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-script-customization)[Customizing the Start Script when It Is Written](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-script-customization-when-it-written)[Customizing a Script When It Runs](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-script-customization-when-it-runs)[61.3. Microsoft Windows Services](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-windows)[62. What to Read Next](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-whats-next)
+
+- [VII. Spring Boot CLI](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli)
+
+  [63. Installing the CLI](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-installation)[64. Using the CLI](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-using-the-cli)[64.1. Running Applications with the CLI](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-run)[64.1.1. Deduced “grab” Dependencies](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-deduced-grab-annotations)[64.1.2. Deduced “grab” Coordinates](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-default-grab-deduced-coordinates)[64.1.3. Default Import Statements](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-default-import-statements)[64.1.4. Automatic Main Method](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-automatic-main-method)[64.1.5. Custom Dependency Management](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-default-grab-deduced-coordinates-custom-dependency-management)[64.2. Applications with Multiple Source Files](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-multiple-source-files)[64.3. Packaging Your Application](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-jar)[64.4. Initialize a New Project](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-init)[64.5. Using the Embedded Shell](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-shell)[64.6. Adding Extensions to the CLI](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-install-uninstall)[65. Developing Applications with the Groovy Beans DSL](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-groovy-beans-dsl)[66. Configuring the CLI with `settings.xml`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-maven-settings)[67. What to Read Next](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#cli-whats-next)
+
+- [VIII. Build tool plugins](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins)
+
+  [68. Spring Boot Maven Plugin](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-maven-plugin)[68.1. Including the Plugin](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-include-maven-plugin)[68.2. Packaging Executable Jar and War Files](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-maven-packaging)[69. Spring Boot Gradle Plugin](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-gradle-plugin)[70. Spring Boot AntLib Module](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-antlib)[70.1. Spring Boot Ant Tasks](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_spring_boot_ant_tasks)[70.1.1. `spring-boot:exejar`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#spring-boot-ant-exejar)[70.1.2. Examples](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_examples)[70.2. `spring-boot:findmainclass`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#spring-boot-ant-findmainclass)[70.2.1. Examples](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_examples_2)[71. Supporting Other Build Systems](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-other-build-systems)[71.1. Repackaging Archives](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-repackaging-archives)[71.2. Nested Libraries](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-nested-libraries)[71.3. Finding a Main Class](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-find-a-main-class)[71.4. Example Repackage Implementation](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-repackage-implementation)[72. What to Read Next](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins-whats-next)
+
+- [IX. ‘How-to’ guides](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto)
+
+  [73. Spring Boot Application](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-spring-boot-application)[73.1. Create Your Own FailureAnalyzer](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-failure-analyzer)[73.2. Troubleshoot Auto-configuration](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-troubleshoot-auto-configuration)[73.3. Customize the Environment or ApplicationContext Before It Starts](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-the-environment-or-application-context)[73.4. Build an ApplicationContext Hierarchy (Adding a Parent or Root Context)](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-build-an-application-context-hierarchy)[73.5. Create a Non-web Application](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-a-non-web-application)[74. Properties and Configuration](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-properties-and-configuration)[74.1. Automatically Expand Properties at Build Time](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-automatic-expansion)[74.1.1. Automatic Property Expansion Using Maven](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-automatic-expansion-maven)[74.1.2. Automatic Property Expansion Using Gradle](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-automatic-expansion-gradle)[74.2. Externalize the Configuration of `SpringApplication`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-externalize-configuration)[74.3. Change the Location of External Properties of an Application](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-change-the-location-of-external-properties)[74.4. Use ‘Short’ Command Line Arguments](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-short-command-line-arguments)[74.5. Use YAML for External Properties](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-yaml-for-external-properties)[74.6. Set the Active Spring Profiles](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-set-active-spring-profiles)[74.7. Change Configuration Depending on the Environment](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-change-configuration-depending-on-the-environment)[74.8. Discover Built-in Options for External Properties](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-discover-build-in-options-for-external-properties)[75. Embedded Web Servers](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-embedded-web-servers)[75.1. Use Another Web Server](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-another-web-server)[75.2. Configure Jetty](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-jetty)[75.3. Add a Servlet, Filter, or Listener to an Application](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-listener)[75.3.1. Add a Servlet, Filter, or Listener by Using a Spring Bean](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-listener-as-spring-bean)[Disable Registration of a Servlet or Filter](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-disable-registration-of-a-servlet-or-filter)[75.3.2. Add Servlets, Filters, and Listeners by Using Classpath Scanning](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-listener-using-scanning)[75.4. Change the HTTP Port](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-change-the-http-port)[75.5. Use a Random Unassigned HTTP Port](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-user-a-random-unassigned-http-port)[75.6. Discover the HTTP Port at Runtime](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-discover-the-http-port-at-runtime)[75.7. Configure SSL](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-ssl)[75.8. Configure HTTP/2](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-http2)[75.8.1. HTTP/2 with Undertow](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-http2-undertow)[75.8.2. HTTP/2 with Jetty](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-http2-jetty)[75.8.3. HTTP/2 with Tomcat](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-http2-tomcat)[75.9. Configure Access Logging](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-accesslogs)[75.10. Running Behind a Front-end Proxy Server](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-tomcat-behind-a-proxy-server)[75.10.1. Customize Tomcat’s Proxy Configuration](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-tomcat-behind-a-proxy-server)[75.11. Configure Tomcat](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-tomcat)[75.12. Enable Multiple Connectors with Tomcat](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-enable-multiple-connectors-in-tomcat)[75.13. Use Tomcat’s LegacyCookieProcessor](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-tomcat-legacycookieprocessor)[75.14. Configure Undertow](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-undertow)[75.15. Enable Multiple Listeners with Undertow](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-enable-multiple-listeners-in-undertow)[75.16. Create WebSocket Endpoints Using @ServerEndpoint](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-websocket-endpoints-using-serverendpoint)[75.17. Enable HTTP Response Compression](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#how-to-enable-http-response-compression)[76. Spring MVC](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-spring-mvc)[76.1. Write a JSON REST Service](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-write-a-json-rest-service)[76.2. Write an XML REST Service](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-write-an-xml-rest-service)[76.3. Customize the Jackson ObjectMapper](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-the-jackson-objectmapper)[76.4. Customize the @ResponseBody Rendering](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-the-responsebody-rendering)[76.5. Handling Multipart File Uploads](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-multipart-file-upload-configuration)[76.6. Switch Off the Spring MVC DispatcherServlet](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-switch-off-the-spring-mvc-dispatcherservlet)[76.7. Switch off the Default MVC Configuration](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-switch-off-default-mvc-configuration)[76.8. Customize ViewResolvers](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-view-resolvers)[77. HTTP Clients](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-http-clients)[77.1. Configure RestTemplate to Use a Proxy](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-http-clients-proxy-configuration)[78. Logging](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-logging)[78.1. Configure Logback for Logging](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-logback-for-logging)[78.1.1. Configure Logback for File-only Output](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-logback-for-logging-fileonly)[78.2. Configure Log4j for Logging](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-log4j-for-logging)[78.2.1. Use YAML or JSON to Configure Log4j 2](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-log4j-for-logging-yaml-or-json-config)[79. Data Access](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-data-access)[79.1. Configure a Custom DataSource](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-a-datasource)[79.2. Configure Two DataSources](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-two-datasources)[79.3. Use Spring Data Repositories](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-spring-data-repositories)[79.4. Separate @Entity Definitions from Spring Configuration](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-separate-entity-definitions-from-spring-configuration)[79.5. Configure JPA Properties](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-jpa-properties)[79.6. Configure Hibernate Naming Strategy](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-hibernate-naming-strategy)[79.7. Use a Custom EntityManagerFactory](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-custom-entity-manager)[79.8. Use Two EntityManagers](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-two-entity-managers)[79.9. Use a Traditional `persistence.xml` File](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-traditional-persistence-xml)[79.10. Use Spring Data JPA and Mongo Repositories](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-spring-data-jpa--and-mongo-repositories)[79.11. Expose Spring Data Repositories as REST Endpoint](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-exposing-spring-data-repositories-rest-endpoint)[79.12. Configure a Component that is Used by JPA](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-a-component-that-is-used-by-JPA)[79.13. Configure jOOQ with Two DataSources](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-jOOQ-with-multiple-datasources)[80. Database Initialization](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-database-initialization)[80.1. Initialize a Database Using JPA](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-initialize-a-database-using-jpa)[80.2. Initialize a Database Using Hibernate](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-initialize-a-database-using-hibernate)[80.3. Initialize a Database](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-initialize-a-database-using-spring-jdbc)[80.4. Initialize a Spring Batch Database](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-initialize-a-spring-batch-database)[80.5. Use a Higher-level Database Migration Tool](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-a-higher-level-database-migration-tool)[80.5.1. Execute Flyway Database Migrations on Startup](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-execute-flyway-database-migrations-on-startup)[80.5.2. Execute Liquibase Database Migrations on Startup](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-execute-liquibase-database-migrations-on-startup)[81. Messaging](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-messaging)[81.1. Disable Transacted JMS Session](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-jms-disable-transaction)[82. Batch Applications](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-batch-applications)[82.1. Execute Spring Batch Jobs on Startup](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-execute-spring-batch-jobs-on-startup)[83. Actuator](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-actuator)[83.1. Change the HTTP Port or Address of the Actuator Endpoints](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-change-the-http-port-or-address-of-the-actuator-endpoints)[83.2. Customize the ‘whitelabel’ Error Page](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-the-whitelabel-error-page)[84. Security](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-security)[84.1. Switch off the Spring Boot Security Configuration](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-switch-off-spring-boot-security-configuration)[84.2. Change the AuthenticationManager and Add User Accounts](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-change-the-authenticationmanager-and-add-user-accounts)[84.3. Enable HTTPS When Running behind a Proxy Server](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-enable-https)[85. Hot Swapping](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-hotswapping)[85.1. Reload Static Content](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-reload-static-content)[85.2. Reload Templates without Restarting the Container](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-reload-thymeleaf-template-content)[85.2.1. Thymeleaf Templates](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-reload-thymeleaf-content)[85.2.2. FreeMarker Templates](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-reload-freemarker-content)[85.2.3. Groovy Templates](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-reload-groovy-template-content)[85.3. Fast Application Restarts](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-reload-fast-restart)[85.4. Reload Java Classes without Restarting the Container](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-reload-java-classes-without-restarting)[86. Build](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-build)[86.1. Generate Build Information](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-build-info)[86.2. Generate Git Information](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-git-info)[86.3. Customize Dependency Versions](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-dependency-versions)[86.4. Create an Executable JAR with Maven](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-an-executable-jar-with-maven)[86.5. Use a Spring Boot Application as a Dependency](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-an-additional-executable-jar)[86.6. Extract Specific Libraries When an Executable Jar Runs](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-extract-specific-libraries-when-an-executable-jar-runs)[86.7. Create a Non-executable JAR with Exclusions](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-a-nonexecutable-jar)[86.8. Remote Debug a Spring Boot Application Started with Maven](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-remote-debug-maven-run)[86.9. Build an Executable Archive from Ant without Using `spring-boot-antlib`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-build-an-executable-archive-with-ant)[87. Traditional Deployment](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-traditional-deployment)[87.1. Create a Deployable War File](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-a-deployable-war-file)[87.2. Create a Deployable War File for Older Servlet Containers](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-a-deployable-war-file-for-older-containers)[87.3. Convert an Existing Application to Spring Boot](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-convert-an-existing-application-to-spring-boot)[87.4. Deploying a WAR to WebLogic](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-weblogic)[87.5. Deploying a WAR in an Old (Servlet 2.5) Container](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-servlet-2-5)[87.6. Use Jedis Instead of Lettuce](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-use-jedis-instead-of-lettuce)
+
+- [X. Appendices](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#appendix)
+
+  [A. Common application properties](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#common-application-properties)[B. Configuration Metadata](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata)[B.1. Metadata Format](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-format)[B.1.1. Group Attributes](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-group-attributes)[B.1.2. Property Attributes](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-property-attributes)[B.1.3. Hint Attributes](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-hints-attributes)[B.1.4. Repeated Metadata Items](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-repeated-items)[B.2. Providing Manual Hints](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-providing-manual-hints)[B.2.1. Value Hint](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_value_hint)[B.2.2. Value Providers](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_value_providers)[Any](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_any)[Class Reference](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_class_reference)[Handle As](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_handle_as)[Logger Name](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_logger_name)[Spring Bean Reference](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_spring_bean_reference)[Spring Profile Name](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#_spring_profile_name)[B.3. Generating Your Own Metadata by Using the Annotation Processor](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-annotation-processor)[B.3.1. Nested Properties](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-nested-properties)[B.3.2. Adding Additional Metadata](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-additional-metadata)[C. Auto-configuration classes](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#auto-configuration-classes)[C.1. From the “spring-boot-autoconfigure” module](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#auto-configuration-classes-from-autoconfigure-module)[C.2. From the “spring-boot-actuator-autoconfigure” module](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#auto-configuration-classes-from-actuator)[D. Test auto-configuration annotations](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#test-auto-configuration)[E. The Executable Jar Format](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar)[E.1. Nested JARs](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-nested-jars)[E.1.1. The Executable Jar File Structure](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-jar-file-structure)[E.1.2. The Executable War File Structure](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-war-file-structure)[E.2. Spring Boot’s “JarFile” Class](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-jarfile)[E.2.1. Compatibility with the Standard Java “JarFile”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-jarfile-compatibility)[E.3. Launching Executable Jars](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-launching)[E.3.1. Launcher Manifest](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-launcher-manifest)[E.3.2. Exploded Archives](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-exploded-archives)[E.4. `PropertiesLauncher` Features](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-property-launcher-features)[E.5. Executable Jar Restrictions](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-restrictions)[E.6. Alternative Single Jar Solutions](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-alternatives)[F. Dependency versions](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#appendix-dependency-versions)
+
+# Part VI. Deploying Spring Boot Applications
+
+
+
+Spring Boot’s flexible packaging options provide a great deal of choice when it comes to deploying your application. You can deploy Spring Boot applications to a variety of cloud platforms, to container images (such as Docker), or to virtual/real machines.
+
+This section covers some of the more common deployment scenarios.
+
+## 60. Deploying to the Cloud
+
+Spring Boot’s executable jars are ready-made for most popular cloud PaaS (Platform-as-a-Service) providers. These providers tend to require that you “bring your own container”. They manage application processes (not Java applications specifically), so they need an intermediary layer that adapts *your* application to the *cloud’s* notion of a running process.
+
+Two popular cloud providers, Heroku and Cloud Foundry, employ a “buildpack” approach. The buildpack wraps your deployed code in whatever is needed to *start* your application. It might be a JDK and a call to `java`, an embedded web server, or a full-fledged application server. A buildpack is pluggable, but ideally you should be able to get by with as few customizations to it as possible. This reduces the footprint of functionality that is not under your control. It minimizes divergence between development and production environments.
+
+Ideally, your application, like a Spring Boot executable jar, has everything that it needs to run packaged within it.
+
+In this section, we look at what it takes to get the [simple application that we developed](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#getting-started-first-application) in the “Getting Started” section up and running in the Cloud.
+
+## 60.1 Cloud Foundry
+
+Cloud Foundry provides default buildpacks that come into play if no other buildpack is specified. The Cloud Foundry [Java buildpack](https://github.com/cloudfoundry/java-buildpack) has excellent support for Spring applications, including Spring Boot. You can deploy stand-alone executable jar applications as well as traditional `.war` packaged applications.
+
+Once you have built your application (by using, for example, `mvn clean package`) and have [installed the `cf` command line tool](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html), deploy your application by using the `cf push` command, substituting the path to your compiled `.jar`. Be sure to have [logged in with your `cf` command line client](https://docs.cloudfoundry.org/cf-cli/getting-started.html#login) before pushing an application. The following line shows using the `cf push` command to deploy an application:
+
+```
+$ cf push acloudyspringtime -p target/demo-0.0.1-SNAPSHOT.jar
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| In the preceding example, we substitute `acloudyspringtime` for whatever value you give `cf` as the name of your application. |
+
+See the [`cf push` documentation](https://docs.cloudfoundry.org/cf-cli/getting-started.html#push) for more options. If there is a Cloud Foundry [`manifest.yml`](https://docs.cloudfoundry.org/devguide/deploy-apps/manifest.html) file present in the same directory, it is considered.
+
+At this point, `cf` starts uploading your application, producing output similar to the following example:
+
+```
+Uploading acloudyspringtime... OK
+Preparing to start acloudyspringtime... OK
+-----> Downloaded app package (8.9M)
+-----> Java Buildpack Version: v3.12 (offline) | https://github.com/cloudfoundry/java-buildpack.git#6f25b7e
+-----> Downloading Open Jdk JRE 1.8.0_121 from https://java-buildpack.cloudfoundry.org/openjdk/trusty/x86_64/openjdk-1.8.0_121.tar.gz (found in cache)
+       Expanding Open Jdk JRE to .java-buildpack/open_jdk_jre (1.6s)
+-----> Downloading Open JDK Like Memory Calculator 2.0.2_RELEASE from https://java-buildpack.cloudfoundry.org/memory-calculator/trusty/x86_64/memory-calculator-2.0.2_RELEASE.tar.gz (found in cache)
+       Memory Settings: -Xss349K -Xmx681574K -XX:MaxMetaspaceSize=104857K -Xms681574K -XX:MetaspaceSize=104857K
+-----> Downloading Container Certificate Trust Store 1.0.0_RELEASE from https://java-buildpack.cloudfoundry.org/container-certificate-trust-store/container-certificate-trust-store-1.0.0_RELEASE.jar (found in cache)
+       Adding certificates to .java-buildpack/container_certificate_trust_store/truststore.jks (0.6s)
+-----> Downloading Spring Auto Reconfiguration 1.10.0_RELEASE from https://java-buildpack.cloudfoundry.org/auto-reconfiguration/auto-reconfiguration-1.10.0_RELEASE.jar (found in cache)
+Checking status of app 'acloudyspringtime'...
+  0 of 1 instances running (1 starting)
+  ...
+  0 of 1 instances running (1 starting)
+  ...
+  0 of 1 instances running (1 starting)
+  ...
+  1 of 1 instances running (1 running)
+
+App started
+
+
+```
+
+Congratulations! The application is now live!
+
+Once your application is live, you can verify the status of the deployed application by using the `cf apps` command, as shown in the following example:
+
+```
+$ cf apps
+Getting applications in ...
+OK
+
+name                 requested state   instances   memory   disk   urls
+...
+acloudyspringtime    started           1/1         512M     1G     acloudyspringtime.cfapps.io
+...
+
+
+```
+
+Once Cloud Foundry acknowledges that your application has been deployed, you should be able to find the application at the URI given. In the preceding example, you could find it at `http://acloudyspringtime.cfapps.io/`.
+
+### 60.1.1 Binding to Services
+
+By default, metadata about the running application as well as service connection information is exposed to the application as environment variables (for example:`$VCAP_SERVICES`). This architecture decision is due to Cloud Foundry’s polyglot (any language and platform can be supported as a buildpack) nature. Process-scoped environment variables are language agnostic.
+
+Environment variables do not always make for the easiest API, so Spring Boot automatically extracts them and flattens the data into properties that can be accessed through Spring’s `Environment` abstraction, as shown in the following example:
+
+```
+@Component
+class MyBean implements EnvironmentAware {
+
+	private String instanceId;
+
+	@Override
+	public void setEnvironment(Environment environment) {
+		this.instanceId = environment.getProperty("vcap.application.instance_id");
+	}
+
+	// ...
+
+}
+
+
+```
+
+All Cloud Foundry properties are prefixed with `vcap`. You can use `vcap` properties to access application information (such as the public URL of the application) and service information (such as database credentials). See the [‘CloudFoundryVcapEnvironmentPostProcessor’](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/cloud/CloudFoundryVcapEnvironmentPostProcessor.html) Javadoc for complete details.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| The [Spring Cloud Connectors](https://cloud.spring.io/spring-cloud-connectors/) project is a better fit for tasks such as configuring a DataSource. Spring Boot includes auto-configuration support and a `spring-boot-starter-cloud-connectors` starter. |
+
+## 60.2 Heroku
+
+Heroku is another popular PaaS platform. To customize Heroku builds, you provide a `Procfile`, which provides the incantation required to deploy an application. Heroku assigns a `port` for the Java application to use and then ensures that routing to the external URI works.
+
+You must configure your application to listen on the correct port. The following example shows the `Procfile` for our starter REST application:
+
+```
+web: java -Dserver.port=$PORT -jar target/demo-0.0.1-SNAPSHOT.jar
+
+
+```
+
+Spring Boot makes `-D` arguments available as properties accessible from a Spring `Environment` instance. The `server.port` configuration property is fed to the embedded Tomcat, Jetty, or Undertow instance, which then uses the port when it starts up. The `$PORT` environment variable is assigned to us by the Heroku PaaS.
+
+This should be everything you need. The most common deployment workflow for Heroku deployments is to `git push` the code to production, as shown in the following example:
+
+```
+$ git push heroku master
+
+Initializing repository, done.
+Counting objects: 95, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (78/78), done.
+Writing objects: 100% (95/95), 8.66 MiB | 606.00 KiB/s, done.
+Total 95 (delta 31), reused 0 (delta 0)
+
+-----> Java app detected
+-----> Installing OpenJDK 1.8... done
+-----> Installing Maven 3.3.1... done
+-----> Installing settings.xml... done
+-----> Executing: mvn -B -DskipTests=true clean install
+
+       [INFO] Scanning for projects...
+       Downloading: https://repo.spring.io/...
+       Downloaded: https://repo.spring.io/... (818 B at 1.8 KB/sec)
+		....
+       Downloaded: http://s3pository.heroku.com/jvm/... (152 KB at 595.3 KB/sec)
+       [INFO] Installing /tmp/build_0c35a5d2-a067-4abc-a232-14b1fb7a8229/target/...
+       [INFO] Installing /tmp/build_0c35a5d2-a067-4abc-a232-14b1fb7a8229/pom.xml ...
+       [INFO] ------------------------------------------------------------------------
+       [INFO] BUILD SUCCESS
+       [INFO] ------------------------------------------------------------------------
+       [INFO] Total time: 59.358s
+       [INFO] Finished at: Fri Mar 07 07:28:25 UTC 2014
+       [INFO] Final Memory: 20M/493M
+       [INFO] ------------------------------------------------------------------------
+
+-----> Discovering process types
+       Procfile declares types -> web
+
+-----> Compressing... done, 70.4MB
+-----> Launching... done, v6
+       http://agile-sierra-1405.herokuapp.com/ deployed to Heroku
+
+To git@heroku.com:agile-sierra-1405.git
+ * [new branch]      master -> master
+
+
+```
+
+Your application should now be up and running on Heroku.
+
+## 60.3 OpenShift
+
+[OpenShift](https://www.openshift.com/) is the Red Hat public (and enterprise) extension of the Kubernetes container orchestration platform. Similarly to Kubernetes, OpenShift has many options for installing Spring Boot based applications.
+
+OpenShift has many resources describing how to deploy Spring Boot applications, including:
+
+- [Using the S2I builder](https://blog.openshift.com/using-openshift-enterprise-grade-spring-boot-deployments/)
+- [Architecture guide](https://access.redhat.com/documentation/en-us/reference_architectures/2017/html-single/spring_boot_microservices_on_red_hat_openshift_container_platform_3/)
+- [Running as a traditional web application on Wildfly](https://blog.openshift.com/using-spring-boot-on-openshift/)
+- [OpenShift Commons Briefing](https://blog.openshift.com/openshift-commons-briefing-96-cloud-native-applications-spring-rhoar/)
+
+## 60.4 Amazon Web Services (AWS)
+
+Amazon Web Services offers multiple ways to install Spring Boot-based applications, either as traditional web applications (war) or as executable jar files with an embedded web server. The options include:
+
+- AWS Elastic Beanstalk
+- AWS Code Deploy
+- AWS OPS Works
+- AWS Cloud Formation
+- AWS Container Registry
+
+Each has different features and pricing models. In this document, we describe only the simplest option: AWS Elastic Beanstalk.
+
+### 60.4.1 AWS Elastic Beanstalk
+
+As described in the official [Elastic Beanstalk Java guide](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/create_deploy_Java.html), there are two main options to deploy a Java application. You can either use the “Tomcat Platform” or the “Java SE platform”.
+
+#### Using the Tomcat Platform
+
+This option applies to Spring Boot projects that produce a war file. No special configuration is required. You need only follow the official guide.
+
+#### Using the Java SE Platform
+
+This option applies to Spring Boot projects that produce a jar file and run an embedded web container. Elastic Beanstalk environments run an nginx instance on port 80 to proxy the actual application, running on port 5000. To configure it, add the following line to your `application.properties` file:
+
+```
+server.port=5000
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| By default, Elastic Beanstalk uploads sources and compiles them in AWS. However, it is best to upload the binaries instead. To do so, add lines similar to the following to your `.elasticbeanstalk/config.yml` file:`deploy: 	artifact: target/demo-0.0.1-SNAPSHOT.jar` |
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| By default an Elastic Beanstalk environment is load balanced. The load balancer has a significant cost. To avoid that cost, set the environment type to “Single instance”, as described in [the Amazon documentation](https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/environments-create-wizard.html#environments-create-wizard-capacity). You can also create single instance environments by using the CLI and the following command:`eb create -s` |
+
+### 60.4.2 Summary
+
+This is one of the easiest ways to get to AWS, but there are more things to cover, such as how to integrate Elastic Beanstalk into any CI / CD tool, use the Elastic Beanstalk Maven plugin instead of the CLI, and others. There is a [blog post](https://exampledriven.wordpress.com/2017/01/09/spring-boot-aws-elastic-beanstalk-example/) covering these topics more in detail.
+
+## 60.5 Boxfuse and Amazon Web Services
+
+[Boxfuse](https://boxfuse.com/) works by turning your Spring Boot executable jar or war into a minimal VM image that can be deployed unchanged either on VirtualBox or on AWS. Boxfuse comes with deep integration for Spring Boot and uses the information from your Spring Boot configuration file to automatically configure ports and health check URLs. Boxfuse leverages this information both for the images it produces as well as for all the resources it provisions (instances, security groups, elastic load balancers, and so on).
+
+Once you have created a [Boxfuse account](https://console.boxfuse.com/), connected it to your AWS account, installed the latest version of the Boxfuse Client, and ensured that the application has been built by Maven or Gradle (by using, for example, `mvn clean package`), you can deploy your Spring Boot application to AWS with a command similar to the following:
+
+```
+$ boxfuse run myapp-1.0.jar -env=prod
+
+
+```
+
+See the [`boxfuse run` documentation](https://boxfuse.com/docs/commandline/run.html) for more options. If there is a [`boxfuse.conf`](https://boxfuse.com/docs/commandline/#configuration) file present in the current directory, it is considered.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| By default, Boxfuse activates a Spring profile named `boxfuse` on startup. If your executable jar or war contains an[`application-boxfuse.properties`](https://boxfuse.com/docs/payloads/springboot.html#configuration) file, Boxfuse bases its configuration on the properties it contains. |
+
+At this point, `boxfuse` creates an image for your application, uploads it, and configures and starts the necessary resources on AWS, resulting in output similar to the following example:
+
+```
+Fusing Image for myapp-1.0.jar ...
+Image fused in 00:06.838s (53937 K) -> axelfontaine/myapp:1.0
+Creating axelfontaine/myapp ...
+Pushing axelfontaine/myapp:1.0 ...
+Verifying axelfontaine/myapp:1.0 ...
+Creating Elastic IP ...
+Mapping myapp-axelfontaine.boxfuse.io to 52.28.233.167 ...
+Waiting for AWS to create an AMI for axelfontaine/myapp:1.0 in eu-central-1 (this may take up to 50 seconds) ...
+AMI created in 00:23.557s -> ami-d23f38cf
+Creating security group boxfuse-sg_axelfontaine/myapp:1.0 ...
+Launching t2.micro instance of axelfontaine/myapp:1.0 (ami-d23f38cf) in eu-central-1 ...
+Instance launched in 00:30.306s -> i-92ef9f53
+Waiting for AWS to boot Instance i-92ef9f53 and Payload to start at http://52.28.235.61/ ...
+Payload started in 00:29.266s -> http://52.28.235.61/
+Remapping Elastic IP 52.28.233.167 to i-92ef9f53 ...
+Waiting 15s for AWS to complete Elastic IP Zero Downtime transition ...
+Deployment completed successfully. axelfontaine/myapp:1.0 is up and running at http://myapp-axelfontaine.boxfuse.io/
+
+
+```
+
+Your application should now be up and running on AWS.
+
+See the blog post on [deploying Spring Boot apps on EC2](https://boxfuse.com/blog/spring-boot-ec2.html) as well as the [documentation for the Boxfuse Spring Boot integration](https://boxfuse.com/docs/payloads/springboot.html) to get started with a Maven build to run the app.
+
+## 60.6 Google Cloud
+
+Google Cloud has several options that can be used to launch Spring Boot applications. The easiest to get started with is probably App Engine, but you could also find ways to run Spring Boot in a container with Container Engine or on a virtual machine with Compute Engine.
+
+To run in App Engine, you can create a project in the UI first, which sets up a unique identifier for you and also sets up HTTP routes. Add a Java app to the project and leave it empty and then use the [Google Cloud SDK](https://cloud.google.com/sdk/downloads) to push your Spring Boot app into that slot from the command line or CI build.
+
+App Engine needs you to create an `app.yaml` file to describe the resources your app requires. Normally, you put this file in `src/main/appengine`, and it should resemble the following file:
+
+```
+service: default
+
+runtime: java
+env: flex
+
+runtime_config:
+  jdk: openjdk8
+
+handlers:
+- url: /.*
+  script: this field is required, but ignored
+
+manual_scaling:
+  instances: 1
+
+health_check:
+  enable_health_check: False
+
+env_variables:
+  ENCRYPT_KEY: your_encryption_key_here
+
+
+```
+
+You can deploy the app (for example, with a Maven plugin) by adding the project ID to the build configuration, as shown in the following example:
+
+```
+<plugin>
+	<groupId>com.google.cloud.tools</groupId>
+	<artifactId>appengine-maven-plugin</artifactId>
+	<version>1.3.0</version>
+	<configuration>
+		<project>myproject</project>
+	</configuration>
+</plugin>
+
+
+```
+
+Then deploy with `mvn appengine:deploy` (if you need to authenticate first, the build fails).
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Google App Engine Classic is tied to the Servlet 2.5 API, so you cannot deploy a Spring Application there without some modifications. See the [Servlet 2.5 section](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-servlet-2-5) of this guide. |
+
+## 61. Installing Spring Boot Applications
+
+In additional to running Spring Boot applications by using `java -jar`, it is also possible to make fully executable applications for Unix systems. A fully executable jar can be executed like any other executable binary or it can be [registered with `init.d` or `systemd`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-service). This makes it very easy to install and manage Spring Boot applications in common production environments.
+
+| ![[Caution]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/caution.png) | Caution |
+| ------------------------------------------------------------ | ------- |
+| Fully executable jars work by embedding an extra script at the front of the file. Currently, some tools do not accept this format, so you may not always be able to use this technique. For example, `jar -xf` may silently fail to extract a jar or war that has been made fully executable. It is recommended that you make your jar or war fully executable only if you intend to execute it directly, rather than running it with `java -jar` or deploying it to a servlet container. |         |
+
+To create a ‘fully executable’ jar with Maven, use the following plugin configuration:
+
+```
+<plugin>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+	<configuration>
+		<executable>true</executable>
+	</configuration>
+</plugin>
+
+
+```
+
+The following example shows the equivalent Gradle configuration:
+
+```
+bootJar {
+	launchScript()
+}
+
+
+```
+
+You can then run your application by typing `./my-application.jar` (where `my-application` is the name of your artifact). The directory containing the jar is used as your application’s working directory.
+
+## 61.1 Supported Operating Systems
+
+The default script supports most Linux distributions and is tested on CentOS and Ubuntu. Other platforms, such as OS X and FreeBSD, require the use of a custom`embeddedLaunchScript`.
+
+## 61.2 Unix/Linux Services
+
+Spring Boot application can be easily started as Unix/Linux services by using either `init.d` or `systemd`.
+
+### 61.2.1 Installation as an `init.d` Service (System V)
+
+If you configured Spring Boot’s Maven or Gradle plugin to generate a [fully executable jar](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-install), and you do not use a custom `embeddedLaunchScript`, your application can be used as an `init.d` service. To do so, symlink the jar to `init.d` to support the standard `start`, `stop`, `restart`, and `status` commands.
+
+The script supports the following features:
+
+- Starts the services as the user that owns the jar file
+- Tracks the application’s PID by using `/var/run/<appname>/<appname>.pid`
+- Writes console logs to `/var/log/<appname>.log`
+
+Assuming that you have a Spring Boot application installed in `/var/myapp`, to install a Spring Boot application as an `init.d` service, create a symlink, as follows:
+
+```
+$ sudo ln -s /var/myapp/myapp.jar /etc/init.d/myapp
+
+
+```
+
+Once installed, you can start and stop the service in the usual way. For example, on a Debian-based system, you could start it with the following command:
+
+```
+$ service myapp start
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| If your application fails to start, check the log file written to `/var/log/<appname>.log` for errors. |
+
+You can also flag the application to start automatically by using your standard operating system tools. For example, on Debian, you could use the following command:
+
+```
+$ update-rc.d myapp defaults <priority>
+
+
+```
+
+#### Securing an `init.d` Service
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The following is a set of guidelines on how to secure a Spring Boot application that runs as an init.d service. It is not intended to be an exhaustive list of everything that should be done to harden an application and the environment in which it runs. |
+
+When executed as root, as is the case when root is being used to start an init.d service, the default executable script runs the application as the user who owns the jar file. You should never run a Spring Boot application as `root`, so your application’s jar file should never be owned by root. Instead, create a specific user to run your application and use `chown` to make it the owner of the jar file, as shown in the following example:
+
+```
+$ chown bootapp:bootapp your-app.jar
+
+
+```
+
+In this case, the default executable script runs the application as the `bootapp` user.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| To reduce the chances of the application’s user account being compromised, you should consider preventing it from using a login shell. For example, you can set the account’s shell to `/usr/sbin/nologin`. |
+
+You should also take steps to prevent the modification of your application’s jar file. Firstly, configure its permissions so that it cannot be written and can only be read or executed by its owner, as shown in the following example:
+
+```
+$ chmod 500 your-app.jar
+
+
+```
+
+Second, you should also take steps to limit the damage if your application or the account that’s running it is compromised. If an attacker does gain access, they could make the jar file writable and change its contents. One way to protect against this is to make it immutable by using `chattr`, as shown in the following example:
+
+```
+$ sudo chattr +i your-app.jar
+
+
+```
+
+This will prevent any user, including root, from modifying the jar.
+
+If root is used to control the application’s service and you [use a `.conf` file](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-script-customization-conf-file) to customize its startup, the `.conf` file is read and evaluated by the root user. It should be secured accordingly. Use `chmod` so that the file can only be read by the owner and use `chown` to make root the owner, as shown in the following example:
+
+```
+$ chmod 400 your-app.conf
+$ sudo chown root:root your-app.conf
+
+
+```
+
+### 61.2.2 Installation as a `systemd` Service
+
+`systemd` is the successor of the System V init system and is now being used by many modern Linux distributions. Although you can continue to use `init.d` scripts with `systemd`, it is also possible to launch Spring Boot applications by using `systemd` ‘service’ scripts.
+
+Assuming that you have a Spring Boot application installed in `/var/myapp`, to install a Spring Boot application as a `systemd` service, create a script named `myapp.service` and place it in `/etc/systemd/system` directory. The following script offers an example:
+
+```
+[Unit]
+Description=myapp
+After=syslog.target
+
+[Service]
+User=myapp
+ExecStart=/var/myapp/myapp.jar
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
+
+
+```
+
+| ![[Important]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/important.png) | Important |
+| ------------------------------------------------------------ | --------- |
+| Remember to change the `Description`, `User`, and `ExecStart` fields for your application. |           |
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The `ExecStart` field does not declare the script action command, which means that the `run` command is used by default. |
+
+Note that, unlike when running as an `init.d` service, the user that runs the application, the PID file, and the console log file are managed by `systemd` itself and therefore must be configured by using appropriate fields in the ‘service’ script. Consult the [service unit configuration man page](https://www.freedesktop.org/software/systemd/man/systemd.service.html) for more details.
+
+To flag the application to start automatically on system boot, use the following command:
+
+```
+$ systemctl enable myapp.service
+
+
+```
+
+Refer to `man systemctl` for more details.
+
+### 61.2.3 Customizing the Startup Script
+
+The default embedded startup script written by the Maven or Gradle plugin can be customized in a number of ways. For most people, using the default script along with a few customizations is usually enough. If you find you cannot customize something that you need to, use the `embeddedLaunchScript` option to write your own file entirely.
+
+#### Customizing the Start Script when It Is Written
+
+It often makes sense to customize elements of the start script as it is written into the jar file. For example, init.d scripts can provide a “description”. Since you know the description up front (and it need not change), you may as well provide it when the jar is generated.
+
+To customize written elements, use the `embeddedLaunchScriptProperties` option of the Spring Boot Maven or Gradle plugins.
+
+The following property substitutions are supported with the default script:
+
+| Name                       | Description                                                  |
+| -------------------------- | ------------------------------------------------------------ |
+| `mode`                     | The script mode. Defaults to `auto`.                         |
+| `initInfoProvides`         | The `Provides` section of “INIT INFO”. Defaults to `spring-boot-application` for Gradle and to `${project.artifactId}` for Maven. |
+| `initInfoRequiredStart`    | The `Required-Start` section of “INIT INFO”. Defaults to `$remote_fs $syslog $network`. |
+| `initInfoRequiredStop`     | The `Required-Stop` section of “INIT INFO”. Defaults to `$remote_fs $syslog $network`. |
+| `initInfoDefaultStart`     | The `Default-Start` section of “INIT INFO”. Defaults to `2 3 4 5`. |
+| `initInfoDefaultStop`      | The `Default-Stop` section of “INIT INFO”. Defaults to `0 1 6`. |
+| `initInfoShortDescription` | The `Short-Description` section of “INIT INFO”. Defaults to `Spring Boot Application` for Gradle and to `${project.name}` for Maven. |
+| `initInfoDescription`      | The `Description` section of “INIT INFO”. Defaults to `Spring Boot Application` for Gradle and to `${project.description}` (falling back to `${project.name}`) for Maven. |
+| `initInfoChkconfig`        | The `chkconfig` section of “INIT INFO”. Defaults to `2345 99 01`. |
+| `confFolder`               | The default value for `CONF_FOLDER`. Defaults to the folder containing the jar. |
+| `inlinedConfScript`        | Reference to a file script that should be inlined in the default launch script. This can be used to set environmental variables such as `JAVA_OPTS` before any external config files are loaded. |
+| `logFolder`                | The default value for `LOG_FOLDER`. Only valid for an `init.d` service. |
+| `logFilename`              | The default value for `LOG_FILENAME`. Only valid for an `init.d` service. |
+| `pidFolder`                | The default value for `PID_FOLDER`. Only valid for an `init.d` service. |
+| `pidFilename`              | The default value for the name of the PID file in `PID_FOLDER`. Only valid for an `init.d` service. |
+| `useStartStopDaemon`       | Whether the `start-stop-daemon` command, when it’s available, should be used to control the process. Defaults to `true`. |
+| `stopWaitTime`             | The default value for `STOP_WAIT_TIME`. Only valid for an `init.d` service. Defaults to 60 seconds. |
+
+#### Customizing a Script When It Runs
+
+For items of the script that need to be customized *after* the jar has been written, you can use environment variables or a [config file](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-script-customization-conf-file).
+
+The following environment properties are supported with the default script:
+
+| Variable                | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| `MODE`                  | The “mode” of operation. The default depends on the way the jar was built but is usually `auto` (meaning it tries to guess if it is an init script by checking if it is a symlink in a directory called `init.d`). You can explicitly set it to `service` so that the `stop|start|status|restart` commands work or to `run` if you want to run the script in the foreground. |
+| `USE_START_STOP_DAEMON` | Whether the `start-stop-daemon` command, when it’s available, should be used to control the process. Defaults to `true`. |
+| `PID_FOLDER`            | The root name of the pid folder (`/var/run` by default).     |
+| `LOG_FOLDER`            | The name of the folder in which to put log files (`/var/log` by default). |
+| `CONF_FOLDER`           | The name of the folder from which to read .conf files (same folder as jar-file by default). |
+| `LOG_FILENAME`          | The name of the log file in the `LOG_FOLDER` (`<appname>.log` by default). |
+| `APP_NAME`              | The name of the app. If the jar is run from a symlink, the script guesses the app name. If it is not a symlink or you want to explicitly set the app name, this can be useful. |
+| `RUN_ARGS`              | The arguments to pass to the program (the Spring Boot app).  |
+| `JAVA_HOME`             | The location of the `java` executable is discovered by using the `PATH` by default, but you can set it explicitly if there is an executable file at `$JAVA_HOME/bin/java`. |
+| `JAVA_OPTS`             | Options that are passed to the JVM when it is launched.      |
+| `JARFILE`               | The explicit location of the jar file, in case the script is being used to launch a jar that it is not actually embedded. |
+| `DEBUG`                 | If not empty, sets the `-x` flag on the shell process, making it easy to see the logic in the script. |
+| `STOP_WAIT_TIME`        | The time in seconds to wait when stopping the application before forcing a shutdown (`60` by default). |
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The `PID_FOLDER`, `LOG_FOLDER`, and `LOG_FILENAME` variables are only valid for an `init.d` service. For `systemd`, the equivalent customizations are made by using the ‘service’ script. See the [service unit configuration man page](https://www.freedesktop.org/software/systemd/man/systemd.service.html) for more details. |
+
+With the exception of `JARFILE` and `APP_NAME`, the settings listed in the preceding section can be configured by using a `.conf` file. The file is expected to be next to the jar file and have the same name but suffixed with `.conf` rather than `.jar`. For example, a jar named `/var/myapp/myapp.jar` uses the configuration file named `/var/myapp/myapp.conf`, as shown in the following example:
+
+**myapp.conf.** 
+
+```
+JAVA_OPTS=-Xmx1024M
+LOG_FOLDER=/custom/log/folder
+
+
+```
+
+
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| If you do not like having the config file next to the jar file, you can set a `CONF_FOLDER` environment variable to customize the location of the config file. |
+
+To learn about securing this file appropriately, see [the guidelines for securing an init.d service](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#deployment-initd-service-securing).
+
+## 61.3 Microsoft Windows Services
+
+A Spring Boot application can be started as a Windows service by using [`winsw`](https://github.com/kohsuke/winsw).
+
+A ([separately maintained sample](https://github.com/snicoll-scratches/spring-boot-daemon)) describes step-by-step how you can create a Windows service for your Spring Boot application.
+
+## 62. What to Read Next
+
+Check out the [Cloud Foundry](https://www.cloudfoundry.com/), [Heroku](https://www.heroku.com/), [OpenShift](https://www.openshift.com/), and [Boxfuse](https://boxfuse.com/) web sites for more information about the kinds of features that a PaaS can offer. These are just four of the most popular Java PaaS providers. Since Spring Boot is so amenable to cloud-based deployment, you can freely consider other providers as well.
+
+The next section goes on to cover the *Spring Boot CLI*, or you can jump ahead to read about *build tool plugins*.
+
+# Part VII. Spring Boot CLI
+
+
+
+The Spring Boot CLI is a command line tool that you can use if you want to quickly develop a Spring application. It lets you run Groovy scripts, which means that you have a familiar Java-like syntax without so much boilerplate code. You can also bootstrap a new project or write your own command for it.
+
+## 63. Installing the CLI
+
+The Spring Boot CLI (Command-Line Interface) can be installed manually by using SDKMAN! (the SDK Manager) or by using Homebrew or MacPorts if you are an OSX user. See *Section 10.2, “Installing the Spring Boot CLI”* in the “Getting started” section for comprehensive installation instructions.
+
+## 64. Using the CLI
+
+Once you have installed the CLI, you can run it by typing `spring` and pressing Enter at the command line. If you run `spring` without any arguments, a simple help screen is displayed, as follows:
+
+```
+$ spring
+usage: spring [--help] [--version]
+       <command> [<args>]
+
+Available commands are:
+
+  run [options] <files> [--] [args]
+    Run a spring groovy script
+
+  ... more command help is shown here
+
+
+```
+
+You can type `spring help` to get more details about any of the supported commands, as shown in the following example:
+
+```
+$ spring help run
+spring run - Run a spring groovy script
+
+usage: spring run [options] <files> [--] [args]
+
+Option                     Description
+------                     -----------
+--autoconfigure [Boolean]  Add autoconfigure compiler
+                             transformations (default: true)
+--classpath, -cp           Additional classpath entries
+-e, --edit                 Open the file with the default system
+                             editor
+--no-guess-dependencies    Do not attempt to guess dependencies
+--no-guess-imports         Do not attempt to guess imports
+-q, --quiet                Quiet logging
+-v, --verbose              Verbose logging of dependency
+                             resolution
+--watch                    Watch the specified file for changes
+
+
+```
+
+The `version` command provides a quick way to check which version of Spring Boot you are using, as follows:
+
+```
+$ spring version
+Spring CLI v2.0.0.BUILD-SNAPSHOT
+
+
+```
+
+## 64.1 Running Applications with the CLI
+
+You can compile and run Groovy source code by using the `run` command. The Spring Boot CLI is completely self-contained, so you do not need any external Groovy installation.
+
+The following example shows a “hello world” web application written in Groovy:
+
+**hello.groovy.** 
+
+```
+@RestController
+class WebApplication {
+
+	@RequestMapping("/")
+	String home() {
+		"Hello World!"
+	}
+
+}
+
+
+```
+
+
+
+To compile and run the application, type the following command:
+
+```
+$ spring run hello.groovy
+
+
+```
+
+To pass command-line arguments to the application, use `--` to separate the commands from the “spring” command arguments, as shown in the following example:
+
+```
+$ spring run hello.groovy -- --server.port=9000
+
+
+```
+
+To set JVM command line arguments, you can use the `JAVA_OPTS` environment variable, as shown in the following example:
+
+```
+$ JAVA_OPTS=-Xmx1024m spring run hello.groovy
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| When setting `JAVA_OPTS` on Microsoft Windows, make sure to quote the entire instruction, such as `set "JAVA_OPTS=-Xms256m -Xmx2048m"`. Doing so ensures the values are properly passed to the process. |
+
+### 64.1.1 Deduced “grab” Dependencies
+
+Standard Groovy includes a `@Grab` annotation, which lets you declare dependencies on third-party libraries. This useful technique lets Groovy download jars in the same way as Maven or Gradle would but without requiring you to use a build tool.
+
+Spring Boot extends this technique further and tries to deduce which libraries to “grab” based on your code. For example, since the `WebApplication` code shown previously uses `@RestController` annotations, Spring Boot grabs "Tomcat" and "Spring MVC".
+
+The following items are used as “grab hints”:
+
+| Items                                                      | Grabs                          |
+| ---------------------------------------------------------- | ------------------------------ |
+| `JdbcTemplate`, `NamedParameterJdbcTemplate`, `DataSource` | JDBC Application.              |
+| `@EnableJms`                                               | JMS Application.               |
+| `@EnableCaching`                                           | Caching abstraction.           |
+| `@Test`                                                    | JUnit.                         |
+| `@EnableRabbit`                                            | RabbitMQ.                      |
+| `@EnableReactor`                                           | Project Reactor.               |
+| extends `Specification`                                    | Spock test.                    |
+| `@EnableBatchProcessing`                                   | Spring Batch.                  |
+| `@MessageEndpoint` `@EnableIntegration`                    | Spring Integration.            |
+| `@Controller` `@RestController` `@EnableWebMvc`            | Spring MVC + Embedded Tomcat.  |
+| `@EnableWebSecurity`                                       | Spring Security.               |
+| `@EnableTransactionManagement`                             | Spring Transaction Management. |
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| See subclasses of [`CompilerAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-cli/src/main/java/org/springframework/boot/cli/compiler/CompilerAutoConfiguration.java) in the Spring Boot CLI source code to understand exactly how customizations are applied. |
+
+### 64.1.2 Deduced “grab” Coordinates
+
+Spring Boot extends Groovy’s standard `@Grab` support by letting you specify a dependency without a group or version (for example, `@Grab('freemarker')`). Doing so consults Spring Boot’s default dependency metadata to deduce the artifact’s group and version.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The default metadata is tied to the version of the CLI that you use. it changes only when you move to a new version of the CLI, putting you in control of when the versions of your dependencies may change. A table showing the dependencies and their versions that are included in the default metadata can be found in the [appendix](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#appendix-dependency-versions). |
+
+### 64.1.3 Default Import Statements
+
+To help reduce the size of your Groovy code, several `import` statements are automatically included. Notice how the preceding example refers to `@Component`, `@RestController`, and `@RequestMapping` without needing to use fully-qualified names or `import` statements.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| Many Spring annotations work without using `import` statements. Try running your application to see what fails before adding imports. |
+
+### 64.1.4 Automatic Main Method
+
+Unlike the equivalent Java application, you do not need to include a `public static void main(String[] args)` method with your `Groovy` scripts. A`SpringApplication` is automatically created, with your compiled code acting as the `source`.
+
+### 64.1.5 Custom Dependency Management
+
+By default, the CLI uses the dependency management declared in `spring-boot-dependencies` when resolving `@Grab` dependencies. Additional dependency management, which overrides the default dependency management, can be configured by using the `@DependencyManagementBom` annotation. The annotation’s value should specify the coordinates (`groupId:artifactId:version`) of one or more Maven BOMs.
+
+For example, consider the following declaration:
+
+```
+@DependencyManagementBom("com.example.custom-bom:1.0.0")
+
+
+```
+
+The preceding declaration picks up `custom-bom-1.0.0.pom` in a Maven repository under `com/example/custom-versions/1.0.0/`.
+
+When you specify multiple BOMs, they are applied in the order in which you declare them, as shown in the following example:
+
+```
+@DependencyManagementBom(["com.example.custom-bom:1.0.0",
+		"com.example.another-bom:1.0.0"])
+
+
+```
+
+The preceding example indicates that the dependency management in `another-bom` overrides the dependency management in `custom-bom`.
+
+You can use `@DependencyManagementBom` anywhere that you can use `@Grab`. However, to ensure consistent ordering of the dependency management, you can use `@DependencyManagementBom` at most once in your application. A useful source of dependency management (which is a superset of Spring Boot’s dependency management) is the [Spring IO Platform](https://platform.spring.io/), which you might include with the following line:
+
+```
+@DependencyManagementBom('io.spring.platform:platform-bom:1.1.2.RELEASE')
+
+
+```
+
+## 64.2 Applications with Multiple Source Files
+
+You can use “shell globbing” with all commands that accept file input. Doing so lets you use multiple files from a single directory, as shown in the following example:
+
+```
+$ spring run *.groovy
+
+
+```
+
+## 64.3 Packaging Your Application
+
+You can use the `jar` command to package your application into a self-contained executable jar file, as shown in the following example:
+
+```
+$ spring jar my-app.jar *.groovy
+
+
+```
+
+The resulting jar contains the classes produced by compiling the application and all of the application’s dependencies so that it can then be run by using `java -jar`. The jar file also contains entries from the application’s classpath. You can add and remove explicit paths to the jar by using `--include` and `--exclude`. Both are comma-separated, and both accept prefixes, in the form of “+” and “-”, to signify that they should be removed from the defaults. The default includes are as follows:
+
+```
+public/**, resources/**, static/**, templates/**, META-INF/**, *
+
+
+```
+
+The default excludes are as follows:
+
+```
+.*, repository/**, build/**, target/**, **/*.jar, **/*.groovy
+
+
+```
+
+Type `spring help jar` on the command line for more information.
+
+## 64.4 Initialize a New Project
+
+The `init` command lets you create a new project by using [start.spring.io](https://start.spring.io/) without leaving the shell, as shown in the following example:
+
+```
+$ spring init --dependencies=web,data-jpa my-project
+Using service at https://start.spring.io
+Project extracted to '/Users/developer/example/my-project'
+
+
+```
+
+The preceding example creates a `my-project` directory with a Maven-based project that uses `spring-boot-starter-web` and `spring-boot-starter-data-jpa`. You can list the capabilities of the service by using the `--list` flag, as shown in the following example:
+
+```
+$ spring init --list
+=======================================
+Capabilities of https://start.spring.io
+=======================================
+
+Available dependencies:
+-----------------------
+actuator - Actuator: Production ready features to help you monitor and manage your application
+...
+web - Web: Support for full-stack web development, including Tomcat and spring-webmvc
+websocket - Websocket: Support for WebSocket development
+ws - WS: Support for Spring Web Services
+
+Available project types:
+------------------------
+gradle-build -  Gradle Config [format:build, build:gradle]
+gradle-project -  Gradle Project [format:project, build:gradle]
+maven-build -  Maven POM [format:build, build:maven]
+maven-project -  Maven Project [format:project, build:maven] (default)
+
+...
+
+
+```
+
+The `init` command supports many options. See the `help` output for more details. For instance, the following command creates a Gradle project that uses Java 8 and `war` packaging:
+
+```
+$ spring init --build=gradle --java-version=1.8 --dependencies=websocket --packaging=war sample-app.zip
+Using service at https://start.spring.io
+Content saved to 'sample-app.zip'
+
+
+```
+
+## 64.5 Using the Embedded Shell
+
+Spring Boot includes command-line completion scripts for the BASH and zsh shells. If you do not use either of these shells (perhaps you are a Windows user), you can use the `shell` command to launch an integrated shell, as shown in the following example:
+
+```
+$ spring shell
+Spring Boot (v2.0.0.BUILD-SNAPSHOT)
+Hit TAB to complete. Type \'help' and hit RETURN for help, and \'exit' to quit.
+
+
+```
+
+From inside the embedded shell, you can run other commands directly:
+
+```
+$ version
+Spring CLI v2.0.0.BUILD-SNAPSHOT
+
+
+```
+
+The embedded shell supports ANSI color output as well as `tab` completion. If you need to run a native command, you can use the `!` prefix. To exit the embedded shell, press `ctrl-c`.
+
+## 64.6 Adding Extensions to the CLI
+
+You can add extensions to the CLI by using the `install` command. The command takes one or more sets of artifact coordinates in the format `group:artifact:version`, as shown in the following example:
+
+```
+$ spring install com.example:spring-boot-cli-extension:1.0.0.RELEASE
+
+
+```
+
+In addition to installing the artifacts identified by the coordinates you supply, all of the artifacts' dependencies are also installed.
+
+To uninstall a dependency, use the `uninstall` command. As with the `install` command, it takes one or more sets of artifact coordinates in the format of `group:artifact:version`, as shown in the following example:
+
+```
+$ spring uninstall com.example:spring-boot-cli-extension:1.0.0.RELEASE
+
+
+```
+
+It uninstalls the artifacts identified by the coordinates you supply and their dependencies.
+
+To uninstall all additional dependencies, you can use the `--all` option, as shown in the following example:
+
+```
+$ spring uninstall --all
+
+
+```
+
+## 65. Developing Applications with the Groovy Beans DSL
+
+Spring Framework 4.0 has native support for a `beans{}` “DSL” (borrowed from [Grails](http://grails.org/)), and you can embed bean definitions in your Groovy application scripts by using the same format. This is sometimes a good way to include external features like middleware declarations, as shown in the following example:
+
+```
+@Configuration
+class Application implements CommandLineRunner {
+
+	@Autowired
+	SharedService service
+
+	@Override
+	void run(String... args) {
+		println service.message
+	}
+
+}
+
+import my.company.SharedService
+
+beans {
+	service(SharedService) {
+		message = "Hello World"
+	}
+}
+
+
+```
+
+You can mix class declarations with `beans{}` in the same file as long as they stay at the top level, or, if you prefer, you can put the beans DSL in a separate file.
+
+## 66. Configuring the CLI with `settings.xml`
+
+The Spring Boot CLI uses Aether, Maven’s dependency resolution engine, to resolve dependencies. The CLI makes use of the Maven configuration found in `~/.m2/settings.xml` to configure Aether. The following configuration settings are honored by the CLI:
+
+- Offline
+- Mirrors
+- Servers
+- Proxies
+- Profiles
+  - Activation
+  - Repositories
+- Active profiles
+
+See [Maven’s settings documentation](https://maven.apache.org/settings.html) for further information.
+
+## 67. What to Read Next
+
+There are some [sample groovy scripts](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-cli/samples) available from the GitHub repository that you can use to try out the Spring Boot CLI. There is also extensive Javadoc throughout the [source code](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-cli/src/main/java/org/springframework/boot/cli).
+
+If you find that you reach the limit of the CLI tool, you probably want to look at converting your application to a full Gradle or Maven built “Groovy project”. The next section covers Spring Boot’s "[Build tool plugins](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins)", which you can use with Gradle or Maven.
+
+# Part VIII. Build tool plugins
+
+
+
+Spring Boot provides build tool plugins for Maven and Gradle. The plugins offer a variety of features, including the packaging of executable jars. This section provides more details on both plugins as well as some help should you need to extend an unsupported build system. If you are just getting started, you might want to read “[Chapter 13, *Build Systems*](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot-build-systems)” from the “[Part III, “Using Spring Boot”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot)” section first.
+
+## 68. Spring Boot Maven Plugin
+
+The [Spring Boot Maven Plugin](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin) provides Spring Boot support in Maven, letting you package executable jar or war archives and run an application “in-place”. To use it, you must use Maven 3.2 (or later).
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| See the [Spring Boot Maven Plugin Site](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin) for complete plugin documentation. |
+
+## 68.1 Including the Plugin
+
+To use the Spring Boot Maven Plugin, include the appropriate XML in the `plugins` section of your `pom.xml`, as shown in the following example:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- ... -->
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.0.0.BUILD-SNAPSHOT</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
+
+
+```
+
+The preceding configuration repackages a jar or war that is built during the `package` phase of the Maven lifecycle. The following example shows both the repackaged jar as well as the original jar in the `target` directory:
+
+```
+$ mvn package
+$ ls target/*.jar
+target/myproject-1.0.0.jar target/myproject-1.0.0.jar.original
+
+
+```
+
+If you do not include the `<execution/>` configuration, as shown in the prior example, you can run the plugin on its own (but only if the package goal is used as well), as shown in the following example:
+
+```
+$ mvn package spring-boot:repackage
+$ ls target/*.jar
+target/myproject-1.0.0.jar target/myproject-1.0.0.jar.original
+
+
+```
+
+If you use a milestone or snapshot release, you also need to add the appropriate `pluginRepository` elements, as shown in the following listing:
+
+```
+<pluginRepositories>
+	<pluginRepository>
+		<id>spring-snapshots</id>
+		<url>https://repo.spring.io/snapshot</url>
+	</pluginRepository>
+	<pluginRepository>
+		<id>spring-milestones</id>
+		<url>https://repo.spring.io/milestone</url>
+	</pluginRepository>
+</pluginRepositories>
+
+
+```
+
+## 68.2 Packaging Executable Jar and War Files
+
+Once `spring-boot-maven-plugin` has been included in your `pom.xml`, it automatically tries to rewrite archives to make them executable by using the `spring-boot:repackage` goal. You should configure your project to build a jar or war (as appropriate) by using the usual `packaging` element, as shown in the following example:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- ... -->
+	<packaging>jar</packaging>
+	<!-- ... -->
+</project>
+
+
+```
+
+Your existing archive is enhanced by Spring Boot during the `package` phase. The main class that you want to launch can be specified either by using a configuration option or by adding a `Main-Class` attribute to the manifest in the usual way. If you do not specify a main class, the plugin searches for a class with a`public static void main(String[] args)` method.
+
+To build and run a project artifact, you can type the following:
+
+```
+$ mvn package
+$ java -jar target/mymodule-0.0.1-SNAPSHOT.jar
+
+
+```
+
+To build a war file that is both executable and deployable into an external container, you need to mark the embedded container dependencies as “provided”, as shown in the following example:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<!-- ... -->
+	<packaging>war</packaging>
+	<!-- ... -->
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- ... -->
+	</dependencies>
+</project>
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| See the “[Section 87.1, “Create a Deployable War File”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-create-a-deployable-war-file)” section for more details on how to create a deployable war file. |
+
+Advanced configuration options and examples are available in the [plugin info page](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin).
+
+## 69. Spring Boot Gradle Plugin
+
+The Spring Boot Gradle Plugin provides Spring Boot support in Gradle, letting you package executable jar or war archives, run Spring Boot applications, and use the dependency management provided by `spring-boot-dependencies`. It requires Gradle 4.0 or later. Please refer to the plugin’s documentation to learn more:
+
+- Reference ([HTML](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/gradle-plugin/reference/html) and [PDF](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/gradle-plugin/reference/pdf/spring-boot-gradle-plugin-reference.pdf))
+- [API](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/gradle-plugin/api)
+
+## 70. Spring Boot AntLib Module
+
+The Spring Boot AntLib module provides basic Spring Boot support for Apache Ant. You can use the module to create executable jars. To use the module, you need to declare an additional `spring-boot` namespace in your `build.xml`, as shown in the following example:
+
+```
+<project xmlns:ivy="antlib:org.apache.ivy.ant"
+	xmlns:spring-boot="antlib:org.springframework.boot.ant"
+	name="myapp" default="build">
+	...
+</project>
+
+
+```
+
+You need to remember to start Ant using the `-lib` option, as shown in the following example:
+
+```
+$ ant -lib <folder containing spring-boot-antlib-2.0.0.BUILD-SNAPSHOT.jar>
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| The “Using Spring Boot” section includes a more complete example of [using Apache Ant with `spring-boot-antlib`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot-ant). |
+
+## 70.1 Spring Boot Ant Tasks
+
+Once the `spring-boot-antlib` namespace has been declared, the following additional tasks are available:
+
+- [Section 70.1.1, “`spring-boot:exejar`”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#spring-boot-ant-exejar)
+- [Section 70.2, “`spring-boot:findmainclass`”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#spring-boot-ant-findmainclass)
+
+### 70.1.1 `spring-boot:exejar`
+
+You can use the `exejar` task to create a Spring Boot executable jar. The following attributes are supported by the task:
+
+| Attribute     | Description                            | Required                                                     |
+| ------------- | -------------------------------------- | ------------------------------------------------------------ |
+| `destfile`    | The destination jar file to create     | Yes                                                          |
+| `classes`     | The root directory of Java class files | Yes                                                          |
+| `start-class` | The main application class to run      | No *(the default is the first class found that declares a main method)* |
+
+The following nested elements can be used with the task:
+
+| Element     | Description                                                  |
+| ----------- | ------------------------------------------------------------ |
+| `resources` | One or more [Resource Collections](https://ant.apache.org/manual/Types/resources.html#collection) describing a set of [Resources](https://ant.apache.org/manual/Types/resources.html) that should be added to the content of the created jar file. |
+| `lib`       | One or more [Resource Collections](https://ant.apache.org/manual/Types/resources.html#collection) that should be added to the set of jar libraries that make up the runtime dependency classpath of the application. |
+
+### 70.1.2 Examples
+
+This section shows two examples of Ant tasks.
+
+**Specify start-class.** 
+
+```
+<spring-boot:exejar destfile="target/my-application.jar"
+		classes="target/classes" start-class="com.example.MyApplication">
+	<resources>
+		<fileset dir="src/main/resources" />
+	</resources>
+	<lib>
+		<fileset dir="lib" />
+	</lib>
+</spring-boot:exejar>
+
+
+```
+
+
+
+**Detect start-class.** 
+
+```
+<exejar destfile="target/my-application.jar" classes="target/classes">
+	<lib>
+		<fileset dir="lib" />
+	</lib>
+</exejar>
+
+
+```
+
+
+
+## 70.2 `spring-boot:findmainclass`
+
+The `findmainclass` task is used internally by `exejar` to locate a class declaring a `main`. If necessary, you can also use this task directly in your build. The following attributes are supported:
+
+| Attribute     | Description                                          | Required                                    |
+| ------------- | ---------------------------------------------------- | ------------------------------------------- |
+| `classesroot` | The root directory of Java class files               | Yes *(unless mainclass is specified)*       |
+| `mainclass`   | Can be used to short-circuit the `main` class search | No                                          |
+| `property`    | The Ant property that should be set with the result  | No *(result will be logged if unspecified)* |
+
+### 70.2.1 Examples
+
+This section contains three examples of using `findmainclass`.
+
+**Find and log.** 
+
+```
+<findmainclass classesroot="target/classes" />
+
+
+```
+
+
+
+**Find and set.** 
+
+```
+<findmainclass classesroot="target/classes" property="main-class" />
+
+
+```
+
+
+
+**Override and set.** 
+
+```
+<findmainclass mainclass="com.example.MainClass" property="main-class" />
+
+
+```
+
+
+
+## 71. Supporting Other Build Systems
+
+If you want to use a build tool other than Maven, Gradle, or Ant, you likely need to develop your own plugin. Executable jars need to follow a specific format and certain entries need to be written in an uncompressed form (see the “[executable jar format](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar)” section in the appendix for details).
+
+The Spring Boot Maven and Gradle plugins both make use of `spring-boot-loader-tools` to actually generate jars. If you need to, you may use this library directly.
+
+## 71.1 Repackaging Archives
+
+To repackage an existing archive so that it becomes a self-contained executable archive, use `org.springframework.boot.loader.tools.Repackager`. The `Repackager` class takes a single constructor argument that refers to an existing jar or war archive. Use one of the two available `repackage()` methods to either replace the original file or write to a new destination. Various settings can also be configured on the repackager before it is run.
+
+## 71.2 Nested Libraries
+
+When repackaging an archive, you can include references to dependency files by using the `org.springframework.boot.loader.tools.Libraries` interface. We do not provide any concrete implementations of `Libraries` here as they are usually build-system-specific.
+
+If your archive already includes libraries, you can use `Libraries.NONE`.
+
+## 71.3 Finding a Main Class
+
+If you do not use `Repackager.setMainClass()` to specify a main class, the repackager uses [ASM](http://asm.ow2.org/) to read class files and tries to find a suitable class with a `public static void main(String[] args)` method. An exception is thrown if more than one candidate is found.
+
+## 71.4 Example Repackage Implementation
+
+The following example shows a typical repackage implementation:
+
+```
+Repackager repackager = new Repackager(sourceJarFile);
+repackager.setBackupSource(false);
+repackager.repackage(new Libraries() {
+			@Override
+			public void doWithLibraries(LibraryCallback callback) throws IOException {
+				// Build system specific implementation, callback for each dependency
+				// callback.library(new Library(nestedFile, LibraryScope.COMPILE));
+			}
+		});
+
+
+```
+
+## 72. What to Read Next
+
+If you are interested in how the build tool plugins work, you can look at the [`spring-boot-tools`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-tools) module on GitHub. More technical details of the executable jar format are covered in [the appendix](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar).
+
+If you have specific build-related questions, you can check out the “[how-to](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto)” guides.
+
+# Part IX. ‘How-to’ guides
+
+
+
+This section provides answers to some common ‘how do I do that…’ questions that often arise when using Spring Boot. Its coverage is not exhaustive, but it does cover quite a lot.
+
+If you have a specific problem that we do not cover here, you might want to check out [stackoverflow.com](https://stackoverflow.com/tags/spring-boot) to see if someone has already provided an answer. This is also a great place to ask new questions (please use the `spring-boot` tag).
+
+We are also more than happy to extend this section. If you want to add a ‘how-to’, send us a [pull request](https://github.com/spring-projects/spring-boot/tree/master).
+
+## 73. Spring Boot Application
+
+This section includes topics relating directly to Spring Boot applications.
+
+## 73.1 Create Your Own FailureAnalyzer
+
+[`FailureAnalyzer`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/diagnostics/FailureAnalyzer.html) is a great way to intercept an exception on startup and turn it into a human-readable message, wrapped in a [`FailureAnalysis`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/diagnostics/FailureAnalysis.html). Spring Boot provides such an analyzer for application-context-related exceptions, JSR-303 validations, and more. You can also create your own.
+
+`AbstractFailureAnalyzer` is a convenient extension of `FailureAnalyzer` that checks the presence of a specified exception type in the exception to handle. You can extend from that so that your implementation gets a chance to handle the exception only when it is actually present. If, for whatever reason, you cannot handle the exception, return `null` to give another implementation a chance to handle the exception.
+
+`FailureAnalyzer` implementations must be registered in `META-INF/spring.factories`. The following example registers `ProjectConstraintViolationFailureAnalyzer`:
+
+```
+org.springframework.boot.diagnostics.FailureAnalyzer=\
+com.example.ProjectConstraintViolationFailureAnalyzer
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| If you need access to the `BeanFactory` or the `Environment`, your `FailureAnalyzer` can simply implement `BeanFactoryAware` or `EnvironmentAware` respectively. |
+
+## 73.2 Troubleshoot Auto-configuration
+
+The Spring Boot auto-configuration tries its best to “do the right thing”, but sometimes things fail, and it can be hard to tell why.
+
+There is a really useful `ConditionEvaluationReport` available in any Spring Boot `ApplicationContext`. You can see it if you enable `DEBUG` logging output. If you use the `spring-boot-actuator` (see [the Actuator chapter](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#)), there is also a `conditions` endpoint that renders the report in JSON. Use that endpoint to debug the application and see what features have been added (and which have not been added) by Spring Boot at runtime.
+
+Many more questions can be answered by looking at the source code and the Javadoc. When reading the code, remember the following rules of thumb:
+
+- Look for classes called `*AutoConfiguration` and read their sources. Pay special attention to the `@Conditional*` annotations to find out what features they enable and when. Add `--debug` to the command line or a System property `-Ddebug` to get a log on the console of all the auto-configuration decisions that were made in your app. In a running Actuator app, look at the `conditions` endpoint (`/actuator/conditions` or the JMX equivalent) for the same information.
+- Look for classes that are `@ConfigurationProperties` (such as [`ServerProperties`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/ServerProperties.java)) and read from there the available external configuration options. The`@ConfigurationProperties` annotation has a `name` attribute that acts as a prefix to external properties. Thus, `ServerProperties` has `prefix="server"` and its configuration properties are `server.port`, `server.address`, and others. In a running Actuator app, look at the `configprops`endpoint.
+- Look for uses of the `bind` method on the `Binder` to pull configuration values explicitly out of the `Environment` in a relaxed manner. It is often used with a prefix.
+- Look for `@Value` annotations that bind directly to the `Environment`.
+- Look for `@ConditionalOnExpression` annotations that switch features on and off in response to SpEL expressions, normally evaluated with placeholders resolved from the `Environment`.
+
+## 73.3 Customize the Environment or ApplicationContext Before It Starts
+
+A `SpringApplication` has `ApplicationListeners` and `ApplicationContextInitializers` that are used to apply customizations to the context or environment. Spring Boot loads a number of such customizations for use internally from `META-INF/spring.factories`. There is more than one way to register additional customizations:
+
+- Programmatically, per application, by calling the `addListeners` and `addInitializers` methods on `SpringApplication` before you run it.
+- Declaratively, per application, by setting the `context.initializer.classes` or `context.listener.classes` properties.
+- Declaratively, for all applications, by adding a `META-INF/spring.factories` and packaging a jar file that the applications all use as a library.
+
+The `SpringApplication` sends some special `ApplicationEvents` to the listeners (some even before the context is created) and then registers the listeners for events published by the `ApplicationContext` as well. See “[Section 23.5, “Application Events and Listeners”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-application-events-and-listeners)” in the ‘Spring Boot features’ section for a complete list.
+
+It is also possible to customize the `Environment` before the application context is refreshed by using `EnvironmentPostProcessor`. Each implementation should be registered in `META-INF/spring.factories`, as shown in the following example:
+
+```
+org.springframework.boot.env.EnvironmentPostProcessor=com.example.YourEnvironmentPostProcessor
+
+
+```
+
+The implementation can load arbitrary files and add them to the `Environment`. For instance, the following example loads a YAML configuration file from the classpath:
+
+```
+public class EnvironmentPostProcessorExample implements EnvironmentPostProcessor {
+
+	private final YamlPropertySourceLoader loader = new YamlPropertySourceLoader();
+
+	@Override
+	public void postProcessEnvironment(ConfigurableEnvironment environment,
+			SpringApplication application) {
+		Resource path = new ClassPathResource("com/example/myapp/config.yml");
+		PropertySource<?> propertySource = loadYaml(path);
+		environment.getPropertySources().addLast(propertySource);
+	}
+
+	private PropertySource<?> loadYaml(Resource path) {
+		if (!path.exists()) {
+			throw new IllegalArgumentException("Resource " + path + " does not exist");
+		}
+		try {
+			return this.loader.load("custom-resource", path).get(0);
+		}
+		catch (IOException ex) {
+			throw new IllegalStateException(
+					"Failed to load yaml configuration from " + path, ex);
+		}
+	}
+
+}
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| The `Environment` has already been prepared with all the usual property sources that Spring Boot loads by default. It is therefore possible to get the location of the file from the environment. The preceding example adds the `custom-resource` property source at the end of the list so that a key defined in any of the usual other locations takes precedence. A custom implementation may define another order. |
+
+| ![[Caution]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/caution.png) | Caution |
+| ------------------------------------------------------------ | ------- |
+| While using `@PropertySource` on your `@SpringBootApplication` may seem to be a convenient and easy way to load a custom resource in the `Environment`, we do not recommend it, because Spring Boot prepares the `Environment` before the `ApplicationContext` is refreshed. Any key defined with `@PropertySource` is loaded too late to have any effect on auto-configuration. |         |
+
+## 73.4 Build an ApplicationContext Hierarchy (Adding a Parent or Root Context)
+
+You can use the `ApplicationBuilder` class to create parent/child `ApplicationContext` hierarchies. See “[Section 23.4, “Fluent Builder API”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-fluent-builder-api)” in the ‘Spring Boot features’ section for more information.
+
+## 73.5 Create a Non-web Application
+
+Not all Spring applications have to be web applications (or web services). If you want to execute some code in a `main` method but also bootstrap a Spring application to set up the infrastructure to use, you can use the `SpringApplication` features of Spring Boot. A `SpringApplication` changes its `ApplicationContext` class, depending on whether it thinks it needs a web application or not. The first thing you can do to help it is to leave the servlet API dependencies off the classpath. If you cannot do that (for example, you run two applications from the same code base) then you can explicitly call `setWebEnvironment(false)` on your `SpringApplication` instance or set the `applicationContextClass` property (through the Java API or with external properties). Application code that you want to run as your business logic can be implemented as a `CommandLineRunner` and dropped into the context as a `@Bean` definition.
+
+## 74. Properties and Configuration
+
+This section includes topics about setting and reading properties and configuration settings and their interaction with Spring Boot applications.
+
+## 74.1 Automatically Expand Properties at Build Time
+
+Rather than hardcoding some properties that are also specified in your project’s build configuration, you can automatically expand them by instead using the existing build configuration. This is possible in both Maven and Gradle.
+
+### 74.1.1 Automatic Property Expansion Using Maven
+
+You can automatically expand properties from the Maven project by using resource filtering. If you use the `spring-boot-starter-parent`, you can then refer to your Maven ‘project properties’ with `@..@` placeholders, as shown in the following example:
+
+```
+app.encoding=@project.build.sourceEncoding@
+app.java.version=@java.version@
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Only production configuration is filtered that way (in other words, no filtering is applied on `src/test/resources`). |
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| If you enable the `addResources` flag, the `spring-boot:run` goal can add `src/main/resources` directly to the classpath (for hot reloading purposes). Doing so circumvents the resource filtering and this feature. Instead, you can use the `exec:java` goal or customize the plugin’s configuration. See the [plugin usage page](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin/usage.html) for more details. |
+
+If you do not use the starter parent, you need to include the following element inside the `<build/>` element of your `pom.xml`:
+
+```
+<resources>
+	<resource>
+		<directory>src/main/resources</directory>
+		<filtering>true</filtering>
+	</resource>
+</resources>
+
+
+```
+
+You also need to include the following element inside `<plugins/>`:
+
+```
+<plugin>
+	<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-resources-plugin</artifactId>
+	<version>2.7</version>
+	<configuration>
+		<delimiters>
+			<delimiter>@</delimiter>
+		</delimiters>
+		<useDefaultDelimiters>false</useDefaultDelimiters>
+	</configuration>
+</plugin>
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The `useDefaultDelimiters` property is important if you use standard Spring placeholders (such as `${placeholder}`) in your configuration. If that property is not set to `false`, these may be expanded by the build. |
+
+### 74.1.2 Automatic Property Expansion Using Gradle
+
+You can automatically expand properties from the Gradle project by configuring the Java plugin’s `processResources` task to do so, as shown in the following example:
+
+```
+processResources {
+	expand(project.properties)
+}
+
+
+```
+
+You can then refer to your Gradle project’s properties by using placeholders, as shown in the following example:
+
+```
+app.name=${name}
+app.description=${description}
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Gradle’s `expand` method uses Groovy’s `SimpleTemplateEngine`, which transforms `${..}` tokens. The `${..}` style conflicts with Spring’s own property placeholder mechanism. To use Spring property placeholders together with automatic expansion, escape the Spring property placeholders as follows: `\${..}`. |
+
+## 74.2 Externalize the Configuration of `SpringApplication`
+
+A `SpringApplication` has bean properties (mainly setters), so you can use its Java API as you create the application to modify its behavior. Alternatively, you can externalize the configuration by setting properties in `spring.main.*`. For example, in `application.properties`, you might have the following settings:
+
+```
+spring.main.web-environment=false
+spring.main.banner-mode=off
+
+
+```
+
+Then the Spring Boot banner is not printed on startup, and the application is not a web application.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The preceding example also demonstrates how flexible binding allows the use of underscores (`_`) as well as dashes (`-`) in property names. |
+
+Properties defined in external configuration override the values specified with the Java API, with the notable exception of the sources used to create the `ApplicationContext`. Consider the following application:
+
+```
+new SpringApplicationBuilder()
+	.bannerMode(Banner.Mode.OFF)
+	.sources(demo.MyApp.class)
+	.run(args);
+
+
+```
+
+Now consider the following configuration:
+
+```
+spring.main.sources=com.acme.Config,com.acme.ExtraConfig
+spring.main.banner-mode=console
+
+
+```
+
+The actual application *now* shows the banner (as overridden by configuration) and uses three sources for the `ApplicationContext` (in the following order): `demo.MyApp`, `com.acme.Config`, and `com.acme.ExtraConfig`.
+
+## 74.3 Change the Location of External Properties of an Application
+
+By default, properties from different sources are added to the Spring `Environment` in a defined order (see “[Chapter 24, *Externalized Configuration*](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config)” in the ‘Spring Boot features’ section for the exact order).
+
+A nice way to augment and modify this ordering is to add `@PropertySource` annotations to your application sources. Classes passed to the `SpringApplication`static convenience methods and those added using `setSources()` are inspected to see if they have `@PropertySources`. If they do, those properties are added to the `Environment` early enough to be used in all phases of the `ApplicationContext` lifecycle. Properties added in this way have lower priority than any added by using the default locations (such as `application.properties`), system properties, environment variables, or the command line.
+
+You can also provide the following System properties (or environment variables) to change the behavior:
+
+- `spring.config.name` (`SPRING_CONFIG_NAME`): Defaults to `application` as the root of the file name.
+- `spring.config.location` (`SPRING_CONFIG_LOCATION`): The file to load (such as a classpath resource or a URL). A separate `Environment` property source is set up for this document and it can be overridden by system properties, environment variables, or the command line.
+
+No matter what you set in the environment, Spring Boot always loads `application.properties` as described above. By default, if YAML is used, then files with the ‘.yml’ extension are also added to the list.
+
+Spring Boot logs the configuration files that are loaded at the `DEBUG` level and the candidates it has not found at `TRACE` level.
+
+See [`ConfigFileApplicationListener`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/context/config/ConfigFileApplicationListener.java) for more detail.
+
+## 74.4 Use ‘Short’ Command Line Arguments
+
+Some people like to use (for example) `--port=9000` instead of `--server.port=9000` to set configuration properties on the command line. You can enable this behavior by using placeholders in `application.properties`, as shown in the following example:
+
+```
+server.port=${port:8080}
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| If you inherit from the `spring-boot-starter-parent` POM, the default filter token of the `maven-resources-plugins` has been changed from `${*}` to `@` (that is, `@maven.token@` instead of `${maven.token}`) to prevent conflicts with Spring-style placeholders. If you have enabled Maven filtering for the `application.properties` directly, you may want to also change the default filter token to use [other delimiters](https://maven.apache.org/plugins/maven-resources-plugin/resources-mojo.html#delimiters). |
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| In this specific case, the port binding works in a PaaS environment such as Heroku or Cloud Foundry. In those two platforms, the `PORT` environment variable is set automatically and Spring can bind to capitalized synonyms for `Environment` properties. |
+
+## 74.5 Use YAML for External Properties
+
+YAML is a superset of JSON and, as such, is a convenient syntax for storing external properties in a hierarchical format, as shown in the following example:
+
+```
+spring:
+	application:
+		name: cruncher
+	datasource:
+		driverClassName: com.mysql.jdbc.Driver
+		url: jdbc:mysql://localhost/test
+server:
+	port: 9000
+
+
+```
+
+Create a file called `application.yml` and put it in the root of your classpath. Then add `snakeyaml` to your dependencies (Maven coordinates `org.yaml:snakeyaml`, already included if you use the `spring-boot-starter`). A YAML file is parsed to a Java `Map<String,Object>` (like a JSON object), and Spring Boot flattens the map so that it is one level deep and has period-separated keys, as many people are used to with `Properties` files in Java.
+
+The preceding example YAML corresponds to the following `application.properties` file:
+
+```
+spring.application.name=cruncher
+spring.datasource.driverClassName=com.mysql.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost/test
+server.port=9000
+
+
+```
+
+See “[Section 24.6, “Using YAML Instead of Properties”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-yaml)” in the ‘Spring Boot features’ section for more information about YAML.
+
+## 74.6 Set the Active Spring Profiles
+
+The Spring `Environment` has an API for this, but you would normally set a System property (`spring.profiles.active`) or an OS environment variable (`SPRING_PROFILES_ACTIVE`). Also, you can launch your application with a `-D` argument (remember to put it before the main class or jar archive), as follows:
+
+```
+$ java -jar -Dspring.profiles.active=production demo-0.0.1-SNAPSHOT.jar
+
+
+```
+
+In Spring Boot, you can also set the active profile in `application.properties`, as shown in the following example:
+
+```
+spring.profiles.active=production
+
+
+```
+
+A value set this way is replaced by the System property or environment variable setting but not by the `SpringApplicationBuilder.profiles()` method. Thus, the latter Java API can be used to augment the profiles without changing the defaults.
+
+See “[Chapter 25, *Profiles*](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-profiles)” in the “Spring Boot features” section for more information.
+
+## 74.7 Change Configuration Depending on the Environment
+
+A YAML file is actually a sequence of documents separated by `---` lines, and each document is parsed separately to a flattened map.
+
+If a YAML document contains a `spring.profiles` key, then the profiles value (a comma-separated list of profiles) is fed into the Spring`Environment.acceptsProfiles()` method. If any of those profiles is active, that document is included in the final merge (otherwise, it is not), as shown in the following example:
+
+```
+server:
+	port: 9000
+---
+
+spring:
+	profiles: development
+server:
+	port: 9001
+
+---
+
+spring:
+	profiles: production
+server:
+	port: 0
+
+
+```
+
+In the preceding example, the default port is 9000. However, if the Spring profile called ‘development’ is active, then the port is 9001. If ‘production’ is active, then the port is 0.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The YAML documents are merged in the order in which they are encountered. Later values override earlier values. |
+
+To do the same thing with properties files, you can use `application-${profile}.properties` to specify profile-specific values.
+
+## 74.8 Discover Built-in Options for External Properties
+
+Spring Boot binds external properties from `application.properties` (or `.yml` files and other places) into an application at runtime. There is not (and technically cannot be) an exhaustive list of all supported properties in a single location, because contributions can come from additional jar files on your classpath.
+
+A running application with the Actuator features has a `configprops` endpoint that shows all the bound and bindable properties available through `@ConfigurationProperties`.
+
+The appendix includes an [`application.properties`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#common-application-properties) example with a list of the most common properties supported by Spring Boot. The definitive list comes from searching the source code for `@ConfigurationProperties` and `@Value` annotations as well as the occasional use of `Binder`. For more about the exact ordering of loading properties, see "[Chapter 24, *Externalized Configuration*](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config)".
+
+## 75. Embedded Web Servers
+
+Each Spring Boot web application includes an embedded web server. This feature leads to a number of how-to questions, including how to change the embedded server and how to configure the embedded server. This section answers those questions.
+
+## 75.1 Use Another Web Server
+
+Many Spring Boot starters include default embedded containers. `spring-boot-starter-web` includes Tomcat by including `spring-boot-starter-tomcat`, but you can use `spring-boot-starter-jetty` or `spring-boot-starter-undertow` instead. `spring-boot-starter-webflux` includes Reactor Netty by including `spring-boot-starter-reactor-netty`, but you can use `spring-boot-starter-tomcat`, `spring-boot-starter-jetty`, or `spring-boot-starter-undertow` instead.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Many starters support only Spring MVC, so they transitively bring `spring-boot-starter-web` into your application classpath. |
+
+If you need to use a different HTTP server, you need to exclude the default dependencies and include the one you need. Spring Boot provides separate starters for HTTP servers to help make this process as easy as possible.
+
+The following Maven example shows how to exclude Tomcat and include Jetty for Spring MVC:
+
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+	<exclusions>
+		<!-- Exclude the Tomcat dependency -->
+		<exclusion>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+		</exclusion>
+	</exclusions>
+</dependency>
+<!-- Use Jetty instead -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-jetty</artifactId>
+</dependency>
+
+
+```
+
+The following Gradle example shows how to exclude Netty and include Undertow for Spring WebFlux:
+
+```
+configurations {
+	// exclude Reactor Netty
+	compile.exclude module: 'spring-boot-starter-reactor-netty'
+}
+
+dependencies {
+	compile 'org.springframework.boot:spring-boot-starter-webflux'
+	// Use Undertow instead
+	compile 'org.springframework.boot:spring-boot-starter-undertow'
+	// ...
+}
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| `spring-boot-starter-reactor-netty` is required to use the `WebClient` class, so you may need to keep a dependency on Netty even when you need to include a different HTTP server. |
+
+## 75.2 Configure Jetty
+
+Generally, you can follow the advice from “[Section 74.8, “Discover Built-in Options for External Properties”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-discover-build-in-options-for-external-properties)” about `@ConfigurationProperties`(`ServerProperties` is the main one here). However, you should also look at [`WebServerFactoryCustomizer`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/web/server/WebServerFactoryCustomizer.html). The Jetty APIs are quite rich, so, once you have access to the `JettyServletWebServerFactory`, you can modify it in a number of ways. Alternatively, if you need more control and customization, you can add your own `JettyServletWebServerFactory`.
+
+## 75.3 Add a Servlet, Filter, or Listener to an Application
+
+There are two ways to add `Servlet`, `Filter`, `ServletContextListener`, and the other listeners supported by the Servlet spec to your application:
+
+- [Section 75.3.1, “Add a Servlet, Filter, or Listener by Using a Spring Bean”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-listener-as-spring-bean)
+- [Section 75.3.2, “Add Servlets, Filters, and Listeners by Using Classpath Scanning”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-listener-using-scanning)
+
+### 75.3.1 Add a Servlet, Filter, or Listener by Using a Spring Bean
+
+To add a `Servlet`, `Filter`, or Servlet `*Listener` by using a Spring bean, you must provide a `@Bean` definition for it. Doing so can be very useful when you want to inject configuration or dependencies. However, you must be very careful that they do not cause eager initialization of too many other beans, because they have to be installed in the container very early in the application lifecycle. (For example, it is not a good idea to have them depend on your `DataSource` or JPA configuration.) You can work around such restrictions by initializing the beans lazily when first used instead of on initialization.
+
+In the case of `Filters` and `Servlets`, you can also add mappings and init parameters by adding a `FilterRegistrationBean` or a `ServletRegistrationBean` instead of or in addition to the underlying component.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| If no `dispatcherType` is specified on a filter registration, `REQUEST` is used. This aligns with the Servlet Specification’s default dispatcher type. |
+
+Like any other Spring bean, you can define the order of Servlet filter beans; please make sure to check the “[the section called “Registering Servlets, Filters, and Listeners as Spring Beans”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-embedded-container-servlets-filters-listeners-beans)” section.
+
+#### Disable Registration of a Servlet or Filter
+
+As [described earlier](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-add-a-servlet-filter-or-listener-as-spring-bean), any `Servlet` or `Filter` beans are registered with the servlet container automatically. To disable registration of a particular `Filter` or `Servlet` bean, create a registration bean for it and mark it as disabled, as shown in the following example:
+
+```
+@Bean
+public FilterRegistrationBean registration(MyFilter filter) {
+	FilterRegistrationBean registration = new FilterRegistrationBean(filter);
+	registration.setEnabled(false);
+	return registration;
+}
+
+
+```
+
+### 75.3.2 Add Servlets, Filters, and Listeners by Using Classpath Scanning
+
+`@WebServlet`, `@WebFilter`, and `@WebListener` annotated classes can be automatically registered with an embedded servlet container by annotating a `@Configuration` class with `@ServletComponentScan` and specifying the package(s) containing the components that you want to register. By default, `@ServletComponentScan` scans from the package of the annotated class.
+
+## 75.4 Change the HTTP Port
+
+In a standalone application, the main HTTP port defaults to `8080` but can be set with `server.port` (for example, in `application.properties` or as a System property). Thanks to relaxed binding of `Environment` values, you can also use `SERVER_PORT` (for example, as an OS environment variable).
+
+To switch off the HTTP endpoints completely but still create a `WebApplicationContext`, use `server.port=-1`. (Doing so is sometimes useful for testing.)
+
+For more details, see “[Section 27.4.4, “Customizing Embedded Servlet Containers”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-customizing-embedded-containers)” in the ‘Spring Boot features’ section, or the [`ServerProperties`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/ServerProperties.java) source code.
+
+## 75.5 Use a Random Unassigned HTTP Port
+
+To scan for a free port (using OS natives to prevent clashes) use `server.port=0`.
+
+## 75.6 Discover the HTTP Port at Runtime
+
+You can access the port the server is running on from log output or from the `ServletWebServerApplicationContext` through its `WebServer`. The best way to get that and be sure that it has been initialized is to add a `@Bean` of type `ApplicationListener<ServletWebServerInitializedEvent>` and pull the container out of the event when it is published.
+
+Tests that use `@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)` can also inject the actual port into a field by using the `@LocalServerPort` annotation, as shown in the following example:
+
+```
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
+public class MyWebIntegrationTests {
+
+	@Autowired
+	ServletWebServerApplicationContext server;
+
+	@LocalServerPort
+	int port;
+
+	// ...
+
+}
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| `@LocalServerPort` is a meta-annotation for `@Value("${local.server.port}")`. Do not try to inject the port in a regular application. As we just saw, the value is set only after the container has been initialized. Contrary to a test, application code callbacks are processed early (before the value is actually available). |
+
+## 75.7 Configure SSL
+
+SSL can be configured declaratively by setting the various `server.ssl.*` properties, typically in `application.properties` or `application.yml`. The following example shows setting SSL properties in `application.properties`:
+
+```
+server.port=8443
+server.ssl.key-store=classpath:keystore.jks
+server.ssl.key-store-password=secret
+server.ssl.key-password=another-secret
+
+
+```
+
+See [`Ssl`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/web/server/Ssl.java) for details of all of the supported properties.
+
+Using configuration such as the preceding example means the application no longer supports a plain HTTP connector at port 8080. Spring Boot does not support the configuration of both an HTTP connector and an HTTPS connector through `application.properties`. If you want to have both, you need to configure one of them programmatically. We recommend using `application.properties` to configure HTTPS, as the HTTP connector is the easier of the two to configure programmatically. See the [`spring-boot-sample-tomcat-multi-connectors`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-tomcat-multi-connectors) sample project for an example.
+
+## 75.8 Configure HTTP/2
+
+You can enable HTTP/2 support in your Spring Boot application with the `server.http2.enabled` configuration property. This support depends on the chosen web server and the application environment, since that protocol is not supported out-of-the-box by JDK8.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Spring Boot does not support `h2c`, the cleartext version of the HTTP/2 protocol. So you must [configure SSL first](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-configure-ssl). |
+
+### 75.8.1 HTTP/2 with Undertow
+
+As of Undertow 1.4.0+, HTTP/2 is supported without any additional requirement on JDK8.
+
+### 75.8.2 HTTP/2 with Jetty
+
+As of Jetty 9.4.8, HTTP/2 is also supported with the [Conscrypt library](https://www.conscrypt.org/). To enable that support, your application needs to have two additional dependencies:`org.eclipse.jetty:jetty-alpn-conscrypt-server` and `org.eclipse.jetty.http2:http2-server`.
+
+### 75.8.3 HTTP/2 with Tomcat
+
+Spring Boot ships by default with Tomcat 8.5.x. With that version, HTTP/2 is only supported if the `libtcnative` library and its dependencies are installed on the host operating system.
+
+The library folder must be made available, if not already, to the JVM library path. You can do so with a JVM argument such as`-Djava.library.path=/usr/local/opt/tomcat-native/lib`. More on this in the [official Tomcat documentation](https://tomcat.apache.org/tomcat-8.5-doc/apr.html).
+
+Starting Tomcat 8.5.x without that native support logs the following error:
+
+```
+ERROR 8787 --- [           main] o.a.coyote.http11.Http11NioProtocol      : The upgrade handler [org.apache.coyote.http2.Http2Protocol] for [h2] only supports upgrade via ALPN but has been configured for the ["https-jsse-nio-8443"] connector that does not support ALPN.
+
+
+```
+
+This error is not fatal, and the application still starts with HTTP/1.1 SSL support.
+
+Running your application with Tomcat 9.0.x and JDK9 does not require any native library to be installed. To use Tomcat 9, you can override the `tomcat.version` build property with the version of your choice.
+
+## 75.9 Configure Access Logging
+
+Access logs can be configured for Tomcat, Undertow, and Jetty through their respective namespaces.
+
+For instance, the following settings log access on Tomcat with a [custom pattern](https://tomcat.apache.org/tomcat-8.5-doc/config/valve.html#Access_Logging).
+
+```
+server.tomcat.basedir=my-tomcat
+server.tomcat.accesslog.enabled=true
+server.tomcat.accesslog.pattern=%t %a "%r" %s (%D ms)
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The default location for logs is a `logs` directory relative to the Tomcat base directory. By default, the `logs` directory is a temporary directory, so you may want to fix Tomcat’s base directory or use an absolute path for the logs. In the preceding example, the logs are available in `my-tomcat/logs` relative to the working directory of the application. |
+
+Access logging for Undertow can be configured in a similar fashion, as shown in the following example:
+
+```
+server.undertow.accesslog.enabled=true
+server.undertow.accesslog.pattern=%t %a "%r" %s (%D ms)
+
+
+```
+
+Logs are stored in a `logs` directory relative to the working directory of the application. You can customize this location by setting the`server.undertow.accesslog.directory` property.
+
+Finally, access logging for Jetty can also be configured as follows:
+
+```
+server.jetty.accesslog.enabled=true
+server.jetty.accesslog.filename=/var/log/jetty-access.log
+
+
+```
+
+By default, logs are redirected to `System.err`. For more details, see [the Jetty documentation](https://www.eclipse.org/jetty/documentation/9.4.x/configuring-jetty-request-logs.html).
+
+## 75.10 Running Behind a Front-end Proxy Server
+
+Your application might need to send `302` redirects or render content with absolute links back to itself. When running behind a proxy, the caller wants a link to the proxy and not to the physical address of the machine hosting your app. Typically, such situations are handled through a contract with the proxy, which adds headers to tell the back end how to construct links to itself.
+
+If the proxy adds conventional `X-Forwarded-For` and `X-Forwarded-Proto` headers (most proxy servers do so), the absolute links should be rendered correctly, provided `server.use-forward-headers` is set to `true` in your `application.properties`.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| If your application runs in Cloud Foundry or Heroku, the `server.use-forward-headers` property defaults to `true`. In all other instances, it defaults to `false`. |
+
+### 75.10.1 Customize Tomcat’s Proxy Configuration
+
+If you use Tomcat, you can additionally configure the names of the headers used to carry “forwarded” information, as shown in the following example:
+
+```
+server.tomcat.remote-ip-header=x-your-remote-ip-header
+server.tomcat.protocol-header=x-your-protocol-header
+
+
+```
+
+Tomcat is also configured with a default regular expression that matches internal proxies that are to be trusted. By default, IP addresses in `10/8`, `192.168/16`,`169.254/16` and `127/8` are trusted. You can customize the valve’s configuration by adding an entry to `application.properties`, as shown in the following example:
+
+```
+server.tomcat.internal-proxies=192\\.168\\.\\d{1,3}\\.\\d{1,3}
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The double backslashes are required only when you use a properties file for configuration. If you use YAML, single backslashes are sufficient, and a value equivalent to that shown in the preceding example would be `192\.168\.\d{1,3}\.\d{1,3}`. |
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| You can trust all proxies by setting the `internal-proxies` to empty (but do not do so in production). |
+
+You can take complete control of the configuration of Tomcat’s `RemoteIpValve` by switching the automatic one off (to do so, set `server.use-forward-headers=false`) and adding a new valve instance in a `TomcatServletWebServerFactory` bean.
+
+## 75.11 Configure Tomcat
+
+Generally, you can follow the advice from “[Section 74.8, “Discover Built-in Options for External Properties”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-discover-build-in-options-for-external-properties)” about `@ConfigurationProperties`(`ServerProperties` is the main one here). However, you should also look at `WebServerFactoryCustomizer` and various Tomcat-specific `*Customizers` that you can add. The Tomcat APIs are quite rich. Consequently, once you have access to the `TomcatServletWebServerFactory`, you can modify it in a number of ways. Alternatively, if you need more control and customization, you can add your own `TomcatServletWebServerFactory`.
+
+## 75.12 Enable Multiple Connectors with Tomcat
+
+You can add an `org.apache.catalina.connector.Connector` to the `TomcatServletWebServerFactory`, which can allow multiple connectors, including HTTP and HTTPS connectors, as shown in the following example:
+
+```
+@Bean
+public ServletWebServerFactory servletContainer() {
+	TomcatServletWebServerFactory tomcat = new TomcatServletWebServerFactory();
+	tomcat.addAdditionalTomcatConnectors(createSslConnector());
+	return tomcat;
+}
+
+private Connector createSslConnector() {
+	Connector connector = new Connector("org.apache.coyote.http11.Http11NioProtocol");
+	Http11NioProtocol protocol = (Http11NioProtocol) connector.getProtocolHandler();
+	try {
+		File keystore = new ClassPathResource("keystore").getFile();
+		File truststore = new ClassPathResource("keystore").getFile();
+		connector.setScheme("https");
+		connector.setSecure(true);
+		connector.setPort(8443);
+		protocol.setSSLEnabled(true);
+		protocol.setKeystoreFile(keystore.getAbsolutePath());
+		protocol.setKeystorePass("changeit");
+		protocol.setTruststoreFile(truststore.getAbsolutePath());
+		protocol.setTruststorePass("changeit");
+		protocol.setKeyAlias("apitester");
+		return connector;
+	}
+	catch (IOException ex) {
+		throw new IllegalStateException("can't access keystore: [" + "keystore"
+				+ "] or truststore: [" + "keystore" + "]", ex);
+	}
+}
+
+
+```
+
+## 75.13 Use Tomcat’s LegacyCookieProcessor
+
+By default, the embedded Tomcat used by Spring Boot does not support "Version 0" of the Cookie format, so you may see the following error:
+
+```
+java.lang.IllegalArgumentException: An invalid character [32] was present in the Cookie value
+
+
+```
+
+If at all possible, you should consider updating your code to only store values compliant with later Cookie specifications. If, however, you cannot change the way that cookies are written, you can instead configure Tomcat to use a `LegacyCookieProcessor`. To switch to the `LegacyCookieProcessor`, use an`WebServerFactoryCustomizer` bean that adds a `TomcatContextCustomizer`, as shown in the following example:
+
+```
+@Bean
+public WebServerFactoryCustomizer<TomcatServletWebServerFactory> cookieProcessorCustomizer() {
+	return (factory) -> factory.addContextCustomizers(
+			(context) -> context.setCookieProcessor(new LegacyCookieProcessor()));
+}
+
+
+```
+
+## 75.14 Configure Undertow
+
+Generally you can follow the advice from “[Section 74.8, “Discover Built-in Options for External Properties”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-discover-build-in-options-for-external-properties)” about `@ConfigurationProperties`(`ServerProperties` and `ServerProperties.Undertow` are the main ones here). However, you should also look at `WebServerFactoryCustomizer`. Once you have access to the `UndertowServletWebServerFactory`, you can use an `UndertowBuilderCustomizer` to modify Undertow’s configuration to meet your needs. Alternatively, if you need more control and customization, you can add your own `UndertowServletWebServerFactory`.
+
+## 75.15 Enable Multiple Listeners with Undertow
+
+Add an `UndertowBuilderCustomizer` to the `UndertowServletWebServerFactory` and add a listener to the `Builder`, as shown in the following example:
+
+```
+@Bean
+public UndertowServletWebServerFactory servletWebServerFactory() {
+	UndertowServletWebServerFactory factory = new UndertowServletWebServerFactory();
+	factory.addBuilderCustomizers(new UndertowBuilderCustomizer() {
+
+		@Override
+		public void customize(Builder builder) {
+			builder.addHttpListener(8080, "0.0.0.0");
+		}
+
+	});
+	return factory;
+}
+
+
+```
+
+## 75.16 Create WebSocket Endpoints Using @ServerEndpoint
+
+If you want to use `@ServerEndpoint` in a Spring Boot application that used an embedded container, you must declare a single `ServerEndpointExporter``@Bean`, as shown in the following example:
+
+```
+@Bean
+public ServerEndpointExporter serverEndpointExporter() {
+	return new ServerEndpointExporter();
+}
+
+
+```
+
+The bean shown in the preceding example registers any `@ServerEndpoint` annotated beans with the underlying WebSocket container. When deployed to a standalone servlet container, this role is performed by a servlet container initializer, and the `ServerEndpointExporter` bean is not required.
+
+## 75.17 Enable HTTP Response Compression
+
+HTTP response compression is supported by Jetty, Tomcat, and Undertow. It can be enabled in `application.properties`, as follows:
+
+```
+server.compression.enabled=true
+
+
+```
+
+By default, responses must be at least 2048 bytes in length for compression to be performed. You can configure this behavior by setting the`server.compression.min-response-size` property.
+
+By default, responses are compressed only if their content type is one of the following:
+
+- `text/html`
+- `text/xml`
+- `text/plain`
+- `text/css`
+
+You can configure this behavior by setting the `server.compression.mime-types` property.
+
+## 76. Spring MVC
+
+Spring Boot has a number of starters that include Spring MVC. Note that some starters include a dependency on Spring MVC rather than include it directly. This section answers common questions about Spring MVC and Spring Boot.
+
+## 76.1 Write a JSON REST Service
+
+Any Spring `@RestController` in a Spring Boot application should render JSON response by default as long as Jackson2 is on the classpath, as shown in the following example:
+
+```
+@RestController
+public class MyController {
+
+	@RequestMapping("/thing")
+	public MyThing thing() {
+			return new MyThing();
+	}
+
+}
+
+
+```
+
+As long as `MyThing` can be serialized by Jackson2 (true for a normal POJO or Groovy object), then `localhost:8080/thing` serves a JSON representation of it by default. Note that, in a browser, you might sometimes see XML responses, because browsers tend to send accept headers that prefer XML.
+
+## 76.2 Write an XML REST Service
+
+If you have the Jackson XML extension (`jackson-dataformat-xml`) on the classpath, you can use it to render XML responses. The previous example that we used for JSON would work. To use the Jackson XML renderer, add the following dependency to your project:
+
+```
+<dependency>
+	<groupId>com.fasterxml.jackson.dataformat</groupId>
+	<artifactId>jackson-dataformat-xml</artifactId>
+</dependency>
+
+
+```
+
+You may also want to add a dependency on Woodstox. It is faster than the default StAX implementation provided by the JDK and also adds pretty-print support and improved namespace handling. The following listing shows how to include a dependency on [Woodstox](https://github.com/FasterXML/woodstox):
+
+```
+<dependency>
+	<groupId>org.codehaus.woodstox</groupId>
+	<artifactId>woodstox-core-asl</artifactId>
+</dependency>
+
+
+```
+
+If Jackson’s XML extension is not available, JAXB (provided by default in the JDK) is used, with the additional requirement of having `MyThing` annotated as`@XmlRootElement`, as shown in the following example:
+
+```
+@XmlRootElement
+public class MyThing {
+	private String name;
+	// .. getters and setters
+}
+
+
+```
+
+To get the server to render XML instead of JSON, you might have to send an `Accept: text/xml` header (or use a browser).
+
+## 76.3 Customize the Jackson ObjectMapper
+
+Spring MVC (client and server side) uses `HttpMessageConverters` to negotiate content conversion in an HTTP exchange. If Jackson is on the classpath, you already get the default converter(s) provided by `Jackson2ObjectMapperBuilder`, an instance of which is auto-configured for you.
+
+The `ObjectMapper` (or `XmlMapper` for Jackson XML converter) instance (created by default) has the following customized properties:
+
+- `MapperFeature.DEFAULT_VIEW_INCLUSION` is disabled
+- `DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES` is disabled
+- `SerializationFeature.WRITE_DATES_AS_TIMESTAMPS` is disabled
+
+Spring Boot also has some features to make it easier to customize this behavior.
+
+You can configure the `ObjectMapper` and `XmlMapper` instances by using the environment. Jackson provides an extensive suite of simple on/off features that can be used to configure various aspects of its processing. These features are described in six enums (in Jackson) that map onto properties in the environment:
+
+| Jackson enum                                            | Environment property                                         |
+| ------------------------------------------------------- | ------------------------------------------------------------ |
+| `com.fasterxml.jackson.databind.DeserializationFeature` | `spring.jackson.deserialization.<feature_name>=true|false`   |
+| `com.fasterxml.jackson.core.JsonGenerator.Feature`      | `spring.jackson.generator.<feature_name>=true|false`         |
+| `com.fasterxml.jackson.databind.MapperFeature`          | `spring.jackson.mapper.<feature_name>=true|false`            |
+| `com.fasterxml.jackson.core.JsonParser.Feature`         | `spring.jackson.parser.<feature_name>=true|false`            |
+| `com.fasterxml.jackson.databind.SerializationFeature`   | `spring.jackson.serialization.<feature_name>=true|false`     |
+| `com.fasterxml.jackson.annotation.JsonInclude.Include`  | `spring.jackson.default-property-inclusion=always|non_null|non_absent|non_default|non_empty` |
+
+For example, to enable pretty print, set `spring.jackson.serialization.indent_output=true`. Note that, thanks to the use of [relaxed binding](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-relaxed-binding), the case of `indent_output` does not have to match the case of the corresponding enum constant, which is `INDENT_OUTPUT`.
+
+This environment-based configuration is applied to the auto-configured `Jackson2ObjectMapperBuilder` bean and applies to any mappers created by using the builder, including the auto-configured `ObjectMapper` bean.
+
+The context’s `Jackson2ObjectMapperBuilder` can be customized by one or more `Jackson2ObjectMapperBuilderCustomizer` beans. Such customizer beans can be ordered (Boot’s own customizer has an order of 0), letting additional customization be applied both before and after Boot’s customization.
+
+Any beans of type `com.fasterxml.jackson.databind.Module` are automatically registered with the auto-configured `Jackson2ObjectMapperBuilder` and are applied to any `ObjectMapper` instances that it creates. This provides a global mechanism for contributing custom modules when you add new features to your application.
+
+If you want to replace the default `ObjectMapper` completely, either define a `@Bean` of that type and mark it as `@Primary` or, if you prefer the builder-based approach, define a `Jackson2ObjectMapperBuilder` `@Bean`. Note that, in either case, doing so disables all auto-configuration of the `ObjectMapper`.
+
+If you provide any `@Beans` of type `MappingJackson2HttpMessageConverter`, they replace the default value in the MVC configuration. Also, a convenience bean of type `HttpMessageConverters` is provided (and is always available if you use the default MVC configuration). It has some useful methods to access the default and user-enhanced message converters.
+
+See the “[Section 76.4, “Customize the @ResponseBody Rendering”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-customize-the-responsebody-rendering)” section and the [`WebMvcAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.java) source code for more details.
+
+## 76.4 Customize the @ResponseBody Rendering
+
+Spring uses `HttpMessageConverters` to render `@ResponseBody` (or responses from `@RestController`). You can contribute additional converters by adding beans of the appropriate type in a Spring Boot context. If a bean you add is of a type that would have been included by default anyway (such as `MappingJackson2HttpMessageConverter` for JSON conversions), it replaces the default value. A convenience bean of type `HttpMessageConverters` is provided and is always available if you use the default MVC configuration. It has some useful methods to access the default and user-enhanced message converters (For example, it can be useful if you want to manually inject them into a custom `RestTemplate`).
+
+As in normal MVC usage, any `WebMvcConfigurer` beans that you provide can also contribute converters by overriding the `configureMessageConverters`method. However, unlike with normal MVC, you can supply only additional converters that you need (because Spring Boot uses the same mechanism to contribute its defaults). Finally, if you opt out of the Spring Boot default MVC configuration by providing your own `@EnableWebMvc` configuration, you can take control completely and do everything manually by using `getMessageConverters` from `WebMvcConfigurationSupport`.
+
+See the [`WebMvcAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.java) source code for more details.
+
+## 76.5 Handling Multipart File Uploads
+
+Spring Boot embraces the Servlet 3 `javax.servlet.http.Part` API to support uploading files. By default, Spring Boot configures Spring MVC with a maximum size of 1MB per file and a maximum of 10MB of file data in a single request. You may override these values, the location to which intermediate data is stored (for example, to the `/tmp` directory), and the threshold past which data is flushed to disk by using the properties exposed in the `MultipartProperties` class. For example, if you want to specify that files be unlimited, set the `spring.servlet.multipart.max-file-size` property to `-1`.
+
+The multipart support is helpful when you want to receive multipart encoded file data as a `@RequestParam`-annotated parameter of type `MultipartFile` in a Spring MVC controller handler method.
+
+See the [`MultipartAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/MultipartAutoConfiguration.java) source for more details.
+
+## 76.6 Switch Off the Spring MVC DispatcherServlet
+
+Spring Boot wants to serve all content from the root of your application (`/`) down. If you would rather map your own servlet to that URL, you can do it. However, you may lose some of the other Boot MVC features. To add your own servlet and map it to the root resource, declare a `@Bean` of type `Servlet` and give it the special bean name, `dispatcherServlet`. (You can also create a bean of a different type with that name if you want to switch it off and not replace it.)
+
+## 76.7 Switch off the Default MVC Configuration
+
+The easiest way to take complete control over MVC configuration is to provide your own `@Configuration` with the `@EnableWebMvc` annotation. Doing so leaves all MVC configuration in your hands.
+
+## 76.8 Customize ViewResolvers
+
+A `ViewResolver` is a core component of Spring MVC, translating view names in `@Controller` to actual `View` implementations. Note that `ViewResolvers` are mainly used in UI applications, rather than REST-style services (a `View` is not used to render a `@ResponseBody`). There are many implementations of `ViewResolver` to choose from, and Spring on its own is not opinionated about which ones you should use. Spring Boot, on the other hand, installs one or two for you, depending on what it finds on the classpath and in the application context. The `DispatcherServlet` uses all the resolvers it finds in the application context, trying each one in turn until it gets a result, so, if you add your own, you have to be aware of the order and in which position your resolver is added.
+
+`WebMvcAutoConfiguration` adds the following `ViewResolvers` to your context:
+
+- An `InternalResourceViewResolver` named ‘defaultViewResolver’. This one locates physical resources that can be rendered by using the `DefaultServlet`(including static resources and JSP pages, if you use those). It applies a prefix and a suffix to the view name and then looks for a physical resource with that path in the servlet context (the defaults are both empty but are accessible for external configuration through `spring.mvc.view.prefix` and `spring.mvc.view.suffix`). You can override it by providing a bean of the same type.
+- A `BeanNameViewResolver` named ‘beanNameViewResolver’. This is a useful member of the view resolver chain and picks up any beans with the same name as the `View` being resolved. It should not be necessary to override or replace it.
+- A `ContentNegotiatingViewResolver` named ‘viewResolver’ is added only if there **are** actually beans of type `View` present. This is a ‘master’ resolver, delegating to all the others and attempting to find a match to the ‘Accept’ HTTP header sent by the client. There is a useful [blog about`ContentNegotiatingViewResolver`](https://spring.io/blog/2013/06/03/content-negotiation-using-views) that you might like to study to learn more, and you might also look at the source code for detail. You can switch off the auto-configured `ContentNegotiatingViewResolver` by defining a bean named ‘viewResolver’.
+- If you use Thymeleaf, you also have a `ThymeleafViewResolver` named ‘thymeleafViewResolver’. It looks for resources by surrounding the view name with a prefix and suffix. The prefix is `spring.thymeleaf.prefix`, and the suffix is `spring.thymeleaf.suffix`. The values of the prefix and suffix default to ‘classpath:/templates/’ and ‘.html’, respectively. You can override `ThymeleafViewResolver` by providing a bean of the same name.
+- If you use FreeMarker, you also have a `FreeMarkerViewResolver` named ‘freeMarkerViewResolver’. It looks for resources in a loader path (which is externalized to `spring.freemarker.templateLoaderPath` and has a default value of ‘classpath:/templates/’) by surrounding the view name with a prefix and a suffix. The prefix is externalized to `spring.freemarker.prefix`, and the suffix is externalized to `spring.freemarker.suffix`. The default values of the prefix and suffix are empty and ‘.ftl’, respectively. You can override `FreeMarkerViewResolver` by providing a bean of the same name.
+- If you use Groovy templates (actually, if `groovy-templates` is on your classpath), you also have a `GroovyMarkupViewResolver` named ‘groovyMarkupViewResolver’. It looks for resources in a loader path by surrounding the view name with a prefix and suffix (externalized to `spring.groovy.template.prefix` and `spring.groovy.template.suffix`). The prefix and suffix have default values of ‘classpath:/templates/’ and ‘.tpl’, respectively. You can override `GroovyMarkupViewResolver` by providing a bean of the same name.
+
+For more detail, see the following sections:
+
+- [`WebMvcAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.java)
+- [`ThymeleafAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/thymeleaf/ThymeleafAutoConfiguration.java)
+- [`FreeMarkerAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/freemarker/FreeMarkerAutoConfiguration.java)
+- [`GroovyTemplateAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/groovy/template/GroovyTemplateAutoConfiguration.java)
+
+## 77. HTTP Clients
+
+Spring Boot offers a number of starters that work with HTTP clients. This section answers questions related to using them.
+
+## 77.1 Configure RestTemplate to Use a Proxy
+
+As described in [Section 33.1, “RestTemplate Customization”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-resttemplate-customization), you can use a `RestTemplateCustomizer` with `RestTemplateBuilder` to build a customized`RestTemplate`. This is the recommended approach for creating a `RestTemplate` configured to use a proxy.
+
+The exact details of the proxy configuration depend on the underlying client request factory that is being used. The following example configures`HttpComponentsClientRequestFactory` with an `HttpClient` that uses a proxy for all hosts except `192.168.0.5`:
+
+```
+static class ProxyCustomizer implements RestTemplateCustomizer {
+
+	@Override
+	public void customize(RestTemplate restTemplate) {
+		HttpHost proxy = new HttpHost("proxy.example.com");
+		HttpClient httpClient = HttpClientBuilder.create()
+				.setRoutePlanner(new DefaultProxyRoutePlanner(proxy) {
+
+					@Override
+					public HttpHost determineProxy(HttpHost target,
+							HttpRequest request, HttpContext context)
+							throws HttpException {
+						if (target.getHostName().equals("192.168.0.5")) {
+							return null;
+						}
+						return super.determineProxy(target, request, context);
+					}
+
+				}).build();
+		restTemplate.setRequestFactory(
+				new HttpComponentsClientHttpRequestFactory(httpClient));
+	}
+
+}
+
+
+```
+
+## 78. Logging
+
+Spring Boot has no mandatory logging dependency, except for the Commons Logging API, which is typically provided by Spring Framework’s `spring-jcl` module. To use [Logback](http://logback.qos.ch/), you need to include it and `spring-jcl` on the classpath. The simplest way to do that is through the starters, which all depend on`spring-boot-starter-logging`. For a web application, you need only `spring-boot-starter-web`, since it depends transitively on the logging starter. If you use Maven, the following dependency adds logging for you:
+
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+
+
+```
+
+Spring Boot has a `LoggingSystem` abstraction that attempts to configure logging based on the content of the classpath. If Logback is available, it is the first choice.
+
+If the only change you need to make to logging is to set the levels of various loggers, you can do so in `application.properties` by using the "logging.level" prefix, as shown in the following example:
+
+```
+logging.level.org.springframework.web=DEBUG
+logging.level.org.hibernate=ERROR
+
+
+```
+
+You can also set the location of a file to which to write the log (in addition to the console) by using "logging.file".
+
+To configure the more fine-grained settings of a logging system, you need to use the native configuration format supported by the `LoggingSystem` in question. By default, Spring Boot picks up the native configuration from its default location for the system (such as `classpath:logback.xml` for Logback), but you can set the location of the config file by using the "logging.config" property.
+
+## 78.1 Configure Logback for Logging
+
+If you put a `logback.xml` in the root of your classpath, it is picked up from there (or from `logback-spring.xml`, to take advantage of the templating features provided by Boot). Spring Boot provides a default base configuration that you can include if you want to set levels, as shown in the following example:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/base.xml"/>
+	<logger name="org.springframework.web" level="DEBUG"/>
+</configuration>
+
+
+```
+
+If you look at `base.xml` in the spring-boot jar, you can see that it uses some useful System properties that the `LoggingSystem` takes care of creating for you:
+
+- `${PID}`: The current process ID.
+- `${LOG_FILE}`: Whether `logging.file` was set in Boot’s external configuration.
+- `${LOG_PATH}`: Whether `logging.path` (representing a directory for log files to live in) was set in Boot’s external configuration.
+- `${LOG_EXCEPTION_CONVERSION_WORD}`: Whether `logging.exception-conversion-word` was set in Boot’s external configuration.
+
+Spring Boot also provides some nice ANSI color terminal output on a console (but not in a log file) by using a custom Logback converter. See the default `base.xml`configuration for details.
+
+If Groovy is on the classpath, you should be able to configure Logback with `logback.groovy` as well. If present, this setting is given preference.
+
+### 78.1.1 Configure Logback for File-only Output
+
+If you want to disable console logging and write output only to a file, you need a custom `logback-spring.xml` that imports `file-appender.xml` but not `console-appender.xml`, as shown in the following example:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<include resource="org/springframework/boot/logging/logback/defaults.xml" />
+	<property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-${LOG_TEMP:-${java.io.tmpdir:-/tmp}}/}spring.log}"/>
+	<include resource="org/springframework/boot/logging/logback/file-appender.xml" />
+	<root level="INFO">
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>
+
+
+```
+
+You also need to add `logging.file` to your `application.properties`, as shown in the following example:
+
+```
+logging.file=myapplication.log
+
+
+```
+
+## 78.2 Configure Log4j for Logging
+
+Spring Boot supports [Log4j 2](https://logging.apache.org/log4j/2.x) for logging configuration if it is on the classpath. If you use the starters for assembling dependencies, you have to exclude Logback and then include log4j 2 instead. If you do not use the starters, you need to provide (at least) `spring-jcl` in addition to Log4j 2.
+
+The simplest path is probably through the starters, even though it requires some jiggling with excludes. The following example shows how to set up the starters in Maven:
+
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter</artifactId>
+	<exclusions>
+		<exclusion>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-logging</artifactId>
+		</exclusion>
+	</exclusions>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-log4j2</artifactId>
+</dependency>
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The Log4j starters gather together the dependencies for common logging requirements (such as having Tomcat use `java.util.logging` but configuring the output using Log4j 2). See the [Actuator Log4j 2](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-actuator-log4j2) samples for more detail and to see it in action. |
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| To ensure that debug logging performed using `java.util.logging` is routed into Log4j 2, configure its [JDK logging adapter](https://logging.apache.org/log4j/2.0/log4j-jul/index.html) by setting the `java.util.logging.manager` system property to `org.apache.logging.log4j.jul.LogManager`. |
+
+### 78.2.1 Use YAML or JSON to Configure Log4j 2
+
+In addition to its default XML configuration format, Log4j 2 also supports YAML and JSON configuration files. To configure Log4j 2 to use an alternative configuration file format, add the appropriate dependencies to the classpath and name your configuration files to match your chosen file format, as shown in the following example:
+
+| Format | Dependencies                                                 | File names                |
+| ------ | ------------------------------------------------------------ | ------------------------- |
+| YAML   | `com.fasterxml.jackson.core:jackson-databind``com.fasterxml.jackson.dataformat:jackson-dataformat-yaml` | `log4j2.yaml``log4j2.yml` |
+| JSON   | `com.fasterxml.jackson.core:jackson-databind`                | `log4j2.json``log4j2.jsn` |
+
+## 79. Data Access
+
+Spring Boot includes a number of starters for working with data sources. This section answers questions related to doing so.
+
+## 79.1 Configure a Custom DataSource
+
+To configure your own `DataSource`, define a `@Bean` of that type in your configuration. Spring Boot reuses your `DataSource` anywhere one is required, including database initialization. If you need to externalize some settings, you can bind your `DataSource` to the environment (see “[Section 24.7.1, “Third-party Configuration”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-external-config-3rd-party-configuration)”).
+
+The following example shows how to define a data source in a bean:
+
+```
+@Bean
+@ConfigurationProperties(prefix="app.datasource")
+public DataSource dataSource() {
+	return new FancyDataSource();
+}
+
+
+```
+
+The following example shows how to define a data source by setting properties:
+
+```
+app.datasource.url=jdbc:h2:mem:mydb
+app.datasource.username=sa
+app.datasource.pool-size=30
+
+
+```
+
+Assuming that your `FancyDataSource` has regular JavaBean properties for the URL, the username, and the pool size, these settings are bound automatically before the `DataSource` is made available to other components. The regular [database initialization](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-initialize-a-database-using-spring-jdbc) also happens (so the relevant sub-set of `spring.datasource.*` can still be used with your custom configuration).
+
+You can apply the same principle if you configure a custom JNDI `DataSource`, as shown in the following example:
+
+```
+@Bean(destroyMethod="")
+@ConfigurationProperties(prefix="app.datasource")
+public DataSource dataSource() throws Exception {
+	JndiDataSourceLookup dataSourceLookup = new JndiDataSourceLookup();
+	return dataSourceLookup.getDataSource("java:comp/env/jdbc/YourDS");
+}
+
+
+```
+
+Spring Boot also provides a utility builder class, called `DataSourceBuilder`, that can be used to create one of the standard data sources (if it is on the classpath). The builder can detect the one to use based on what’s available on the classpath. It also auto-detects the driver based on the JDBC URL.
+
+The following example shows how to create a data source by using a `DataSourceBuilder`:
+
+```
+@Bean
+@ConfigurationProperties("app.datasource")
+public DataSource dataSource() {
+	return DataSourceBuilder.create().build();
+}
+
+
+```
+
+To run an app with that `DataSource`, all you need is the connection information. Pool-specific settings can also be provided. Check the implementation that is going to be used at runtime for more details.
+
+The following example shows how to define a JDBC data source by setting properties:
+
+```
+app.datasource.url=jdbc:mysql://localhost/test
+app.datasource.username=dbuser
+app.datasource.password=dbpass
+app.datasource.pool-size=30
+
+
+```
+
+However, there is a catch. Because the actual type of the connection pool is not exposed, no keys are generated in the metadata for your custom `DataSource` and no completion is available in your IDE (because the `DataSource` interface exposes no properties). Also, if you happen to have Hikari on the classpath, this basic setup does not work, because Hikari has no `url` property (but does have a `jdbcUrl` property). In that case, you must rewrite your configuration as follows:
+
+```
+app.datasource.jdbc-url=jdbc:mysql://localhost/test
+app.datasource.username=dbuser
+app.datasource.password=dbpass
+app.datasource.maximum-pool-size=30
+
+
+```
+
+You can fix that by forcing the connection pool to use and return a dedicated implementation rather than `DataSource`. You cannot change the implementation at runtime, but the list of options will be explicit.
+
+The following example shows how create a `HikariDataSource` with `DataSourceBuilder`:
+
+```
+@Bean
+@ConfigurationProperties("app.datasource")
+public HikariDataSource dataSource() {
+	return DataSourceBuilder.create().type(HikariDataSource.class).build();
+}
+
+
+```
+
+You can even go further by leveraging what `DataSourceProperties` does for you — that is, by providing a default embedded database with a sensible username and password if no URL is provided. You can easily initialize a `DataSourceBuilder` from the state of any `DataSourceProperties` object, so you could also inject the DataSource that Spring Boot creates automatically. However, that would split your configuration into two namespaces: `url`, `username`, `password`, `type`, and `driver` on `spring.datasource` and the rest on your custom namespace (`app.datasource`). To avoid that, you can redefine a custom`DataSourceProperties` on your custom namespace, as shown in the following example:
+
+```
+@Bean
+@Primary
+@ConfigurationProperties("app.datasource")
+public DataSourceProperties dataSourceProperties() {
+	return new DataSourceProperties();
+}
+
+@Bean
+@ConfigurationProperties("app.datasource")
+public HikariDataSource dataSource(DataSourceProperties properties) {
+	return properties.initializeDataSourceBuilder().type(HikariDataSource.class)
+			.build();
+}
+
+
+```
+
+This setup puts you *in sync* with what Spring Boot does for you by default, except that a dedicated connection pool is chosen (in code) and its settings are exposed in the same namespace. Because `DataSourceProperties` is taking care of the `url`/`jdbcUrl` translation for you, you can configure it as follows:
+
+```
+app.datasource.url=jdbc:mysql://localhost/test
+app.datasource.username=dbuser
+app.datasource.password=dbpass
+app.datasource.maximum-pool-size=30
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Because your custom configuration chooses to go with Hikari, `app.datasource.type` has no effect. In practice, the builder is initialized with whatever value you might set there and then overridden by the call to `.type()`. |
+
+See “[Section 29.1, “Configure a DataSource”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-configure-datasource)” in the “Spring Boot features” section and the [`DataSourceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/DataSourceAutoConfiguration.java) class for more details.
+
+## 79.2 Configure Two DataSources
+
+If you need to configure multiple data sources, you can apply the same tricks that are described in the previous section. You must, however, mark one of the `DataSource` instances as `@Primary`, because various auto-configurations down the road expect to be able to get one by type.
+
+If you create your own `DataSource`, the auto-configuration backs off. In the following example, we provide the *exact* same feature set as the auto-configuration provides on the primary data source:
+
+```
+@Bean
+@Primary
+@ConfigurationProperties("app.datasource.first")
+public DataSourceProperties firstDataSourceProperties() {
+	return new DataSourceProperties();
+}
+
+@Bean
+@Primary
+@ConfigurationProperties("app.datasource.first")
+public DataSource firstDataSource() {
+	return firstDataSourceProperties().initializeDataSourceBuilder().build();
+}
+
+@Bean
+@ConfigurationProperties("app.datasource.second")
+public BasicDataSource secondDataSource() {
+	return DataSourceBuilder.create().type(BasicDataSource.class).build();
+}
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| `firstDataSourceProperties` has to be flagged as `@Primary` so that the database initializer feature uses your copy (if you use the initializer). |
+
+Both data sources are also bound for advanced customizations. For instance, you could configure them as follows:
+
+```
+app.datasource.first.type=com.zaxxer.hikari.HikariDataSource
+app.datasource.first.maximum-pool-size=30
+
+app.datasource.second.url=jdbc:mysql://localhost/test
+app.datasource.second.username=dbuser
+app.datasource.second.password=dbpass
+app.datasource.second.max-total=30
+
+
+```
+
+You can apply the same concept to the secondary `DataSource` as well, as shown in the following example:
+
+```
+@Bean
+@Primary
+@ConfigurationProperties("app.datasource.first")
+public DataSourceProperties firstDataSourceProperties() {
+	return new DataSourceProperties();
+}
+
+@Bean
+@Primary
+@ConfigurationProperties("app.datasource.first")
+public DataSource firstDataSource() {
+	return firstDataSourceProperties().initializeDataSourceBuilder().build();
+}
+
+@Bean
+@ConfigurationProperties("app.datasource.second")
+public DataSourceProperties secondDataSourceProperties() {
+	return new DataSourceProperties();
+}
+
+@Bean
+@ConfigurationProperties("app.datasource.second")
+public DataSource secondDataSource() {
+	return secondDataSourceProperties().initializeDataSourceBuilder().build();
+}
+
+
+```
+
+The preceding example configures two data sources on custom namespaces with the same logic as Spring Boot would use in auto-configuration.
+
+## 79.3 Use Spring Data Repositories
+
+Spring Data can create implementations of `@Repository` interfaces of various flavors. Spring Boot handles all of that for you, as long as those `@Repositories` are included in the same package (or a sub-package) of your `@EnableAutoConfiguration` class.
+
+For many applications, all you need is to put the right Spring Data dependencies on your classpath (there is a `spring-boot-starter-data-jpa` for JPA and a`spring-boot-starter-data-mongodb` for Mongodb) and create some repository interfaces to handle your `@Entity` objects. Examples are in the [JPA sample](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-data-jpa) and the [Mongodb sample](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-data-mongodb).
+
+Spring Boot tries to guess the location of your `@Repository` definitions, based on the `@EnableAutoConfiguration` it finds. To get more control, use the `@EnableJpaRepositories` annotation (from Spring Data JPA).
+
+For more about Spring Data, see the [Spring Data project page](https://projects.spring.io/spring-data/).
+
+## 79.4 Separate @Entity Definitions from Spring Configuration
+
+Spring Boot tries to guess the location of your `@Entity` definitions, based on the `@EnableAutoConfiguration` it finds. To get more control, you can use the `@EntityScan` annotation, as shown in the following example:
+
+```
+@Configuration
+@EnableAutoConfiguration
+@EntityScan(basePackageClasses=City.class)
+public class Application {
+
+	//...
+
+}
+
+
+```
+
+## 79.5 Configure JPA Properties
+
+Spring Data JPA already provides some vendor-independent configuration options (such as those for SQL logging), and Spring Boot exposes those options and a few more for Hibernate as external configuration properties. Some of them are automatically detected according to the context so you should not have to set them.
+
+The `spring.jpa.hibernate.ddl-auto` is a special case, because, depending on runtime conditions, it has different defaults. If an embedded database is used and no schema manager (such as Liquibase or Flyway) is handling the `DataSource`, it defaults to `create-drop`. In all other cases, it defaults to `none`.
+
+The dialect to use is also automatically detected based on the current `DataSource`, but you can set `spring.jpa.database` yourself if you want to be explicit and bypass that check on startup.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Specifying a `database` leads to the configuration of a well-defined Hibernate dialect. Several databases have more than one `Dialect`, and this may not suit your needs. In that case, you can either set `spring.jpa.database` to `default` to let Hibernate figure things out or set the dialect by setting the `spring.jpa.database-platform` property. |
+
+The most common options to set are shown in the following example:
+
+```
+spring.jpa.hibernate.naming.physical-strategy=com.example.MyPhysicalNamingStrategy
+spring.jpa.show-sql=true
+
+
+```
+
+In addition, all properties in `spring.jpa.properties.*` are passed through as normal JPA properties (with the prefix stripped) when the local `EntityManagerFactory` is created.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| If you need to apply advanced customization to Hibernate properties, consider registering a `HibernatePropertiesCustomizer` bean that will be invoked prior to creating the `EntityManagerFactory`. This takes precedence to anything that is applied by the auto-configuration. |
+
+## 79.6 Configure Hibernate Naming Strategy
+
+Hibernate uses [two different naming strategies](https://docs.jboss.org/hibernate/orm/5.2/userguide/html_single/Hibernate_User_Guide.html#naming) to map names from the object model to the corresponding database names. The fully qualified class name of the physical and the implicit strategy implementations can be configured by setting the `spring.jpa.hibernate.naming.physical-strategy` and`spring.jpa.hibernate.naming.implicit-strategy` properties, respectively. Alternatively, if `ImplicitNamingStrategy` or `PhysicalNamingStrategy`beans are available in the application context, Hibernate will be automatically configured to use them.
+
+By default, Spring Boot configures the physical naming strategy with `SpringPhysicalNamingStrategy`. This implementation provides the same table structure as Hibernate 4: all dots are replaced by underscores and camel casing is replaced by underscores as well. By default, all table names are generated in lower case, but it is possible to override that flag if your schema requires it.
+
+For example, a `TelephoneNumber` entity is mapped to the `telephone_number` table.
+
+If you prefer to use Hibernate 5’s default instead, set the following property:
+
+```
+spring.jpa.hibernate.naming.physical-strategy=org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
+
+```
+
+Alternatively, you can configure the following bean:
+
+```
+@Bean
+public PhysicalNamingStrategy physicalNamingStrategy() {
+	return new PhysicalNamingStrategyStandardImpl();
+}
+
+
+```
+
+See [`HibernateJpaAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.java) and [`JpaBaseConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/orm/jpa/JpaBaseConfiguration.java) for more details.
+
+## 79.7 Use a Custom EntityManagerFactory
+
+To take full control of the configuration of the `EntityManagerFactory`, you need to add a `@Bean` named ‘entityManagerFactory’. Spring Boot auto-configuration switches off its entity manager in the presence of a bean of that type.
+
+## 79.8 Use Two EntityManagers
+
+Even if the default `EntityManagerFactory` works fine, you need to define a new one. Otherwise, the presence of the second bean of that type switches off the default. To make it easy to do, you can use the convenient `EntityManagerBuilder` provided by Spring Boot. Alternatively, you can just the`LocalContainerEntityManagerFactoryBean` directly from Spring ORM, as shown in the following example:
+
+```
+// add two data sources configured as above
+
+@Bean
+public LocalContainerEntityManagerFactoryBean customerEntityManagerFactory(
+		EntityManagerFactoryBuilder builder) {
+	return builder
+			.dataSource(customerDataSource())
+			.packages(Customer.class)
+			.persistenceUnit("customers")
+			.build();
+}
+
+@Bean
+public LocalContainerEntityManagerFactoryBean orderEntityManagerFactory(
+		EntityManagerFactoryBuilder builder) {
+	return builder
+			.dataSource(orderDataSource())
+			.packages(Order.class)
+			.persistenceUnit("orders")
+			.build();
+}
+
+
+```
+
+The configuration above almost works on its own. To complete the picture, you need to configure `TransactionManagers` for the two `EntityManagers` as well. If you mark one of them as `@Primary`, it could be picked up by the default `JpaTransactionManager` in Spring Boot. The other would have to be explicitly injected into a new instance. Alternatively, you might be able to use a JTA transaction manager that spans both.
+
+If you use Spring Data, you need to configure `@EnableJpaRepositories` accordingly, as shown in the following example:
+
+```
+@Configuration
+@EnableJpaRepositories(basePackageClasses = Customer.class,
+		entityManagerFactoryRef = "customerEntityManagerFactory")
+public class CustomerConfiguration {
+	...
+}
+
+@Configuration
+@EnableJpaRepositories(basePackageClasses = Order.class,
+		entityManagerFactoryRef = "orderEntityManagerFactory")
+public class OrderConfiguration {
+	...
+}
+
+
+```
+
+## 79.9 Use a Traditional `persistence.xml` File
+
+Spring does not require the use of XML to configure the JPA provider, and Spring Boot assumes you want to take advantage of that feature. If you prefer to use`persistence.xml`, you need to define your own `@Bean` of type `LocalEntityManagerFactoryBean` (with an ID of ‘entityManagerFactory’) and set the persistence unit name there.
+
+See [`JpaBaseConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/orm/jpa/JpaBaseConfiguration.java) for the default settings.
+
+## 79.10 Use Spring Data JPA and Mongo Repositories
+
+Spring Data JPA and Spring Data Mongo can both automatically create `Repository` implementations for you. If they are both present on the classpath, you might have to do some extra configuration to tell Spring Boot which repositories to create. The most explicit way to do that is to use the standard Spring Data `@EnableJpaRepositories` and `@EnableMongoRepositories` annotations and provide the location of your `Repository` interfaces.
+
+There are also flags (`spring.data.*.repositories.enabled` and `spring.data.*.repositories.type`) that you can use to switch the auto-configured repositories on and off in external configuration. Doing so is useful, for instance, in case you want to switch off the Mongo repositories and still use the auto-configured`MongoTemplate`.
+
+The same obstacle and the same features exist for other auto-configured Spring Data repository types (Elasticsearch, Solr, and others). To work with them, change the names of the annotations and flags accordingly.
+
+## 79.11 Expose Spring Data Repositories as REST Endpoint
+
+Spring Data REST can expose the `Repository` implementations as REST endpoints for you, provided Spring MVC has been enabled for the application.
+
+Spring Boot exposes a set of useful properties (from the `spring.data.rest` namespace) that customize the [`RepositoryRestConfiguration`](https://docs.spring.io/spring-data/rest/docs/current/api/org/springframework/data/rest/core/config/RepositoryRestConfiguration.html). If you need to provide additional customization, you should use a [`RepositoryRestConfigurer`](https://docs.spring.io/spring-data/rest/docs/current/api/org/springframework/data/rest/webmvc/config/RepositoryRestConfigurer.html) bean.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| If you do not specify any order on your custom `RepositoryRestConfigurer`, it runs after the one Spring Boot uses internally. If you need to specify an order, make sure it is higher than 0. |
+
+## 79.12 Configure a Component that is Used by JPA
+
+If you want to configure a component that JPA uses, then you need to ensure that the component is initialized before JPA. When the component is auto-configured, Spring Boot takes care of this for you. For example, when Flyway is auto-configured, Hibernate is configured to depend upon Flyway so that Flyway has a chance to initialize the database before Hibernate tries to use it.
+
+If you are configuring a component yourself, you can use an `EntityManagerFactoryDependsOnPostProcessor` subclass as a convenient way of setting up the necessary dependencies. For example, if you use Hibernate Search with Elasticsearch as its index manager, any `EntityManagerFactory` beans must be configured to depend on the `elasticsearchClient` bean, as shown in the following example:
+
+```
+/**
+ * {@link EntityManagerFactoryDependsOnPostProcessor} that ensures that
+ * {@link EntityManagerFactory} beans depend on the {@code elasticsearchClient} bean.
+ */
+@Configuration
+static class ElasticsearchJpaDependencyConfiguration
+		extends EntityManagerFactoryDependsOnPostProcessor {
+
+	ElasticsearchJpaDependencyConfiguration() {
+		super("elasticsearchClient");
+	}
+
+}
+
+
+```
+
+## 79.13 Configure jOOQ with Two DataSources
+
+If you need to use jOOQ with multiple data sources, you should create your own `DSLContext` for each one. Refer to [JooqAutoConfiguration](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jooq/JooqAutoConfiguration.java) for more details.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| In particular, `JooqExceptionTranslator` and `SpringTransactionProvider` can be reused to provide similar features to what the auto-configuration does with a single `DataSource`. |
+
+## 80. Database Initialization
+
+An SQL database can be initialized in different ways depending on what your stack is. Of course, you can also do it manually, provided the database is a separate process.
+
+## 80.1 Initialize a Database Using JPA
+
+JPA has features for DDL generation, and these can be set up to run on startup against the database. This is controlled through two external properties:
+
+- `spring.jpa.generate-ddl` (boolean) switches the feature on and off and is vendor independent.
+- `spring.jpa.hibernate.ddl-auto` (enum) is a Hibernate feature that controls the behavior in a more fine-grained way. This feature is described in more detail later in this guide.
+
+## 80.2 Initialize a Database Using Hibernate
+
+You can set `spring.jpa.hibernate.ddl-auto` explicitly and the standard Hibernate property values are `none`, `validate`, `update`, `create`, and `create-drop`. Spring Boot chooses a default value for you based on whether it thinks your database is embedded. It defaults to `create-drop` if no schema manager has been detected or `none` in all other cases. An embedded database is detected by looking at the `Connection` type. `hsqldb`, `h2`, and `derby` are embedded, and others are not. Be careful when switching from in-memory to a ‘real’ database that you do not make assumptions about the existence of the tables and data in the new platform. You either have to set `ddl-auto` explicitly or use one of the other mechanisms to initialize the database.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| You can output the schema creation by enabling the `org.hibernate.SQL` logger. This is done for you automatically if you enable the [debug mode](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-logging-console-output). |
+
+In addition, a file named `import.sql` in the root of the classpath is executed on startup if Hibernate creates the schema from scratch (that is, if the `ddl-auto`property is set to `create` or `create-drop`). This can be useful for demos and for testing if you are careful but is probably not something you want to be on the classpath in production. It is a Hibernate feature (and has nothing to do with Spring).
+
+## 80.3 Initialize a Database
+
+Spring Boot can automatically create the schema (DDL scripts) of your `DataSource` and initialize it (DML scripts). It loads SQL from the standard root classpath locations: `schema.sql` and `data.sql`, respectively. In addition, Spring Boot processes the `schema-${platform}.sql` and `data-${platform}.sql` files (if present), where `platform` is the value of `spring.datasource.platform`. This allows you to switch to database-specific scripts if necessary. For example, you might choose to set it to the vendor name of the database (`hsqldb`, `h2`, `oracle`, `mysql`, `postgresql`, and so on).
+
+Spring Boot automatically creates the schema of an embedded `DataSource`. This behavior can be customized by using the `spring.datasource.initialization-mode` property (and it can also be `always` or `never`).
+
+By default, Spring Boot enables the fail-fast feature of the Spring JDBC initializer. This means that, if the scripts cause exceptions, the application fails to start. You can tune that behavior by setting `spring.datasource.continue-on-error`.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| In a JPA-based app, you can choose to let Hibernate create the schema or use `schema.sql`, but you cannot do both. Make sure to disable`spring.jpa.hibernate.ddl-auto` if you use `schema.sql`. |
+
+## 80.4 Initialize a Spring Batch Database
+
+If you use Spring Batch, it comes pre-packaged with SQL initialization scripts for most popular database platforms. Spring Boot can detect your database type and execute those scripts on startup. If you use an embedded database, this happens by default. You can also enable it for any database type, as shown in the following example:
+
+```
+spring.batch.initialize-schema=always
+
+
+```
+
+You can also switch off the initialization explicitly by setting `spring.batch.initialize-schema=never`.
+
+## 80.5 Use a Higher-level Database Migration Tool
+
+Spring Boot supports two higher-level migration tools: [Flyway](https://flywaydb.org/) and [Liquibase](http://www.liquibase.org/).
+
+### 80.5.1 Execute Flyway Database Migrations on Startup
+
+To automatically run Flyway database migrations on startup, add the `org.flywaydb:flyway-core` to your classpath.
+
+The migrations are scripts in the form `V<VERSION>__<NAME>.sql` (with `<VERSION>` an underscore-separated version, such as ‘1’ or ‘2_1’). By default, they are in a folder called `classpath:db/migration`, but you can modify that location by setting `spring.flyway.locations`. You can also add a special `{vendor}`placeholder to use vendor-specific scripts. Assume the following:
+
+```
+spring.flyway.locations=db/migration/{vendor}
+
+
+```
+
+Rather than using `db/migration`, the preceding configuration sets the folder to use according to the type of the database (such as `db/migration/mysql` for MySQL). The list of supported databases is available in [`DatabaseDriver`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot/src/main/java/org/springframework/boot/jdbc/DatabaseDriver.java).
+
+See the Flyway class from flyway-core for details of available settings such as schemas and others. In addition, Spring Boot provides a small set of properties (in[`FlywayProperties`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/flyway/FlywayProperties.java)) that can be used to disable the migrations or switch off the location checking. Spring Boot calls `Flyway.migrate()` to perform the database migration. If you would like more control, provide a `@Bean` that implements [`FlywayMigrationStrategy`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/flyway/FlywayMigrationStrategy.java).
+
+Flyway supports SQL and Java [callbacks](https://flywaydb.org/documentation/callbacks.html). To use SQL-based callbacks, place the callback scripts in the `classpath:db/migration` folder. To use Java-based callbacks, create one or more beans that implement `FlywayCallback` or, preferably, extend `BaseFlywayCallback`. Any such beans are automatically registered with `Flyway`. They can be ordered by using `@Order` or by implementing `Ordered`.
+
+By default, Flyway autowires the (`@Primary`) `DataSource` in your context and uses that for migrations. If you like to use a different `DataSource`, you can create one and mark its `@Bean` as `@FlywayDataSource`. If you do so and want two data sources, remember to create another one and mark it as `@Primary`. Alternatively, you can use Flyway’s native `DataSource` by setting `spring.flyway.[url,user,password]` in external properties. Setting either `spring.flyway.url` or `spring.flyway.user` is sufficient to cause Flyway to use its own `DataSource`. If any of the three properties has not be set, the value of its equivalent `spring.datasource` property will be used.
+
+There is a [Flyway sample](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-flyway) so that you can see how to set things up.
+
+You can also use Flyway to provide data for specific scenarios. For example, you can place test-specific migrations in `src/test/resources` and they are run only when your application starts for testing. Also, you can use profile-specific configuration to customize `spring.flyway.locations` so that certain migrations run only when a particular profile is active. For example, in `application-dev.properties`, you might specify the following setting:
+
+```
+spring.flyway.locations=classpath:/db/migration,classpath:/dev/db/migration
+
+
+```
+
+With that setup, migrations in `dev/db/migration` run only when the `dev` profile is active.
+
+### 80.5.2 Execute Liquibase Database Migrations on Startup
+
+To automatically run Liquibase database migrations on startup, add the `org.liquibase:liquibase-core` to your classpath.
+
+By default, the master change log is read from `db/changelog/db.changelog-master.yaml`, but you can change the location by setting `spring.liquibase.change-log`. In addition to YAML, Liquibase also supports JSON, XML, and SQL change log formats.
+
+By default, Liquibase autowires the (`@Primary`) `DataSource` in your context and uses that for migrations. If you need to use a different `DataSource`, you can create one and mark its `@Bean` as `@LiquibaseDataSource`. If you do so and you want two data sources, remember to create another one and mark it as `@Primary`. Alternatively, you can use Liquibase’s native `DataSource` by setting `spring.liquibase.[url,user,password]` in external properties. Setting either `spring.liquibase.url` or `spring.liquibase.user` is sufficient to cause Liquibase to use its own `DataSource`. If any of the three properties has not be set, the value of its equivalent `spring.datasource` property will be used.
+
+See [`LiquibaseProperties`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/liquibase/LiquibaseProperties.java) for details about available settings such as contexts, the default schema, and others.
+
+There is a [Liquibase sample](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-liquibase) so that you can see how to set things up.
+
+## 81. Messaging
+
+Spring Boot offers a number of starters that include messaging. This section answers questions that arise from using messaging with Spring Boot.
+
+## 81.1 Disable Transacted JMS Session
+
+If your JMS broker does not support transacted sessions, you have to disable the support of transactions altogether. If you create your own `JmsListenerContainerFactory`, there is nothing to do, since, by default it cannot be transacted. If you want to use the `DefaultJmsListenerContainerFactoryConfigurer` to reuse Spring Boot’s default, you can disable transacted sessions, as follows:
+
+```
+@Bean
+public DefaultJmsListenerContainerFactory jmsListenerContainerFactory(
+		ConnectionFactory connectionFactory,
+		DefaultJmsListenerContainerFactoryConfigurer configurer) {
+	DefaultJmsListenerContainerFactory listenerFactory =
+			new DefaultJmsListenerContainerFactory();
+	configurer.configure(listenerFactory, connectionFactory);
+	listenerFactory.setTransactionManager(null);
+	listenerFactory.setSessionTransacted(false);
+	return listenerFactory;
+}
+
+
+```
+
+The preceding example overrides the default factory, and it should be applied to any other factory that your application defines, if any.
+
+## 82. Batch Applications
+
+This section answers questions that arise from using Spring Batch with Spring Boot.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| By default, batch applications require a `DataSource` to store job details. If you want to deviate from that, you need to implement `BatchConfigurer`. See [The Javadoc of `@EnableBatchProcessing`](https://docs.spring.io/spring-batch/apidocs/org/springframework/batch/core/configuration/annotation/EnableBatchProcessing.html) for more details. |
+
+For more about Spring Batch, see the [Spring Batch project page](https://projects.spring.io/spring-batch/).
+
+## 82.1 Execute Spring Batch Jobs on Startup
+
+Spring Batch auto-configuration is enabled by adding `@EnableBatchProcessing` (from Spring Batch) somewhere in your context.
+
+By default, it executes **all** `Jobs` in the application context on startup (see [JobLauncherCommandLineRunner](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/batch/JobLauncherCommandLineRunner.java) for details). You can narrow down to a specific job or jobs by specifying `spring.batch.job.names` (which takes a comma-separated list of job name patterns).
+
+If the application context includes a `JobRegistry`, the jobs in `spring.batch.job.names` are looked up in the registry instead of being autowired from the context. This is a common pattern with more complex systems, where multiple jobs are defined in child contexts and registered centrally.
+
+See [BatchAutoConfiguration](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration.java) and [@EnableBatchProcessing](https://github.com/spring-projects/spring-batch/blob/master/spring-batch-core/src/main/java/org/springframework/batch/core/configuration/annotation/EnableBatchProcessing.java) for more details.
+
+## 83. Actuator
+
+Spring Boot includes the Spring Boot Actuator. This section answers questions that often arise from its use.
+
+## 83.1 Change the HTTP Port or Address of the Actuator Endpoints
+
+In a standalone application, the Actuator HTTP port defaults to the same as the main HTTP port. To make the application listen on a different port, set the external property: `management.server.port`. To listen on a completely different network address (such as when you have an internal network for management and an external one for user applications), you can also set `management.server.address` to a valid IP address to which the server is able to bind.
+
+For more detail, see the [`ManagementServerProperties`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/web/server/ManagementServerProperties.java) source code and “[Section 51.2, “Customizing the Management Server Port”](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#production-ready-customizing-management-server-port)” in the “Production-ready features” section.
+
+## 83.2 Customize the ‘whitelabel’ Error Page
+
+Spring Boot installs a ‘whitelabel’ error page that you see in a browser client if you encounter a server error (machine clients consuming JSON and other media types should see a sensible response with the right error code).
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Set `server.error.whitelabel.enabled=false` to switch the default error page off. Doing so restores the default of the servlet container that you are using. Note that Spring Boot still tries to resolve the error view, so you should probably add your own error page rather than disabling it completely. |
+
+Overriding the error page with your own depends on the templating technology that you use. For example, if you use Thymeleaf, you can add an `error.html` template. If you use FreeMarker, you can add an `error.ftl` template. In general, you need a `View` that resolves with a name of `error` or a `@Controller` that handles the `/error` path. Unless you replaced some of the default configuration, you should find a `BeanNameViewResolver` in your `ApplicationContext`, so a `@Bean`named `error` would be a simple way of doing that. See [`ErrorMvcAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/error/ErrorMvcAutoConfiguration.java) for more options.
+
+See also the section on “[Error Handling](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#boot-features-error-handling)” for details of how to register handlers in the servlet container.
+
+## 84. Security
+
+This section addresses questions about security when working with Spring Boot, including questions that arise from using Spring Security with Spring Boot.
+
+For more about Spring Security, see the [Spring Security project page](https://projects.spring.io/spring-security/).
+
+## 84.1 Switch off the Spring Boot Security Configuration
+
+If you define a `@Configuration` with a `WebSecurityConfigurerAdapter` in your application, it switches off the default webapp security settings in Spring Boot.
+
+## 84.2 Change the AuthenticationManager and Add User Accounts
+
+If you provide a `@Bean` of type `AuthenticationManager`, `AuthenticationProvider`, or `UserDetailsService`, the default `@Bean` for `InMemoryUserDetailsManager` is not created, so you have the full feature set of Spring Security available (such as [various authentication options](https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#jc-authentication)).
+
+The easiest way to add user accounts is to provide your own `UserDetailsService` bean.
+
+## 84.3 Enable HTTPS When Running behind a Proxy Server
+
+Ensuring that all your main endpoints are only available over HTTPS is an important chore for any application. If you use Tomcat as a servlet container, then Spring Boot adds Tomcat’s own `RemoteIpValve` automatically if it detects some environment settings, and you should be able to rely on the `HttpServletRequest` to report whether it is secure or not (even downstream of a proxy server that handles the real SSL termination). The standard behavior is determined by the presence or absence of certain request headers (`x-forwarded-for` and `x-forwarded-proto`), whose names are conventional, so it should work with most front-end proxies. You can switch on the valve by adding some entries to `application.properties`, as shown in the following example:
+
+```
+server.tomcat.remote-ip-header=x-forwarded-for
+server.tomcat.protocol-header=x-forwarded-proto
+
+
+```
+
+(The presence of either of those properties switches on the valve. Alternatively, you can add the `RemoteIpValve` by adding a `TomcatServletWebServerFactory`bean.)
+
+To configure Spring Security to require a secure channel for all (or some) requests, consider adding your own `WebSecurityConfigurerAdapter` that adds the following `HttpSecurity` configuration:
+
+```
+@Configuration
+public class SslWebSecurityConfigurerAdapter extends WebSecurityConfigurerAdapter {
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		// Customize the application security
+		http.requiresChannel().anyRequest().requiresSecure();
+	}
+
+}
+
+
+```
+
+## 85. Hot Swapping
+
+Spring Boot supports hot swapping. This section answers questions about how it works.
+
+## 85.1 Reload Static Content
+
+There are several options for hot reloading. The recommended approach is to use [`spring-boot-devtools`](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot-devtools), as it provides additional development-time features, such as support for fast application restarts and LiveReload as well as sensible development-time configuration (such as template caching). Devtools works by monitoring the classpath for changes. This means that static resource changes must be "built" for the change to take affect. By default, this happens automatically in Eclipse when you save your changes. In IntelliJ IDEA, the Make Project command triggers the necessary build. Due to the [default restart exclusions](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot-devtools-restart-exclude), changes to static resources do not trigger a restart of your application. They do, however, trigger a live reload.
+
+Alternatively, running in an IDE (especially with debugging on) is a good way to do development (all modern IDEs allow reloading of static resources and usually also allow hot-swapping of Java class changes).
+
+Finally, the [Maven and Gradle plugins](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins) can be configured (see the `addResources` property) to support running from the command line with reloading of static files directly from source. You can use that with an external css/js compiler process if you are writing that code with higher-level tools.
+
+## 85.2 Reload Templates without Restarting the Container
+
+Most of the templating technologies supported by Spring Boot include a configuration option to disable caching (described later in this document). If you use the`spring-boot-devtools` module, these properties are [automatically configured](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot-devtools-property-defaults) for you at development time.
+
+### 85.2.1 Thymeleaf Templates
+
+If you use Thymeleaf, set `spring.thymeleaf.cache` to `false`. See [`ThymeleafAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/thymeleaf/ThymeleafAutoConfiguration.java) for other Thymeleaf customization options.
+
+### 85.2.2 FreeMarker Templates
+
+If you use FreeMarker, set `spring.freemarker.cache` to `false`. See [`FreeMarkerAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/freemarker/FreeMarkerAutoConfiguration.java) for other FreeMarker customization options.
+
+### 85.2.3 Groovy Templates
+
+If you use Groovy templates, set `spring.groovy.template.cache` to `false`. See [`GroovyTemplateAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/groovy/template/GroovyTemplateAutoConfiguration.java) for other Groovy customization options.
+
+## 85.3 Fast Application Restarts
+
+The `spring-boot-devtools` module includes support for automatic application restarts. While not as fast as technologies such as [JRebel](http://zeroturnaround.com/software/jrebel/) it is usually significantly faster than a “cold start”. You should probably give it a try before investigating some of the more complex reload options discussed later in this document.
+
+For more details, see the [Chapter 20, *Developer Tools*](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#using-boot-devtools) section.
+
+## 85.4 Reload Java Classes without Restarting the Container
+
+Many modern IDEs (Eclipse, IDEA, and others) support hot swapping of bytecode. Consequently, if you make a change that does not affect class or method signatures, it should reload cleanly with no side effects.
+
+## 86. Build
+
+Spring Boot includes build plugins for Maven and Gradle. This section answers common questions about these plugins.
+
+## 86.1 Generate Build Information
+
+Both the Maven plugin and the Gradle plugin allow generating build information containing the coordinates, name, and version of the project. The plugins can also be configured to add additional properties through configuration. When such a file is present, Spring Boot auto-configures a `BuildProperties` bean.
+
+To generate build information with Maven, add an execution for the `build-info` goal, as shown in the following example:
+
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<version>2.0.0.BUILD-SNAPSHOT</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>build-info</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| See the [Spring Boot Maven Plugin documentation](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin) for more details. |
+
+The following example does the same with Gradle:
+
+```
+springBoot {
+	buildInfo()
+}
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| See the [Spring Boot Gradle Plugin documentation](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/gradle-plugin/reference/html/#integrating-with-actuator-build-info) for more details. |
+
+## 86.2 Generate Git Information
+
+Both Maven and Gradle allow generating a `git.properties` file containing information about the state of your `git` source code repository when the project was built.
+
+For Maven users, the `spring-boot-starter-parent` POM includes a pre-configured plugin to generate a `git.properties` file. To use it, add the following declaration to your POM:
+
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>pl.project13.maven</groupId>
+			<artifactId>git-commit-id-plugin</artifactId>
+		</plugin>
+	</plugins>
+</build>
+
+
+```
+
+Gradle users can achieve the same result by using the [`gradle-git-properties`](https://plugins.gradle.org/plugin/com.gorylenko.gradle-git-properties) plugin, as shown in the following example:
+
+```
+plugins {
+	id "com.gorylenko.gradle-git-properties" version "1.4.17"
+}
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| The commit time in `git.properties` is expected to match the following format: `yyyy-MM-dd’T’HH:mm:ssZ`. This is the default format for both plugins listed above. Using this format lets the time be parsed into a `Date` and its format, when serialized to JSON, to be controlled by Jackson’s date serialization configuration settings. |
+
+## 86.3 Customize Dependency Versions
+
+If you use a Maven build that inherits directly or indirectly from `spring-boot-dependencies` (for instance, `spring-boot-starter-parent`) but you want to override a specific third-party dependency, you can add appropriate `<properties>` elements. Browse the [`spring-boot-dependencies`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-dependencies/pom.xml) POM for a complete list of properties. For example, to pick a different `slf4j` version, you would add the following property:
+
+```
+<properties>
+	<slf4j.version>1.7.5<slf4j.version>
+</properties>
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Doing so only works if your Maven project inherits (directly or indirectly) from `spring-boot-dependencies`. If you have added `spring-boot-dependencies` in your own `dependencyManagement` section with `<scope>import</scope>`, you have to redefine the artifact yourself instead of overriding the property. |
+
+| ![[Warning]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/warning.png) |
+| ------------------------------------------------------------ |
+| Each Spring Boot release is designed and tested against this specific set of third-party dependencies. Overriding versions may cause compatibility issues. |
+
+## 86.4 Create an Executable JAR with Maven
+
+The `spring-boot-maven-plugin` can be used to create an executable “fat” JAR. If you use the `spring-boot-starter-parent` POM, you can declare the plugin and your jars are repackaged as follows:
+
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+		</plugin>
+	</plugins>
+</build>
+
+
+```
+
+If you do not use the parent POM, you can still use the plugin. However, you must additionally add an `<executions>` section, as follows:
+
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<version>2.0.0.BUILD-SNAPSHOT</version>
+			<executions>
+				<execution>
+					<goals>
+						<goal>repackage</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+
+
+```
+
+See the [plugin documentation](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin/usage.html) for full usage details.
+
+## 86.5 Use a Spring Boot Application as a Dependency
+
+Like a war file, a Spring Boot application is not intended to be used as a dependency. If your application contains classes that you want to share with other projects, the recommended approach is to move that code into a separate module. The separate module can then be depended upon by your application and other projects.
+
+If you cannot rearrange your code as recommended above, Spring Boot’s Maven and Gradle plugins must be configured to produce a separate artifact that is suitable for use as a dependency. The executable archive cannot be used as a dependency as the [executable jar format](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#executable-jar-jar-file-structure) packages application classes in `BOOT-INF/classes`. This means that they cannot be found when the executable jar is used as a dependency.
+
+To produce the two artifacts, one that can be used as a dependency and one that is executable, a classifier must be specified. This classifier is applied to the name of the executable archive, leaving the default archive for use as a dependency.
+
+To configure a classifier of `exec` in Maven, you can use the following configuration:
+
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+				<classifier>exec</classifier>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
+
+
+```
+
+## 86.6 Extract Specific Libraries When an Executable Jar Runs
+
+Most nested libraries in an executable jar do not need to be unpacked in order to run. However, certain libraries can have problems. For example, JRuby includes its own nested jar support, which assumes that the `jruby-complete.jar` is always directly available as a file in its own right.
+
+To deal with any problematic libraries, you can flag that specific nested jars should be automatically unpacked to the “temp folder” when the executable jar first runs.
+
+For example, to indicate that JRuby should be flagged for unpacking by using the Maven Plugin, you would add the following configuration:
+
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+			<configuration>
+				<requiresUnpack>
+					<dependency>
+						<groupId>org.jruby</groupId>
+						<artifactId>jruby-complete</artifactId>
+					</dependency>
+				</requiresUnpack>
+			</configuration>
+		</plugin>
+	</plugins>
+</build>
+
+
+```
+
+## 86.7 Create a Non-executable JAR with Exclusions
+
+Often, if you have an executable and a non-executable jar as two separate build products, the executable version has additional configuration files that are not needed in a library jar. For example, the `application.yml` configuration file might by excluded from the non-executable JAR.
+
+In Maven, the executable jar must be the main artifact and you can add a classified jar for the library, as follows:
+
+```
+<build>
+	<plugins>
+		<plugin>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-maven-plugin</artifactId>
+		</plugin>
+		<plugin>
+			<artifactId>maven-jar-plugin</artifactId>
+			<executions>
+				<execution>
+					<id>lib</id>
+					<phase>package</phase>
+					<goals>
+						<goal>jar</goal>
+					</goals>
+					<configuration>
+						<classifier>lib</classifier>
+						<excludes>
+							<exclude>application.yml</exclude>
+						</excludes>
+					</configuration>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
+
+
+```
+
+## 86.8 Remote Debug a Spring Boot Application Started with Maven
+
+To attach a remote debugger to a Spring Boot application that was started with Maven, you can use the `jvmArguments` property of the [maven plugin](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin).
+
+See [this example](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/maven-plugin/examples/run-debug.html) for more details.
+
+## 86.9 Build an Executable Archive from Ant without Using `spring-boot-antlib`
+
+To build with Ant, you need to grab dependencies, compile, and then create a jar or war archive. To make it executable, you can either use the `spring-boot-antlib`module or you can follow these instructions:
+
+1. If you are building a jar, package the application’s classes and resources in a nested `BOOT-INF/classes` directory. If you are building a war, package the application’s classes in a nested `WEB-INF/classes` directory as usual.
+2. Add the runtime dependencies in a nested `BOOT-INF/lib` directory for a jar or `WEB-INF/lib` for a war. Remember **not** to compress the entries in the archive.
+3. Add the `provided` (embedded container) dependencies in a nested `BOOT-INF/lib` directory for a jar or `WEB-INF/lib-provided` for a war. Remember **not** to compress the entries in the archive.
+4. Add the `spring-boot-loader` classes at the root of the archive (so that the `Main-Class` is available).
+5. Use the appropriate launcher (such as `JarLauncher` for a jar file) as a `Main-Class` attribute in the manifest and specify the other properties it needs as manifest entries — principally, by setting a `Start-Class` property.
+
+The following example shows how to build an executable archive with Ant:
+
+```
+<target name="build" depends="compile">
+	<jar destfile="target/${ant.project.name}-${spring-boot.version}.jar" compress="false">
+		<mappedresources>
+			<fileset dir="target/classes" />
+			<globmapper from="*" to="BOOT-INF/classes/*"/>
+		</mappedresources>
+		<mappedresources>
+			<fileset dir="src/main/resources" erroronmissingdir="false"/>
+			<globmapper from="*" to="BOOT-INF/classes/*"/>
+		</mappedresources>
+		<mappedresources>
+			<fileset dir="${lib.dir}/runtime" />
+			<globmapper from="*" to="BOOT-INF/lib/*"/>
+		</mappedresources>
+		<zipfileset src="${lib.dir}/loader/spring-boot-loader-jar-${spring-boot.version}.jar" />
+		<manifest>
+			<attribute name="Main-Class" value="org.springframework.boot.loader.JarLauncher" />
+			<attribute name="Start-Class" value="${start-class}" />
+		</manifest>
+	</jar>
+</target>
+
+
+```
+
+The [Ant Sample](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-ant) has a `build.xml` file with a `manual` task that should work if you run it with the following command:
+
+```
+$ ant -lib <folder containing ivy-2.2.jar> clean manual
+
+
+```
+
+Then you can run the application with the following command:
+
+```
+$ java -jar target/*.jar
+
+
+```
+
+## 87. Traditional Deployment
+
+Spring Boot supports traditional deployment as well as more modern forms of deployment. This section answers common questions about traditional deployment.
+
+## 87.1 Create a Deployable War File
+
+The first step in producing a deployable war file is to provide a `SpringBootServletInitializer` subclass and override its `configure` method. Doing so makes use of Spring Framework’s Servlet 3.0 support and lets you configure your application when it is launched by the servlet container. Typically, you should update your application’s main class to extend `SpringBootServletInitializer`, as shown in the following example:
+
+```
+@SpringBootApplication
+public class Application extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(Application.class);
+	}
+
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(Application.class, args);
+	}
+
+}
+
+
+```
+
+The next step is to update your build configuration such that your project produces a war file rather than a jar file. If you use Maven and `spring-boot-starter-parent` (which configures Maven’s war plugin for you), all you need to do is to modify `pom.xml` to change the packaging to war, as follows:
+
+```
+<packaging>war</packaging>
+
+
+```
+
+If you use Gradle, you need to modify `build.gradle` to apply the war plugin to the project, as follows:
+
+```
+apply plugin: 'war'
+
+
+```
+
+The final step in the process is to ensure that the embedded servlet container does not interfere with the servlet container to which the war file is deployed. To do so, you need to mark the embedded servlet container dependency as being provided.
+
+If you use Maven, the following example marks the servlet container (Tomcat, in this case) as being provided:
+
+```
+<dependencies>
+	<!-- … -->
+	<dependency>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-tomcat</artifactId>
+		<scope>provided</scope>
+	</dependency>
+	<!-- … -->
+</dependencies>
+
+
+```
+
+If you use Gradle, the following example marks the servlet container (Tomcat, in this case) as being provided:
+
+```
+dependencies {
+	// …
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+	// …
+}
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| `providedRuntime` is preferred to Gradle’s `compileOnly` configuration. Among other limitations, `compileOnly` dependencies are not on the test classpath, so any web-based integration tests fail. |
+
+If you use the [Spring Boot build tools](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#build-tool-plugins), marking the embedded servlet container dependency as provided produces an executable war file with the provided dependencies packaged in a `lib-provided` directory. This means that, in addition to being deployable to a servlet container, you can also run your application by using `java -jar`on the command line.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| Take a look at Spring Boot’s sample applications for a [Maven-based example](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-samples/spring-boot-sample-traditional/pom.xml) of the previously described configuration. |
+
+## 87.2 Create a Deployable War File for Older Servlet Containers
+
+Older Servlet containers do not have support for the `ServletContextInitializer` bootstrap process used in Servlet 3.0. You can still use Spring and Spring Boot in these containers, but you are going to need to add a `web.xml` to your application and configure it to load an `ApplicationContext` via a `DispatcherServlet`.
+
+## 87.3 Convert an Existing Application to Spring Boot
+
+For a non-web application, it should be easy to convert an existing Spring application to a Spring Boot application. To do so, throw away the code that creates your`ApplicationContext` and replace it with calls to `SpringApplication` or `SpringApplicationBuilder`. Spring MVC web applications are generally amenable to first creating a deployable war application and then migrating it later to an executable war or jar. See the [Getting Started Guide on Converting a jar to a war](https://spring.io/guides/gs/convert-jar-to-war/).
+
+To create a deployable war by extending `SpringBootServletInitializer` (for example, in a class called `Application`) and adding the Spring Boot `@SpringBootApplication` annotation, use code similar to that shown in the following example:
+
+```
+@SpringBootApplication
+public class Application extends SpringBootServletInitializer {
+
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		// Customize the application or call application.sources(...) to add sources
+		// Since our example is itself a @Configuration class (via @SpringBootApplication)
+		// we actually don't need to override this method.
+		return application;
+	}
+
+}
+
+
+```
+
+Remember that, whatever you put in the `sources` is merely a Spring `ApplicationContext`. Normally, anything that already works should work here. There might be some beans you can remove later and let Spring Boot provide its own defaults for them, but it should be possible to get something working before you need to do that.
+
+Static resources can be moved to `/public` (or `/static` or `/resources` or `/META-INF/resources`) in the classpath root. The same applies to `messages.properties` (which Spring Boot automatically detects in the root of the classpath).
+
+Vanilla usage of Spring `DispatcherServlet` and Spring Security should require no further changes. If you have other features in your application (for instance, using other servlets or filters), you may need to add some configuration to your `Application` context, by replacing those elements from the `web.xml`, as follows:
+
+- A `@Bean` of type `Servlet` or `ServletRegistrationBean` installs that bean in the container as if it were a `<servlet/>` and `<servlet-mapping/>` in `web.xml`.
+- A `@Bean` of type `Filter` or `FilterRegistrationBean` behaves similarly (as a `<filter/>` and `<filter-mapping/>`).
+- An `ApplicationContext` in an XML file can be added through an `@ImportResource` in your `Application`. Alternatively, simple cases where annotation configuration is heavily used already can be recreated in a few lines as `@Bean` definitions.
+
+Once the war file is working, you can make it executable by adding a `main` method to your `Application`, as shown in the following example:
+
+```
+public static void main(String[] args) {
+	SpringApplication.run(Application.class, args);
+}
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| If you intend to start your application as a war or as an executable application, you need to share the customizations of the builder in a method that is both available to the `SpringBootServletInitializer` callback and in the `main` method in a class similar to the following:`*@SpringBootApplication* public class Application extends SpringBootServletInitializer {  	*@Override* 	protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) { 		return configureApplication(builder); 	}  	public static void main(String[] args) { 		configureApplication(new SpringApplicationBuilder()).run(args); 	}  	private static SpringApplicationBuilder configureApplication(SpringApplicationBuilder builder) { 		return builder.sources(Application.class).bannerMode(Banner.Mode.OFF); 	}  }` |
+
+Applications can fall into more than one category:
+
+- Servlet 3.0+ applications with no `web.xml`.
+- Applications with a `web.xml`.
+- Applications with a context hierarchy.
+- Applications without a context hierarchy.
+
+All of these should be amenable to translation, but each might require slightly different techniques.
+
+Servlet 3.0+ applications might translate pretty easily if they already use the Spring Servlet 3.0+ initializer support classes. Normally, all the code from an existing`WebApplicationInitializer` can be moved into a `SpringBootServletInitializer`. If your existing application has more than one `ApplicationContext`(for example, if it uses `AbstractDispatcherServletInitializer`) then you might be able to combine all your context sources into a single `SpringApplication`. The main complication you might encounter is if combining does not work and you need to maintain the context hierarchy. See the [entry on building a hierarchy](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#howto-build-an-application-context-hierarchy) for examples. An existing parent context that contains web-specific features usually needs to be broken up so that all the `ServletContextAware`components are in the child context.
+
+Applications that are not already Spring applications might be convertible to Spring Boot applications, and the previously mentioned guidance may help. However, you may yet encounter problems. In that case, we suggest [asking questions on Stack Overflow with a tag of `spring-boot`](https://stackoverflow.com/questions/tagged/spring-boot).
+
+## 87.4 Deploying a WAR to WebLogic
+
+To deploy a Spring Boot application to WebLogic, you must ensure that your servlet initializer **directly** implements `WebApplicationInitializer` (even if you extend from a base class that already implements it).
+
+A typical initializer for WebLogic should resemble the following example:
+
+```
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.web.WebApplicationInitializer;
+
+@SpringBootApplication
+public class MyApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
+
+}
+
+
+```
+
+If you use Logback, you also need to tell WebLogic to prefer the packaged version rather than the version that was pre-installed with the server. You can do so by adding a `WEB-INF/weblogic.xml` file with the following contents:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<wls:weblogic-web-app
+	xmlns:wls="http://xmlns.oracle.com/weblogic/weblogic-web-app"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		http://java.sun.com/xml/ns/javaee/ejb-jar_3_0.xsd
+		http://xmlns.oracle.com/weblogic/weblogic-web-app
+		http://xmlns.oracle.com/weblogic/weblogic-web-app/1.4/weblogic-web-app.xsd">
+	<wls:container-descriptor>
+		<wls:prefer-application-packages>
+			<wls:package-name>org.slf4j</wls:package-name>
+		</wls:prefer-application-packages>
+	</wls:container-descriptor>
+</wls:weblogic-web-app>
+
+
+```
+
+## 87.5 Deploying a WAR in an Old (Servlet 2.5) Container
+
+Spring Boot uses Servlet 3.0 APIs to initialize the `ServletContext` (register `Servlets` and so on), so you cannot use the same application in a Servlet 2.5 container. It **is**, however, possible to run a Spring Boot application on an older container with some special tools. If you include `org.springframework.boot:spring-boot-legacy` as a dependency ([maintained separately](https://github.com/scratches/spring-boot-legacy) to the core of Spring Boot and currently available at 1.1.0.RELEASE), all you need to do is create a `web.xml` and declare a context listener to create the application context and your filters and servlets. The context listener is a special purpose one for Spring Boot, but the rest of it is normal for a Spring application in Servlet 2.5. The following Maven example shows how to set up a Spring Boot project to run in a Servlet 2.5 container:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>demo.Application</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>org.springframework.boot.legacy.context.web.SpringBootContextLoaderListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>metricsFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>metricsFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextAttribute</param-name>
+			<param-value>org.springframework.web.context.WebApplicationContext.ROOT</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+
+
+```
+
+In the preceding example, we use a single application context (the one created by the context listener) and attach it to the `DispatcherServlet` by using an `init`parameter. This is normal in a Spring Boot application (you normally only have one application context).
+
+## 87.6 Use Jedis Instead of Lettuce
+
+By default, the Spring Boot starter (`spring-boot-starter-data-redis`) uses [Lettuce](https://github.com/lettuce-io/lettuce-core/). You need to exclude that dependency and include the [Jedis](https://github.com/xetorthio/jedis/) one instead. Spring Boot manages these dependencies to help make this process as easy as possible.
+
+The following example shows how to do so in Maven:
+
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-redis</artifactId>
+	<exclusions>
+		<exclusion>
+			<groupId>io.lettuce</groupId>
+			<artifactId>lettuce-core</artifactId>
+		</exclusion>
+	</exclusions>
+</dependency>
+<dependency>
+	<groupId>redis.clients</groupId>
+	<artifactId>jedis</artifactId>
+</dependency>
+
+
+```
+
+The following example shows how to do so in Gradle:
+
+```
+configurations {
+	compile.exclude module: "lettuce"
+}
+
+dependencies {
+	compile("redis.clients:jedis")
+	// ...
+}
+
+
+```
+
+# Part X. Appendices
+
+## Appendix A. Common application properties
+
+Various properties can be specified inside your `application.properties` file, inside your `application.yml` file, or as command line switches. This appendix provides a list of common Spring Boot properties and references to the underlying classes that consume them.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Property contributions can come from additional jar files on your classpath, so you should not consider this an exhaustive list. Also, you can define your own properties. |
+
+| ![[Warning]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/warning.png) |
+| ------------------------------------------------------------ |
+| This sample file is meant as a guide only. Do **not** copy and paste the entire content into your application. Rather, pick only the properties that you need. |
+
+```
+# ===================================================================
+# COMMON SPRING BOOT PROPERTIES
+#
+# This sample file is provided as a guideline. Do NOT copy it in its
+# entirety to your own application.			   ^^^
+# ===================================================================
+
+
+# ----------------------------------------
+# CORE PROPERTIES
+# ----------------------------------------
+debug=false # Enable debug logs.
+trace=false # Enable trace logs.
+
+# LOGGING
+logging.config= # Location of the logging configuration file. For instance, `classpath:logback.xml` for Logback.
+logging.exception-conversion-word=%wEx # Conversion word used when logging exceptions.
+logging.file= # Log file name (for instance, `myapp.log`). Names can be an exact location or relative to the current directory.
+logging.file.max-history=0 # Maximum of archive log files to keep. Only supported with the default logback setup.
+logging.file.max-size=10MB # Maximum log file size. Only supported with the default logback setup.
+logging.level.*= # Log levels severity mapping. For instance, `logging.level.org.springframework=DEBUG`.
+logging.path= # Location of the log file. For instance, `/var/log`.
+logging.pattern.console= # Appender pattern for output to the console. Supported only with the default Logback setup.
+logging.pattern.dateformat=yyyy-MM-dd HH:mm:ss.SSS # Appender pattern for log date format. Supported only with the default Logback setup.
+logging.pattern.file= # Appender pattern for output to a file. Supported only with the default Logback setup.
+logging.pattern.level=%5p # Appender pattern for log level. Supported only with the default Logback setup.
+logging.register-shutdown-hook=false # Register a shutdown hook for the logging system when it is initialized.
+
+# AOP
+spring.aop.auto=true # Add @EnableAspectJAutoProxy.
+spring.aop.proxy-target-class=true # Whether subclass-based (CGLIB) proxies are to be created (true), as opposed to standard Java interface-based proxies (false).
+
+# IDENTITY (ContextIdApplicationContextInitializer)
+spring.application.name= # Application name.
+
+# ADMIN (SpringApplicationAdminJmxAutoConfiguration)
+spring.application.admin.enabled=false # Whether to enable admin features for the application.
+spring.application.admin.jmx-name=org.springframework.boot:type=Admin,name=SpringApplication # JMX name of the application admin MBean.
+
+# AUTO-CONFIGURATION
+spring.autoconfigure.exclude= # Auto-configuration classes to exclude.
+
+# BANNER
+spring.banner.charset=UTF-8 # Banner file encoding.
+spring.banner.location=classpath:banner.txt # Banner text resource location.
+spring.banner.image.location=classpath:banner.gif # Banner image file location (jpg or png can also be used).
+spring.banner.image.width=76 # Width of the banner image in chars.
+spring.banner.image.height= # Height of the banner image in chars (default based on image height).
+spring.banner.image.margin=2 # Left hand image margin in chars.
+spring.banner.image.invert=false # Whether images should be inverted for dark terminal themes.
+
+# SPRING CORE
+spring.beaninfo.ignore=true # Whether to skip search of BeanInfo classes.
+
+# SPRING CACHE (CacheProperties)
+spring.cache.cache-names= # Comma-separated list of cache names to create if supported by the underlying cache manager.
+spring.cache.caffeine.spec= # The spec to use to create caches. See CaffeineSpec for more details on the spec format.
+spring.cache.couchbase.expiration=0ms # Entry expiration. By default the entries never expire. Note that this value is ultimately converted to seconds.
+spring.cache.ehcache.config= # The location of the configuration file to use to initialize EhCache.
+spring.cache.infinispan.config= # The location of the configuration file to use to initialize Infinispan.
+spring.cache.jcache.config= # The location of the configuration file to use to initialize the cache manager.
+spring.cache.jcache.provider= # Fully qualified name of the CachingProvider implementation to use to retrieve the JSR-107 compliant cache manager. Needed only if more than one JSR-107 implementation is available on the classpath.
+spring.cache.redis.cache-null-values=true # Allow caching null values.
+spring.cache.redis.key-prefix= # Key prefix.
+spring.cache.redis.time-to-live=0ms # Entry expiration. By default the entries never expire.
+spring.cache.redis.use-key-prefix=true # Whether to use the key prefix when writing to Redis.
+spring.cache.type= # Cache type. By default, auto-detected according to the environment.
+
+# SPRING CONFIG - using environment property only (ConfigFileApplicationListener)
+spring.config.additional-location= # Config file locations used in addition to the defaults.
+spring.config.location= # Config file locations that replace the defaults.
+spring.config.name=application # Config file name.
+
+# HAZELCAST (HazelcastProperties)
+spring.hazelcast.config= # The location of the configuration file to use to initialize Hazelcast.
+
+# PROJECT INFORMATION (ProjectInfoProperties)
+spring.info.build.location=classpath:META-INF/build-info.properties # Location of the generated build-info.properties file.
+spring.info.git.location=classpath:git.properties # Location of the generated git.properties file.
+
+# JMX
+spring.jmx.default-domain= # JMX domain name.
+spring.jmx.enabled=true # Expose management beans to the JMX domain.
+spring.jmx.server=mbeanServer # MBeanServer bean name.
+
+# Email (MailProperties)
+spring.mail.default-encoding=UTF-8 # Default MimeMessage encoding.
+spring.mail.host= # SMTP server host. For instance, `smtp.example.com`.
+spring.mail.jndi-name= # Session JNDI name. When set, takes precedence over other mail settings.
+spring.mail.password= # Login password of the SMTP server.
+spring.mail.port= # SMTP server port.
+spring.mail.properties.*= # Additional JavaMail session properties.
+spring.mail.protocol=smtp # Protocol used by the SMTP server.
+spring.mail.test-connection=false # Whether to test that the mail server is available on startup.
+spring.mail.username= # Login user of the SMTP server.
+
+# APPLICATION SETTINGS (SpringApplication)
+spring.main.banner-mode=console # Mode used to display the banner when the application runs.
+spring.main.sources= # Sources (class names, package names, or XML resource locations) to include in the ApplicationContext.
+spring.main.web-application-type= # Flag to explicitly request a specific type of web application. If not set, auto-detected based on the classpath.
+
+# FILE ENCODING (FileEncodingApplicationListener)
+spring.mandatory-file-encoding= # Expected character encoding the application must use.
+
+# INTERNATIONALIZATION (MessageSourceProperties)
+spring.messages.always-use-message-format=false # Whether to always apply the MessageFormat rules, parsing even messages without arguments.
+spring.messages.basename=messages # Comma-separated list of basenames (essentially a fully-qualified classpath location), each following the ResourceBundle convention with relaxed support for slash based locations.
+spring.messages.cache-duration= # Loaded resource bundle files cache duration. When not set, bundles are cached forever. If a duration suffix is not specified, seconds will be used.
+spring.messages.encoding=UTF-8 # Message bundles encoding.
+spring.messages.fallback-to-system-locale=true # Whether to fall back to the system Locale if no files for a specific Locale have been found.
+spring.messages.use-code-as-default-message=false # Whether to use the message code as the default message instead of throwing a "NoSuchMessageException". Recommended during development only.
+
+# OUTPUT
+spring.output.ansi.enabled=detect # Configures the ANSI output.
+
+# PID FILE (ApplicationPidFileWriter)
+spring.pid.fail-on-write-error= # Fails if ApplicationPidFileWriter is used but it cannot write the PID file.
+spring.pid.file= # Location of the PID file to write (if ApplicationPidFileWriter is used).
+
+# PROFILES
+spring.profiles.active= # Comma-separated list of active profiles. Can be overridden by a command line switch.
+spring.profiles.include= # Unconditionally activate the specified comma-separated list of profiles (or list of profiles if using YAML).
+
+# QUARTZ SCHEDULER (QuartzProperties)
+spring.quartz.jdbc.initialize-schema=embedded # Database schema initialization mode.
+spring.quartz.jdbc.schema=classpath:org/quartz/impl/jdbcjobstore/tables_@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
+spring.quartz.job-store-type=memory # Quartz job store type.
+spring.quartz.properties.*= # Additional Quartz Scheduler properties.
+
+# REACTOR (ReactorCoreProperties)
+spring.reactor.stacktrace-mode.enabled=false # Whether Reactor should collect stacktrace information at runtime.
+
+# SENDGRID (SendGridAutoConfiguration)
+spring.sendgrid.api-key= # SendGrid API key.
+spring.sendgrid.proxy.host= # SendGrid proxy host.
+spring.sendgrid.proxy.port= # SendGrid proxy port.
+
+
+# ----------------------------------------
+# WEB PROPERTIES
+# ----------------------------------------
+
+# EMBEDDED SERVER CONFIGURATION (ServerProperties)
+server.address= # Network address to which the server should bind.
+server.compression.enabled=false # Whether response compression is enabled.
+server.compression.excluded-user-agents= # List of user-agents to exclude from compression.
+server.compression.mime-types=text/html,text/xml,text/plain,text/css,text/javascript,application/javascript # Comma-separated list of MIME types that should be compressed.
+server.compression.min-response-size=2048 # Minimum "Content-Length" value that is required for compression to be performed.
+server.connection-timeout= # Time that connectors wait for another HTTP request before closing the connection. When not set, the connector's container-specific default is used. Use a value of -1 to indicate no (that is, an infinite) timeout.
+server.error.include-exception=false # Include the "exception" attribute.
+server.error.include-stacktrace=never # When to include a "stacktrace" attribute.
+server.error.path=/error # Path of the error controller.
+server.error.whitelabel.enabled=true # Whether to enable the default error page displayed in browsers in case of a server error.
+server.http2.enabled=false # Whether to enable HTTP/2 support, if the current environment supports it.
+server.jetty.acceptors= # Number of acceptor threads to use.
+server.jetty.accesslog.append=false # Append to log.
+server.jetty.accesslog.date-format=dd/MMM/yyyy:HH:mm:ss Z # Timestamp format of the request log.
+server.jetty.accesslog.enabled=false # Enable access log.
+server.jetty.accesslog.extended-format=false # Enable extended NCSA format.
+server.jetty.accesslog.file-date-format= # Date format to place in log file name.
+server.jetty.accesslog.filename= # Log filename. If not specified, logs redirect to "System.err".
+server.jetty.accesslog.locale= # Locale of the request log.
+server.jetty.accesslog.log-cookies=false # Enable logging of the request cookies.
+server.jetty.accesslog.log-latency=false # Enable logging of request processing time.
+server.jetty.accesslog.log-server=false # Enable logging of the request hostname.
+server.jetty.accesslog.retention-period=31 # Number of days before rotated log files are deleted.
+server.jetty.accesslog.time-zone=GMT # Timezone of the request log.
+server.jetty.max-http-post-size=0 # Maximum size, in bytes, of the HTTP post or put content.
+server.jetty.selectors= # Number of selector threads to use.
+server.max-http-header-size=0 # Maximum size, in bytes, of the HTTP message header.
+server.port=8080 # Server HTTP port.
+server.server-header= # Value to use for the Server response header (if empty, no header is sent).
+server.use-forward-headers= # Whether X-Forwarded-* headers should be applied to the HttpRequest.
+server.servlet.context-parameters.*= # Servlet context init parameters.
+server.servlet.context-path= # Context path of the application.
+server.servlet.application-display-name=application # Display name of the application.
+server.servlet.jsp.class-name=org.apache.jasper.servlet.JspServlet # The class name of the JSP servlet.
+server.servlet.jsp.init-parameters.*= # Init parameters used to configure the JSP servlet.
+server.servlet.jsp.registered=true # Whether the JSP servlet is registered.
+server.servlet.path=/ # Path of the main dispatcher servlet.
+server.servlet.session.cookie.comment= # Comment for the session cookie.
+server.servlet.session.cookie.domain= # Domain for the session cookie.
+server.servlet.session.cookie.http-only= # "HttpOnly" flag for the session cookie.
+server.servlet.session.cookie.max-age= # Maximum age of the session cookie. If a duration suffix is not specified, seconds will be used.
+server.servlet.session.cookie.name= # Session cookie name.
+server.servlet.session.cookie.path= # Path of the session cookie.
+server.servlet.session.cookie.secure= # "Secure" flag for the session cookie.
+server.servlet.session.persistent=false # Whether to persist session data between restarts.
+server.servlet.session.store-dir= # Directory used to store session data.
+server.servlet.session.timeout= # Session timeout. If a duration suffix is not specified, seconds will be used.
+server.servlet.session.tracking-modes= # Session tracking modes (one or more of the following: "cookie", "url", "ssl").
+server.ssl.ciphers= # Supported SSL ciphers.
+server.ssl.client-auth= # Whether client authentication is wanted ("want") or needed ("need"). Requires a trust store.
+server.ssl.enabled= # Enable SSL support.
+server.ssl.enabled-protocols= # Enabled SSL protocols.
+server.ssl.key-alias= # Alias that identifies the key in the key store.
+server.ssl.key-password= # Password used to access the key in the key store.
+server.ssl.key-store= # Path to the key store that holds the SSL certificate (typically a jks file).
+server.ssl.key-store-password= # Password used to access the key store.
+server.ssl.key-store-provider= # Provider for the key store.
+server.ssl.key-store-type= # Type of the key store.
+server.ssl.protocol=TLS # SSL protocol to use.
+server.ssl.trust-store= # Trust store that holds SSL certificates.
+server.ssl.trust-store-password= # Password used to access the trust store.
+server.ssl.trust-store-provider= # Provider for the trust store.
+server.ssl.trust-store-type= # Type of the trust store.
+server.tomcat.accept-count=0 # Maximum queue length for incoming connection requests when all possible request processing threads are in use.
+server.tomcat.accesslog.buffered=true # Whether to buffer output such that it is flushed only periodically.
+server.tomcat.accesslog.directory=logs # Directory in which log files are created. Can be absolute or relative to the Tomcat base dir.
+server.tomcat.accesslog.enabled=false # Enable access log.
+server.tomcat.accesslog.file-date-format=.yyyy-MM-dd # Date format to place in the log file name.
+server.tomcat.accesslog.pattern=common # Format pattern for access logs.
+server.tomcat.accesslog.prefix=access_log # Log file name prefix.
+server.tomcat.accesslog.rename-on-rotate=false # Whether to defer inclusion of the date stamp in the file name until rotate time.
+server.tomcat.accesslog.request-attributes-enabled=false # Set request attributes for the IP address, Hostname, protocol, and port used for the request.
+server.tomcat.accesslog.rotate=true # Whether to enable access log rotation.
+server.tomcat.accesslog.suffix=.log # Log file name suffix.
+server.tomcat.additional-tld-skip-patterns= # Comma-separated list of additional patterns that match jars to ignore for TLD scanning.
+server.tomcat.background-processor-delay=30s # Delay between the invocation of backgroundProcess methods. If a duration suffix is not specified, seconds will be used.
+server.tomcat.basedir= # Tomcat base directory. If not specified, a temporary directory is used.
+server.tomcat.internal-proxies=10\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\
+		192\\.168\\.\\d{1,3}\\.\\d{1,3}|\\
+		169\\.254\\.\\d{1,3}\\.\\d{1,3}|\\
+		127\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|\\
+		172\\.1[6-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\
+		172\\.2[0-9]{1}\\.\\d{1,3}\\.\\d{1,3}|\\
+		172\\.3[0-1]{1}\\.\\d{1,3}\\.\\d{1,3} # Regular expression matching trusted IP addresses.
+server.tomcat.max-connections=0 # Maximum number of connections that the server accepts and processes at any given time.
+server.tomcat.max-http-header-size=0 # Maximum size, in bytes, of the HTTP message header.
+server.tomcat.max-http-post-size=0 # Maximum size, in bytes, of the HTTP post content.
+server.tomcat.max-threads=0 # Maximum number of worker threads.
+server.tomcat.min-spare-threads=0 # Minimum number of worker threads.
+server.tomcat.port-header=X-Forwarded-Port # Name of the HTTP header used to override the original port value.
+server.tomcat.protocol-header= # Header that holds the incoming protocol, usually named "X-Forwarded-Proto".
+server.tomcat.protocol-header-https-value=https # Value of the protocol header indicating whether the incoming request uses SSL.
+server.tomcat.redirect-context-root= # Whether requests to the context root should be redirected by appending a / to the path.
+server.tomcat.remote-ip-header= # Name of the HTTP header from which the remote IP is extracted. For instance, `X-FORWARDED-FOR`.
+server.tomcat.resource.cache-ttl= # Time-to-live of the static resource cache.
+server.tomcat.uri-encoding=UTF-8 # Character encoding to use to decode the URI.
+server.tomcat.use-relative-redirects= # Whether HTTP 1.1 and later location headers generated by a call to sendRedirect will use relative or absolute redirects.
+server.undertow.accesslog.dir= # Undertow access log directory.
+server.undertow.accesslog.enabled=false # Whether to enable the access log.
+server.undertow.accesslog.pattern=common # Format pattern for access logs.
+server.undertow.accesslog.prefix=access_log. # Log file name prefix.
+server.undertow.accesslog.rotate=true # Whether to enable access log rotation.
+server.undertow.accesslog.suffix=log # Log file name suffix.
+server.undertow.buffer-size= # Size of each buffer, in bytes.
+server.undertow.direct-buffers= # Whether to allocate buffers outside the Java heap.
+server.undertow.io-threads= # Number of I/O threads to create for the worker.
+server.undertow.eager-filter-init=true # Whether servlet filters should be initialized on startup.
+server.undertow.max-http-post-size=0 # Maximum size, in bytes, of the HTTP post content.
+server.undertow.worker-threads= # Number of worker threads.
+
+# FREEMARKER (FreeMarkerProperties)
+spring.freemarker.allow-request-override=false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.
+spring.freemarker.allow-session-override=false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.
+spring.freemarker.cache=false # Whether to enable template caching.
+spring.freemarker.charset=UTF-8 # Template encoding.
+spring.freemarker.check-template-location=true # Whether to check that the templates location exists.
+spring.freemarker.content-type=text/html # Content-Type value.
+spring.freemarker.enabled=true # Whether to enable MVC view resolution for this technology.
+spring.freemarker.expose-request-attributes=false # Whether all request attributes should be added to the model prior to merging with the template.
+spring.freemarker.expose-session-attributes=false # Whether all HttpSession attributes should be added to the model prior to merging with the template.
+spring.freemarker.expose-spring-macro-helpers=true # Whether to expose a RequestContext for use by Spring's macro library, under the name "springMacroRequestContext".
+spring.freemarker.prefer-file-system-access=true # Whether to prefer file system access for template loading. File system access enables hot detection of template changes.
+spring.freemarker.prefix= # Prefix that gets prepended to view names when building a URL.
+spring.freemarker.request-context-attribute= # Name of the RequestContext attribute for all views.
+spring.freemarker.settings.*= # Well-known FreeMarker keys which are passed to FreeMarker's Configuration.
+spring.freemarker.suffix=.ftl # Suffix that gets appended to view names when building a URL.
+spring.freemarker.template-loader-path=classpath:/templates/ # Comma-separated list of template paths.
+spring.freemarker.view-names= # White list of view names that can be resolved.
+
+# GROOVY TEMPLATES (GroovyTemplateProperties)
+spring.groovy.template.allow-request-override=false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.
+spring.groovy.template.allow-session-override=false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.
+spring.groovy.template.cache=false # Whether to enable template caching.
+spring.groovy.template.charset=UTF-8 # Template encoding.
+spring.groovy.template.check-template-location=true # Whether to check that the templates location exists.
+spring.groovy.template.configuration.*= # See GroovyMarkupConfigurer
+spring.groovy.template.content-type=text/html # Content-Type value.
+spring.groovy.template.enabled=true # Whether to enable MVC view resolution for this technology.
+spring.groovy.template.expose-request-attributes=false # Whether all request attributes should be added to the model prior to merging with the template.
+spring.groovy.template.expose-session-attributes=false # Whether all HttpSession attributes should be added to the model prior to merging with the template.
+spring.groovy.template.expose-spring-macro-helpers=true # Whether to expose a RequestContext for use by Spring's macro library, under the name "springMacroRequestContext".
+spring.groovy.template.prefix= # Prefix that gets prepended to view names when building a URL.
+spring.groovy.template.request-context-attribute= # Name of the RequestContext attribute for all views.
+spring.groovy.template.resource-loader-path=classpath:/templates/ # Template path.
+spring.groovy.template.suffix=.tpl # Suffix that gets appended to view names when building a URL.
+spring.groovy.template.view-names= # White list of view names that can be resolved.
+
+# SPRING HATEOAS (HateoasProperties)
+spring.hateoas.use-hal-as-default-json-media-type=true # Whether application/hal+json responses should be sent to requests that accept application/json.
+
+# HTTP message conversion
+spring.http.converters.preferred-json-mapper= # Preferred JSON mapper to use for HTTP message conversion. By default, auto-detected according to the environment.
+
+# HTTP encoding (HttpEncodingProperties)
+spring.http.encoding.charset=UTF-8 # Charset of HTTP requests and responses. Added to the "Content-Type" header if not set explicitly.
+spring.http.encoding.enabled=true # Whether to enable http encoding support.
+spring.http.encoding.force= # Whether to force the encoding to the configured charset on HTTP requests and responses.
+spring.http.encoding.force-request= # Whether to force the encoding to the configured charset on HTTP requests. Defaults to true when "force" has not been specified.
+spring.http.encoding.force-response= # Whether to force the encoding to the configured charset on HTTP responses.
+spring.http.encoding.mapping= # Locale in which to encode mapping.
+
+# MULTIPART (MultipartProperties)
+spring.servlet.multipart.enabled=true # Whether to enable support of multipart uploads.
+spring.servlet.multipart.file-size-threshold=0 # Threshold after which files are written to disk. Values can use the suffixes "MB" or "KB" to indicate megabytes or kilobytes, respectively.
+spring.servlet.multipart.location= # Intermediate location of uploaded files.
+spring.servlet.multipart.max-file-size=1MB # Max file size. Values can use the suffixes "MB" or "KB" to indicate megabytes or kilobytes, respectively.
+spring.servlet.multipart.max-request-size=10MB # Max request size. Values can use the suffixes "MB" or "KB" to indicate megabytes or kilobytes, respectively.
+spring.servlet.multipart.resolve-lazily=false # Whether to resolve the multipart request lazily at the time of file or parameter access.
+
+# JACKSON (JacksonProperties)
+spring.jackson.date-format= # Date format string or a fully-qualified date format class name. For instance, `yyyy-MM-dd HH:mm:ss`.
+spring.jackson.default-property-inclusion= # Controls the inclusion of properties during serialization. Configured with one of the values in Jackson's JsonInclude.Include enumeration.
+spring.jackson.deserialization.*= # Jackson on/off features that affect the way Java objects are deserialized.
+spring.jackson.generator.*= # Jackson on/off features for generators.
+spring.jackson.joda-date-time-format= # Joda date time format string. If not configured, "date-format" is used as a fallback if it is configured with a format string.
+spring.jackson.locale= # Locale used for formatting.
+spring.jackson.mapper.*= # Jackson general purpose on/off features.
+spring.jackson.parser.*= # Jackson on/off features for parsers.
+spring.jackson.property-naming-strategy= # One of the constants on Jackson's PropertyNamingStrategy. Can also be a fully-qualified class name of a PropertyNamingStrategy subclass.
+spring.jackson.serialization.*= # Jackson on/off features that affect the way Java objects are serialized.
+spring.jackson.time-zone= #  Time zone used when formatting dates. For instance, "America/Los_Angeles" or "GMT+10".
+
+# GSON (GsonProperties)
+spring.gson.date-format= # Format to use when serializing Date objects.
+spring.gson.disable-html-escaping= # Whether to disable the escaping of HTML characters such as '<', '>', etc.
+spring.gson.disable-inner-class-serialization= # Whether to exclude inner classes during serialization.
+spring.gson.enable-complex-map-key-serialization= # Whether to enable serialization of complex map keys (i.e. non-primitives).
+spring.gson.exclude-fields-without-expose-annotation= # Whether to exclude all fields from consideration for serialization or deserialization that do not have the "Expose" annotation.
+spring.gson.field-naming-policy= # Naming policy that should be applied to an object's field during serialization and deserialization.
+spring.gson.generate-non-executable-json= # Whether to generate non executable JSON by prefixing the output with some special text.
+spring.gson.lenient= # Whether to be lenient about parsing JSON that doesn't conform to RFC 4627.
+spring.gson.long-serialization-policy= # Serialization policy for Long and long types.
+spring.gson.pretty-printing= # Whether to output serialized JSON that fits in a page for pretty printing.
+spring.gson.serialize-nulls= # Whether to serialize null fields.
+
+# JERSEY (JerseyProperties)
+spring.jersey.application-path= # Path that serves as the base URI for the application. If specified, overrides the value of "@ApplicationPath".
+spring.jersey.filter.order=0 # Jersey filter chain order.
+spring.jersey.init.*= # Init parameters to pass to Jersey through the servlet or filter.
+spring.jersey.servlet.load-on-startup=-1 # Load on startup priority of the Jersey servlet.
+spring.jersey.type=servlet # Jersey integration type.
+
+# SPRING LDAP (LdapProperties)
+spring.ldap.anonymous-read-only=false # Whether read-only operations should use an anonymous environment.
+spring.ldap.base= # Base suffix from which all operations should originate.
+spring.ldap.base-environment.*= # LDAP specification settings.
+spring.ldap.password= # Login password of the server.
+spring.ldap.urls= # LDAP URLs of the server.
+spring.ldap.username= # Login username of the server.
+
+# EMBEDDED LDAP (EmbeddedLdapProperties)
+spring.ldap.embedded.base-dn= # List of base DNs.
+spring.ldap.embedded.credential.username= # Embedded LDAP username.
+spring.ldap.embedded.credential.password= # Embedded LDAP password.
+spring.ldap.embedded.ldif=classpath:schema.ldif # Schema (LDIF) script resource reference.
+spring.ldap.embedded.port=0 # Embedded LDAP port.
+spring.ldap.embedded.validation.enabled=true # Whether to enable LDAP schema validation.
+spring.ldap.embedded.validation.schema= # Path to the custom schema.
+
+# MUSTACHE TEMPLATES (MustacheAutoConfiguration)
+spring.mustache.allow-request-override=false # Whether HttpServletRequest attributes are allowed to override (hide) controller generated model attributes of the same name.
+spring.mustache.allow-session-override=false # Whether HttpSession attributes are allowed to override (hide) controller generated model attributes of the same name.
+spring.mustache.cache=false # Whether to enable template caching.
+spring.mustache.charset=UTF-8 # Template encoding.
+spring.mustache.check-template-location=true # Whether to check that the templates location exists.
+spring.mustache.content-type=text/html # Content-Type value.
+spring.mustache.enabled=true # Whether to enable MVC view resolution for this technology.
+spring.mustache.expose-request-attributes=false # Whether all request attributes should be added to the model prior to merging with the template.
+spring.mustache.expose-session-attributes=false # Whether all HttpSession attributes should be added to the model prior to merging with the template.
+spring.mustache.expose-spring-macro-helpers=true # Whether to expose a RequestContext for use by Spring's macro library, under the name "springMacroRequestContext".
+spring.mustache.prefix=classpath:/templates/ # Prefix to apply to template names.
+spring.mustache.request-context-attribute= # Name of the RequestContext attribute for all views.
+spring.mustache.suffix=.mustache # Suffix to apply to template names.
+spring.mustache.view-names= # White list of view names that can be resolved.
+
+# SPRING MVC (WebMvcProperties)
+spring.mvc.async.request-timeout= # Amount of time before asynchronous request handling times out.
+spring.mvc.contentnegotiation.favor-parameter=false # Whether a request parameter ("format" by default) should be used to determine the requested media type.
+spring.mvc.contentnegotiation.favor-path-extension=false # Whether the path extension in the URL path should be used to determine the requested media type.
+spring.mvc.contentnegotiation.media-types.*= # Map file extensions to media types for content negotiation. For instance, yml to text/yaml.
+spring.mvc.contentnegotiation.parameter-name= # Query parameter name to use when "favor-parameter" is enabled.
+spring.mvc.date-format= # Date format to use. For instance, `dd/MM/yyyy`.
+spring.mvc.dispatch-trace-request=false # Whether to dispatch TRACE requests to the FrameworkServlet doService method.
+spring.mvc.dispatch-options-request=true # Whether to dispatch OPTIONS requests to the FrameworkServlet doService method.
+spring.mvc.favicon.enabled=true # Whether to enable resolution of favicon.ico.
+spring.mvc.formcontent.putfilter.enabled=true # Whether to enable Spring's HttpPutFormContentFilter.
+spring.mvc.ignore-default-model-on-redirect=true # Whether the content of the "default" model should be ignored during redirect scenarios.
+spring.mvc.locale= # Locale to use. By default, this locale is overridden by the "Accept-Language" header.
+spring.mvc.locale-resolver=accept-header # Define how the locale should be resolved.
+spring.mvc.log-resolved-exception=false # Whether to enable warn logging of exceptions resolved by a "HandlerExceptionResolver".
+spring.mvc.message-codes-resolver-format= # Formatting strategy for message codes. For instance, `PREFIX_ERROR_CODE`.
+spring.mvc.pathmatch.use-registered-suffix-pattern=false # Whether suffix pattern matching should work only against extensions registered with "spring.mvc.contentnegotiation.media-types.*".
+spring.mvc.pathmatch.use-suffix-pattern=false # Whether to use suffix pattern match (".*") when matching patterns to requests.
+spring.mvc.servlet.load-on-startup=-1 # Load on startup priority of the dispatcher servlet.
+spring.mvc.static-path-pattern=/** # Path pattern used for static resources.
+spring.mvc.throw-exception-if-no-handler-found=false # Whether a "NoHandlerFoundException" should be thrown if no Handler was found to process a request.
+spring.mvc.view.prefix= # Spring MVC view prefix.
+spring.mvc.view.suffix= # Spring MVC view suffix.
+
+# SPRING RESOURCES HANDLING (ResourceProperties)
+spring.resources.add-mappings=true # Whether to enable default resource handling.
+spring.resources.cache.cachecontrol.cache-private= # Indicate that the response message is intended for a single user and must not be stored by a shared cache.
+spring.resources.cache.cachecontrol.cache-public= # Indicate that any cache may store the response.
+spring.resources.cache.cachecontrol.max-age= # Maximum time the response should be cached, in seconds if no duration suffix is not specified.
+spring.resources.cache.cachecontrol.must-revalidate= # Indicate that once it has become stale, a cache must not use the response without re-validating it with the server.
+spring.resources.cache.cachecontrol.no-cache= # Indicate that the cached response can be reused only if re-validated with the server.
+spring.resources.cache.cachecontrol.no-store= # Indicate to not cache the response in any case.
+spring.resources.cache.cachecontrol.no-transform= # Indicate intermediaries (caches and others) that they should not transform the response content.
+spring.resources.cache.cachecontrol.proxy-revalidate= # Same meaning as the "must-revalidate" directive, except that it does not apply to private caches.
+spring.resources.cache.cachecontrol.s-max-age= # Maximum time the response should be cached by shared caches, in seconds if no duration suffix is not specified.
+spring.resources.cache.cachecontrol.stale-if-error= # Maximum time the response may be used when errors are encountered, in seconds if no duration suffix is not specified.
+spring.resources.cache.cachecontrol.stale-while-revalidate= # Maximum time the response can be served after it becomes stale, in seconds if no duration suffix is not specified.
+spring.resources.cache.period= # Cache period for the resources served by the resource handler. If a duration suffix is not specified, seconds will be used.
+spring.resources.chain.cache=true # Whether to enable caching in the Resource chain.
+spring.resources.chain.enabled= # Whether to enable the Spring Resource Handling chain. By default, disabled unless at least one strategy has been enabled.
+spring.resources.chain.gzipped=false # Whether to enable resolution of already gzipped resources.
+spring.resources.chain.html-application-cache=false # Whether to enable HTML5 application cache manifest rewriting.
+spring.resources.chain.strategy.content.enabled=false # Whether to enable the content Version Strategy.
+spring.resources.chain.strategy.content.paths=/** # Comma-separated list of patterns to apply to the content Version Strategy.
+spring.resources.chain.strategy.fixed.enabled=false # Whether to enable the fixed Version Strategy.
+spring.resources.chain.strategy.fixed.paths=/** # Comma-separated list of patterns to apply to the fixed Version Strategy.
+spring.resources.chain.strategy.fixed.version= # Version string to use for the fixed Version Strategy.
+spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ # Locations of static resources.
+
+# SPRING SESSION (SessionProperties)
+spring.session.store-type= # Session store type.
+spring.session.servlet.filter-order=-2147483598 # Session repository filter order.
+spring.session.servlet.filter-dispatcher-types=async,error,request # Session repository filter dispatcher types.
+
+# SPRING SESSION HAZELCAST (HazelcastSessionProperties)
+spring.session.hazelcast.flush-mode=on-save # Sessions flush mode.
+spring.session.hazelcast.map-name=spring:session:sessions # Name of the map used to store sessions.
+
+# SPRING SESSION JDBC (JdbcSessionProperties)
+spring.session.jdbc.cleanup-cron=0 * * * * * # Cron expression for expired session cleanup job.
+spring.session.jdbc.initialize-schema=embedded # Database schema initialization mode.
+spring.session.jdbc.schema=classpath:org/springframework/session/jdbc/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
+spring.session.jdbc.table-name=SPRING_SESSION # Name of the database table used to store sessions.
+
+# SPRING SESSION MONGODB (MongoSessionProperties)
+spring.session.mongodb.collection-name=sessions # Collection name used to store sessions.
+
+# SPRING SESSION REDIS (RedisSessionProperties)
+spring.session.redis.cleanup-cron=0 * * * * * # Cron expression for expired session cleanup job.
+spring.session.redis.flush-mode=on-save # Sessions flush mode.
+spring.session.redis.namespace=spring:session # Namespace for keys used to store sessions.
+
+# THYMELEAF (ThymeleafAutoConfiguration)
+spring.thymeleaf.cache=true # Whether to enable template caching.
+spring.thymeleaf.check-template=true # Whether to check that the template exists before rendering it.
+spring.thymeleaf.check-template-location=true # Whether to check that the templates location exists.
+spring.thymeleaf.enabled=true # Whether to enable Thymeleaf view resolution for Web frameworks.
+spring.thymeleaf.enable-spring-el-compiler=false # Enable the SpringEL compiler in SpringEL expressions.
+spring.thymeleaf.encoding=UTF-8 # Template files encoding.
+spring.thymeleaf.excluded-view-names= # Comma-separated list of view names (patterns allowed) that should be excluded from resolution.
+spring.thymeleaf.mode=HTML # Template mode to be applied to templates. See also Thymeleaf's TemplateMode enum.
+spring.thymeleaf.prefix=classpath:/templates/ # Prefix that gets prepended to view names when building a URL.
+spring.thymeleaf.reactive.chunked-mode-view-names= # Comma-separated list of view names (patterns allowed) that should be the only ones executed in CHUNKED mode when a max chunk size is set.
+spring.thymeleaf.reactive.full-mode-view-names= # Comma-separated list of view names (patterns allowed) that should be executed in FULL mode even if a max chunk size is set.
+spring.thymeleaf.reactive.max-chunk-size=0 # Maximum size of data buffers used for writing to the response, in bytes.
+spring.thymeleaf.reactive.media-types= # Media types supported by the view technology.
+spring.thymeleaf.servlet.content-type=text/html # Content-Type value written to HTTP responses.
+spring.thymeleaf.suffix=.html # Suffix that gets appended to view names when building a URL.
+spring.thymeleaf.template-resolver-order= # Order of the template resolver in the chain.
+spring.thymeleaf.view-names= # Comma-separated list of view names (patterns allowed) that can be resolved.
+
+# SPRING WEBFLUX (WebFluxProperties)
+spring.webflux.date-format= # Date format to use. For instance, `dd/MM/yyyy`.
+spring.webflux.static-path-pattern=/** # Path pattern used for static resources.
+
+# SPRING WEB SERVICES (WebServicesProperties)
+spring.webservices.path=/services # Path that serves as the base URI for the services.
+spring.webservices.servlet.init= # Servlet init parameters to pass to Spring Web Services.
+spring.webservices.servlet.load-on-startup=-1 # Load on startup priority of the Spring Web Services servlet.
+spring.webservices.wsdl-locations= # Comma-separated list of locations of WSDLs and accompanying XSDs to be exposed as beans.
+
+
+
+# ----------------------------------------
+# SECURITY PROPERTIES
+# ----------------------------------------
+# SECURITY (SecurityProperties)
+spring.security.filter.order=-100 # Security filter chain order.
+spring.security.filter.dispatcher-types=async,error,request # Security filter chain dispatcher types.
+spring.security.user.name=user # Default user name.
+spring.security.user.password= # Password for the default user name.
+spring.security.user.roles= # Granted roles for the default user name.
+
+# SECURITY OAUTH2 CLIENT (OAuth2ClientProperties)
+spring.security.oauth2.client.provider.*= # OAuth provider details.
+spring.security.oauth2.client.registration.*= # OAuth client registrations.
+
+# ----------------------------------------
+# DATA PROPERTIES
+# ----------------------------------------
+
+# FLYWAY (FlywayProperties)
+spring.flyway.baseline-description= #
+spring.flyway.baseline-on-migrate= #
+spring.flyway.baseline-version=1 # Version to start migration
+spring.flyway.check-location=true # Whether to check that migration scripts location exists.
+spring.flyway.clean-disabled= #
+spring.flyway.clean-on-validation-error= #
+spring.flyway.dry-run-output= #
+spring.flyway.enabled=true # Whether to enable flyway.
+spring.flyway.encoding= #
+spring.flyway.error-handlers= #
+spring.flyway.group= #
+spring.flyway.ignore-future-migrations= #
+spring.flyway.ignore-missing-migrations= #
+spring.flyway.init-sqls= # SQL statements to execute to initialize a connection immediately after obtaining it.
+spring.flyway.installed-by= #
+spring.flyway.locations=classpath:db/migration # The locations of migrations scripts.
+spring.flyway.mixed= #
+spring.flyway.out-of-order= #
+spring.flyway.password= # JDBC password to use if you want Flyway to create its own DataSource.
+spring.flyway.placeholder-prefix= #
+spring.flyway.placeholder-replacement= #
+spring.flyway.placeholder-suffix= #
+spring.flyway.placeholders.*= #
+spring.flyway.repeatable-sql-migration-prefix= #
+spring.flyway.schemas= # schemas to update
+spring.flyway.skip-default-callbacks= #
+spring.flyway.skip-default-resolvers= #
+spring.flyway.sql-migration-prefix=V #
+spring.flyway.sql-migration-separator= #
+spring.flyway.sql-migration-suffix=.sql #
+spring.flyway.sql-migration-suffixes= #
+spring.flyway.table= #
+spring.flyway.target= #
+spring.flyway.undo-sql-migration-prefix= #
+spring.flyway.url= # JDBC url of the database to migrate. If not set, the primary configured data source is used.
+spring.flyway.user= # Login user of the database to migrate.
+spring.flyway.validate-on-migrate= #
+
+# LIQUIBASE (LiquibaseProperties)
+spring.liquibase.change-log=classpath:/db/changelog/db.changelog-master.yaml # Change log configuration path.
+spring.liquibase.check-change-log-location=true # Whether to check that the change log location exists.
+spring.liquibase.contexts= # Comma-separated list of runtime contexts to use.
+spring.liquibase.default-schema= # Default database schema.
+spring.liquibase.drop-first=false # Whether to first drop the database schema.
+spring.liquibase.enabled=true # Whether to enable Liquibase support.
+spring.liquibase.labels= # Comma-separated list of runtime labels to use.
+spring.liquibase.parameters.*= # Change log parameters.
+spring.liquibase.password= # Login password of the database to migrate.
+spring.liquibase.rollback-file= # File to which rollback SQL is written when an update is performed.
+spring.liquibase.url= # JDBC URL of the database to migrate. If not set, the primary configured data source is used.
+spring.liquibase.user= # Login user of the database to migrate.
+
+# COUCHBASE (CouchbaseProperties)
+spring.couchbase.bootstrap-hosts= # Couchbase nodes (host or IP address) to bootstrap from.
+spring.couchbase.bucket.name=default # Name of the bucket to connect to.
+spring.couchbase.bucket.password=  # Password of the bucket.
+spring.couchbase.env.endpoints.key-value=1 # Number of sockets per node against the key/value service.
+spring.couchbase.env.endpoints.query=1 # Number of sockets per node against the query (N1QL) service.
+spring.couchbase.env.endpoints.view=1 # Number of sockets per node against the view service.
+spring.couchbase.env.ssl.enabled= # Whether to enable SSL support. Enabled automatically if a "keyStore" is provided unless specified otherwise.
+spring.couchbase.env.ssl.key-store= # Path to the JVM key store that holds the certificates.
+spring.couchbase.env.ssl.key-store-password= # Password used to access the key store.
+spring.couchbase.env.timeouts.connect=5000ms # Bucket connections timeouts.
+spring.couchbase.env.timeouts.key-value=2500ms # Blocking operations performed on a specific key timeout.
+spring.couchbase.env.timeouts.query=7500ms # N1QL query operations timeout.
+spring.couchbase.env.timeouts.socket-connect=1000ms # Socket connect connections timeout.
+spring.couchbase.env.timeouts.view=7500ms # Regular and geospatial view operations timeout.
+
+# DAO (PersistenceExceptionTranslationAutoConfiguration)
+spring.dao.exceptiontranslation.enabled=true # Whether to enable the PersistenceExceptionTranslationPostProcessor.
+
+# CASSANDRA (CassandraProperties)
+spring.data.cassandra.cluster-name= # Name of the Cassandra cluster.
+spring.data.cassandra.compression=none # Compression supported by the Cassandra binary protocol.
+spring.data.cassandra.connect-timeout= # Socket option: connection time out.
+spring.data.cassandra.consistency-level= # Queries consistency level.
+spring.data.cassandra.contact-points=localhost # Cluster node addresses.
+spring.data.cassandra.fetch-size= # Queries default fetch size.
+spring.data.cassandra.keyspace-name= # Keyspace name to use.
+spring.data.cassandra.load-balancing-policy= # Class name of the load balancing policy.
+spring.data.cassandra.port= # Port of the Cassandra server.
+spring.data.cassandra.password= # Login password of the server.
+spring.data.cassandra.pool.heartbeat-interval=30s # Heartbeat interval after which a message is sent on an idle connection to make sure it's still alive. If a duration suffix is not specified, seconds will be used.
+spring.data.cassandra.pool.idle-timeout=120s # Idle timeout before an idle connection is removed. If a duration suffix is not specified, seconds will be used.
+spring.data.cassandra.pool.max-queue-size=256 # Maximum number of requests that get queued if no connection is available.
+spring.data.cassandra.pool.pool-timeout=5000ms # Pool timeout when trying to acquire a connection from a host's pool.
+spring.data.cassandra.read-timeout= # Socket option: read time out.
+spring.data.cassandra.reconnection-policy= # Reconnection policy class.
+spring.data.cassandra.repositories.type=auto # Type of Cassandra repositories to enable.
+spring.data.cassandra.retry-policy= # Class name of the retry policy.
+spring.data.cassandra.serial-consistency-level= # Queries serial consistency level.
+spring.data.cassandra.schema-action=none # Schema action to take at startup.
+spring.data.cassandra.ssl=false # Enable SSL support.
+spring.data.cassandra.username= # Login user of the server.
+
+# DATA COUCHBASE (CouchbaseDataProperties)
+spring.data.couchbase.auto-index=false # Automatically create views and indexes.
+spring.data.couchbase.consistency=read-your-own-writes # Consistency to apply by default on generated queries.
+spring.data.couchbase.repositories.type=auto # Type of Couchbase repositories to enable.
+
+# ELASTICSEARCH (ElasticsearchProperties)
+spring.data.elasticsearch.cluster-name=elasticsearch # Elasticsearch cluster name.
+spring.data.elasticsearch.cluster-nodes= # Comma-separated list of cluster node addresses.
+spring.data.elasticsearch.properties.*= # Additional properties used to configure the client.
+spring.data.elasticsearch.repositories.enabled=true # Whether to enable Elasticsearch repositories.
+
+# DATA LDAP
+spring.data.ldap.repositories.enabled=true # Whether to enable LDAP repositories.
+
+# MONGODB (MongoProperties)
+spring.data.mongodb.authentication-database= # Authentication database name.
+spring.data.mongodb.database= # Database name.
+spring.data.mongodb.field-naming-strategy= # Fully qualified name of the FieldNamingStrategy to use.
+spring.data.mongodb.grid-fs-database= # GridFS database name.
+spring.data.mongodb.host= # Mongo server host. Cannot be set with URI.
+spring.data.mongodb.password= # Login password of the mongo server. Cannot be set with URI.
+spring.data.mongodb.port= # Mongo server port. Cannot be set with URI.
+spring.data.mongodb.repositories.type=auto # Type of Mongo repositories to enable.
+spring.data.mongodb.uri=mongodb://localhost/test # Mongo database URI. Cannot be set with host, port and credentials.
+spring.data.mongodb.username= # Login user of the mongo server. Cannot be set with URI.
+
+# DATA REDIS
+spring.data.redis.repositories.enabled=true # Whether to enable Redis repositories.
+
+# NEO4J (Neo4jProperties)
+spring.data.neo4j.auto-index=none # Auto index mode.
+spring.data.neo4j.embedded.enabled=true # Whether to enable embedded mode if the embedded driver is available.
+spring.data.neo4j.open-in-view=true # Register OpenSessionInViewInterceptor. Binds a Neo4j Session to the thread for the entire processing of the request.
+spring.data.neo4j.password= # Login password of the server.
+spring.data.neo4j.repositories.enabled=true # Whether to enable Neo4j repositories.
+spring.data.neo4j.uri= # URI used by the driver. Auto-detected by default.
+spring.data.neo4j.username= # Login user of the server.
+
+# DATA REST (RepositoryRestProperties)
+spring.data.rest.base-path= # Base path to be used by Spring Data REST to expose repository resources.
+spring.data.rest.default-media-type= # Content type to use as a default when none is specified.
+spring.data.rest.default-page-size= # Default size of pages.
+spring.data.rest.detection-strategy=default # Strategy to use to determine which repositories get exposed.
+spring.data.rest.enable-enum-translation= # Whether to enable enum value translation through the Spring Data REST default resource bundle.
+spring.data.rest.limit-param-name= # Name of the URL query string parameter that indicates how many results to return at once.
+spring.data.rest.max-page-size= # Maximum size of pages.
+spring.data.rest.page-param-name= # Name of the URL query string parameter that indicates what page to return.
+spring.data.rest.return-body-on-create= # Whether to return a response body after creating an entity.
+spring.data.rest.return-body-on-update= # Whether to return a response body after updating an entity.
+spring.data.rest.sort-param-name= # Name of the URL query string parameter that indicates what direction to sort results.
+
+# SOLR (SolrProperties)
+spring.data.solr.host=http://127.0.0.1:8983/solr # Solr host. Ignored if "zk-host" is set.
+spring.data.solr.repositories.enabled=true # Whether to enable Solr repositories.
+spring.data.solr.zk-host= # ZooKeeper host address in the form HOST:PORT.
+
+# DATA WEB (SpringDataWebProperties)
+spring.data.web.pageable.default-page-size=20 # Default page size.
+spring.data.web.pageable.max-page-size=2000 # Maximum page size to be accepted.
+spring.data.web.pageable.one-indexed-parameters=false # Whether to expose and assume 1-based page number indexes.
+spring.data.web.pageable.page-parameter=page # Page index parameter name.
+spring.data.web.pageable.prefix= # General prefix to be prepended to the page number and page size parameters.
+spring.data.web.pageable.qualifier-delimiter=_ # Delimiter to be used between the qualifier and the actual page number and size properties.
+spring.data.web.pageable.size-parameter=size # Page size parameter name.
+spring.data.web.sort.sort-parameter=sort # Sort parameter name.
+
+# DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring.datasource.continue-on-error=false # Whether to stop if an error occurs while initializing the database.
+spring.datasource.data= # Data (DML) script resource references.
+spring.datasource.data-username= # Username of the database to execute DML scripts (if different).
+spring.datasource.data-password= # Password of the database to execute DML scripts (if different).
+spring.datasource.dbcp2.*= # Commons DBCP2 specific settings
+spring.datasource.driver-class-name= # Fully qualified name of the JDBC driver. Auto-detected based on the URL by default.
+spring.datasource.generate-unique-name=false # Whether to generate a random datasource name.
+spring.datasource.hikari.*= # Hikari specific settings
+spring.datasource.initialization-mode=embedded # Initialize the datasource with available DDL and DML scripts.
+spring.datasource.jmx-enabled=false # Whether to enable JMX support (if provided by the underlying pool).
+spring.datasource.jndi-name= # JNDI location of the datasource. Class, url, username & password are ignored when set.
+spring.datasource.name= # Name of the datasource. Default to "testdb" when using an embedded database.
+spring.datasource.password= # Login password of the database.
+spring.datasource.platform=all # Platform to use in the DDL or DML scripts (such as schema-${platform}.sql or data-${platform}.sql).
+spring.datasource.schema= # Schema (DDL) script resource references.
+spring.datasource.schema-username= # Username of the database to execute DDL scripts (if different).
+spring.datasource.schema-password= # Password of the database to execute DDL scripts (if different).
+spring.datasource.separator=; # Statement separator in SQL initialization scripts.
+spring.datasource.sql-script-encoding= # SQL scripts encoding.
+spring.datasource.tomcat.*= # Tomcat datasource specific settings
+spring.datasource.type= # Fully qualified name of the connection pool implementation to use. By default, it is auto-detected from the classpath.
+spring.datasource.url= # JDBC URL of the database.
+spring.datasource.username= # Login username of the database.
+spring.datasource.xa.data-source-class-name= # XA datasource fully qualified name.
+spring.datasource.xa.properties= # Properties to pass to the XA data source.
+
+# JEST (Elasticsearch HTTP client) (JestProperties)
+spring.elasticsearch.jest.connection-timeout=3s # Connection timeout.
+spring.elasticsearch.jest.multi-threaded=true # Whether to enable connection requests from multiple execution threads.
+spring.elasticsearch.jest.password= # Login password.
+spring.elasticsearch.jest.proxy.host= # Proxy host the HTTP client should use.
+spring.elasticsearch.jest.proxy.port= # Proxy port the HTTP client should use.
+spring.elasticsearch.jest.read-timeout=3s # Read timeout.
+spring.elasticsearch.jest.uris=http://localhost:9200 # Comma-separated list of the Elasticsearch instances to use.
+spring.elasticsearch.jest.username= # Login username.
+
+# H2 Web Console (H2ConsoleProperties)
+spring.h2.console.enabled=false # Whether to enable the console.
+spring.h2.console.path=/h2-console # Path at which the console is available.
+spring.h2.console.settings.trace=false # Whether to enable trace output.
+spring.h2.console.settings.web-allow-others=false # Whether to enable remote access.
+
+# InfluxDB (InfluxDbProperties)
+spring.influx.password= # Login password.
+spring.influx.url= # URL of the InfluxDB instance to which to connect.
+spring.influx.user= # Login user.
+
+# JOOQ (JooqProperties)
+spring.jooq.sql-dialect= # SQL dialect to use. Auto-detected by default.
+
+# JDBC (JdbcProperties)
+spring.jdbc.template.fetch-size=-1 # Number of rows that should be fetched from the database when more rows are needed.
+spring.jdbc.template.max-rows=-1 # Maximum number of rows.
+spring.jdbc.template.query-timeout= # Query timeout. Default is to use the JDBC driver's default configuration. If a duration suffix is not specified, seconds will be used.
+
+# JPA (JpaBaseConfiguration, HibernateJpaAutoConfiguration)
+spring.data.jpa.repositories.enabled=true # Whether to enable JPA repositories.
+spring.jpa.database= # Target database to operate on, auto-detected by default. Can be alternatively set using the "databasePlatform" property.
+spring.jpa.database-platform= # Name of the target database to operate on, auto-detected by default. Can be alternatively set using the "Database" enum.
+spring.jpa.generate-ddl=false # Whether to initialize the schema on startup.
+spring.jpa.hibernate.ddl-auto= # DDL mode. This is actually a shortcut for the "hibernate.hbm2ddl.auto" property. Defaults to "create-drop" when using an embedded database and no schema manager was detected. Otherwise, defaults to "none".
+spring.jpa.hibernate.naming.implicit-strategy= # Fully qualified name of the implicit naming strategy.
+spring.jpa.hibernate.naming.physical-strategy= # Fully qualified name of the physical naming strategy.
+spring.jpa.hibernate.use-new-id-generator-mappings= # Whether to use Hibernate's newer IdentifierGenerator for AUTO, TABLE and SEQUENCE.
+spring.jpa.mapping-resources= # Mapping resources (equivalent to "mapping-file" entries in persistence.xml).
+spring.jpa.open-in-view=true # Register OpenEntityManagerInViewInterceptor. Binds a JPA EntityManager to the thread for the entire processing of the request.
+spring.jpa.properties.*= # Additional native properties to set on the JPA provider.
+spring.jpa.show-sql=false # Whether to enable logging of SQL statements.
+
+# JTA (JtaAutoConfiguration)
+spring.jta.enabled=true # Whether to enable JTA support.
+spring.jta.log-dir= # Transaction logs directory.
+spring.jta.transaction-manager-id= # Transaction manager unique identifier.
+
+# ATOMIKOS (AtomikosProperties)
+spring.jta.atomikos.connectionfactory.borrow-connection-timeout=30 # Timeout, in seconds, for borrowing connections from the pool.
+spring.jta.atomikos.connectionfactory.ignore-session-transacted-flag=true # Whether to ignore the transacted flag when creating session.
+spring.jta.atomikos.connectionfactory.local-transaction-mode=false # Whether local transactions are desired.
+spring.jta.atomikos.connectionfactory.maintenance-interval=60 # The time, in seconds, between runs of the pool's maintenance thread.
+spring.jta.atomikos.connectionfactory.max-idle-time=60 # The time, in seconds, after which connections are cleaned up from the pool.
+spring.jta.atomikos.connectionfactory.max-lifetime=0 # The time, in seconds, that a connection can be pooled for before being destroyed. 0 denotes no limit.
+spring.jta.atomikos.connectionfactory.max-pool-size=1 # The maximum size of the pool.
+spring.jta.atomikos.connectionfactory.min-pool-size=1 # The minimum size of the pool.
+spring.jta.atomikos.connectionfactory.reap-timeout=0 # The reap timeout, in seconds, for borrowed connections. 0 denotes no limit.
+spring.jta.atomikos.connectionfactory.unique-resource-name=jmsConnectionFactory # The unique name used to identify the resource during recovery.
+spring.jta.atomikos.connectionfactory.xa-connection-factory-class-name= # Vendor-specific implementation of XAConnectionFactory.
+spring.jta.atomikos.connectionfactory.xa-properties= # Vendor-specific XA properties.
+spring.jta.atomikos.datasource.borrow-connection-timeout=30 # Timeout, in seconds, for borrowing connections from the pool.
+spring.jta.atomikos.datasource.concurrent-connection-validation= # Whether to use concurrent connection validation.
+spring.jta.atomikos.datasource.default-isolation-level= # Default isolation level of connections provided by the pool.
+spring.jta.atomikos.datasource.login-timeout= # Timeout, in seconds, for establishing a database connection.
+spring.jta.atomikos.datasource.maintenance-interval=60 # The time, in seconds, between runs of the pool's maintenance thread.
+spring.jta.atomikos.datasource.max-idle-time=60 # The time, in seconds, after which connections are cleaned up from the pool.
+spring.jta.atomikos.datasource.max-lifetime=0 # The time, in seconds, that a connection can be pooled for before being destroyed. 0 denotes no limit.
+spring.jta.atomikos.datasource.max-pool-size=1 # The maximum size of the pool.
+spring.jta.atomikos.datasource.min-pool-size=1 # The minimum size of the pool.
+spring.jta.atomikos.datasource.reap-timeout=0 # The reap timeout, in seconds, for borrowed connections. 0 denotes no limit.
+spring.jta.atomikos.datasource.test-query= # SQL query or statement used to validate a connection before returning it.
+spring.jta.atomikos.datasource.unique-resource-name=dataSource # The unique name used to identify the resource during recovery.
+spring.jta.atomikos.datasource.xa-data-source-class-name= # Vendor-specific implementation of XAConnectionFactory.
+spring.jta.atomikos.datasource.xa-properties= # Vendor-specific XA properties.
+spring.jta.atomikos.properties.allow-sub-transactions=true # Specify whether sub-transactions are allowed.
+spring.jta.atomikos.properties.checkpoint-interval=500 # Interval between checkpoints, expressed as the number of log writes between two checkpoint.
+spring.jta.atomikos.properties.default-jta-timeout=10000ms # Default timeout for JTA transactions.
+spring.jta.atomikos.properties.default-max-wait-time-on-shutdown=9223372036854775807 # How long should normal shutdown (no-force) wait for transactions to complete.
+spring.jta.atomikos.properties.enable-logging=true # Whether to enable disk logging.
+spring.jta.atomikos.properties.force-shutdown-on-vm-exit=false # Whether a VM shutdown should trigger forced shutdown of the transaction core.
+spring.jta.atomikos.properties.log-base-dir= # Directory in which the log files should be stored.
+spring.jta.atomikos.properties.log-base-name=tmlog # Transactions log file base name.
+spring.jta.atomikos.properties.max-actives=50 # Maximum number of active transactions.
+spring.jta.atomikos.properties.max-timeout=300000ms # Maximum timeout that can be allowed for transactions.
+spring.jta.atomikos.properties.recovery.delay=10000ms # Delay between two recovery scans.
+spring.jta.atomikos.properties.recovery.forget-orphaned-log-entries-delay=86400000ms # Delay after which recovery can cleanup pending ('orphaned') log entries.
+spring.jta.atomikos.properties.recovery.max-retries=5 # Number of retry attempts to commit the transaction before throwing an exception.
+spring.jta.atomikos.properties.recovery.retry-interval=10000ms # Delay between retry attempts.
+spring.jta.atomikos.properties.serial-jta-transactions=true # Whether sub-transactions should be joined when possible.
+spring.jta.atomikos.properties.service= # Transaction manager implementation that should be started.
+spring.jta.atomikos.properties.threaded-two-phase-commit=false # Whether to use different (and concurrent) threads for two-phase commit on the participating resources.
+spring.jta.atomikos.properties.transaction-manager-unique-name= # The transaction manager's unique name.
+
+# BITRONIX
+spring.jta.bitronix.connectionfactory.acquire-increment=1 # Number of connections to create when growing the pool.
+spring.jta.bitronix.connectionfactory.acquisition-interval=1 # Time, in seconds, to wait before trying to acquire a connection again after an invalid connection was acquired.
+spring.jta.bitronix.connectionfactory.acquisition-timeout=30 # Timeout, in seconds, for acquiring connections from the pool.
+spring.jta.bitronix.connectionfactory.allow-local-transactions=true # Whether the transaction manager should allow mixing XA and non-XA transactions.
+spring.jta.bitronix.connectionfactory.apply-transaction-timeout=false # Whether the transaction timeout should be set on the XAResource when it is enlisted.
+spring.jta.bitronix.connectionfactory.automatic-enlisting-enabled=true # Whether resources should be enlisted and delisted automatically.
+spring.jta.bitronix.connectionfactory.cache-producers-consumers=true # Whether producers and consumers should be cached.
+spring.jta.bitronix.connectionfactory.class-name= # Underlying implementation class name of the XA resource.
+spring.jta.bitronix.connectionfactory.defer-connection-release=true # Whether the provider can run many transactions on the same connection and supports transaction interleaving.
+spring.jta.bitronix.connectionfactory.disabled= # Whether this resource is disabled, meaning it's temporarily forbidden to acquire a connection from its pool.
+spring.jta.bitronix.connectionfactory.driver-properties= # Properties that should be set on the underlying implementation.
+spring.jta.bitronix.connectionfactory.failed= # Mark this resource producer as failed.
+spring.jta.bitronix.connectionfactory.ignore-recovery-failures=false # Whether recovery failures should be ignored.
+spring.jta.bitronix.connectionfactory.max-idle-time=60 # The time, in seconds, after which connections are cleaned up from the pool.
+spring.jta.bitronix.connectionfactory.max-pool-size=10 # The maximum size of the pool. 0 denotes no limit.
+spring.jta.bitronix.connectionfactory.min-pool-size=0 # The minimum size of the pool.
+spring.jta.bitronix.connectionfactory.password= # The password to use to connect to the JMS provider.
+spring.jta.bitronix.connectionfactory.share-transaction-connections=false #  Whether connections in the ACCESSIBLE state can be shared within the context of a transaction.
+spring.jta.bitronix.connectionfactory.test-connections=true # Whether connections should be tested when acquired from the pool.
+spring.jta.bitronix.connectionfactory.two-pc-ordering-position=1 # The position that this resource should take during two-phase commit (always first is Integer.MIN_VALUE, always last is Integer.MAX_VALUE).
+spring.jta.bitronix.connectionfactory.unique-name=jmsConnectionFactory # The unique name used to identify the resource during recovery.
+spring.jta.bitronix.connectionfactory.use-tm-join=true # Whether TMJOIN should be used when starting XAResources.
+spring.jta.bitronix.connectionfactory.user= # The user to use to connect to the JMS provider.
+spring.jta.bitronix.datasource.acquire-increment=1 # Number of connections to create when growing the pool.
+spring.jta.bitronix.datasource.acquisition-interval=1 # Time, in seconds, to wait before trying to acquire a connection again after an invalid connection was acquired.
+spring.jta.bitronix.datasource.acquisition-timeout=30 # Timeout, in seconds, for acquiring connections from the pool.
+spring.jta.bitronix.datasource.allow-local-transactions=true # Whether the transaction manager should allow mixing XA and non-XA transactions.
+spring.jta.bitronix.datasource.apply-transaction-timeout=false # Whether the transaction timeout should be set on the XAResource when it is enlisted.
+spring.jta.bitronix.datasource.automatic-enlisting-enabled=true # Whether resources should be enlisted and delisted automatically.
+spring.jta.bitronix.datasource.class-name= # Underlying implementation class name of the XA resource.
+spring.jta.bitronix.datasource.cursor-holdability= # The default cursor holdability for connections.
+spring.jta.bitronix.datasource.defer-connection-release=true # Whether the database can run many transactions on the same connection and supports transaction interleaving.
+spring.jta.bitronix.datasource.disabled= # Whether this resource is disabled, meaning it's temporarily forbidden to acquire a connection from its pool.
+spring.jta.bitronix.datasource.driver-properties= # Properties that should be set on the underlying implementation.
+spring.jta.bitronix.datasource.enable-jdbc4-connection-test= # Whether Connection.isValid() is called when acquiring a connection from the pool.
+spring.jta.bitronix.datasource.failed= # Mark this resource producer as failed.
+spring.jta.bitronix.datasource.ignore-recovery-failures=false # Whether recovery failures should be ignored.
+spring.jta.bitronix.datasource.isolation-level= # The default isolation level for connections.
+spring.jta.bitronix.datasource.local-auto-commit= # The default auto-commit mode for local transactions.
+spring.jta.bitronix.datasource.login-timeout= # Timeout, in seconds, for establishing a database connection.
+spring.jta.bitronix.datasource.max-idle-time=60 # The time, in seconds, after which connections are cleaned up from the pool.
+spring.jta.bitronix.datasource.max-pool-size=10 # The maximum size of the pool. 0 denotes no limit.
+spring.jta.bitronix.datasource.min-pool-size=0 # The minimum size of the pool.
+spring.jta.bitronix.datasource.prepared-statement-cache-size=0 # The target size of the prepared statement cache. 0 disables the cache.
+spring.jta.bitronix.datasource.share-transaction-connections=false #  Whether connections in the ACCESSIBLE state can be shared within the context of a transaction.
+spring.jta.bitronix.datasource.test-query= # SQL query or statement used to validate a connection before returning it.
+spring.jta.bitronix.datasource.two-pc-ordering-position=1 # The position that this resource should take during two-phase commit (always first is Integer.MIN_VALUE, and always last is Integer.MAX_VALUE).
+spring.jta.bitronix.datasource.unique-name=dataSource # The unique name used to identify the resource during recovery.
+spring.jta.bitronix.datasource.use-tm-join=true # Whether TMJOIN should be used when starting XAResources.
+spring.jta.bitronix.properties.allow-multiple-lrc=false # Whether to allow multiple LRC resources to be enlisted into the same transaction.
+spring.jta.bitronix.properties.asynchronous2-pc=false # Whether to enable asynchronously execution of two phase commit.
+spring.jta.bitronix.properties.background-recovery-interval-seconds=60 # Interval in seconds at which to run the recovery process in the background.
+spring.jta.bitronix.properties.current-node-only-recovery=true # Whether to recover only the current node.
+spring.jta.bitronix.properties.debug-zero-resource-transaction=false # Whether to log the creation and commit call stacks of transactions executed without a single enlisted resource.
+spring.jta.bitronix.properties.default-transaction-timeout=60 # Default transaction timeout, in seconds.
+spring.jta.bitronix.properties.disable-jmx=false # Whether to enable JMX support.
+spring.jta.bitronix.properties.exception-analyzer= # Set the fully qualified name of the exception analyzer implementation to use.
+spring.jta.bitronix.properties.filter-log-status=false # Whether to enable filtering of logs so that only mandatory logs are written.
+spring.jta.bitronix.properties.force-batching-enabled=true #  Whether disk forces are batched.
+spring.jta.bitronix.properties.forced-write-enabled=true # Whether logs are forced to disk.
+spring.jta.bitronix.properties.graceful-shutdown-interval=60 # Maximum amount of seconds the TM waits for transactions to get done before aborting them at shutdown time.
+spring.jta.bitronix.properties.jndi-transaction-synchronization-registry-name= # JNDI name of the TransactionSynchronizationRegistry.
+spring.jta.bitronix.properties.jndi-user-transaction-name= # JNDI name of the UserTransaction.
+spring.jta.bitronix.properties.journal=disk # Name of the journal. Can be 'disk', 'null', or a class name.
+spring.jta.bitronix.properties.log-part1-filename=btm1.tlog # Name of the first fragment of the journal.
+spring.jta.bitronix.properties.log-part2-filename=btm2.tlog # Name of the second fragment of the journal.
+spring.jta.bitronix.properties.max-log-size-in-mb=2 # Maximum size in megabytes of the journal fragments.
+spring.jta.bitronix.properties.resource-configuration-filename= # ResourceLoader configuration file name.
+spring.jta.bitronix.properties.server-id= # ASCII ID that must uniquely identify this TM instance. Defaults to the machine's IP address.
+spring.jta.bitronix.properties.skip-corrupted-logs=false # Skip corrupted transactions log entries.
+spring.jta.bitronix.properties.warn-about-zero-resource-transaction=true # Whether to log a warning for transactions executed without a single enlisted resource.
+
+# NARAYANA (NarayanaProperties)
+spring.jta.narayana.default-timeout=60s # Transaction timeout. If a duration suffix is not specified, seconds will be used.
+spring.jta.narayana.expiry-scanners=com.arjuna.ats.internal.arjuna.recovery.ExpiredTransactionStatusManagerScanner # Comma-separated list of expiry scanners.
+spring.jta.narayana.log-dir= # Transaction object store directory.
+spring.jta.narayana.one-phase-commit=true # Whether to enable one phase commit optimization.
+spring.jta.narayana.periodic-recovery-period=120s # Interval in which periodic recovery scans are performed. If a duration suffix is not specified, seconds will be used.
+spring.jta.narayana.recovery-backoff-period=10s # Back off period between first and second phases of the recovery scan. If a duration suffix is not specified, seconds will be used.
+spring.jta.narayana.recovery-db-pass= # Database password to be used by the recovery manager.
+spring.jta.narayana.recovery-db-user= # Database username to be used by the recovery manager.
+spring.jta.narayana.recovery-jms-pass= # JMS password to be used by the recovery manager.
+spring.jta.narayana.recovery-jms-user= # JMS username to be used by the recovery manager.
+spring.jta.narayana.recovery-modules= # Comma-separated list of recovery modules.
+spring.jta.narayana.transaction-manager-id=1 # Unique transaction manager id.
+spring.jta.narayana.xa-resource-orphan-filters= # Comma-separated list of orphan filters.
+
+# EMBEDDED MONGODB (EmbeddedMongoProperties)
+spring.mongodb.embedded.features=sync_delay # Comma-separated list of features to enable.
+spring.mongodb.embedded.storage.database-dir= # Directory used for data storage.
+spring.mongodb.embedded.storage.oplog-size= # Maximum size of the oplog, in megabytes.
+spring.mongodb.embedded.storage.repl-set-name= # Name of the replica set.
+spring.mongodb.embedded.version=3.2.2 # Version of Mongo to use.
+
+# REDIS (RedisProperties)
+spring.redis.cluster.max-redirects= # Maximum number of redirects to follow when executing commands across the cluster.
+spring.redis.cluster.nodes= # Comma-separated list of "host:port" pairs to bootstrap from.
+spring.redis.database=0 # Database index used by the connection factory.
+spring.redis.url= # Connection URL. Overrides host, port, and password. User is ignored. Example: redis://user:password@example.com:6379
+spring.redis.host=localhost # Redis server host.
+spring.redis.jedis.pool.max-active=8 # Maximum number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
+spring.redis.jedis.pool.max-idle=8 # Maximum number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
+spring.redis.jedis.pool.max-wait=-1ms # Maximum amount of time a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
+spring.redis.jedis.pool.min-idle=0 # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
+spring.redis.lettuce.pool.max-active=8 # Maximum number of connections that can be allocated by the pool at a given time. Use a negative value for no limit.
+spring.redis.lettuce.pool.max-idle=8 # Maximum number of "idle" connections in the pool. Use a negative value to indicate an unlimited number of idle connections.
+spring.redis.lettuce.pool.max-wait=-1ms # Maximum amount of time a connection allocation should block before throwing an exception when the pool is exhausted. Use a negative value to block indefinitely.
+spring.redis.lettuce.pool.min-idle=0 # Target for the minimum number of idle connections to maintain in the pool. This setting only has an effect if it is positive.
+spring.redis.lettuce.shutdown-timeout=100ms # Shutdown timeout.
+spring.redis.password= # Login password of the redis server.
+spring.redis.port=6379 # Redis server port.
+spring.redis.sentinel.master= # Name of the Redis server.
+spring.redis.sentinel.nodes= # Comma-separated list of "host:port" pairs.
+spring.redis.ssl=false # Whether to enable SSL support.
+spring.redis.timeout= # Connection timeout.
+
+# TRANSACTION (TransactionProperties)
+spring.transaction.default-timeout= # Default transaction timeout. If a duration suffix is not specified, seconds will be used.
+spring.transaction.rollback-on-commit-failure= # Whether to roll back on commit failures.
+
+
+
+# ----------------------------------------
+# INTEGRATION PROPERTIES
+# ----------------------------------------
+
+# ACTIVEMQ (ActiveMQProperties)
+spring.activemq.broker-url= # URL of the ActiveMQ broker. Auto-generated by default.
+spring.activemq.close-timeout=15s # Time to wait before considering a close complete.
+spring.activemq.in-memory=true # Whether the default broker URL should be in memory. Ignored if an explicit broker has been specified.
+spring.activemq.non-blocking-redelivery=false # Whether to stop message delivery before re-delivering messages from a rolled back transaction. This implies that message order is not preserved when this is enabled.
+spring.activemq.password= # Login password of the broker.
+spring.activemq.send-timeout=0ms # Time to wait on message sends for a response. Set it to 0 to wait forever.
+spring.activemq.user= # Login user of the broker.
+spring.activemq.packages.trust-all= # Whether to trust all packages.
+spring.activemq.packages.trusted= # Comma-separated list of specific packages to trust (when not trusting all packages).
+spring.activemq.pool.block-if-full=true # Whether to block when a connection is requested and the pool is full. Set it to false to throw a "JMSException" instead.
+spring.activemq.pool.block-if-full-timeout=-1ms # Blocking period before throwing an exception if the pool is still full.
+spring.activemq.pool.create-connection-on-startup=true # Whether to create a connection on startup. Can be used to warm up the pool on startup.
+spring.activemq.pool.enabled=false # Whether a PooledConnectionFactory should be created, instead of a regular ConnectionFactory.
+spring.activemq.pool.expiry-timeout=0ms # Connection expiration timeout.
+spring.activemq.pool.idle-timeout=30s # Connection idle timeout.
+spring.activemq.pool.max-connections=1 # Maximum number of pooled connections.
+spring.activemq.pool.maximum-active-session-per-connection=500 # Maximum number of active sessions per connection.
+spring.activemq.pool.reconnect-on-exception=true # Reset the connection when a "JMSException" occurs.
+spring.activemq.pool.time-between-expiration-check=-1ms # Time to sleep between runs of the idle connection eviction thread. When negative, no idle connection eviction thread runs.
+spring.activemq.pool.use-anonymous-producers=true # Whether to use only one anonymous "MessageProducer" instance. Set it to false to create one "MessageProducer" every time one is required.
+
+# ARTEMIS (ArtemisProperties)
+spring.artemis.embedded.cluster-password= # Cluster password. Randomly generated on startup by default.
+spring.artemis.embedded.data-directory= # Journal file directory. Not necessary if persistence is turned off.
+spring.artemis.embedded.enabled=true # Whether to enable embedded mode if the Artemis server APIs are available.
+spring.artemis.embedded.persistent=false # Whether to enable persistent store.
+spring.artemis.embedded.queues= # Comma-separated list of queues to create on startup.
+spring.artemis.embedded.server-id= # Server ID. By default, an auto-incremented counter is used.
+spring.artemis.embedded.topics= # Comma-separated list of topics to create on startup.
+spring.artemis.host=localhost # Artemis broker host.
+spring.artemis.mode= # Artemis deployment mode, auto-detected by default.
+spring.artemis.password= # Login password of the broker.
+spring.artemis.port=61616 # Artemis broker port.
+spring.artemis.user= # Login user of the broker.
+
+# SPRING BATCH (BatchProperties)
+spring.batch.initialize-schema=embedded # Database schema initialization mode.
+spring.batch.job.enabled=true # Execute all Spring Batch jobs in the context on startup.
+spring.batch.job.names= # Comma-separated list of job names to execute on startup (for instance, `job1,job2`). By default, all Jobs found in the context are executed.
+spring.batch.schema=classpath:org/springframework/batch/core/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
+spring.batch.table-prefix= # Table prefix for all the batch meta-data tables.
+
+# SPRING INTEGRATION (IntegrationProperties)
+spring.integration.jdbc.initialize-schema=embedded # Database schema initialization mode.
+spring.integration.jdbc.schema=classpath:org/springframework/integration/jdbc/schema-@@platform@@.sql # Path to the SQL file to use to initialize the database schema.
+
+# JMS (JmsProperties)
+spring.jms.jndi-name= # Connection factory JNDI name. When set, takes precedence to others connection factory auto-configurations.
+spring.jms.listener.acknowledge-mode= # Acknowledge mode of the container. By default, the listener is transacted with automatic acknowledgment.
+spring.jms.listener.auto-startup=true # Start the container automatically on startup.
+spring.jms.listener.concurrency= # Minimum number of concurrent consumers.
+spring.jms.listener.max-concurrency= # Maximum number of concurrent consumers.
+spring.jms.pub-sub-domain=false # Whether the default destination type is topic.
+spring.jms.template.default-destination= # Default destination to use on send and receive operations that do not have a destination parameter.
+spring.jms.template.delivery-delay= # Delivery delay to use for send calls.
+spring.jms.template.delivery-mode= # Delivery mode. Enables QoS (Quality of Service) when set.
+spring.jms.template.priority= # Priority of a message when sending. Enables QoS (Quality of Service) when set.
+spring.jms.template.qos-enabled= # Whether to enable explicit QoS (Quality of Service) when sending a message.
+spring.jms.template.receive-timeout= # Timeout to use for receive calls.
+spring.jms.template.time-to-live= # Time-to-live of a message when sending. Enables QoS (Quality of Service) when set.
+
+# APACHE KAFKA (KafkaProperties)
+spring.kafka.admin.client-id= # ID to pass to the server when making requests. Used for server-side logging.
+spring.kafka.admin.fail-fast=false # Whether to fail fast if the broker is not available on startup.
+spring.kafka.admin.properties.*= # Additional admin-specific properties used to configure the client.
+spring.kafka.admin.ssl.key-password= # Password of the private key in the key store file.
+spring.kafka.admin.ssl.keystore-location= # Location of the key store file.
+spring.kafka.admin.ssl.keystore-password= # Store password for the key store file.
+spring.kafka.admin.ssl.truststore-location= # Location of the trust store file.
+spring.kafka.admin.ssl.truststore-password= # Store password for the trust store file.
+spring.kafka.bootstrap-servers= # Comma-delimited list of host:port pairs to use for establishing the initial connection to the Kafka cluster.
+spring.kafka.client-id= # ID to pass to the server when making requests. Used for server-side logging.
+spring.kafka.consumer.auto-commit-interval= # Frequency with which the consumer offsets are auto-committed to Kafka if 'enable.auto.commit' is set to true.
+spring.kafka.consumer.auto-offset-reset= # What to do when there is no initial offset in Kafka or if the current offset no longer exists on the server.
+spring.kafka.consumer.bootstrap-servers= # Comma-delimited list of host:port pairs to use for establishing the initial connection to the Kafka cluster.
+spring.kafka.consumer.client-id= # ID to pass to the server when making requests. Used for server-side logging.
+spring.kafka.consumer.enable-auto-commit= # Whether the consumer's offset is periodically committed in the background.
+spring.kafka.consumer.fetch-max-wait= # Maximum amount of time the server blocks before answering the fetch request if there isn't sufficient data to immediately satisfy the requirement given by "fetch.min.bytes".
+spring.kafka.consumer.fetch-min-size= # Minimum amount of data, in bytes, the server should return for a fetch request.
+spring.kafka.consumer.group-id= # Unique string that identifies the consumer group to which this consumer belongs.
+spring.kafka.consumer.heartbeat-interval= # Expected time between heartbeats to the consumer coordinator.
+spring.kafka.consumer.key-deserializer= # Deserializer class for keys.
+spring.kafka.consumer.max-poll-records= # Maximum number of records returned in a single call to poll().
+spring.kafka.consumer.properties.*= # Additional consumer-specific properties used to configure the client.
+spring.kafka.consumer.ssl.key-password= # Password of the private key in the key store file.
+spring.kafka.consumer.ssl.keystore-location= # Location of the key store file.
+spring.kafka.consumer.ssl.keystore-password= # Store password for the key store file.
+spring.kafka.consumer.ssl.truststore-location= # Location of the trust store file.
+spring.kafka.consumer.ssl.truststore-password= # Store password for the trust store file.
+spring.kafka.consumer.value-deserializer= # Deserializer class for values.
+spring.kafka.jaas.control-flag=required # Control flag for login configuration.
+spring.kafka.jaas.enabled=false # Whether to enable JAAS configuration.
+spring.kafka.jaas.login-module=com.sun.security.auth.module.Krb5LoginModule # Login module.
+spring.kafka.jaas.options= # Additional JAAS options.
+spring.kafka.listener.ack-count= # Number of records between offset commits when ackMode is "COUNT" or "COUNT_TIME".
+spring.kafka.listener.ack-mode= # Listener AckMode. See the spring-kafka documentation.
+spring.kafka.listener.ack-time= # Time between offset commits when ackMode is "TIME" or "COUNT_TIME".
+spring.kafka.listener.client-id= # Prefix for the listener's consumer client.id property.
+spring.kafka.listener.concurrency= # Number of threads to run in the listener containers.
+spring.kafka.listener.idle-event-interval= # Time between publishing idle consumer events (no data received).
+spring.kafka.listener.log-container-config= # Whether to log the container configuration during initialization (INFO level).
+spring.kafka.listener.monitor-interval= # Time between checks for non-responsive consumers. If a duration suffix is not specified, seconds will be used.
+spring.kafka.listener.no-poll-threshold= # Multiplier applied to "pollTimeout" to determine if a consumer is non-responsive.
+spring.kafka.listener.poll-timeout= # Timeout to use when polling the consumer.
+spring.kafka.listener.type=single # Listener type.
+spring.kafka.producer.acks= # Number of acknowledgments the producer requires the leader to have received before considering a request complete.
+spring.kafka.producer.batch-size= # Number of records to batch before sending.
+spring.kafka.producer.bootstrap-servers= # Comma-delimited list of host:port pairs to use for establishing the initial connection to the Kafka cluster.
+spring.kafka.producer.buffer-memory= # Total bytes of memory the producer can use to buffer records waiting to be sent to the server.
+spring.kafka.producer.client-id= # ID to pass to the server when making requests. Used for server-side logging.
+spring.kafka.producer.compression-type= # Compression type for all data generated by the producer.
+spring.kafka.producer.key-serializer= # Serializer class for keys.
+spring.kafka.producer.properties.*= # Additional producer-specific properties used to configure the client.
+spring.kafka.producer.retries= # When greater than zero, enables retrying of failed sends.
+spring.kafka.producer.ssl.key-password= # Password of the private key in the key store file.
+spring.kafka.producer.ssl.keystore-location= # Location of the key store file.
+spring.kafka.producer.ssl.keystore-password= # Store password for the key store file.
+spring.kafka.producer.ssl.truststore-location= # Location of the trust store file.
+spring.kafka.producer.ssl.truststore-password= # Store password for the trust store file.
+spring.kafka.producer.transaction-id-prefix= # When non empty, enables transaction support for producer.
+spring.kafka.producer.value-serializer= # Serializer class for values.
+spring.kafka.properties.*= # Additional properties, common to producers and consumers, used to configure the client.
+spring.kafka.ssl.key-password= # Password of the private key in the key store file.
+spring.kafka.ssl.keystore-location= # Location of the key store file.
+spring.kafka.ssl.keystore-password= # Store password for the key store file.
+spring.kafka.ssl.truststore-location= # Location of the trust store file.
+spring.kafka.ssl.truststore-password= # Store password for the trust store file.
+spring.kafka.template.default-topic= # Default topic to which messages are sent.
+
+# RABBIT (RabbitProperties)
+spring.rabbitmq.addresses= # Comma-separated list of addresses to which the client should connect.
+spring.rabbitmq.cache.channel.checkout-timeout= # Duration to wait to obtain a channel if the cache size has been reached.
+spring.rabbitmq.cache.channel.size= # Number of channels to retain in the cache.
+spring.rabbitmq.cache.connection.mode=channel # Connection factory cache mode.
+spring.rabbitmq.cache.connection.size= # Number of connections to cache.
+spring.rabbitmq.connection-timeout= # Connection timeout. Set it to zero to wait forever.
+spring.rabbitmq.dynamic=true # Whether to create an AmqpAdmin bean.
+spring.rabbitmq.host=localhost # RabbitMQ host.
+spring.rabbitmq.listener.direct.acknowledge-mode= # Acknowledge mode of container.
+spring.rabbitmq.listener.direct.auto-startup=true # Whether to start the container automatically on startup.
+spring.rabbitmq.listener.direct.consumers-per-queue= # Number of consumers per queue.
+spring.rabbitmq.listener.direct.default-requeue-rejected= # Whether rejected deliveries are re-queued by default.
+spring.rabbitmq.listener.direct.idle-event-interval= # How often idle container events should be published.
+spring.rabbitmq.listener.direct.prefetch= # Number of messages to be handled in a single request. It should be greater than or equal to the transaction size (if used).
+spring.rabbitmq.listener.direct.retry.enabled=false # Whether publishing retries are enabled.
+spring.rabbitmq.listener.direct.retry.initial-interval=1000ms # Duration between the first and second attempt to deliver a message.
+spring.rabbitmq.listener.direct.retry.max-attempts=3 # Maximum number of attempts to deliver a message.
+spring.rabbitmq.listener.direct.retry.max-interval=10000ms # Maximum duration between attempts.
+spring.rabbitmq.listener.direct.retry.multiplier=1 # Multiplier to apply to the previous retry interval.
+spring.rabbitmq.listener.direct.retry.stateless=true # Whether retries are stateless or stateful.
+spring.rabbitmq.listener.simple.acknowledge-mode= # Acknowledge mode of container.
+spring.rabbitmq.listener.simple.auto-startup=true # Whether to start the container automatically on startup.
+spring.rabbitmq.listener.simple.concurrency= # Minimum number of listener invoker threads.
+spring.rabbitmq.listener.simple.default-requeue-rejected= # Whether rejected deliveries are re-queued by default.
+spring.rabbitmq.listener.simple.idle-event-interval= # How often idle container events should be published.
+spring.rabbitmq.listener.simple.max-concurrency= # Maximum number of listener invoker threads.
+spring.rabbitmq.listener.simple.prefetch= # Number of messages to be handled in a single request. It should be greater than or equal to the transaction size (if used).
+spring.rabbitmq.listener.simple.retry.enabled=false # Whether publishing retries are enabled.
+spring.rabbitmq.listener.simple.retry.initial-interval=1000ms # Duration between the first and second attempt to deliver a message.
+spring.rabbitmq.listener.simple.retry.max-attempts=3 # Maximum number of attempts to deliver a message.
+spring.rabbitmq.listener.simple.retry.max-interval=10000ms #  Maximum duration between attempts.
+spring.rabbitmq.listener.simple.retry.multiplier=1 # Multiplier to apply to the previous retry interval.
+spring.rabbitmq.listener.simple.retry.stateless=true # Whether retries are stateless or stateful.
+spring.rabbitmq.listener.simple.transaction-size= # Number of messages to be processed in a transaction. That is, the number of messages between acks. For best results, it should be less than or equal to the prefetch count.
+spring.rabbitmq.listener.type=simple # Listener container type.
+spring.rabbitmq.password=guest # Login to authenticate against the broker.
+spring.rabbitmq.port=5672 # RabbitMQ port.
+spring.rabbitmq.publisher-confirms=false # Whether to enable publisher confirms.
+spring.rabbitmq.publisher-returns=false # Whether to enable publisher returns.
+spring.rabbitmq.requested-heartbeat= # Requested heartbeat timeout; zero for none. If a duration suffix is not specified, seconds will be used.
+spring.rabbitmq.ssl.enabled=false # Whether to enable SSL support.
+spring.rabbitmq.ssl.key-store= # Path to the key store that holds the SSL certificate.
+spring.rabbitmq.ssl.key-store-password= # Password used to access the key store.
+spring.rabbitmq.ssl.key-store-type=PKCS12 # Key store type.
+spring.rabbitmq.ssl.trust-store= # Trust store that holds SSL certificates.
+spring.rabbitmq.ssl.trust-store-password= # Password used to access the trust store.
+spring.rabbitmq.ssl.trust-store-type=JKS # Trust store type.
+spring.rabbitmq.ssl.algorithm= # SSL algorithm to use. By default, configured by the Rabbit client library.
+spring.rabbitmq.template.exchange= # Name of the default exchange to use for send operations.
+spring.rabbitmq.template.mandatory= # Whether to enable mandatory messages.
+spring.rabbitmq.template.receive-timeout= # Timeout for `receive()` operations.
+spring.rabbitmq.template.reply-timeout= # Timeout for `sendAndReceive()` operations.
+spring.rabbitmq.template.retry.enabled=false # Whether publishing retries are enabled.
+spring.rabbitmq.template.retry.initial-interval=1000ms # Duration between the first and second attempt to deliver a message.
+spring.rabbitmq.template.retry.max-attempts=3 # Maximum number of attempts to deliver a message.
+spring.rabbitmq.template.retry.max-interval=10000ms # Maximum duration between attempts.
+spring.rabbitmq.template.retry.multiplier=1 # Multiplier to apply to the previous retry interval.
+spring.rabbitmq.template.routing-key= # Value of a default routing key to use for send operations.
+spring.rabbitmq.username=guest # Login user to authenticate to the broker.
+spring.rabbitmq.virtual-host= # Virtual host to use when connecting to the broker.
+
+
+# ----------------------------------------
+# ACTUATOR PROPERTIES
+# ----------------------------------------
+
+# MANAGEMENT HTTP SERVER (ManagementServerProperties)
+management.server.add-application-context-header=false # Add the "X-Application-Context" HTTP header in each response.
+management.server.address= # Network address to which the management endpoints should bind. Requires a custom management.server.port.
+management.server.port= # Management endpoint HTTP port (uses the same port as the application by default). Configure a different port to use management-specific SSL.
+management.server.servlet.context-path= # Management endpoint context-path (for instance, `/management`). Requires a custom management.server.port.
+management.server.ssl.ciphers= # Supported SSL ciphers. Requires a custom management.port.
+management.server.ssl.client-auth= # Whether client authentication is wanted ("want") or needed ("need"). Requires a trust store. Requires a custom management.server.port.
+management.server.ssl.enabled= # Whether to enable SSL support. Requires a custom management.server.port.
+management.server.ssl.enabled-protocols= # Enabled SSL protocols. Requires a custom management.server.port.
+management.server.ssl.key-alias= # Alias that identifies the key in the key store. Requires a custom management.server.port.
+management.server.ssl.key-password= # Password used to access the key in the key store. Requires a custom management.server.port.
+management.server.ssl.key-store= # Path to the key store that holds the SSL certificate (typically a jks file). Requires a custom management.server.port.
+management.server.ssl.key-store-password= # Password used to access the key store. Requires a custom management.server.port.
+management.server.ssl.key-store-provider= # Provider for the key store. Requires a custom management.server.port.
+management.server.ssl.key-store-type= # Type of the key store. Requires a custom management.server.port.
+management.server.ssl.protocol=TLS # SSL protocol to use. Requires a custom management.server.port.
+management.server.ssl.trust-store= # Trust store that holds SSL certificates. Requires a custom management.server.port.
+management.server.ssl.trust-store-password= # Password used to access the trust store. Requires a custom management.server.port.
+management.server.ssl.trust-store-provider= # Provider for the trust store. Requires a custom management.server.port.
+management.server.ssl.trust-store-type= # Type of the trust store. Requires a custom management.server.port.
+
+# CLOUDFOUNDRY
+management.cloudfoundry.enabled=true # Whether to enable extended Cloud Foundry actuator endpoints.
+management.cloudfoundry.skip-ssl-validation=false # Whether to skip SSL verification for Cloud Foundry actuator endpoint security calls.
+
+# ENDPOINTS GENERAL CONFIGURATION
+management.endpoints.enabled-by-default= # Whether to enable or disable all endpoints by default.
+
+# ENDPOINTS JMX CONFIGURATION (JmxEndpointProperties)
+management.endpoints.jmx.domain=org.springframework.boot # Endpoints JMX domain name. Fallback to 'spring.jmx.default-domain' if set.
+management.endpoints.jmx.exposure.include=* # Endpoint IDs that should be included or '*' for all.
+management.endpoints.jmx.exposure.exclude= # Endpoint IDs that should be excluded.
+management.endpoints.jmx.static-names= # Additional static properties to append to all ObjectNames of MBeans representing Endpoints.
+management.endpoints.jmx.unique-names=false # Whether to ensure that ObjectNames are modified in case of conflict.
+
+# ENDPOINTS WEB CONFIGURATION (WebEndpointProperties)
+management.endpoints.web.exposure.include=health,info # Endpoint IDs that should be included or '*' for all.
+management.endpoints.web.exposure.exclude= # Endpoint IDs that should be excluded.
+management.endpoints.web.base-path=/actuator # Base path for Web endpoints. Relative to server.servlet.context-path or management.server.servlet.context-path if management.server.port is configured.
+management.endpoints.web.path-mapping= # Mapping between endpoint IDs and the path that should expose them.
+
+# ENDPOINTS CORS CONFIGURATION (CorsEndpointProperties)
+management.endpoints.web.cors.allow-credentials= # Whether credentials are supported. When not set, credentials are not supported.
+management.endpoints.web.cors.allowed-headers= # Comma-separated list of headers to allow in a request. '*' allows all headers.
+management.endpoints.web.cors.allowed-methods= # Comma-separated list of methods to allow. '*' allows all methods. When not set, defaults to GET.
+management.endpoints.web.cors.allowed-origins= # Comma-separated list of origins to allow. '*' allows all origins. When not set, CORS support is disabled.
+management.endpoints.web.cors.exposed-headers= # Comma-separated list of headers to include in a response.
+management.endpoints.web.cors.max-age=1800s # How long the response from a pre-flight request can be cached by clients. If a duration suffix is not specified, seconds will be used.
+
+# AUDIT EVENTS ENDPOINT (AuditEventsEndpoint)
+management.endpoint.auditevents.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.auditevents.enabled=true # Whether to enable the auditevents endpoint.
+
+# BEANS ENDPOINT (BeansEndpoint)
+management.endpoint.beans.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.beans.enabled=true # Whether to enable the beans endpoint.
+
+# CONDITIONS REPORT ENDPOINT (ConditionsReportEndpoint)
+management.endpoint.conditions.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.conditions.enabled=true # Whether to enable the conditions endpoint.
+
+# CONFIGURATION PROPERTIES REPORT ENDPOINT (ConfigurationPropertiesReportEndpoint, ConfigurationPropertiesReportEndpointProperties)
+management.endpoint.configprops.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.configprops.enabled=true # Whether to enable the configprops endpoint.
+management.endpoint.configprops.keys-to-sanitize=password,secret,key,token,.*credentials.*,vcap_services # Keys that should be sanitized. Keys can be simple strings that the property ends with or regular expressions.
+
+# ENVIRONMENT ENDPOINT (EnvironmentEndpoint, EnvironmentEndpointProperties)
+management.endpoint.env.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.env.enabled=true # Whether to enable the env endpoint.
+management.endpoint.env.keys-to-sanitize=password,secret,key,token,.*credentials.*,vcap_services # Keys that should be sanitized. Keys can be simple strings that the property ends with or regular expressions.
+
+# FLYWAY ENDPOINT (FlywayEndpoint)
+management.endpoint.flyway.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.flyway.enabled=true # Whether to enable the flyway endpoint.
+
+# HEALTH ENDPOINT (HealthEndpoint, HealthEndpointProperties)
+management.endpoint.health.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.health.enabled=true # Whether to enable the health endpoint.
+management.endpoint.health.roles= # Roles used to determine whether or not a user is authorized to be shown details. When empty, all authenticated users are authorized.
+management.endpoint.health.show-details=never # When to show full health details.
+
+# HEAP DUMP ENDPOINT (HeapDumpWebEndpoint)
+management.endpoint.heapdump.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.heapdump.enabled=true # Whether to enable the heapdump endpoint.
+
+# HTTP TRACE ENDPOINT (HttpTraceEndpoint)
+management.endpoint.httptrace.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.httptrace.enabled=true # Whether to enable the httptrace endpoint.
+
+# INFO ENDPOINT (InfoEndpoint)
+info= # Arbitrary properties to add to the info endpoint.
+management.endpoint.info.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.info.enabled=true # Whether to enable the info endpoint.
+
+# JOLOKIA ENDPOINT (JolokiaProperties)
+management.endpoint.jolokia.config.*= # Jolokia settings. Refer to the documentation of Jolokia for more details.
+management.endpoint.jolokia.enabled=true # Whether to enable the jolokia endpoint.
+
+# LIQUIBASE ENDPOINT (LiquibaseEndpoint)
+management.endpoint.liquibase.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.liquibase.enabled=true # Whether to enable the liquibase endpoint.
+
+# LOG FILE ENDPOINT (LogFileWebEndpoint, LogFileWebEndpointProperties)
+management.endpoint.logfile.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.logfile.enabled=true # Whether to enable the logfile endpoint.
+management.endpoint.logfile.external-file= # External Logfile to be accessed. Can be used if the logfile is written by output redirect and not by the logging system itself.
+
+# LOGGERS ENDPOINT (LoggersEndpoint)
+management.endpoint.loggers.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.loggers.enabled=true # Whether to enable the loggers endpoint.
+
+# REQUEST MAPPING ENDPOINT  (MappingsEndpoint)
+management.endpoint.mappings.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.mappings.enabled=true # Whether to enable the mappings endpoint.
+
+# METRICS ENDPOINT (MetricsEndpoint)
+management.endpoint.metrics.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.metrics.enabled=true # Whether to enable the metrics endpoint.
+
+# PROMETHEUS ENDPOINT (PrometheusScrapeEndpoint)
+management.endpoint.prometheus.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.prometheus.enabled=true # Whether to enable the prometheus endpoint.
+
+# SCHEDULED TASKS ENDPOINT (ScheduledTasksEndpoint)
+management.endpoint.scheduledtasks.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.scheduledtasks.enabled=true # Whether to enable the scheduledtasks endpoint.
+
+# SESSIONS ENDPOINT (SessionsEndpoint)
+management.endpoint.sessions.enabled=true # Whether to enable the sessions endpoint.
+
+# SHUTDOWN ENDPOINT (ShutdownEndpoint)
+management.endpoint.shutdown.enabled=false # Whether to enable the shutdown endpoint.
+
+# THREAD DUMP ENDPOINT (ThreadDumpEndpoint)
+management.endpoint.threaddump.cache.time-to-live=0ms # Maximum time that a response can be cached.
+management.endpoint.threaddump.enabled=true # Whether to enable the threaddump endpoint.
+
+# HEALTH INDICATORS
+management.health.db.enabled=true # Whether to enable database health check.
+management.health.cassandra.enabled=true # Whether to enable Cassandra health check.
+management.health.couchbase.enabled=true # Whether to enable Couchbase health check.
+management.health.defaults.enabled=true # Whether to enable default health indicators.
+management.health.diskspace.enabled=true # Whether to enable disk space health check.
+management.health.diskspace.path= # Path used to compute the available disk space.
+management.health.diskspace.threshold=0 # Minimum disk space, in bytes, that should be available.
+management.health.elasticsearch.enabled=true # Whether to enable Elasticsearch health check.
+management.health.elasticsearch.indices= # Comma-separated index names.
+management.health.elasticsearch.response-timeout=100ms # Time to wait for a response from the cluster.
+management.health.influxdb.enabled=true # Whether to enable InfluxDB health check.
+management.health.jms.enabled=true # Whether to enable JMS health check.
+management.health.ldap.enabled=true # Whether to enable LDAP health check.
+management.health.mail.enabled=true # Whether to enable Mail health check.
+management.health.mongo.enabled=true # Whether to enable MongoDB health check.
+management.health.neo4j.enabled=true # Whether to enable Neo4j health check.
+management.health.rabbit.enabled=true # Whether to enable RabbitMQ health check.
+management.health.redis.enabled=true # Whether to enable Redis health check.
+management.health.solr.enabled=true # Whether to enable Solr health check.
+management.health.status.http-mapping= # Mapping of health statuses to HTTP status codes. By default, registered health statuses map to sensible defaults (for example, UP maps to 200).
+management.health.status.order=DOWN,OUT_OF_SERVICE,UP,UNKNOWN # Comma-separated list of health statuses in order of severity.
+
+# HTTP TRACING (HttpTraceProperties)
+management.trace.http.enabled=true # Whether to enable HTTP request-response tracing.
+management.trace.http.include=request-headers,response-headers,cookies,errors # Items to be included in the trace.
+
+# INFO CONTRIBUTORS (InfoContributorProperties)
+management.info.build.enabled=true # Whether to enable build info.
+management.info.defaults.enabled=true # Whether to enable default info contributors.
+management.info.env.enabled=true # Whether to enable environment info.
+management.info.git.enabled=true # Whether to enable git info.
+management.info.git.mode=simple # Mode to use to expose git information.
+
+# METRICS
+management.metrics.binders.files.enabled=true # Whether to enable files metrics.
+management.metrics.binders.integration.enabled=true # Whether to enable Spring Integration metrics.
+management.metrics.binders.jvm.enabled=true # Whether to enable JVM metrics.
+management.metrics.binders.logback.enabled=true # Whether to enable Logback metrics.
+management.metrics.binders.processor.enabled=true # Whether to enable processor metrics.
+management.metrics.binders.uptime.enabled=true # Whether to enable uptime metrics.
+management.metrics.distribution.percentiles-histogram.*= # Whether meter IDs starting-with the specified name should be publish percentile histograms.
+management.metrics.distribution.percentiles.*= # Specific computed non-aggregable percentiles to ship to the backend for meter IDs starting-with the specified name.
+management.metrics.distribution.sla.*= # Specific SLA boundaries for meter IDs starting-with the specified name. The longest match wins, the key `all` can also be used to configure all meters.
+management.metrics.enable.*= # Whether meter IDs starting-with the specified name should be enabled. The longest match wins, the key `all` can also be used to configure all meters.
+management.metrics.export.atlas.batch-size=10000 # Number of measurements per request to use for this backend. If more measurements are found, then multiple requests will be made.
+management.metrics.export.atlas.config-refresh-frequency=10s # Frequency for refreshing config settings from the LWC service.
+management.metrics.export.atlas.config-time-to-live=150s # Time to live for subscriptions from the LWC service.
+management.metrics.export.atlas.config-uri=http://localhost:7101/lwc/api/v1/expressions/local-dev # URI for the Atlas LWC endpoint to retrieve current subscriptions.
+management.metrics.export.atlas.connect-timeout=1s # Connection timeout for requests to this backend.
+management.metrics.export.atlas.enabled=true # Whether exporting of metrics to this backend is enabled.
+management.metrics.export.atlas.eval-uri=http://localhost:7101/lwc/api/v1/evaluate # URI for the Atlas LWC endpoint to evaluate the data for a subscription.
+management.metrics.export.atlas.lwc-enabled=false # Whether to enable streaming to Atlas LWC.
+management.metrics.export.atlas.meter-time-to-live=15m # Time to live for meters that do not have any activity. After this period the meter will be considered expired and will not get reported.
+management.metrics.export.atlas.num-threads=2 # Number of threads to use with the metrics publishing scheduler.
+management.metrics.export.atlas.read-timeout=10s # Read timeout for requests to this backend.
+management.metrics.export.atlas.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.atlas.uri=http://localhost:7101/api/v1/publish # URI of the Atlas server.
+management.metrics.export.datadog.api-key= # Datadog API key.
+management.metrics.export.datadog.application-key= # Datadog application key. Not strictly required, but improves the Datadog experience by sending meter descriptions, types, and base units to Datadog.
+management.metrics.export.datadog.batch-size=10000 # Number of measurements per request to use for this backend. If more measurements are found, then multiple requests will be made.
+management.metrics.export.datadog.connect-timeout=1s # Connection timeout for requests to this backend.
+management.metrics.export.datadog.descriptions=true # Whether to publish descriptions metadata to Datadog. Turn this off to minimize the amount of metadata sent.
+management.metrics.export.datadog.enabled=true # Whether exporting of metrics to this backend is enabled.
+management.metrics.export.datadog.host-tag=instance # Tag that will be mapped to "host" when shipping metrics to Datadog.
+management.metrics.export.datadog.num-threads=2 # Number of threads to use with the metrics publishing scheduler.
+management.metrics.export.datadog.read-timeout=10s # Read timeout for requests to this backend.
+management.metrics.export.datadog.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.datadog.uri=https://app.datadoghq.com # URI to ship metrics to. If you need to publish metrics to an internal proxy en-route to Datadog, you can define the location of the proxy with this.
+management.metrics.export.ganglia.addressing-mode=multicast # UDP addressing mode, either unicast or multicast.
+management.metrics.export.ganglia.duration-units=milliseconds # Base time unit used to report durations.
+management.metrics.export.ganglia.enabled=true # Whether exporting of metrics to Ganglia is enabled.
+management.metrics.export.ganglia.host=localhost # Host of the Ganglia server to receive exported metrics.
+management.metrics.export.ganglia.port=8649 # Port of the Ganglia server to receive exported metrics.
+management.metrics.export.ganglia.protocol-version=3.1 # Ganglia protocol version. Must be either 3.1 or 3.0.
+management.metrics.export.ganglia.rate-units=seconds # Base time unit used to report rates.
+management.metrics.export.ganglia.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.ganglia.time-to-live=1 # Time to live for metrics on Ganglia. Set the multi-cast Time-To-Live to be one greater than the number of hops (routers) between the hosts.
+management.metrics.export.graphite.duration-units=milliseconds # Base time unit used to report durations.
+management.metrics.export.graphite.enabled=true # Whether exporting of metrics to Graphite is enabled.
+management.metrics.export.graphite.host=localhost # Host of the Graphite server to receive exported metrics.
+management.metrics.export.graphite.port=2004 # Port of the Graphite server to receive exported metrics.
+management.metrics.export.graphite.protocol=pickled # Protocol to use while shipping data to Graphite.
+management.metrics.export.graphite.rate-units=seconds # Base time unit used to report rates.
+management.metrics.export.graphite.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.graphite.tags-as-prefix= # For the default naming convention, turn the specified tag keys into part of the metric prefix.
+management.metrics.export.influx.auto-create-db=true # Whether to create the Influx database if it does not exist before attempting to publish metrics to it.
+management.metrics.export.influx.batch-size=10000 # Number of measurements per request to use for this backend. If more measurements are found, then multiple requests will be made.
+management.metrics.export.influx.compressed=true # Whether to enable GZIP compression of metrics batches published to Influx.
+management.metrics.export.influx.connect-timeout=1s # Connection timeout for requests to this backend.
+management.metrics.export.influx.consistency=one # Write consistency for each point.
+management.metrics.export.influx.db=mydb # Tag that will be mapped to "host" when shipping metrics to Influx.
+management.metrics.export.influx.enabled=true # Whether exporting of metrics to this backend is enabled.
+management.metrics.export.influx.num-threads=2 # Number of threads to use with the metrics publishing scheduler.
+management.metrics.export.influx.password= # Login password of the Influx server.
+management.metrics.export.influx.read-timeout=10s # Read timeout for requests to this backend.
+management.metrics.export.influx.retention-policy= # Retention policy to use (Influx writes to the DEFAULT retention policy if one is not specified).
+management.metrics.export.influx.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.influx.uri=http://localhost:8086 # URI of the Influx server.
+management.metrics.export.influx.user-name= # Login user of the Influx server.
+management.metrics.export.jmx.enabled=true # Whether exporting of metrics to JMX is enabled.
+management.metrics.export.jmx.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.newrelic.account-id= # New Relic account ID.
+management.metrics.export.newrelic.api-key= # New Relic API key.
+management.metrics.export.newrelic.batch-size=10000 # Number of measurements per request to use for this backend. If more measurements are found, then multiple requests will be made.
+management.metrics.export.newrelic.connect-timeout=1s # Connection timeout for requests to this backend.
+management.metrics.export.newrelic.enabled=true # Whether exporting of metrics to this backend is enabled.
+management.metrics.export.newrelic.num-threads=2 # Number of threads to use with the metrics publishing scheduler.
+management.metrics.export.newrelic.read-timeout=10s # Read timeout for requests to this backend.
+management.metrics.export.newrelic.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.newrelic.uri=https://insights-collector.newrelic.com # URI to ship metrics to.
+management.metrics.export.prometheus.descriptions=true # Whether to enable publishing descriptions as part of the scrape payload to Prometheus. Turn this off to minimize the amount of data sent on each scrape.
+management.metrics.export.prometheus.enabled=true # Whether exporting of metrics to Prometheus is enabled.
+management.metrics.export.prometheus.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.signalfx.access-token= # SignalFX access token.
+management.metrics.export.signalfx.batch-size=10000 # Number of measurements per request to use for this backend. If more measurements are found, then multiple requests will be made.
+management.metrics.export.signalfx.connect-timeout=1s # Connection timeout for requests to this backend.
+management.metrics.export.signalfx.enabled=true # Whether exporting of metrics to this backend is enabled.
+management.metrics.export.signalfx.num-threads=2 # Number of threads to use with the metrics publishing scheduler.
+management.metrics.export.signalfx.read-timeout=10s # Read timeout for requests to this backend.
+management.metrics.export.signalfx.source= # Uniquely identifies the app instance that is publishing metrics to SignalFx. Defaults to the local host name.
+management.metrics.export.signalfx.step=10s # Step size (i.e. reporting frequency) to use.
+management.metrics.export.signalfx.uri=https://ingest.signalfx.com # URI to ship metrics to.
+management.metrics.export.simple.enabled=true # Whether, in the absence of any other exporter, exporting of metrics to an in-memory backend is enabled.
+management.metrics.export.simple.mode=cumulative # Counting mode.
+management.metrics.export.simple.step=1m # Step size (i.e. reporting frequency) to use.
+management.metrics.export.statsd.enabled=true # Whether exporting of metrics to StatsD is enabled.
+management.metrics.export.statsd.flavor=datadog # StatsD line protocol to use.
+management.metrics.export.statsd.host=localhost # Host of the StatsD server to receive exported metrics.
+management.metrics.export.statsd.max-packet-length=1400 # Total length of a single payload should be kept within your network's MTU.
+management.metrics.export.statsd.polling-frequency=10s # How often gauges will be polled. When a gauge is polled, its value is recalculated and if the value has changed (or publishUnchangedMeters is true), it is sent to the StatsD server.
+management.metrics.export.statsd.port=8125 # Port of the StatsD server to receive exported metrics.
+management.metrics.export.statsd.publish-unchanged-meters=true # Whether to send unchanged meters to the StatsD server.
+management.metrics.export.statsd.queue-size=2147483647 # Maximum size of the queue of items waiting to be sent to the StatsD server.
+management.metrics.export.wavefront.api-token= # API token used when publishing metrics directly to the Wavefront API host.
+management.metrics.export.wavefront.batch-size=10000 # Number of measurements per request to use for this backend. If more measurements are found, then multiple requests will be made.
+management.metrics.export.wavefront.connect-timeout=1s # Connection timeout for requests to this backend.
+management.metrics.export.wavefront.enabled=true # Whether exporting of metrics to this backend is enabled.
+management.metrics.export.wavefront.global-prefix= # Global prefix to separate metrics originating from this app's white box instrumentation from those originating from other Wavefront integrations when viewed in the Wavefront UI.
+management.metrics.export.wavefront.num-threads=2 # Number of threads to use with the metrics publishing scheduler.
+management.metrics.export.wavefront.read-timeout=10s # Read timeout for requests to this backend.
+management.metrics.export.wavefront.source= # Unique identifier for the app instance that is the source of metrics being published to Wavefront. Defaults to the local host name.
+management.metrics.export.wavefront.step=10s # Step size (i.e. reporting frequency) to use.
+management.metrics.export.wavefront.uri=https://longboard.wavefront.com # URI to ship metrics to.
+management.metrics.use-global-registry=true # Whether auto-configured MeterRegistry implementations should be bound to the global static registry on Metrics.
+management.metrics.web.client.max-uri-tags=100 # Maximum number of unique URI tag values allowed. After the max number of tag values is reached, metrics with additional tag values are denied by filter.
+management.metrics.web.client.requests-metric-name=http.client.requests # Name of the metric for sent requests.
+management.metrics.web.server.auto-time-requests=true # Whether requests handled by Spring MVC or WebFlux should be automatically timed.
+management.metrics.web.server.requests-metric-name=http.server.requests # Name of the metric for received requests.
+
+
+# ----------------------------------------
+# DEVTOOLS PROPERTIES
+# ----------------------------------------
+
+# DEVTOOLS (DevToolsProperties)
+spring.devtools.livereload.enabled=true # Whether to enable a livereload.com-compatible server.
+spring.devtools.livereload.port=35729 # Server port.
+spring.devtools.restart.additional-exclude= # Additional patterns that should be excluded from triggering a full restart.
+spring.devtools.restart.additional-paths= # Additional paths to watch for changes.
+spring.devtools.restart.enabled=true # Whether to enable automatic restart.
+spring.devtools.restart.exclude=META-INF/maven/**,META-INF/resources/**,resources/**,static/**,public/**,templates/**,**/*Test.class,**/*Tests.class,git.properties,META-INF/build-info.properties # Patterns that should be excluded from triggering a full restart.
+spring.devtools.restart.log-condition-evaluation-delta=true # Whether to log the condition evaluation delta upon restart.
+spring.devtools.restart.poll-interval=1s # Amount of time to wait between polling for classpath changes.
+spring.devtools.restart.quiet-period=400ms # Amount of quiet time required without any classpath changes before a restart is triggered.
+spring.devtools.restart.trigger-file= # Name of a specific file that, when changed, triggers the restart check. If not specified, any classpath file change triggers the restart.
+
+# REMOTE DEVTOOLS (RemoteDevToolsProperties)
+spring.devtools.remote.context-path=/.~~spring-boot!~ # Context path used to handle the remote connection.
+spring.devtools.remote.proxy.host= # The host of the proxy to use to connect to the remote application.
+spring.devtools.remote.proxy.port= # The port of the proxy to use to connect to the remote application.
+spring.devtools.remote.restart.enabled=true # Whether to enable remote restart.
+spring.devtools.remote.secret= # A shared secret required to establish a connection (required to enable remote support).
+spring.devtools.remote.secret-header-name=X-AUTH-TOKEN # HTTP header used to transfer the shared secret.
+
+
+# ----------------------------------------
+# TESTING PROPERTIES
+# ----------------------------------------
+
+spring.test.database.replace=any # Type of existing DataSource to replace.
+spring.test.mockmvc.print=default # MVC Print option.
+
+
+```
+
+## Appendix B. Configuration Metadata
+
+Spring Boot jars include metadata files that provide details of all supported configuration properties. The files are designed to let IDE developers offer contextual help and “code completion” as users are working with `application.properties` or `application.yml` files.
+
+The majority of the metadata file is generated automatically at compile time by processing all items annotated with `@ConfigurationProperties`. However, it is possible to [write part of the metadata manually](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-additional-metadata) for corner cases or more advanced use cases.
+
+## B.1 Metadata Format
+
+Configuration metadata files are located inside jars under `META-INF/spring-configuration-metadata.json` They use a simple JSON format with items categorized under either “groups” or “properties” and additional values hints categorized under "hints", as shown in the following example:
+
+```
+{"groups": [
+	{
+		"name": "server",
+		"type": "org.springframework.boot.autoconfigure.web.ServerProperties",
+		"sourceType": "org.springframework.boot.autoconfigure.web.ServerProperties"
+	},
+	{
+		"name": "spring.jpa.hibernate",
+		"type": "org.springframework.boot.autoconfigure.orm.jpa.JpaProperties$Hibernate",
+		"sourceType": "org.springframework.boot.autoconfigure.orm.jpa.JpaProperties",
+		"sourceMethod": "getHibernate()"
+	}
+	...
+],"properties": [
+	{
+		"name": "server.port",
+		"type": "java.lang.Integer",
+		"sourceType": "org.springframework.boot.autoconfigure.web.ServerProperties"
+	},
+	{
+		"name": "server.servlet.path",
+		"type": "java.lang.String",
+		"sourceType": "org.springframework.boot.autoconfigure.web.ServerProperties",
+		"defaultValue": "/"
+	},
+	{
+		  "name": "spring.jpa.hibernate.ddl-auto",
+		  "type": "java.lang.String",
+		  "description": "DDL mode. This is actually a shortcut for the \"hibernate.hbm2ddl.auto\" property.",
+		  "sourceType": "org.springframework.boot.autoconfigure.orm.jpa.JpaProperties$Hibernate"
+	}
+	...
+],"hints": [
+	{
+		"name": "spring.jpa.hibernate.ddl-auto",
+		"values": [
+			{
+				"value": "none",
+				"description": "Disable DDL handling."
+			},
+			{
+				"value": "validate",
+				"description": "Validate the schema, make no changes to the database."
+			},
+			{
+				"value": "update",
+				"description": "Update the schema if necessary."
+			},
+			{
+				"value": "create",
+				"description": "Create the schema and destroy previous data."
+			},
+			{
+				"value": "create-drop",
+				"description": "Create and then destroy the schema at the end of the session."
+			}
+		]
+	}
+]}
+
+
+```
+
+Each “property” is a configuration item that the user specifies with a given value. For example, `server.port` and `server.servlet.path` might be specified in`application.properties`, as follows:
+
+```
+server.port=9090
+server.servlet.path=/home
+
+
+```
+
+The “groups” are higher level items that do not themselves specify a value but instead provide a contextual grouping for properties. For example, the `server.port` and`server.servlet.path` properties are part of the `server` group.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| It is not required that every “property” has a “group”. Some properties might exist in their own right. |
+
+Finally, “hints” are additional information used to assist the user in configuring a given property. For example, when a developer is configuring the`spring.jpa.hibernate.ddl-auto` property, a tool can use the hints to offer some auto-completion help for the `none`, `validate`, `update`, `create`, and `create-drop` values.
+
+### B.1.1 Group Attributes
+
+The JSON object contained in the `groups` array can contain the attributes shown in the following table:
+
+| Name           | Type   | Purpose                                                      |
+| -------------- | ------ | ------------------------------------------------------------ |
+| `name`         | String | The full name of the group. This attribute is mandatory.     |
+| `type`         | String | The class name of the data type of the group. For example, if the group were based on a class annotated with `@ConfigurationProperties`, the attribute would contain the fully qualified name of that class. If it were based on a `@Bean`method, it would be the return type of that method. If the type is not known, the attribute may be omitted. |
+| `description`  | String | A short description of the group that can be displayed to users. If not description is available, it may be omitted. It is recommended that descriptions be short paragraphs, with the first line providing a concise summary. The last line in the description should end with a period (`.`). |
+| `sourceType`   | String | The class name of the source that contributed this group. For example, if the group were based on a `@Bean` method annotated with `@ConfigurationProperties`, this attribute would contain the fully qualified name of the `@Configuration` class that contains the method. If the source type is not known, the attribute may be omitted. |
+| `sourceMethod` | String | The full name of the method (include parenthesis and argument types) that contributed this group (for example, the name of a `@ConfigurationProperties` annotated `@Bean` method). If the source method is not known, it may be omitted. |
+
+### B.1.2 Property Attributes
+
+The JSON object contained in the `properties` array can contain the attributes described in the following table:
+
+| Name           | Type        | Purpose                                                      |
+| -------------- | ----------- | ------------------------------------------------------------ |
+| `name`         | String      | The full name of the property. Names are in lower-case period-separated form (for example, `server.servlet.path`). This attribute is mandatory. |
+| `type`         | String      | The full signature of the data type of the property (for example, `java.lang.String`) but also a full generic type (such as `java.util.Map<java.util.String,acme.MyEnum>`). You can use this attribute to guide the user as to the types of values that they can enter. For consistency, the type of a primitive is specified by using its wrapper counterpart (for example, `boolean` becomes `java.lang.Boolean`). Note that this class may be a complex type that gets converted from a `String`as values are bound. If the type is not known, it may be omitted. |
+| `description`  | String      | A short description of the group that can be displayed to users. If no description is available, it may be omitted. It is recommended that descriptions be short paragraphs, with the first line providing a concise summary. The last line in the description should end with a period (`.`). |
+| `sourceType`   | String      | The class name of the source that contributed this property. For example, if the property were from a class annotated with `@ConfigurationProperties`, this attribute would contain the fully qualified name of that class. If the source type is unknown, it may be omitted. |
+| `defaultValue` | Object      | The default value, which is used if the property is not specified. If the type of the property is an array, it can be an array of value(s). If the default value is unknown, it may be omitted. |
+| `deprecation`  | Deprecation | Specify whether the property is deprecated. If the field is not deprecated or if that information is not known, it may be omitted. The next table offers more detail about the `deprecation` attribute. |
+
+The JSON object contained in the `deprecation` attribute of each `properties` element can contain the following attributes:
+
+| Name          | Type   | Purpose                                                      |
+| ------------- | ------ | ------------------------------------------------------------ |
+| `level`       | String | The level of deprecation, which can be either `warning` (the default) or `error`. When a property has a `warning` deprecation level, it should still be bound in the environment. However, when it has an `error` deprecation level, the property is no longer managed and is not bound. |
+| `reason`      | String | A short description of the reason why the property was deprecated. If no reason is available, it may be omitted. It is recommended that descriptions be short paragraphs, with the first line providing a concise summary. The last line in the description should end with a period (`.`). |
+| `replacement` | String | The full name of the property that *replaces* this deprecated property. If there is no replacement for this property, it may be omitted. |
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| Prior to Spring Boot 1.3, a single `deprecated` boolean attribute can be used instead of the `deprecation` element. This is still supported in a deprecated fashion and should no longer be used. If no reason and replacement are available, an empty `deprecation` object should be set. |
+
+Deprecation can also be specified declaratively in code by adding the `@DeprecatedConfigurationProperty` annotation to the getter exposing the deprecated property. For instance, assume that the `app.acme.target` property was confusing and was renamed to `app.acme.name`. The following example shows how to handle that situation:
+
+```
+@ConfigurationProperties("app.acme")
+public class AcmeProperties {
+
+	private String name;
+
+	public String getName() { ... }
+
+	public void setName(String name) { ... }
+
+	@DeprecatedConfigurationProperty(replacement = "app.acme.name")
+	@Deprecated
+	public String getTarget() {
+		return getName();
+	}
+
+	@Deprecated
+	public void setTarget(String target) {
+		setName(target);
+	}
+}
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| There is no way to set a `level`. `warning` is always assumed, since code is still handling the property. |
+
+The preceding code makes sure that the deprecated property still works (delegating to the `name` property behind the scenes). Once the `getTarget` and `setTarget`methods can be removed from your public API, the automatic deprecation hint in the metadata goes away as well. If you want to keep a hint, adding manual metadata with an `error` deprecation level ensures that users are still informed about that property. Doing so is particularly useful when a `replacement` is provided.
+
+### B.1.3 Hint Attributes
+
+The JSON object contained in the `hints` array can contain the attributes shown in the following table:
+
+| Name        | Type            | Purpose                                                      |
+| ----------- | --------------- | ------------------------------------------------------------ |
+| `name`      | String          | The full name of the property to which this hint refers. Names are in lower-case period-separated form (such as `server.servlet.path`). If the property refers to a map (such as `system.contexts`), the hint either applies to the *keys* of the map (`system.context.keys`) or the *values* (`system.context.values`) of the map. This attribute is mandatory. |
+| `values`    | ValueHint[]     | A list of valid values as defined by the `ValueHint` object (described in the next table). Each entry defines the value and may have a description. |
+| `providers` | ValueProvider[] | A list of providers as defined by the `ValueProvider` object (described later in this document). Each entry defines the name of the provider and its parameters, if any. |
+
+The JSON object contained in the `values` attribute of each `hint` element can contain the attributes described in the following table:
+
+| Name          | Type   | Purpose                                                      |
+| ------------- | ------ | ------------------------------------------------------------ |
+| `value`       | Object | A valid value for the element to which the hint refers. If the type of the property is an array, it can also be an array of value(s). This attribute is mandatory. |
+| `description` | String | A short description of the value that can be displayed to users. If no description is available, it may be omitted . It is recommended that descriptions be short paragraphs, with the first line providing a concise summary. The last line in the description should end with a period (`.`). |
+
+The JSON object contained in the `providers` attribute of each `hint` element can contain the attributes described in the following table:
+
+| Name         | Type        | Purpose                                                      |
+| ------------ | ----------- | ------------------------------------------------------------ |
+| `name`       | String      | The name of the provider to use to offer additional content assistance for the element to which the hint refers. |
+| `parameters` | JSON object | Any additional parameter that the provider supports (check the documentation of the provider for more details). |
+
+### B.1.4 Repeated Metadata Items
+
+Objects with the same “property” and “group” name can appear multiple times within a metadata file. For example, you could bind two separate classes to the same prefix, with each having potentially overlapping property names. While the same names appearing in the metadata multiple times should not be common, consumers of metadata should take care to ensure that they support it.
+
+## B.2 Providing Manual Hints
+
+To improve the user experience and further assist the user in configuring a given property, you can provide additional metadata that:
+
+- Describes the list of potential values for a property.
+- Associates a provider, to attach a well defined semantic to a property, so that a tool can discover the list of potential values based on the project’s context.
+
+### B.2.1 Value Hint
+
+The `name` attribute of each hint refers to the `name` of a property. In the [initial example shown earlier](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-format), we provide five values for the `spring.jpa.hibernate.ddl-auto` property: `none`, `validate`, `update`, `create`, and `create-drop`. Each value may have a description as well.
+
+If your property is of type `Map`, you can provide hints for both the keys and the values (but not for the map itself). The special `.keys` and `.values` suffixes must refer to the keys and the values, respectively.
+
+Assume a `sample.contexts` maps magic `String` values to an integer, as shown in the following example:
+
+```
+@ConfigurationProperties("sample")
+public class SampleProperties {
+
+	private Map<String,Integer> contexts;
+	// getters and setters
+}
+
+
+```
+
+The magic values are (in this example) are `sample1` and `sample2`. In order to offer additional content assistance for the keys, you could add the following JSON to[the manual metadata of the module](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/#configuration-metadata-additional-metadata):
+
+```
+{"hints": [
+	{
+		"name": "sample.contexts.keys",
+		"values": [
+			{
+				"value": "sample1"
+			},
+			{
+				"value": "sample2"
+			}
+		]
+	}
+]}
+
+
+```
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| We recommend that you use an `Enum` for those two values instead. If your IDE supports it, this is by far the most effective approach to auto-completion. |
+
+### B.2.2 Value Providers
+
+Providers are a powerful way to attach semantics to a property. In this section, we define the official providers that you can use for your own hints. However, your favorite IDE may implement some of these or none of them. Also, it could eventually provide its own.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| As this is a new feature, IDE vendors must catch up with how it works. Adoption times naturally vary. |
+
+The following table summarizes the list of supported providers:
+
+| Name                    | Description                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| `any`                   | Permits any additional value to be provided.                 |
+| `class-reference`       | Auto-completes the classes available in the project. Usually constrained by a base class that is specified by the `target` parameter. |
+| `handle-as`             | Handles the property as if it were defined by the type defined by the mandatory `target` parameter. |
+| `logger-name`           | Auto-completes valid logger names. Typically, package and class names available in the current project can be auto-completed. |
+| `spring-bean-reference` | Auto-completes the available bean names in the current project. Usually constrained by a base class that is specified by the `target` parameter. |
+| `spring-profile-name`   | Auto-completes the available Spring profile names in the project. |
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| Only one provider can be active for a given property, but you can specify several providers if they can all manage the property *in some way*. Make sure to place the most powerful provider first, as the IDE must use the first one in the JSON section that it can handle. If no provider for a given property is supported, no special content assistance is provided, either. |
+
+#### Any
+
+The special **any** provider value permits any additional values to be provided. Regular value validation based on the property type should be applied if this is supported.
+
+This provider is typically used if you have a list of values and any extra values should still be considered as valid.
+
+The following example offers `on` and `off` as auto-completion values for `system.state`:
+
+```
+{"hints": [
+	{
+		"name": "system.state",
+		"values": [
+			{
+				"value": "on"
+			},
+			{
+				"value": "off"
+			}
+		],
+		"providers": [
+			{
+				"name": "any"
+			}
+		]
+	}
+]}
+
+
+```
+
+Note that, in the preceding example, any other value is also allowed.
+
+#### Class Reference
+
+The **class-reference** provider auto-completes classes available in the project. This provider supports the following parameters:
+
+| Parameter  | Type              | Default value | Description                                                  |
+| ---------- | ----------------- | ------------- | ------------------------------------------------------------ |
+| `target`   | `String`(`Class`) | *none*        | The fully qualified name of the class that should be assignable to the chosen value. Typically used to filter out-non candidate classes. Note that this information can be provided by the type itself by exposing a class with the appropriate upper bound. |
+| `concrete` | `boolean`         | true          | Specify whether only concrete classes are to be considered as valid candidates. |
+
+The following metadata snippet corresponds to the standard `server.servlet.jsp.class-name` property that defines the `JspServlet` class name to use:
+
+```
+{"hints": [
+	{
+		"name": "server.servlet.jsp.class-name",
+		"providers": [
+			{
+				"name": "class-reference",
+				"parameters": {
+					"target": "javax.servlet.http.HttpServlet"
+				}
+			}
+		]
+	}
+]}
+
+
+```
+
+#### Handle As
+
+The **handle-as** provider lets you substitute the type of the property to a more high-level type. This typically happens when the property has a `java.lang.String` type, because you do not want your configuration classes to rely on classes that may not be on the classpath. This provider supports the following parameters:
+
+| Parameter  | Type               | Default value | Description                                                  |
+| ---------- | ------------------ | ------------- | ------------------------------------------------------------ |
+| **target** | `String` (`Class`) | *none*        | The fully qualified name of the type to consider for the property. This parameter is mandatory. |
+
+The following types can be used:
+
+- Any `java.lang.Enum`: Lists the possible values for the property. (We recommend defining the property with the `Enum` type, as no further hint should be required for the IDE to auto-complete the values.)
+- `java.nio.charset.Charset`: Supports auto-completion of charset/encoding values (such as `UTF-8`)
+- `java.util.Locale`: auto-completion of locales (such as `en_US`)
+- `org.springframework.util.MimeType`: Supports auto-completion of content type values (such as `text/plain`)
+- `org.springframework.core.io.Resource`: Supports auto-completion of Spring’s Resource abstraction to refer to a file on the filesystem or on the classpath. (such as `classpath:/sample.properties`)
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| If multiple values can be provided, use a `Collection` or *Array* type to teach the IDE about it. |
+
+The following metadata snippet corresponds to the standard `spring.liquibase.change-log` property that defines the path to the changelog to use. It is actually used internally as a `org.springframework.core.io.Resource` but cannot be exposed as such, because we need to keep the original String value to pass it to the Liquibase API.
+
+```
+{"hints": [
+	{
+		"name": "spring.liquibase.change-log",
+		"providers": [
+			{
+				"name": "handle-as",
+				"parameters": {
+					"target": "org.springframework.core.io.Resource"
+				}
+			}
+		]
+	}
+]}
+
+
+```
+
+#### Logger Name
+
+The **logger-name** provider auto-completes valid logger names. Typically, package and class names available in the current project can be auto-completed. Specific frameworks may have extra magic logger names that can be supported as well.
+
+Since a logger name can be any arbitrary name, this provider should allow any value but could highlight valid package and class names that are not available in the project’s classpath.
+
+The following metadata snippet corresponds to the standard `logging.level` property. Keys are *logger names*, and values correspond to the standard log levels or any custom level.
+
+```
+{"hints": [
+	{
+		"name": "logging.level.keys",
+		"values": [
+			{
+				"value": "root",
+				"description": "Root logger used to assign the default logging level."
+			}
+		],
+		"providers": [
+			{
+				"name": "logger-name"
+			}
+		]
+	},
+	{
+		"name": "logging.level.values",
+		"values": [
+			{
+				"value": "trace"
+			},
+			{
+				"value": "debug"
+			},
+			{
+				"value": "info"
+			},
+			{
+				"value": "warn"
+			},
+			{
+				"value": "error"
+			},
+			{
+				"value": "fatal"
+			},
+			{
+				"value": "off"
+			}
+
+		],
+		"providers": [
+			{
+				"name": "any"
+			}
+		]
+	}
+]}
+
+
+```
+
+#### Spring Bean Reference
+
+The **spring-bean-reference** provider auto-completes the beans that are defined in the configuration of the current project. This provider supports the following parameters:
+
+| Parameter | Type              | Default value | Description                                                  |
+| --------- | ----------------- | ------------- | ------------------------------------------------------------ |
+| `target`  | `String`(`Class`) | *none*        | The fully qualified name of the bean class that should be assignable to the candidate. Typically used to filter out non-candidate beans. |
+
+The following metadata snippet corresponds to the standard `spring.jmx.server` property that defines the name of the `MBeanServer` bean to use:
+
+```
+{"hints": [
+	{
+		"name": "spring.jmx.server",
+		"providers": [
+			{
+				"name": "spring-bean-reference",
+				"parameters": {
+					"target": "javax.management.MBeanServer"
+				}
+			}
+		]
+	}
+]}
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| The binder is not aware of the metadata. If you provide that hint, you still need to transform the bean name into an actual Bean reference using by the `ApplicationContext`. |
+
+#### Spring Profile Name
+
+The **spring-profile-name** provider auto-completes the Spring profiles that are defined in the configuration of the current project.
+
+The following metadata snippet corresponds to the standard `spring.profiles.active` property that defines the name of the Spring profile(s) to enable:
+
+```
+{"hints": [
+	{
+		"name": "spring.profiles.active",
+		"providers": [
+			{
+				"name": "spring-profile-name"
+			}
+		]
+	}
+]}
+
+
+```
+
+## B.3 Generating Your Own Metadata by Using the Annotation Processor
+
+You can easily generate your own configuration metadata file from items annotated with `@ConfigurationProperties` by using the `spring-boot-configuration-processor` jar. The jar includes a Java annotation processor which is invoked as your project is compiled. To use the processor, include `spring-boot-configuration-processor` as an optional dependency. For example, with Maven, you can add:
+
+```
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-configuration-processor</artifactId>
+	<optional>true</optional>
+</dependency>
+
+
+```
+
+With Gradle, you can use the [propdeps-plugin](https://github.com/spring-gradle-plugins/propdeps-plugin) and specify the following dependency:
+
+```
+dependencies {
+	optional "org.springframework.boot:spring-boot-configuration-processor"
+}
+
+compileJava.dependsOn(processResources)
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| You need to add `compileJava.dependsOn(processResources)` to your build to ensure that resources are processed before code is compiled. Without this directive, any `additional-spring-configuration-metadata.json` files are not processed. |
+
+The processor picks up both classes and methods that are annotated with `@ConfigurationProperties`. The Javadoc for field values within configuration classes is used to populate the `description` attribute.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| You should only use simple text with `@ConfigurationProperties` field Javadoc, since they are not processed before being added to the JSON. |
+
+Properties are discovered through the presence of standard getters and setters with special handling for collection types (that is detected even if only a getter is present). The annotation processor also supports the use of the `@Data`, `@Getter`, and `@Setter` lombok annotations.
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| If you are using AspectJ in your project, you need to make sure that the annotation processor runs only once. There are several ways to do this. With Maven, you can configure the `maven-apt-plugin` explicitly and add the dependency to the annotation processor only there. You could also let the AspectJ plugin run all the processing and disable annotation processing in the `maven-compiler-plugin` configuration, as follows:`<plugin> 	<groupId>org.apache.maven.plugins</groupId> 	<artifactId>maven-compiler-plugin</artifactId> 	<configuration> 		<proc>none</proc> 	</configuration> </plugin>` |
+
+### B.3.1 Nested Properties
+
+The annotation processor automatically considers inner classes as nested properties. Consider the following class:
+
+```
+@ConfigurationProperties(prefix="server")
+public class ServerProperties {
+
+	private String name;
+
+	private Host host;
+
+	// ... getter and setters
+
+	private static class Host {
+
+		private String ip;
+
+		private int port;
+
+		// ... getter and setters
+
+	}
+
+}
+
+
+```
+
+The preceding example produces metadata information for `server.name`, `server.host.ip`, and `server.host.port` properties. You can use the `@NestedConfigurationProperty` annotation on a field to indicate that a regular (non-inner) class should be treated as if it were nested.
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| This has no effect on collections and maps, as those types are automatically identified, and a single metadata property is generated for each of them. |
+
+### B.3.2 Adding Additional Metadata
+
+Spring Boot’s configuration file handling is quite flexible, and it is often the case that properties may exist that are not bound to a `@ConfigurationProperties` bean. You may also need to tune some attributes of an existing key. To support such cases and let you provide custom "hints", the annotation processor automatically merges items from `META-INF/additional-spring-configuration-metadata.json` into the main metadata file.
+
+If you refer to a property that has been detected automatically, the description, default value, and deprecation information are overridden, if specified. If the manual property declaration is not identified in the current module, it is added as a new property.
+
+The format of the `additional-spring-configuration-metadata.json` file is exactly the same as the regular `spring-configuration-metadata.json`. The additional properties file is optional. If you do not have any additional properties, do not add the file.
+
+## Appendix C. Auto-configuration classes
+
+Here is a list of all auto-configuration classes provided by Spring Boot, with links to documentation and source code. Remember to also look at the conditions report in your application for more details of which features are switched on. (To do so, start the app with `--debug` or `-Ddebug` or, in an Actuator application, use the `conditions` endpoint).
+
+## C.1 From the “spring-boot-autoconfigure” module
+
+The following auto-configuration classes are from the `spring-boot-autoconfigure` module:
+
+| Configuration Class                                          | Links                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`ActiveMQAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jms/activemq/ActiveMQAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jms/activemq/ActiveMQAutoConfiguration.html) |
+| [`AopAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/aop/AopAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/aop/AopAutoConfiguration.html) |
+| [`ArtemisAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jms/artemis/ArtemisAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jms/artemis/ArtemisAutoConfiguration.html) |
+| [`BatchAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/batch/BatchAutoConfiguration.html) |
+| [`CacheAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/cache/CacheAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/cache/CacheAutoConfiguration.html) |
+| [`CassandraAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/cassandra/CassandraAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/cassandra/CassandraAutoConfiguration.html) |
+| [`CassandraDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/cassandra/CassandraDataAutoConfiguration.html) |
+| [`CassandraReactiveDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/cassandra/CassandraReactiveDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/cassandra/CassandraReactiveDataAutoConfiguration.html) |
+| [`CassandraReactiveRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/cassandra/CassandraReactiveRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/cassandra/CassandraReactiveRepositoriesAutoConfiguration.html) |
+| [`CassandraRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/cassandra/CassandraRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/cassandra/CassandraRepositoriesAutoConfiguration.html) |
+| [`CloudAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/cloud/CloudAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/cloud/CloudAutoConfiguration.html) |
+| [`CodecsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/http/codec/CodecsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/http/codec/CodecsAutoConfiguration.html) |
+| [`ConfigurationPropertiesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/context/ConfigurationPropertiesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/context/ConfigurationPropertiesAutoConfiguration.html) |
+| [`CouchbaseAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/couchbase/CouchbaseAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/couchbase/CouchbaseAutoConfiguration.html) |
+| [`CouchbaseDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseDataAutoConfiguration.html) |
+| [`CouchbaseReactiveDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseReactiveDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseReactiveDataAutoConfiguration.html) |
+| [`CouchbaseReactiveRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseReactiveRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseReactiveRepositoriesAutoConfiguration.html) |
+| [`CouchbaseRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/couchbase/CouchbaseRepositoriesAutoConfiguration.html) |
+| [`DataSourceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/DataSourceAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jdbc/DataSourceAutoConfiguration.html) |
+| [`DataSourceTransactionManagerAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/DataSourceTransactionManagerAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jdbc/DataSourceTransactionManagerAutoConfiguration.html) |
+| [`DispatcherServletAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/DispatcherServletAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/servlet/DispatcherServletAutoConfiguration.html) |
+| [`ElasticsearchAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/elasticsearch/ElasticsearchAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/elasticsearch/ElasticsearchAutoConfiguration.html) |
+| [`ElasticsearchDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/elasticsearch/ElasticsearchDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/elasticsearch/ElasticsearchDataAutoConfiguration.html) |
+| [`ElasticsearchRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/elasticsearch/ElasticsearchRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/elasticsearch/ElasticsearchRepositoriesAutoConfiguration.html) |
+| [`EmbeddedLdapAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/ldap/embedded/EmbeddedLdapAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/ldap/embedded/EmbeddedLdapAutoConfiguration.html) |
+| [`EmbeddedMongoAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/mongo/embedded/EmbeddedMongoAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/mongo/embedded/EmbeddedMongoAutoConfiguration.html) |
+| [`EmbeddedWebServerFactoryCustomizerAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/embedded/EmbeddedWebServerFactoryCustomizerAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/embedded/EmbeddedWebServerFactoryCustomizerAutoConfiguration.html) |
+| [`ErrorMvcAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/error/ErrorMvcAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/servlet/error/ErrorMvcAutoConfiguration.html) |
+| [`ErrorWebFluxAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/reactive/error/ErrorWebFluxAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/reactive/error/ErrorWebFluxAutoConfiguration.html) |
+| [`FlywayAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/flyway/FlywayAutoConfiguration.html) |
+| [`FreeMarkerAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/freemarker/FreeMarkerAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/freemarker/FreeMarkerAutoConfiguration.html) |
+| [`GroovyTemplateAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/groovy/template/GroovyTemplateAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/groovy/template/GroovyTemplateAutoConfiguration.html) |
+| [`GsonAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/gson/GsonAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/gson/GsonAutoConfiguration.html) |
+| [`H2ConsoleAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/h2/H2ConsoleAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/h2/H2ConsoleAutoConfiguration.html) |
+| [`HazelcastAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/hazelcast/HazelcastAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/hazelcast/HazelcastAutoConfiguration.html) |
+| [`HazelcastJpaDependencyAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/hazelcast/HazelcastJpaDependencyAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/hazelcast/HazelcastJpaDependencyAutoConfiguration.html) |
+| [`HibernateJpaAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaAutoConfiguration.html) |
+| [`HttpEncodingAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/HttpEncodingAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/servlet/HttpEncodingAutoConfiguration.html) |
+| [`HttpHandlerAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/reactive/HttpHandlerAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/reactive/HttpHandlerAutoConfiguration.html) |
+| [`HttpMessageConvertersAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/http/HttpMessageConvertersAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/http/HttpMessageConvertersAutoConfiguration.html) |
+| [`HypermediaAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/hateoas/HypermediaAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/hateoas/HypermediaAutoConfiguration.html) |
+| [`InfluxDbAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/influx/InfluxDbAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/influx/InfluxDbAutoConfiguration.html) |
+| [`IntegrationAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/integration/IntegrationAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/integration/IntegrationAutoConfiguration.html) |
+| [`JacksonAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jackson/JacksonAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jackson/JacksonAutoConfiguration.html) |
+| [`JdbcTemplateAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/JdbcTemplateAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jdbc/JdbcTemplateAutoConfiguration.html) |
+| [`JerseyAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jersey/JerseyAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jersey/JerseyAutoConfiguration.html) |
+| [`JestAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/elasticsearch/jest/JestAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/elasticsearch/jest/JestAutoConfiguration.html) |
+| [`JmsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jms/JmsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jms/JmsAutoConfiguration.html) |
+| [`JmxAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jmx/JmxAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jmx/JmxAutoConfiguration.html) |
+| [`JndiConnectionFactoryAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jms/JndiConnectionFactoryAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jms/JndiConnectionFactoryAutoConfiguration.html) |
+| [`JndiDataSourceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/JndiDataSourceAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jdbc/JndiDataSourceAutoConfiguration.html) |
+| [`JooqAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jooq/JooqAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jooq/JooqAutoConfiguration.html) |
+| [`JpaRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/jpa/JpaRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/jpa/JpaRepositoriesAutoConfiguration.html) |
+| [`JsonbAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jsonb/JsonbAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jsonb/JsonbAutoConfiguration.html) |
+| [`JtaAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/transaction/jta/JtaAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/transaction/jta/JtaAutoConfiguration.html) |
+| [`KafkaAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/kafka/KafkaAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/kafka/KafkaAutoConfiguration.html) |
+| [`LdapAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/ldap/LdapAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/ldap/LdapAutoConfiguration.html) |
+| [`LdapDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/ldap/LdapDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/ldap/LdapDataAutoConfiguration.html) |
+| [`LdapRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/ldap/LdapRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/ldap/LdapRepositoriesAutoConfiguration.html) |
+| [`LiquibaseAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration.html) |
+| [`MailSenderAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/mail/MailSenderAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/mail/MailSenderAutoConfiguration.html) |
+| [`MailSenderValidatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/mail/MailSenderValidatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/mail/MailSenderValidatorAutoConfiguration.html) |
+| [`MessageSourceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/context/MessageSourceAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/context/MessageSourceAutoConfiguration.html) |
+| [`MongoAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/mongo/MongoAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/mongo/MongoAutoConfiguration.html) |
+| [`MongoDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/mongo/MongoDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/mongo/MongoDataAutoConfiguration.html) |
+| [`MongoReactiveAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/mongo/MongoReactiveAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/mongo/MongoReactiveAutoConfiguration.html) |
+| [`MongoReactiveDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/mongo/MongoReactiveDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/mongo/MongoReactiveDataAutoConfiguration.html) |
+| [`MongoReactiveRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/mongo/MongoReactiveRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/mongo/MongoReactiveRepositoriesAutoConfiguration.html) |
+| [`MongoRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/mongo/MongoRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/mongo/MongoRepositoriesAutoConfiguration.html) |
+| [`MultipartAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/MultipartAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/servlet/MultipartAutoConfiguration.html) |
+| [`MustacheAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/mustache/MustacheAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/mustache/MustacheAutoConfiguration.html) |
+| [`Neo4jDataAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/neo4j/Neo4jDataAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/neo4j/Neo4jDataAutoConfiguration.html) |
+| [`Neo4jRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/neo4j/Neo4jRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/neo4j/Neo4jRepositoriesAutoConfiguration.html) |
+| [`OAuth2ClientAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/oauth2/client/OAuth2ClientAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/security/oauth2/client/OAuth2ClientAutoConfiguration.html) |
+| [`PersistenceExceptionTranslationAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/dao/PersistenceExceptionTranslationAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/dao/PersistenceExceptionTranslationAutoConfiguration.html) |
+| [`ProjectInfoAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/info/ProjectInfoAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/info/ProjectInfoAutoConfiguration.html) |
+| [`PropertyPlaceholderAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/context/PropertyPlaceholderAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/context/PropertyPlaceholderAutoConfiguration.html) |
+| [`QuartzAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/quartz/QuartzAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/quartz/QuartzAutoConfiguration.html) |
+| [`RabbitAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/amqp/RabbitAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/amqp/RabbitAutoConfiguration.html) |
+| [`ReactiveSecurityAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/reactive/ReactiveSecurityAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/security/reactive/ReactiveSecurityAutoConfiguration.html) |
+| [`ReactiveUserDetailsServiceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/security/reactive/ReactiveUserDetailsServiceAutoConfiguration.html) |
+| [`ReactiveWebServerFactoryAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/reactive/ReactiveWebServerFactoryAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/reactive/ReactiveWebServerFactoryAutoConfiguration.html) |
+| [`ReactorCoreAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/reactor/core/ReactorCoreAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/reactor/core/ReactorCoreAutoConfiguration.html) |
+| [`RedisAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/redis/RedisAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/redis/RedisAutoConfiguration.html) |
+| [`RedisReactiveAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/redis/RedisReactiveAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/redis/RedisReactiveAutoConfiguration.html) |
+| [`RedisRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/redis/RedisRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/redis/RedisRepositoriesAutoConfiguration.html) |
+| [`RepositoryRestMvcAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/rest/RepositoryRestMvcAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/rest/RepositoryRestMvcAutoConfiguration.html) |
+| [`RestTemplateAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/client/RestTemplateAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/client/RestTemplateAutoConfiguration.html) |
+| [`SecurityAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/servlet/SecurityAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/security/servlet/SecurityAutoConfiguration.html) |
+| [`SecurityFilterAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/security/servlet/SecurityFilterAutoConfiguration.html) |
+| [`SendGridAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/sendgrid/SendGridAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/sendgrid/SendGridAutoConfiguration.html) |
+| [`ServletWebServerFactoryAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/ServletWebServerFactoryAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/servlet/ServletWebServerFactoryAutoConfiguration.html) |
+| [`SessionAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/session/SessionAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/session/SessionAutoConfiguration.html) |
+| [`SolrAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/solr/SolrAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/solr/SolrAutoConfiguration.html) |
+| [`SolrRepositoriesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/solr/SolrRepositoriesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/solr/SolrRepositoriesAutoConfiguration.html) |
+| [`SpringApplicationAdminJmxAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/admin/SpringApplicationAdminJmxAutoConfiguration.html) |
+| [`SpringDataWebAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/data/web/SpringDataWebAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/data/web/SpringDataWebAutoConfiguration.html) |
+| [`ThymeleafAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/thymeleaf/ThymeleafAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/thymeleaf/ThymeleafAutoConfiguration.html) |
+| [`TransactionAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/transaction/TransactionAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/transaction/TransactionAutoConfiguration.html) |
+| [`UserDetailsServiceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/security/servlet/UserDetailsServiceAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/security/servlet/UserDetailsServiceAutoConfiguration.html) |
+| [`ValidationAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/validation/ValidationAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/validation/ValidationAutoConfiguration.html) |
+| [`WebClientAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/reactive/function/client/WebClientAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/reactive/function/client/WebClientAutoConfiguration.html) |
+| [`WebFluxAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/reactive/WebFluxAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/reactive/WebFluxAutoConfiguration.html) |
+| [`WebMvcAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/web/servlet/WebMvcAutoConfiguration.html) |
+| [`WebServicesAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/webservices/WebServicesAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/webservices/WebServicesAutoConfiguration.html) |
+| [`WebSocketMessagingAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/websocket/servlet/WebSocketMessagingAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/websocket/servlet/WebSocketMessagingAutoConfiguration.html) |
+| [`WebSocketReactiveAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/websocket/reactive/WebSocketReactiveAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/websocket/reactive/WebSocketReactiveAutoConfiguration.html) |
+| [`WebSocketServletAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/websocket/servlet/WebSocketServletAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/websocket/servlet/WebSocketServletAutoConfiguration.html) |
+| [`XADataSourceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-autoconfigure/src/main/java/org/springframework/boot/autoconfigure/jdbc/XADataSourceAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/autoconfigure/jdbc/XADataSourceAutoConfiguration.html) |
+
+## C.2 From the “spring-boot-actuator-autoconfigure” module
+
+The following auto-configuration classes are from the `spring-boot-actuator-autoconfigure` module:
+
+| Configuration Class                                          | Links                                                        |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| [`AtlasMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/atlas/AtlasMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/atlas/AtlasMetricsExportAutoConfiguration.html) |
+| [`AuditAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/audit/AuditAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/audit/AuditAutoConfiguration.html) |
+| [`AuditEventsEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/audit/AuditEventsEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/audit/AuditEventsEndpointAutoConfiguration.html) |
+| [`BeansEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/beans/BeansEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/beans/BeansEndpointAutoConfiguration.html) |
+| [`CacheMetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/cache/CacheMetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/cache/CacheMetricsAutoConfiguration.html) |
+| [`CassandraHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/cassandra/CassandraHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/cassandra/CassandraHealthIndicatorAutoConfiguration.html) |
+| [`CloudFoundryActuatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/cloudfoundry/servlet/CloudFoundryActuatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/cloudfoundry/servlet/CloudFoundryActuatorAutoConfiguration.html) |
+| [`CompositeMeterRegistryAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/CompositeMeterRegistryAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/CompositeMeterRegistryAutoConfiguration.html) |
+| [`ConditionsReportEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/condition/ConditionsReportEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/condition/ConditionsReportEndpointAutoConfiguration.html) |
+| [`ConfigurationPropertiesReportEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/context/properties/ConfigurationPropertiesReportEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/context/properties/ConfigurationPropertiesReportEndpointAutoConfiguration.html) |
+| [`CouchbaseHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/couchbase/CouchbaseHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/couchbase/CouchbaseHealthIndicatorAutoConfiguration.html) |
+| [`DataSourceHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/jdbc/DataSourceHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/jdbc/DataSourceHealthIndicatorAutoConfiguration.html) |
+| [`DataSourcePoolMetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/jdbc/DataSourcePoolMetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/jdbc/DataSourcePoolMetricsAutoConfiguration.html) |
+| [`DatadogMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/datadog/DatadogMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/datadog/DatadogMetricsExportAutoConfiguration.html) |
+| [`DiskSpaceHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/system/DiskSpaceHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/system/DiskSpaceHealthIndicatorAutoConfiguration.html) |
+| [`ElasticsearchHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/elasticsearch/ElasticsearchHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/elasticsearch/ElasticsearchHealthIndicatorAutoConfiguration.html) |
+| [`EndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/endpoint/EndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/endpoint/EndpointAutoConfiguration.html) |
+| [`EnvironmentEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/env/EnvironmentEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/env/EnvironmentEndpointAutoConfiguration.html) |
+| [`FlywayEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/flyway/FlywayEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/flyway/FlywayEndpointAutoConfiguration.html) |
+| [`GangliaMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/ganglia/GangliaMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/ganglia/GangliaMetricsExportAutoConfiguration.html) |
+| [`GraphiteMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/graphite/GraphiteMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/graphite/GraphiteMetricsExportAutoConfiguration.html) |
+| [`HealthEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/health/HealthEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/health/HealthEndpointAutoConfiguration.html) |
+| [`HealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/health/HealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/health/HealthIndicatorAutoConfiguration.html) |
+| [`HeapDumpWebEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/management/HeapDumpWebEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/management/HeapDumpWebEndpointAutoConfiguration.html) |
+| [`HttpTraceAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/trace/http/HttpTraceAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/trace/http/HttpTraceAutoConfiguration.html) |
+| [`HttpTraceEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/trace/http/HttpTraceEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/trace/http/HttpTraceEndpointAutoConfiguration.html) |
+| [`InfluxDbHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/influx/InfluxDbHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/influx/InfluxDbHealthIndicatorAutoConfiguration.html) |
+| [`InfluxMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/influx/InfluxMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/influx/InfluxMetricsExportAutoConfiguration.html) |
+| [`InfoContributorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/info/InfoContributorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/info/InfoContributorAutoConfiguration.html) |
+| [`InfoEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/info/InfoEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/info/InfoEndpointAutoConfiguration.html) |
+| [`JmsHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/jms/JmsHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/jms/JmsHealthIndicatorAutoConfiguration.html) |
+| [`JmxEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/endpoint/jmx/JmxEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/endpoint/jmx/JmxEndpointAutoConfiguration.html) |
+| [`JmxMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/jmx/JmxMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/jmx/JmxMetricsExportAutoConfiguration.html) |
+| [`JolokiaEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/jolokia/JolokiaEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/jolokia/JolokiaEndpointAutoConfiguration.html) |
+| [`LdapHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/ldap/LdapHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/ldap/LdapHealthIndicatorAutoConfiguration.html) |
+| [`LiquibaseEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/liquibase/LiquibaseEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/liquibase/LiquibaseEndpointAutoConfiguration.html) |
+| [`LogFileWebEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/logging/LogFileWebEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/logging/LogFileWebEndpointAutoConfiguration.html) |
+| [`LoggersEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/logging/LoggersEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/logging/LoggersEndpointAutoConfiguration.html) |
+| [`MailHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/mail/MailHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/mail/MailHealthIndicatorAutoConfiguration.html) |
+| [`ManagementContextAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/web/server/ManagementContextAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/web/server/ManagementContextAutoConfiguration.html) |
+| [`MappingsEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/web/mappings/MappingsEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/web/mappings/MappingsEndpointAutoConfiguration.html) |
+| [`MetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/MetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/MetricsAutoConfiguration.html) |
+| [`MetricsEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/MetricsEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/MetricsEndpointAutoConfiguration.html) |
+| [`MongoHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/mongo/MongoHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/mongo/MongoHealthIndicatorAutoConfiguration.html) |
+| [`Neo4jHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/neo4j/Neo4jHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/neo4j/Neo4jHealthIndicatorAutoConfiguration.html) |
+| [`NewRelicMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/newrelic/NewRelicMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/newrelic/NewRelicMetricsExportAutoConfiguration.html) |
+| [`PrometheusMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/prometheus/PrometheusMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/prometheus/PrometheusMetricsExportAutoConfiguration.html) |
+| [`RabbitHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/amqp/RabbitHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/amqp/RabbitHealthIndicatorAutoConfiguration.html) |
+| [`RabbitMetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/amqp/RabbitMetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/amqp/RabbitMetricsAutoConfiguration.html) |
+| [`ReactiveCloudFoundryActuatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/cloudfoundry/reactive/ReactiveCloudFoundryActuatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/cloudfoundry/reactive/ReactiveCloudFoundryActuatorAutoConfiguration.html) |
+| [`ReactiveManagementContextAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/web/reactive/ReactiveManagementContextAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/web/reactive/ReactiveManagementContextAutoConfiguration.html) |
+| [`RedisHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/redis/RedisHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/redis/RedisHealthIndicatorAutoConfiguration.html) |
+| [`RestTemplateMetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/web/client/RestTemplateMetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/web/client/RestTemplateMetricsAutoConfiguration.html) |
+| [`ScheduledTasksEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/scheduling/ScheduledTasksEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/scheduling/ScheduledTasksEndpointAutoConfiguration.html) |
+| [`ServletManagementContextAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/web/servlet/ServletManagementContextAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/web/servlet/ServletManagementContextAutoConfiguration.html) |
+| [`SessionsEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/session/SessionsEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/session/SessionsEndpointAutoConfiguration.html) |
+| [`ShutdownEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/context/ShutdownEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/context/ShutdownEndpointAutoConfiguration.html) |
+| [`SignalFxMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/signalfx/SignalFxMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/signalfx/SignalFxMetricsExportAutoConfiguration.html) |
+| [`SimpleMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/simple/SimpleMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/simple/SimpleMetricsExportAutoConfiguration.html) |
+| [`SolrHealthIndicatorAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/solr/SolrHealthIndicatorAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/solr/SolrHealthIndicatorAutoConfiguration.html) |
+| [`StatsdMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/statsd/StatsdMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/statsd/StatsdMetricsExportAutoConfiguration.html) |
+| [`ThreadDumpEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/management/ThreadDumpEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/management/ThreadDumpEndpointAutoConfiguration.html) |
+| [`TomcatMetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/web/tomcat/TomcatMetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/web/tomcat/TomcatMetricsAutoConfiguration.html) |
+| [`WavefrontMetricsExportAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/export/wavefront/WavefrontMetricsExportAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/export/wavefront/WavefrontMetricsExportAutoConfiguration.html) |
+| [`WebEndpointAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/endpoint/web/WebEndpointAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/endpoint/web/WebEndpointAutoConfiguration.html) |
+| [`WebFluxMetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/web/reactive/WebFluxMetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/web/reactive/WebFluxMetricsAutoConfiguration.html) |
+| [`WebMvcMetricsAutoConfiguration`](https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator-autoconfigure/src/main/java/org/springframework/boot/actuate/autoconfigure/metrics/web/servlet/WebMvcMetricsAutoConfiguration.java) | [javadoc](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/api/org/springframework/boot/actuate/autoconfigure/metrics/web/servlet/WebMvcMetricsAutoConfiguration.html) |
+
+## Appendix D. Test auto-configuration annotations
+
+The following table lists the various `@…Test` annotations that can be used to test slices of your application and the auto-configuration that they import by default:
+
+| Test slice        | Imported auto-configuration                                  |
+| ----------------- | ------------------------------------------------------------ |
+| `@DataJpaTest`    | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.data.jpa.JpaRepositoriesAutoConfiguration``org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration``org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration``org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration``org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration``org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration``org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManagerAutoConfiguration` |
+| `@DataLdapTest`   | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.data.ldap.LdapDataAutoConfiguration``org.springframework.boot.autoconfigure.data.ldap.LdapRepositoriesAutoConfiguration``org.springframework.boot.autoconfigure.ldap.LdapAutoConfiguration``org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapAutoConfiguration` |
+| `@DataMongoTest`  | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration``org.springframework.boot.autoconfigure.data.mongo.MongoReactiveDataAutoConfiguration``org.springframework.boot.autoconfigure.data.mongo.MongoReactiveRepositoriesAutoConfiguration``org.springframework.boot.autoconfigure.data.mongo.MongoRepositoriesAutoConfiguration``org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration``org.springframework.boot.autoconfigure.mongo.MongoReactiveAutoConfiguration``org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration` |
+| `@DataNeo4jTest`  | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.data.neo4j.Neo4jDataAutoConfiguration``org.springframework.boot.autoconfigure.data.neo4j.Neo4jRepositoriesAutoConfiguration``org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration` |
+| `@DataRedisTest`  | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration``org.springframework.boot.autoconfigure.data.redis.RedisRepositoriesAutoConfiguration` |
+| `@JdbcTest`       | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.JdbcTemplateAutoConfiguration``org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration``org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration``org.springframework.boot.test.autoconfigure.jdbc.TestDatabaseAutoConfiguration` |
+| `@JooqTest`       | `org.springframework.boot.autoconfigure.flyway.FlywayAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration``org.springframework.boot.autoconfigure.jdbc.DataSourceTransactionManagerAutoConfiguration``org.springframework.boot.autoconfigure.jooq.JooqAutoConfiguration``org.springframework.boot.autoconfigure.liquibase.LiquibaseAutoConfiguration``org.springframework.boot.autoconfigure.transaction.TransactionAutoConfiguration` |
+| `@JsonTest`       | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration``org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration``org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration``org.springframework.boot.test.autoconfigure.json.JsonTestersAutoConfiguration` |
+| `@RestClientTest` | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration``org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration``org.springframework.boot.autoconfigure.http.codec.CodecsAutoConfiguration``org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration``org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration``org.springframework.boot.autoconfigure.web.client.RestTemplateAutoConfiguration``org.springframework.boot.autoconfigure.web.reactive.function.client.WebClientAutoConfiguration``org.springframework.boot.test.autoconfigure.web.client.MockRestServiceServerAutoConfiguration``org.springframework.boot.test.autoconfigure.web.client.WebClientRestTemplateAutoConfiguration` |
+| `@WebFluxTest`    | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration``org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration``org.springframework.boot.autoconfigure.web.reactive.WebFluxAutoConfiguration``org.springframework.boot.test.autoconfigure.web.reactive.WebTestClientAutoConfiguration` |
+| `@WebMvcTest`     | `org.springframework.boot.autoconfigure.cache.CacheAutoConfiguration``org.springframework.boot.autoconfigure.context.MessageSourceAutoConfiguration``org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration``org.springframework.boot.autoconfigure.groovy.template.GroovyTemplateAutoConfiguration``org.springframework.boot.autoconfigure.gson.GsonAutoConfiguration``org.springframework.boot.autoconfigure.hateoas.HypermediaAutoConfiguration``org.springframework.boot.autoconfigure.http.HttpMessageConvertersAutoConfiguration``org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration``org.springframework.boot.autoconfigure.jsonb.JsonbAutoConfiguration``org.springframework.boot.autoconfigure.mustache.MustacheAutoConfiguration``org.springframework.boot.autoconfigure.thymeleaf.ThymeleafAutoConfiguration``org.springframework.boot.autoconfigure.validation.ValidationAutoConfiguration``org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration``org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration``org.springframework.boot.test.autoconfigure.web.servlet.MockMvcAutoConfiguration``org.springframework.boot.test.autoconfigure.web.servlet.MockMvcSecurityAutoConfiguration``org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebClientAutoConfiguration``org.springframework.boot.test.autoconfigure.web.servlet.MockMvcWebDriverAutoConfiguration` |
+
+## Appendix E. The Executable Jar Format
+
+The `spring-boot-loader` modules lets Spring Boot support executable jar and war files. If you use the Maven plugin or the Gradle plugin, executable jars are automatically generated, and you generally do not need to know the details of how they work.
+
+If you need to create executable jars from a different build system or if you are just curious about the underlying technology, this section provides some background.
+
+## E.1 Nested JARs
+
+Java does not provide any standard way to load nested jar files (that is, jar files that are themselves contained within a jar). This can be problematic if you need to distribute a self-contained application that can be run from the command line without unpacking.
+
+To solve this problem, many developers use “shaded” jars. A shaded jar packages all classes, from all jars, into a single “uber jar”. The problem with shaded jars is that it becomes hard to see which libraries are actually in your application. It can also be problematic if the same filename is used (but with different content) in multiple jars. Spring Boot takes a different approach and lets you actually nest jars directly.
+
+### E.1.1 The Executable Jar File Structure
+
+Spring Boot Loader-compatible jar files should be structured in the following way:
+
+```
+example.jar
+ |
+ +-META-INF
+ |  +-MANIFEST.MF
+ +-org
+ |  +-springframework
+ |     +-boot
+ |        +-loader
+ |           +-<spring boot loader classes>
+ +-BOOT-INF
+    +-classes
+    |  +-mycompany
+    |     +-project
+    |        +-YourClasses.class
+    +-lib
+       +-dependency1.jar
+       +-dependency2.jar
+
+
+```
+
+Application classes should be placed in a nested `BOOT-INF/classes` directory. Dependencies should be placed in a nested `BOOT-INF/lib` directory.
+
+### E.1.2 The Executable War File Structure
+
+Spring Boot Loader-compatible war files should be structured in the following way:
+
+```
+example.war
+ |
+ +-META-INF
+ |  +-MANIFEST.MF
+ +-org
+ |  +-springframework
+ |     +-boot
+ |        +-loader
+ |           +-<spring boot loader classes>
+ +-WEB-INF
+    +-classes
+    |  +-com
+    |     +-mycompany
+    |        +-project
+    |           +-YourClasses.class
+    +-lib
+    |  +-dependency1.jar
+    |  +-dependency2.jar
+    +-lib-provided
+       +-servlet-api.jar
+       +-dependency3.jar
+
+
+```
+
+Dependencies should be placed in a nested `WEB-INF/lib` directory. Any dependencies that are required when running embedded but are not required when deploying to a traditional web container should be placed in `WEB-INF/lib-provided`.
+
+## E.2 Spring Boot’s “JarFile” Class
+
+The core class used to support loading nested jars is `org.springframework.boot.loader.jar.JarFile`. It lets you load jar content from a standard jar file or from nested child jar data. When first loaded, the location of each `JarEntry` is mapped to a physical file offset of the outer jar, as shown in the following example:
+
+```
+myapp.jar
++-------------------+-------------------------+
+| /BOOT-INF/classes | /BOOT-INF/lib/mylib.jar |
+|+-----------------+||+-----------+----------+|
+||     A.class      |||  B.class  |  C.class ||
+|+-----------------+||+-----------+----------+|
++-------------------+-------------------------+
+ ^                    ^           ^
+ 0063                 3452        3980
+
+
+```
+
+The preceding example shows how `A.class` can be found in `/BOOT-INF/classes` in `myapp.jar` at position `0063`. `B.class` from the nested jar can actually be found in `myapp.jar` at position `3452`, and `C.class` is at position `3980`.
+
+Armed with this information, we can load specific nested entries by seeking to the appropriate part of the outer jar. We do not need to unpack the archive, and we do not need to read all entry data into memory.
+
+### E.2.1 Compatibility with the Standard Java “JarFile”
+
+Spring Boot Loader strives to remain compatible with existing code and libraries. `org.springframework.boot.loader.jar.JarFile` extends from `java.util.jar.JarFile` and should work as a drop-in replacement. The `getURL()` method returns a `URL` that opens a connection compatible with `java.net.JarURLConnection` and can be used with Java’s `URLClassLoader`.
+
+## E.3 Launching Executable Jars
+
+The `org.springframework.boot.loader.Launcher` class is a special bootstrap class that is used as an executable jar’s main entry point. It is the actual `Main-Class` in your jar file, and it is used to setup an appropriate `URLClassLoader` and ultimately call your `main()` method.
+
+There are three launcher subclasses (`JarLauncher`, `WarLauncher`, and `PropertiesLauncher`). Their purpose is to load resources (`.class` files and so on.) from nested jar files or war files in directories (as opposed to those explicitly on the classpath). In the case of `JarLauncher` and `WarLauncher`, the nested paths are fixed. `JarLauncher` looks in `BOOT-INF/lib/`, and `WarLauncher` looks in `WEB-INF/lib/` and `WEB-INF/lib-provided/`. You can add extra jars in those locations if you want more. The `PropertiesLauncher` looks in `BOOT-INF/lib/` in your application archive by default, but you can add additional locations by setting an environment variable called `LOADER_PATH` or `loader.path` in `loader.properties` (which is a comma-separated list of directories, archives, or directories within archives).
+
+### E.3.1 Launcher Manifest
+
+You need to specify an appropriate `Launcher` as the `Main-Class` attribute of `META-INF/MANIFEST.MF`. The actual class that you want to launch (that is, the class that contains a `main` method) should be specified in the `Start-Class` attribute.
+
+The following example shows a typical `MANIFEST.MF` for an executable jar file:
+
+```
+Main-Class: org.springframework.boot.loader.JarLauncher
+Start-Class: com.mycompany.project.MyApplication
+
+
+```
+
+For a war file, it would be as follows:
+
+```
+Main-Class: org.springframework.boot.loader.WarLauncher
+Start-Class: com.mycompany.project.MyApplication
+
+
+```
+
+| ![[Note]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/note.png) |
+| ------------------------------------------------------------ |
+| You need not specify `Class-Path` entries in your manifest file. The classpath is deduced from the nested jars. |
+
+### E.3.2 Exploded Archives
+
+Certain PaaS implementations may choose to unpack archives before they run. For example, Cloud Foundry operates this way. You can run an unpacked archive by starting the appropriate launcher, as follows:
+
+```
+$ unzip -q myapp.jar
+$ java org.springframework.boot.loader.JarLauncher
+
+
+```
+
+## E.4 `PropertiesLauncher` Features
+
+`PropertiesLauncher` has a few special features that can be enabled with external properties (System properties, environment variables, manifest entries, or`loader.properties`). The following table describes these properties:
+
+| Key                      | Purpose                                                      |
+| ------------------------ | ------------------------------------------------------------ |
+| `loader.path`            | Comma-separated Classpath, such as `lib,${HOME}/app/lib`. Earlier entries take precedence, like a regular `-classpath`on the `javac` command line. |
+| `loader.home`            | Used to resolve relative paths in `loader.path`. For example, given `loader.path=lib`, then `${loader.home}/lib` is a classpath location (along with all jar files in that directory). This property is also used to locate a `loader.properties` file, as in the following example `/opt/app` It defaults to `${user.dir}`. |
+| `loader.args`            | Default arguments for the main method (space separated).     |
+| `loader.main`            | Name of main class to launch (for example, `com.app.Application`). |
+| `loader.config.name`     | Name of properties file (for example, `launcher`) It defaults to `loader`. |
+| `loader.config.location` | Path to properties file (for example, `classpath:loader.properties`). It defaults to `loader.properties`. |
+| `loader.system`          | Boolean flag to indicate that all properties should be added to System properties It defaults to `false`. |
+
+When specified as environment variables or manifest entries, the following names should be used:
+
+| Key                      | Manifest entry           | Environment variable     |
+| ------------------------ | ------------------------ | ------------------------ |
+| `loader.path`            | `Loader-Path`            | `LOADER_PATH`            |
+| `loader.home`            | `Loader-Home`            | `LOADER_HOME`            |
+| `loader.args`            | `Loader-Args`            | `LOADER_ARGS`            |
+| `loader.main`            | `Start-Class`            | `LOADER_MAIN`            |
+| `loader.config.location` | `Loader-Config-Location` | `LOADER_CONFIG_LOCATION` |
+| `loader.system`          | `Loader-System`          | `LOADER_SYSTEM`          |
+
+| ![[Tip]](https://docs.spring.io/spring-boot/docs/2.0.0.BUILD-SNAPSHOT/reference/htmlsingle/images/tip.png) |
+| ------------------------------------------------------------ |
+| Build plugins automatically move the `Main-Class` attribute to `Start-Class` when the fat jar is built. If you use that, specify the name of the class to launch by using the `Main-Class` attribute and leaving out `Start-Class`. |
+
+The following rules apply to working with `PropertiesLauncher`:
+
+- `loader.properties` is searched for in `loader.home`, then in the root of the classpath, and then in `classpath:/BOOT-INF/classes`. The first location where a file with that name exists is used.
+- `loader.home` is the directory location of an additional properties file (overriding the default) only when `loader.config.location` is not specified.
+- `loader.path` can contain directories (which are scanned recursively for jar and zip files), archive paths, a directory within an archive that is scanned for jar files (for example, `dependencies.jar!/lib`), or wildcard patterns (for the default JVM behavior). Archive paths can be relative to `loader.home` or anywhere in the file system with a `jar:file:` prefix.
+- `loader.path` (if empty) defaults to `BOOT-INF/lib` (meaning a local directory or a nested one if running from an archive). Because of this, `PropertiesLauncher` behaves the same as `JarLauncher` when no additional configuration is provided.
+- `loader.path` can not be used to configure the location of `loader.properties` (the classpath used to search for the latter is the JVM classpath when `PropertiesLauncher` is launched).
+- Placeholder replacement is done from System and environment variables plus the properties file itself on all values before use.
+- The search order for properties (where it makes sense to look in more than one place) is environment variables, system properties, `loader.properties`, the exploded archive manifest, and the archive manifest.
+
+## E.5 Executable Jar Restrictions
+
+You need to consider the following restrictions when working with a Spring Boot Loader packaged application:
+
+
+
+- Zip entry compression: The `ZipEntry` for a nested jar must be saved by using the `ZipEntry.STORED` method. This is required so that we can seek directly to individual content within the nested jar. The content of the nested jar file itself can still be compressed, as can any other entries in the outer jar.
+
+
+
+- System classLoader: Launched applications should use `Thread.getContextClassLoader()` when loading classes (most libraries and frameworks do so by default). Trying to load nested jar classes with `ClassLoader.getSystemClassLoader()` fails. `java.util.Logging` always uses the system classloader. For this reason, you should consider a different logging implementation.
+
+## E.6 Alternative Single Jar Solutions
+
+If the preceding restrictions mean that you cannot use Spring Boot Loader, consider the following alternatives:
+
+- [Maven Shade Plugin](https://maven.apache.org/plugins/maven-shade-plugin/)
+- [JarClassLoader](http://www.jdotsoft.com/JarClassLoader.php)
+- [OneJar](http://one-jar.sourceforge.net/)
+
+## Appendix F. Dependency versions
+
+The following table provides details of all of the dependency versions that are provided by Spring Boot in its CLI (Command Line Interface), Maven dependency management, and Gradle plugin. When you declare a dependency on one of these artifacts without declaring a version, the version listed in the table is used.
+
+| Group ID                           | Artifact ID                                   | Version              |
+| ---------------------------------- | --------------------------------------------- | -------------------- |
+| `antlr`                            | `antlr`                                       | 2.7.7                |
+| `ch.qos.logback`                   | `logback-access`                              | 1.2.3                |
+| `ch.qos.logback`                   | `logback-classic`                             | 1.2.3                |
+| `ch.qos.logback`                   | `logback-core`                                | 1.2.3                |
+| `com.atomikos`                     | `transactions-jdbc`                           | 4.0.6                |
+| `com.atomikos`                     | `transactions-jms`                            | 4.0.6                |
+| `com.atomikos`                     | `transactions-jta`                            | 4.0.6                |
+| `com.couchbase.client`             | `couchbase-spring-cache`                      | 2.1.0                |
+| `com.couchbase.client`             | `java-client`                                 | 2.5.5                |
+| `com.datastax.cassandra`           | `cassandra-driver-core`                       | 3.4.0                |
+| `com.datastax.cassandra`           | `cassandra-driver-mapping`                    | 3.4.0                |
+| `com.fasterxml`                    | `classmate`                                   | 1.3.4                |
+| `com.fasterxml.jackson.core`       | `jackson-annotations`                         | 2.9.0                |
+| `com.fasterxml.jackson.core`       | `jackson-core`                                | 2.9.4                |
+| `com.fasterxml.jackson.core`       | `jackson-databind`                            | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-avro`                     | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-cbor`                     | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-csv`                      | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-ion`                      | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-properties`               | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-protobuf`                 | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-smile`                    | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-xml`                      | 2.9.4                |
+| `com.fasterxml.jackson.dataformat` | `jackson-dataformat-yaml`                     | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-guava`                      | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-hibernate3`                 | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-hibernate4`                 | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-hibernate5`                 | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-hppc`                       | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-jaxrs`                      | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-jdk8`                       | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-joda`                       | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-json-org`                   | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-jsr310`                     | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-jsr353`                     | 2.9.4                |
+| `com.fasterxml.jackson.datatype`   | `jackson-datatype-pcollections`               | 2.9.4                |
+| `com.fasterxml.jackson.jaxrs`      | `jackson-jaxrs-base`                          | 2.9.4                |
+| `com.fasterxml.jackson.jaxrs`      | `jackson-jaxrs-cbor-provider`                 | 2.9.4                |
+| `com.fasterxml.jackson.jaxrs`      | `jackson-jaxrs-json-provider`                 | 2.9.4                |
+| `com.fasterxml.jackson.jaxrs`      | `jackson-jaxrs-smile-provider`                | 2.9.4                |
+| `com.fasterxml.jackson.jaxrs`      | `jackson-jaxrs-xml-provider`                  | 2.9.4                |
+| `com.fasterxml.jackson.jaxrs`      | `jackson-jaxrs-yaml-provider`                 | 2.9.4                |
+| `com.fasterxml.jackson.jr`         | `jackson-jr-all`                              | 2.9.4                |
+| `com.fasterxml.jackson.jr`         | `jackson-jr-objects`                          | 2.9.4                |
+| `com.fasterxml.jackson.jr`         | `jackson-jr-retrofit2`                        | 2.9.4                |
+| `com.fasterxml.jackson.jr`         | `jackson-jr-stree`                            | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-afterburner`                  | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-guice`                        | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-jaxb-annotations`             | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-jsonSchema`                   | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-kotlin`                       | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-mrbean`                       | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-osgi`                         | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-parameter-names`              | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-paranamer`                    | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-scala_2.10`                   | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-scala_2.11`                   | 2.9.4                |
+| `com.fasterxml.jackson.module`     | `jackson-module-scala_2.12`                   | 2.9.4                |
+| `com.github.ben-manes.caffeine`    | `caffeine`                                    | 2.6.2                |
+| `com.github.mxab.thymeleaf.extras` | `thymeleaf-extras-data-attribute`             | 2.0.1                |
+| `com.google.appengine`             | `appengine-api-1.0-sdk`                       | 1.9.62               |
+| `com.google.code.gson`             | `gson`                                        | 2.8.2                |
+| `com.googlecode.json-simple`       | `json-simple`                                 | 1.1.1                |
+| `com.h2database`                   | `h2`                                          | 1.4.196              |
+| `com.hazelcast`                    | `hazelcast`                                   | 3.9.3                |
+| `com.hazelcast`                    | `hazelcast-client`                            | 3.9.3                |
+| `com.hazelcast`                    | `hazelcast-hibernate52`                       | 1.2.3                |
+| `com.hazelcast`                    | `hazelcast-spring`                            | 3.9.3                |
+| `com.jayway.jsonpath`              | `json-path`                                   | 2.4.0                |
+| `com.jayway.jsonpath`              | `json-path-assert`                            | 2.4.0                |
+| `com.microsoft.sqlserver`          | `mssql-jdbc`                                  | 6.2.2.jre8           |
+| `com.querydsl`                     | `querydsl-apt`                                | 4.1.4                |
+| `com.querydsl`                     | `querydsl-collections`                        | 4.1.4                |
+| `com.querydsl`                     | `querydsl-core`                               | 4.1.4                |
+| `com.querydsl`                     | `querydsl-jpa`                                | 4.1.4                |
+| `com.querydsl`                     | `querydsl-mongodb`                            | 4.1.4                |
+| `com.rabbitmq`                     | `amqp-client`                                 | 5.1.2                |
+| `com.samskivert`                   | `jmustache`                                   | 1.14                 |
+| `com.sendgrid`                     | `sendgrid-java`                               | 4.1.2                |
+| `com.sun.mail`                     | `javax.mail`                                  | 1.6.1                |
+| `com.timgroup`                     | `java-statsd-client`                          | 3.1.0                |
+| `com.unboundid`                    | `unboundid-ldapsdk`                           | 4.0.4                |
+| `com.zaxxer`                       | `HikariCP`                                    | 2.7.8                |
+| `commons-codec`                    | `commons-codec`                               | 1.11                 |
+| `commons-pool`                     | `commons-pool`                                | 1.6                  |
+| `de.flapdoodle.embed`              | `de.flapdoodle.embed.mongo`                   | 2.0.3                |
+| `dom4j`                            | `dom4j`                                       | 1.6.1                |
+| `io.dropwizard.metrics`            | `metrics-annotation`                          | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-core`                                | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-ehcache`                             | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-ganglia`                             | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-graphite`                            | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-healthchecks`                        | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-httpasyncclient`                     | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-jdbi`                                | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-jersey`                              | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-jersey2`                             | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-jetty8`                              | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-jetty9`                              | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-jetty9-legacy`                       | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-json`                                | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-jvm`                                 | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-log4j`                               | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-log4j2`                              | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-logback`                             | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-servlet`                             | 3.2.6                |
+| `io.dropwizard.metrics`            | `metrics-servlets`                            | 3.2.6                |
+| `io.lettuce`                       | `lettuce-core`                                | 5.0.2.RELEASE        |
+| `io.micrometer`                    | `micrometer-core`                             | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-atlas`                   | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-datadog`                 | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-ganglia`                 | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-graphite`                | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-influx`                  | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-jmx`                     | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-new-relic`               | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-prometheus`              | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-signalfx`                | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-statsd`                  | 1.0.1                |
+| `io.micrometer`                    | `micrometer-registry-wavefront`               | 1.0.1                |
+| `io.netty`                         | `netty-all`                                   | 4.1.22.Final         |
+| `io.netty`                         | `netty-buffer`                                | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec`                                 | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-dns`                             | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-haproxy`                         | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-http`                            | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-http2`                           | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-memcache`                        | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-mqtt`                            | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-redis`                           | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-smtp`                            | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-socks`                           | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-stomp`                           | 4.1.22.Final         |
+| `io.netty`                         | `netty-codec-xml`                             | 4.1.22.Final         |
+| `io.netty`                         | `netty-common`                                | 4.1.22.Final         |
+| `io.netty`                         | `netty-dev-tools`                             | 4.1.22.Final         |
+| `io.netty`                         | `netty-example`                               | 4.1.22.Final         |
+| `io.netty`                         | `netty-handler`                               | 4.1.22.Final         |
+| `io.netty`                         | `netty-handler-proxy`                         | 4.1.22.Final         |
+| `io.netty`                         | `netty-resolver`                              | 4.1.22.Final         |
+| `io.netty`                         | `netty-resolver-dns`                          | 4.1.22.Final         |
+| `io.netty`                         | `netty-transport`                             | 4.1.22.Final         |
+| `io.netty`                         | `netty-transport-native-epoll`                | 4.1.22.Final         |
+| `io.netty`                         | `netty-transport-native-kqueue`               | 4.1.22.Final         |
+| `io.netty`                         | `netty-transport-native-unix-common`          | 4.1.22.Final         |
+| `io.netty`                         | `netty-transport-rxtx`                        | 4.1.22.Final         |
+| `io.netty`                         | `netty-transport-sctp`                        | 4.1.22.Final         |
+| `io.netty`                         | `netty-transport-udt`                         | 4.1.22.Final         |
+| `io.projectreactor`                | `reactor-core`                                | 3.1.5.RELEASE        |
+| `io.projectreactor`                | `reactor-test`                                | 3.1.5.RELEASE        |
+| `io.projectreactor.addons`         | `reactor-adapter`                             | 3.1.6.RELEASE        |
+| `io.projectreactor.addons`         | `reactor-extra`                               | 3.1.6.RELEASE        |
+| `io.projectreactor.addons`         | `reactor-logback`                             | 3.1.6.RELEASE        |
+| `io.projectreactor.ipc`            | `reactor-netty`                               | 0.7.5.RELEASE        |
+| `io.projectreactor.kafka`          | `reactor-kafka`                               | 1.0.0.RELEASE        |
+| `io.reactivex`                     | `rxjava`                                      | 1.3.6                |
+| `io.reactivex`                     | `rxjava-reactive-streams`                     | 1.2.1                |
+| `io.reactivex.rxjava2`             | `rxjava`                                      | 2.1.10               |
+| `io.rest-assured`                  | `json-path`                                   | 3.0.7                |
+| `io.rest-assured`                  | `json-schema-validator`                       | 3.0.7                |
+| `io.rest-assured`                  | `rest-assured`                                | 3.0.7                |
+| `io.rest-assured`                  | `scala-support`                               | 3.0.7                |
+| `io.rest-assured`                  | `spring-mock-mvc`                             | 3.0.7                |
+| `io.rest-assured`                  | `xml-path`                                    | 3.0.7                |
+| `io.searchbox`                     | `jest`                                        | 5.3.3                |
+| `io.undertow`                      | `undertow-core`                               | 1.4.22.Final         |
+| `io.undertow`                      | `undertow-servlet`                            | 1.4.22.Final         |
+| `io.undertow`                      | `undertow-websockets-jsr`                     | 1.4.22.Final         |
+| `javax.annotation`                 | `javax.annotation-api`                        | 1.3.2                |
+| `javax.cache`                      | `cache-api`                                   | 1.1.0                |
+| `javax.jms`                        | `javax.jms-api`                               | 2.0.1                |
+| `javax.json`                       | `javax.json-api`                              | 1.1.2                |
+| `javax.json.bind`                  | `javax.json.bind-api`                         | 1.0                  |
+| `javax.mail`                       | `javax.mail-api`                              | 1.6.1                |
+| `javax.money`                      | `money-api`                                   | 1.0.1                |
+| `javax.servlet`                    | `javax.servlet-api`                           | 3.1.0                |
+| `javax.servlet`                    | `jstl`                                        | 1.2                  |
+| `javax.transaction`                | `javax.transaction-api`                       | 1.2                  |
+| `javax.validation`                 | `validation-api`                              | 2.0.1.Final          |
+| `javax.xml.bind`                   | `jaxb-api`                                    | 2.3.0                |
+| `jaxen`                            | `jaxen`                                       | 1.1.6                |
+| `joda-time`                        | `joda-time`                                   | 2.9.9                |
+| `junit`                            | `junit`                                       | 4.12                 |
+| `mysql`                            | `mysql-connector-java`                        | 5.1.45               |
+| `net.bytebuddy`                    | `byte-buddy`                                  | 1.7.10               |
+| `net.bytebuddy`                    | `byte-buddy-agent`                            | 1.7.10               |
+| `net.java.dev.jna`                 | `jna`                                         | 4.5.1                |
+| `net.java.dev.jna`                 | `jna-platform`                                | 4.5.1                |
+| `net.sf.ehcache`                   | `ehcache`                                     | 2.10.4               |
+| `net.sourceforge.htmlunit`         | `htmlunit`                                    | 2.29                 |
+| `net.sourceforge.jtds`             | `jtds`                                        | 1.3.1                |
+| `net.sourceforge.nekohtml`         | `nekohtml`                                    | 1.9.22               |
+| `nz.net.ultraq.thymeleaf`          | `thymeleaf-layout-dialect`                    | 2.3.0                |
+| `org.apache.activemq`              | `activemq-amqp`                               | 5.15.3               |
+| `org.apache.activemq`              | `activemq-blueprint`                          | 5.15.3               |
+| `org.apache.activemq`              | `activemq-broker`                             | 5.15.3               |
+| `org.apache.activemq`              | `activemq-camel`                              | 5.15.3               |
+| `org.apache.activemq`              | `activemq-client`                             | 5.15.3               |
+| `org.apache.activemq`              | `activemq-console`                            | 5.15.3               |
+| `org.apache.activemq`              | `activemq-http`                               | 5.15.3               |
+| `org.apache.activemq`              | `activemq-jaas`                               | 5.15.3               |
+| `org.apache.activemq`              | `activemq-jdbc-store`                         | 5.15.3               |
+| `org.apache.activemq`              | `activemq-jms-pool`                           | 5.15.3               |
+| `org.apache.activemq`              | `activemq-kahadb-store`                       | 5.15.3               |
+| `org.apache.activemq`              | `activemq-karaf`                              | 5.15.3               |
+| `org.apache.activemq`              | `activemq-leveldb-store`                      | 5.15.3               |
+| `org.apache.activemq`              | `activemq-log4j-appender`                     | 5.15.3               |
+| `org.apache.activemq`              | `activemq-mqtt`                               | 5.15.3               |
+| `org.apache.activemq`              | `activemq-openwire-generator`                 | 5.15.3               |
+| `org.apache.activemq`              | `activemq-openwire-legacy`                    | 5.15.3               |
+| `org.apache.activemq`              | `activemq-osgi`                               | 5.15.3               |
+| `org.apache.activemq`              | `activemq-partition`                          | 5.15.3               |
+| `org.apache.activemq`              | `activemq-pool`                               | 5.15.3               |
+| `org.apache.activemq`              | `activemq-ra`                                 | 5.15.3               |
+| `org.apache.activemq`              | `activemq-run`                                | 5.15.3               |
+| `org.apache.activemq`              | `activemq-runtime-config`                     | 5.15.3               |
+| `org.apache.activemq`              | `activemq-shiro`                              | 5.15.3               |
+| `org.apache.activemq`              | `activemq-spring`                             | 5.15.3               |
+| `org.apache.activemq`              | `activemq-stomp`                              | 5.15.3               |
+| `org.apache.activemq`              | `activemq-web`                                | 5.15.3               |
+| `org.apache.activemq`              | `artemis-amqp-protocol`                       | 2.4.0                |
+| `org.apache.activemq`              | `artemis-commons`                             | 2.4.0                |
+| `org.apache.activemq`              | `artemis-core-client`                         | 2.4.0                |
+| `org.apache.activemq`              | `artemis-jms-client`                          | 2.4.0                |
+| `org.apache.activemq`              | `artemis-jms-server`                          | 2.4.0                |
+| `org.apache.activemq`              | `artemis-journal`                             | 2.4.0                |
+| `org.apache.activemq`              | `artemis-native`                              | 2.4.0                |
+| `org.apache.activemq`              | `artemis-selector`                            | 2.4.0                |
+| `org.apache.activemq`              | `artemis-server`                              | 2.4.0                |
+| `org.apache.activemq`              | `artemis-service-extensions`                  | 2.4.0                |
+| `org.apache.commons`               | `commons-dbcp2`                               | 2.2.0                |
+| `org.apache.commons`               | `commons-lang3`                               | 3.7                  |
+| `org.apache.commons`               | `commons-pool2`                               | 2.5.0                |
+| `org.apache.derby`                 | `derby`                                       | 10.14.1.0            |
+| `org.apache.httpcomponents`        | `fluent-hc`                                   | 4.5.5                |
+| `org.apache.httpcomponents`        | `httpasyncclient`                             | 4.1.3                |
+| `org.apache.httpcomponents`        | `httpclient`                                  | 4.5.5                |
+| `org.apache.httpcomponents`        | `httpclient-cache`                            | 4.5.5                |
+| `org.apache.httpcomponents`        | `httpclient-osgi`                             | 4.5.5                |
+| `org.apache.httpcomponents`        | `httpclient-win`                              | 4.5.5                |
+| `org.apache.httpcomponents`        | `httpcore`                                    | 4.4.9                |
+| `org.apache.httpcomponents`        | `httpcore-nio`                                | 4.4.9                |
+| `org.apache.httpcomponents`        | `httpmime`                                    | 4.5.5                |
+| `org.apache.johnzon`               | `johnzon-jsonb`                               | 1.1.6                |
+| `org.apache.logging.log4j`         | `log4j-1.2-api`                               | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-api`                                   | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-cassandra`                             | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-core`                                  | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-couchdb`                               | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-flume-ng`                              | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-iostreams`                             | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-jcl`                                   | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-jmx-gui`                               | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-jul`                                   | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-liquibase`                             | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-mongodb`                               | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-slf4j-impl`                            | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-taglib`                                | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-to-slf4j`                              | 2.10.0               |
+| `org.apache.logging.log4j`         | `log4j-web`                                   | 2.10.0               |
+| `org.apache.solr`                  | `solr-analysis-extras`                        | 6.6.2                |
+| `org.apache.solr`                  | `solr-analytics`                              | 6.6.2                |
+| `org.apache.solr`                  | `solr-cell`                                   | 6.6.2                |
+| `org.apache.solr`                  | `solr-clustering`                             | 6.6.2                |
+| `org.apache.solr`                  | `solr-core`                                   | 6.6.2                |
+| `org.apache.solr`                  | `solr-dataimporthandler`                      | 6.6.2                |
+| `org.apache.solr`                  | `solr-dataimporthandler-extras`               | 6.6.2                |
+| `org.apache.solr`                  | `solr-langid`                                 | 6.6.2                |
+| `org.apache.solr`                  | `solr-solrj`                                  | 6.6.2                |
+| `org.apache.solr`                  | `solr-test-framework`                         | 6.6.2                |
+| `org.apache.solr`                  | `solr-uima`                                   | 6.6.2                |
+| `org.apache.solr`                  | `solr-velocity`                               | 6.6.2                |
+| `org.apache.tomcat`                | `tomcat-annotations-api`                      | 8.5.28               |
+| `org.apache.tomcat`                | `tomcat-catalina-jmx-remote`                  | 8.5.28               |
+| `org.apache.tomcat`                | `tomcat-jdbc`                                 | 8.5.28               |
+| `org.apache.tomcat`                | `tomcat-jsp-api`                              | 8.5.28               |
+| `org.apache.tomcat.embed`          | `tomcat-embed-core`                           | 8.5.28               |
+| `org.apache.tomcat.embed`          | `tomcat-embed-el`                             | 8.5.28               |
+| `org.apache.tomcat.embed`          | `tomcat-embed-jasper`                         | 8.5.28               |
+| `org.apache.tomcat.embed`          | `tomcat-embed-websocket`                      | 8.5.28               |
+| `org.aspectj`                      | `aspectjrt`                                   | 1.8.13               |
+| `org.aspectj`                      | `aspectjtools`                                | 1.8.13               |
+| `org.aspectj`                      | `aspectjweaver`                               | 1.8.13               |
+| `org.assertj`                      | `assertj-core`                                | 3.9.1                |
+| `org.codehaus.btm`                 | `btm`                                         | 2.1.4                |
+| `org.codehaus.groovy`              | `groovy`                                      | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-all`                                  | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-ant`                                  | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-bsf`                                  | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-console`                              | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-docgenerator`                         | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-groovydoc`                            | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-groovysh`                             | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-jmx`                                  | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-json`                                 | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-jsr223`                               | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-nio`                                  | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-servlet`                              | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-sql`                                  | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-swing`                                | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-templates`                            | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-test`                                 | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-testng`                               | 2.4.13               |
+| `org.codehaus.groovy`              | `groovy-xml`                                  | 2.4.13               |
+| `org.codehaus.janino`              | `janino`                                      | 3.0.8                |
+| `org.eclipse.jetty`                | `apache-jsp`                                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `apache-jstl`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-client`                           | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-conscrypt-client`                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-conscrypt-server`                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-java-client`                      | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-java-server`                      | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-openjdk8-client`                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-openjdk8-server`                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-alpn-server`                           | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-annotations`                           | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-ant`                                   | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-client`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-continuation`                          | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-deploy`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-distribution`                          | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-hazelcast`                             | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-home`                                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-http`                                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-http-spi`                              | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-infinispan`                            | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-io`                                    | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-jaas`                                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-jaspi`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-jmx`                                   | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-jndi`                                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-nosql`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-plus`                                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-proxy`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-quickstart`                            | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-rewrite`                               | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-security`                              | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-server`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-servlet`                               | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-servlets`                              | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-spring`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-unixsocket`                            | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-util`                                  | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-util-ajax`                             | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-webapp`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty`                | `jetty-xml`                                   | 9.4.8.v20171121      |
+| `org.eclipse.jetty.cdi`            | `cdi-core`                                    | 9.4.8.v20171121      |
+| `org.eclipse.jetty.cdi`            | `cdi-full-servlet`                            | 9.4.8.v20171121      |
+| `org.eclipse.jetty.cdi`            | `cdi-servlet`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty.fcgi`           | `fcgi-client`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty.fcgi`           | `fcgi-server`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty.gcloud`         | `jetty-gcloud-session-manager`                | 9.4.8.v20171121      |
+| `org.eclipse.jetty.http2`          | `http2-client`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty.http2`          | `http2-common`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty.http2`          | `http2-hpack`                                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty.http2`          | `http2-http-client-transport`                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty.http2`          | `http2-server`                                | 9.4.8.v20171121      |
+| `org.eclipse.jetty.memcached`      | `jetty-memcached-sessions`                    | 9.4.8.v20171121      |
+| `org.eclipse.jetty.orbit`          | `javax.servlet.jsp`                           | 2.2.0.v201112011158  |
+| `org.eclipse.jetty.osgi`           | `jetty-httpservice`                           | 9.4.8.v20171121      |
+| `org.eclipse.jetty.osgi`           | `jetty-osgi-boot`                             | 9.4.8.v20171121      |
+| `org.eclipse.jetty.osgi`           | `jetty-osgi-boot-jsp`                         | 9.4.8.v20171121      |
+| `org.eclipse.jetty.osgi`           | `jetty-osgi-boot-warurl`                      | 9.4.8.v20171121      |
+| `org.eclipse.jetty.websocket`      | `javax-websocket-client-impl`                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty.websocket`      | `javax-websocket-server-impl`                 | 9.4.8.v20171121      |
+| `org.eclipse.jetty.websocket`      | `websocket-api`                               | 9.4.8.v20171121      |
+| `org.eclipse.jetty.websocket`      | `websocket-client`                            | 9.4.8.v20171121      |
+| `org.eclipse.jetty.websocket`      | `websocket-common`                            | 9.4.8.v20171121      |
+| `org.eclipse.jetty.websocket`      | `websocket-server`                            | 9.4.8.v20171121      |
+| `org.eclipse.jetty.websocket`      | `websocket-servlet`                           | 9.4.8.v20171121      |
+| `org.ehcache`                      | `ehcache`                                     | 3.5.0                |
+| `org.ehcache`                      | `ehcache-clustered`                           | 3.5.0                |
+| `org.ehcache`                      | `ehcache-transactions`                        | 3.5.0                |
+| `org.elasticsearch`                | `elasticsearch`                               | 5.6.8                |
+| `org.elasticsearch.client`         | `transport`                                   | 5.6.8                |
+| `org.elasticsearch.plugin`         | `transport-netty4-client`                     | 5.6.8                |
+| `org.firebirdsql.jdbc`             | `jaybird-jdk17`                               | 3.0.3                |
+| `org.firebirdsql.jdbc`             | `jaybird-jdk18`                               | 3.0.3                |
+| `org.flywaydb`                     | `flyway-core`                                 | 5.0.7                |
+| `org.freemarker`                   | `freemarker`                                  | 2.3.27-incubating    |
+| `org.glassfish`                    | `javax.el`                                    | 3.0.0                |
+| `org.glassfish.jersey.containers`  | `jersey-container-servlet`                    | 2.26                 |
+| `org.glassfish.jersey.containers`  | `jersey-container-servlet-core`               | 2.26                 |
+| `org.glassfish.jersey.core`        | `jersey-client`                               | 2.26                 |
+| `org.glassfish.jersey.core`        | `jersey-common`                               | 2.26                 |
+| `org.glassfish.jersey.core`        | `jersey-server`                               | 2.26                 |
+| `org.glassfish.jersey.ext`         | `jersey-bean-validation`                      | 2.26                 |
+| `org.glassfish.jersey.ext`         | `jersey-entity-filtering`                     | 2.26                 |
+| `org.glassfish.jersey.ext`         | `jersey-spring4`                              | 2.26                 |
+| `org.glassfish.jersey.media`       | `jersey-media-jaxb`                           | 2.26                 |
+| `org.glassfish.jersey.media`       | `jersey-media-json-jackson`                   | 2.26                 |
+| `org.glassfish.jersey.media`       | `jersey-media-multipart`                      | 2.26                 |
+| `org.hamcrest`                     | `hamcrest-core`                               | 1.3                  |
+| `org.hamcrest`                     | `hamcrest-library`                            | 1.3                  |
+| `org.hibernate`                    | `hibernate-c3p0`                              | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-core`                              | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-ehcache`                           | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-entitymanager`                     | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-envers`                            | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-hikaricp`                          | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-infinispan`                        | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-java8`                             | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-jcache`                            | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-jpamodelgen`                       | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-proxool`                           | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-spatial`                           | 5.2.14.Final         |
+| `org.hibernate`                    | `hibernate-testing`                           | 5.2.14.Final         |
+| `org.hibernate.validator`          | `hibernate-validator`                         | 6.0.7.Final          |
+| `org.hibernate.validator`          | `hibernate-validator-annotation-processor`    | 6.0.7.Final          |
+| `org.hsqldb`                       | `hsqldb`                                      | 2.4.0                |
+| `org.infinispan`                   | `infinispan-jcache`                           | 9.1.6.Final          |
+| `org.infinispan`                   | `infinispan-spring4-common`                   | 9.1.6.Final          |
+| `org.infinispan`                   | `infinispan-spring4-embedded`                 | 9.1.6.Final          |
+| `org.influxdb`                     | `influxdb-java`                               | 2.9                  |
+| `org.jboss`                        | `jboss-transaction-spi`                       | 7.6.0.Final          |
+| `org.jboss.logging`                | `jboss-logging`                               | 3.3.2.Final          |
+| `org.jboss.narayana.jta`           | `jdbc`                                        | 5.8.0.Final          |
+| `org.jboss.narayana.jta`           | `jms`                                         | 5.8.0.Final          |
+| `org.jboss.narayana.jta`           | `jta`                                         | 5.8.0.Final          |
+| `org.jboss.narayana.jts`           | `narayana-jts-integration`                    | 5.8.0.Final          |
+| `org.jdom`                         | `jdom2`                                       | 2.0.6                |
+| `org.jetbrains.kotlin`             | `kotlin-reflect`                              | 1.2.21               |
+| `org.jetbrains.kotlin`             | `kotlin-runtime`                              | 1.2.21               |
+| `org.jetbrains.kotlin`             | `kotlin-stdlib`                               | 1.2.21               |
+| `org.jetbrains.kotlin`             | `kotlin-stdlib-jdk7`                          | 1.2.21               |
+| `org.jetbrains.kotlin`             | `kotlin-stdlib-jdk8`                          | 1.2.21               |
+| `org.jetbrains.kotlin`             | `kotlin-stdlib-jre7`                          | 1.2.21               |
+| `org.jetbrains.kotlin`             | `kotlin-stdlib-jre8`                          | 1.2.21               |
+| `org.jolokia`                      | `jolokia-core`                                | 1.5.0                |
+| `org.jooq`                         | `jooq`                                        | 3.10.5               |
+| `org.jooq`                         | `jooq-codegen`                                | 3.10.5               |
+| `org.jooq`                         | `jooq-meta`                                   | 3.10.5               |
+| `org.junit.jupiter`                | `junit-jupiter-api`                           | 5.1.0                |
+| `org.junit.jupiter`                | `junit-jupiter-engine`                        | 5.1.0                |
+| `org.liquibase`                    | `liquibase-core`                              | 3.5.5                |
+| `org.mariadb.jdbc`                 | `mariadb-java-client`                         | 2.2.2                |
+| `org.mockito`                      | `mockito-core`                                | 2.15.0               |
+| `org.mockito`                      | `mockito-inline`                              | 2.15.0               |
+| `org.mongodb`                      | `bson`                                        | 3.6.3                |
+| `org.mongodb`                      | `mongodb-driver`                              | 3.6.3                |
+| `org.mongodb`                      | `mongodb-driver-async`                        | 3.6.3                |
+| `org.mongodb`                      | `mongodb-driver-core`                         | 3.6.3                |
+| `org.mongodb`                      | `mongodb-driver-reactivestreams`              | 1.7.1                |
+| `org.mongodb`                      | `mongo-java-driver`                           | 3.6.3                |
+| `org.mortbay.jasper`               | `apache-el`                                   | 8.5.24.2             |
+| `org.neo4j`                        | `neo4j-ogm-api`                               | 3.1.0                |
+| `org.neo4j`                        | `neo4j-ogm-bolt-driver`                       | 3.1.0                |
+| `org.neo4j`                        | `neo4j-ogm-core`                              | 3.1.0                |
+| `org.neo4j`                        | `neo4j-ogm-http-driver`                       | 3.1.0                |
+| `org.postgresql`                   | `postgresql`                                  | 42.2.1               |
+| `org.projectlombok`                | `lombok`                                      | 1.16.20              |
+| `org.quartz-scheduler`             | `quartz`                                      | 2.3.0                |
+| `org.reactivestreams`              | `reactive-streams`                            | 1.0.2                |
+| `org.seleniumhq.selenium`          | `htmlunit-driver`                             | 2.29.2               |
+| `org.seleniumhq.selenium`          | `selenium-api`                                | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-chrome-driver`                      | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-edge-driver`                        | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-firefox-driver`                     | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-ie-driver`                          | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-java`                               | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-opera-driver`                       | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-remote-driver`                      | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-safari-driver`                      | 3.9.1                |
+| `org.seleniumhq.selenium`          | `selenium-support`                            | 3.9.1                |
+| `org.skyscreamer`                  | `jsonassert`                                  | 1.5.0                |
+| `org.slf4j`                        | `jcl-over-slf4j`                              | 1.7.25               |
+| `org.slf4j`                        | `jul-to-slf4j`                                | 1.7.25               |
+| `org.slf4j`                        | `log4j-over-slf4j`                            | 1.7.25               |
+| `org.slf4j`                        | `slf4j-api`                                   | 1.7.25               |
+| `org.slf4j`                        | `slf4j-ext`                                   | 1.7.25               |
+| `org.slf4j`                        | `slf4j-jcl`                                   | 1.7.25               |
+| `org.slf4j`                        | `slf4j-jdk14`                                 | 1.7.25               |
+| `org.slf4j`                        | `slf4j-log4j12`                               | 1.7.25               |
+| `org.slf4j`                        | `slf4j-nop`                                   | 1.7.25               |
+| `org.slf4j`                        | `slf4j-simple`                                | 1.7.25               |
+| `org.springframework`              | `spring-aop`                                  | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-aspects`                              | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-beans`                                | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-context`                              | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-context-indexer`                      | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-context-support`                      | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-core`                                 | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-expression`                           | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-instrument`                           | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-jcl`                                  | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-jdbc`                                 | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-jms`                                  | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-messaging`                            | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-orm`                                  | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-oxm`                                  | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-test`                                 | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-tx`                                   | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-web`                                  | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-webflux`                              | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-webmvc`                               | 5.0.4.RELEASE        |
+| `org.springframework`              | `spring-websocket`                            | 5.0.4.RELEASE        |
+| `org.springframework.amqp`         | `spring-amqp`                                 | 2.0.2.RELEASE        |
+| `org.springframework.amqp`         | `spring-rabbit`                               | 2.0.2.RELEASE        |
+| `org.springframework.batch`        | `spring-batch-core`                           | 4.0.0.RELEASE        |
+| `org.springframework.batch`        | `spring-batch-infrastructure`                 | 4.0.0.RELEASE        |
+| `org.springframework.batch`        | `spring-batch-integration`                    | 4.0.0.RELEASE        |
+| `org.springframework.batch`        | `spring-batch-test`                           | 4.0.0.RELEASE        |
+| `org.springframework.boot`         | `spring-boot`                                 | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-actuator`                        | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-actuator-autoconfigure`          | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-autoconfigure`                   | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-autoconfigure-processor`         | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-configuration-metadata`          | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-configuration-processor`         | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-devtools`                        | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-loader`                          | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-loader-tools`                    | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-properties-migrator`             | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter`                         | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-activemq`                | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-actuator`                | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-amqp`                    | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-aop`                     | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-artemis`                 | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-batch`                   | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-cache`                   | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-cloud-connectors`        | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-cassandra`          | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-cassandra-reactive` | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-couchbase`          | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-couchbase-reactive` | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-elasticsearch`      | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-jpa`                | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-ldap`               | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-mongodb`            | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-mongodb-reactive`   | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-neo4j`              | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-redis`              | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-redis-reactive`     | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-rest`               | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-data-solr`               | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-freemarker`              | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-groovy-templates`        | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-hateoas`                 | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-integration`             | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-jdbc`                    | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-jersey`                  | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-jetty`                   | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-jooq`                    | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-json`                    | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-jta-atomikos`            | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-jta-bitronix`            | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-jta-narayana`            | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-log4j2`                  | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-logging`                 | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-mail`                    | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-mustache`                | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-quartz`                  | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-reactor-netty`           | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-security`                | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-test`                    | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-thymeleaf`               | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-tomcat`                  | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-undertow`                | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-validation`              | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-web`                     | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-webflux`                 | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-web-services`            | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-starter-websocket`               | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-test`                            | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.boot`         | `spring-boot-test-autoconfigure`              | 2.0.0.BUILD-SNAPSHOT |
+| `org.springframework.cloud`        | `spring-cloud-cloudfoundry-connector`         | 2.0.1.RELEASE        |
+| `org.springframework.cloud`        | `spring-cloud-connectors-core`                | 2.0.1.RELEASE        |
+| `org.springframework.cloud`        | `spring-cloud-heroku-connector`               | 2.0.1.RELEASE        |
+| `org.springframework.cloud`        | `spring-cloud-localconfig-connector`          | 2.0.1.RELEASE        |
+| `org.springframework.cloud`        | `spring-cloud-spring-service-connector`       | 2.0.1.RELEASE        |
+| `org.springframework.data`         | `spring-data-cassandra`                       | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-commons`                         | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-couchbase`                       | 3.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-elasticsearch`                   | 3.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-envers`                          | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-gemfire`                         | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-geode`                           | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-jpa`                             | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-keyvalue`                        | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-ldap`                            | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-mongodb`                         | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-mongodb-cross-store`             | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-neo4j`                           | 5.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-redis`                           | 2.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-rest-core`                       | 3.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-rest-hal-browser`                | 3.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-rest-webmvc`                     | 3.0.5.RELEASE        |
+| `org.springframework.data`         | `spring-data-solr`                            | 3.0.5.RELEASE        |
+| `org.springframework.hateoas`      | `spring-hateoas`                              | 0.24.0.RELEASE       |
+| `org.springframework.integration`  | `spring-integration-amqp`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-core`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-event`                    | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-feed`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-file`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-ftp`                      | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-gemfire`                  | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-groovy`                   | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-http`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-ip`                       | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-jdbc`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-jms`                      | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-jmx`                      | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-jpa`                      | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-mail`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-mongodb`                  | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-mqtt`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-redis`                    | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-rmi`                      | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-scripting`                | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-security`                 | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-sftp`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-stomp`                    | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-stream`                   | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-syslog`                   | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-test`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-test-support`             | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-twitter`                  | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-webflux`                  | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-websocket`                | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-ws`                       | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-xml`                      | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-xmpp`                     | 5.0.3.RELEASE        |
+| `org.springframework.integration`  | `spring-integration-zookeeper`                | 5.0.3.RELEASE        |
+| `org.springframework.kafka`        | `spring-kafka`                                | 2.1.4.RELEASE        |
+| `org.springframework.kafka`        | `spring-kafka-test`                           | 2.1.4.RELEASE        |
+| `org.springframework.ldap`         | `spring-ldap-core`                            | 2.3.2.RELEASE        |
+| `org.springframework.ldap`         | `spring-ldap-core-tiger`                      | 2.3.2.RELEASE        |
+| `org.springframework.ldap`         | `spring-ldap-ldif-batch`                      | 2.3.2.RELEASE        |
+| `org.springframework.ldap`         | `spring-ldap-ldif-core`                       | 2.3.2.RELEASE        |
+| `org.springframework.ldap`         | `spring-ldap-odm`                             | 2.3.2.RELEASE        |
+| `org.springframework.ldap`         | `spring-ldap-test`                            | 2.3.2.RELEASE        |
+| `org.springframework.plugin`       | `spring-plugin-core`                          | 1.2.0.RELEASE        |
+| `org.springframework.plugin`       | `spring-plugin-metadata`                      | 1.2.0.RELEASE        |
+| `org.springframework.restdocs`     | `spring-restdocs-asciidoctor`                 | 2.0.0.RELEASE        |
+| `org.springframework.restdocs`     | `spring-restdocs-core`                        | 2.0.0.RELEASE        |
+| `org.springframework.restdocs`     | `spring-restdocs-mockmvc`                     | 2.0.0.RELEASE        |
+| `org.springframework.restdocs`     | `spring-restdocs-restassured`                 | 2.0.0.RELEASE        |
+| `org.springframework.restdocs`     | `spring-restdocs-webtestclient`               | 2.0.0.RELEASE        |
+| `org.springframework.retry`        | `spring-retry`                                | 1.2.2.RELEASE        |
+| `org.springframework.security`     | `spring-security-acl`                         | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-aspects`                     | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-cas`                         | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-config`                      | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-core`                        | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-crypto`                      | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-data`                        | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-ldap`                        | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-messaging`                   | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-oauth2-client`               | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-oauth2-core`                 | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-oauth2-jose`                 | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-openid`                      | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-remoting`                    | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-taglibs`                     | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-test`                        | 5.0.3.RELEASE        |
+| `org.springframework.security`     | `spring-security-web`                         | 5.0.3.RELEASE        |
+| `org.springframework.session`      | `spring-session-core`                         | 2.0.2.RELEASE        |
+| `org.springframework.session`      | `spring-session-data-mongodb`                 | 2.0.2.RELEASE        |
+| `org.springframework.session`      | `spring-session-data-redis`                   | 2.0.2.RELEASE        |
+| `org.springframework.session`      | `spring-session-hazelcast`                    | 2.0.2.RELEASE        |
+| `org.springframework.session`      | `spring-session-jdbc`                         | 2.0.2.RELEASE        |
+| `org.springframework.ws`           | `spring-ws-core`                              | 3.0.0.RELEASE        |
+| `org.springframework.ws`           | `spring-ws-security`                          | 3.0.0.RELEASE        |
+| `org.springframework.ws`           | `spring-ws-support`                           | 3.0.0.RELEASE        |
+| `org.springframework.ws`           | `spring-ws-test`                              | 3.0.0.RELEASE        |
+| `org.synchronoss.cloud`            | `nio-multipart-parser`                        | 1.1.0                |
+| `org.thymeleaf`                    | `thymeleaf`                                   | 3.0.9.RELEASE        |
+| `org.thymeleaf`                    | `thymeleaf-spring5`                           | 3.0.9.RELEASE        |
+| `org.thymeleaf.extras`             | `thymeleaf-extras-java8time`                  | 3.0.1.RELEASE        |
+| `org.thymeleaf.extras`             | `thymeleaf-extras-springsecurity4`            | 3.0.2.RELEASE        |
+| `org.webjars`                      | `hal-browser`                                 | 3325375              |
+| `org.webjars`                      | `webjars-locator-core`                        | 0.35                 |
+| `org.xerial`                       | `sqlite-jdbc`                                 | 3.21.0.1             |
+| `org.xmlunit`                      | `xmlunit-core`                                | 2.5.1                |
+| `org.xmlunit`                      | `xmlunit-legacy`                              | 2.5.1                |
+| `org.xmlunit`                      | `xmlunit-matchers`                            | 2.5.1                |
+| `org.yaml`                         | `snakeyaml`                                   | 1.19                 |
+| `redis.clients`                    | `jedis`                                       | 2.9.0                |
+| `wsdl4j`                           | `wsdl4j`                                      | 1.6.3                |
+| `xml-apis`                         | `xml-apis`                                    | 1.4.01               |
