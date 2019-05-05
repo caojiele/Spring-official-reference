@@ -27,7 +27,7 @@ diverge from the defaults
 (e.g. embedded servers, security, metrics, health checks, externalized configuration)
 * Absolutely no code generation and no requirement for XML configuration
 
-* [站点](https://spring.io/projects/spring-boot) | [GIT](https://github.com/spring-projects/spring-boot)
+* [SITE](https://spring.io/projects/spring-boot) | [GIT](https://github.com/spring-projects/spring-boot)
 -------
 #### Version 
 * [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3)
