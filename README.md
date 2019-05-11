@@ -34,7 +34,7 @@ diverge from the defaults
   * [guide](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3/guide.md) | [API](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3/API.md)
   
 * [2.0.0](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0)
-  * [guide](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/guide.md) | [API](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/API.md)
+  * [guide-part-1](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/guide-part-1.md) | [guide-part-2](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/guide-part-2.md) | [API](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/API.md)
 
 * [1.5.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7)
   * [guide](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/guide.md) | [API](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/API.md)
