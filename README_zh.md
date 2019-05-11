@@ -26,16 +26,16 @@ Spring Boot可以轻松创建Spring驱动的生产级应用程序和服务，并
 -------
 #### 版本文档
 * [2.0.0 M3](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3/API.md)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0.M3/API.md)
   
 * [2.0.0](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/API.md)
+  * [参考手册1](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/参考手册1.md) | [参考手册2](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/参考手册2.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/2.0.0/API.md)
 
 * [1.5.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/API.md)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.7/API.md)
   
 * [1.5.6](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6/API.md)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.5.6/API.md)
   
 * [1.4.7](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7)
-  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7/guide.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7/API.md)
+  * [参考手册](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7/参考手册.md) | [API文档](https://github.com/caojiele/Spring-official-reference/blob/master/Spring-Boot/version/documents/1.4.7/API.md)
